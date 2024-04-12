@@ -1,8 +1,10 @@
 using System;
 
-namespace ModName.Utils {
-    public static class Keywords {
-        public static string Poison =  "KEYWORD_POISON";
+namespace RaindropLobotomy.Utils
+{
+    public static class Keywords
+    {
+        public static string Poison = "KEYWORD_POISON";
         public static string Regenerative = "KEYWORD_RAPID_REGEN";
         public static string Agile = "KEYWORD_AGILE";
         public static string HealthCost = "KEYWORD_PERCENT_HP";

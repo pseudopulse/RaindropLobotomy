@@ -1,0 +1,220 @@
+ManifestFileVersion: 0
+CRC: 4279376031
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7e80477508ed584c28e9a90d3c9ca62d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ba1b0ea4c0206f21ac69948a9420cbaa
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
+- Class: 114
+  Script: {fileID: 1143142494, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1512185436, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1395413934, guid: da77c7bbf69f66ab2145560542327715, type: 3}
+- Class: 114
+  Script: {fileID: 1144835783, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1918207524, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 306635731, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 488236779, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1790887305, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1357070253, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 682687671, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 678291247, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1392865457, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1358022786, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1783169300, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1845404088, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1067940895, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -197296741, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1277448904, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1077198318, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -2096938146, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1530905962, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 161585894, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -380008858, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1720486850, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -365436499, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1294804675, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -202159943, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1792105662, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1549848242, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -359660931, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1888550019, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1578512655, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1848696948, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -899414464, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 525344718, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -789927658, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1391837873, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1627637702, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1348642413, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1881990681, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -315171339, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1895344032, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1568778350, guid: 050936fea8909af15a3fd3b64da1ff83, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RaindropLobotomy/Enemies/CENSORED/mdl/mdlCENSORED.prefab
+- Assets/RaindropLobotomy/Enemies/Binah/BinahBody.prefab
+- Assets/RaindropLobotomy/Enemies/CENSORED/mdl/matCENSORED.mat
+- Assets/RaindropLobotomy/Enemies/Binah/BinahMaster.prefab
+- Assets/RaindropLobotomy/Enemies/SteamMachine/counter/DigitMeshHolder.prefab
+- Assets/RaindropLobotomy/DamageTypes/Pale/bdPale.asset
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/effects/LamentImpactBlack.prefab
+- Assets/RaindropLobotomy/Enemies/SteamMachine/SteamMachineMaster.prefab
+- Assets/RaindropLobotomy/Enemies/Binah/projectiles/pillar/portal/ArbiterPillarShader.shader
+- Assets/Survivors/Argalia/mdl/matArgaliaBody.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixSpawner.prefab
+- Assets/RaindropLobotomy/Enemies/SingingMachine/mdl/matSingingMachine.mat
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Skills/SM_Bewitch.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/LastHelix.png
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Buff/SM_MusicBuff.asset
+- Assets/RaindropLobotomy/Ordeals/UI/Noon.png
+- Assets/RaindropLobotomy/Enemies/CENSORED/CENSOREDMaster.prefab
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Skills/SM_Open.asset
+- Assets/Survivors/Argalia/ArgaliaBody.prefab
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Bewitched/SM_BewitchedBuff.asset
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Bewitched/BewitchedIndicator.prefab
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/matLamentBlack.mat
+- Assets/RaindropLobotomy/Enemies/SteamMachine/SteamMachineBody.prefab
+- Assets/RaindropLobotomy/Enemies/Binah/skills/sd_Binah_FAIRY.asset
+- Assets/RaindropLobotomy/Ordeals/UI/Midnight.png
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixMaster.prefab
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Buff/SingingMachineBuffWard_T1.prefab
+- Assets/RaindropLobotomy/Ordeals/UI/Dawn.png
+- Assets/RaindropLobotomy/Enemies/Binah/vfx/matArbiterSlash.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/mdlLastHelix.prefab
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/TexLamentWhite.png
+- Assets/RaindropLobotomy/Enemies/Binah/mdl/matBinah.mat
+- Assets/Survivors/Argalia/mdl/matArgaliaScythe.mat
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Bewitched/BewitchedIndicator.png
+- Assets/RaindropLobotomy/Enemies/Binah/skills/sf_Binah_PR.asset
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/bdSealed.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixBody.prefab
+- Assets/Survivors/Argalia/sdArgalia.asset
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Skills/SM_Close.asset
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Skills/sf_SM_Bewitch.asset
+- Assets/RaindropLobotomy/Enemies/SingingMachine/SingingMachineMaster.prefab
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Skills/sf_SM_Hinge.asset
+- Assets/RaindropLobotomy/Enemies/SingingMachine/Bewitched/matBewitchedIndicator.mat
+- Assets/Survivors/Argalia/mdl/matArgaliaCloak.mat
+- Assets/RaindropLobotomy/Enemies/SingingMachine/mdl/mdlSingingMachine.prefab
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/SolemnLament.prefab
+- Assets/RaindropLobotomy/Enemies/SteamMachine/mdl/matSteamMachine.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/cscHelix.asset
+- Assets/RaindropLobotomy/Enemies/SingingMachine/mdl/texSingingMachine.png
+- Assets/RaindropLobotomy/Enemies/Binah/projectiles/pillar/portal/PortalEffect.prefab
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/effects/LamentImpactWhite.prefab
+- Assets/RaindropLobotomy/Enemies/Binah/projectiles/pillar/PillarProjectile.prefab
+- Assets/Survivors/Argalia/buffs/Resonance/bdResonance.asset
+- Assets/RaindropLobotomy/Enemies/SingingMachine/SingingMachineBody.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/matHelix.mat
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/sdSolemnLament.asset
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/matLamentWhite.mat
+- Assets/RaindropLobotomy/Enemies/CENSORED/CENSOREDBody.prefab
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/TexLamentBlack.png
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/bdSealStack.asset
+Dependencies: []
