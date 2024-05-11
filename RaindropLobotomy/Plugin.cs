@@ -14,6 +14,7 @@ using RaindropLobotomy.Ordeals;
 using RaindropLobotomy.EGO;
 using RaindropLobotomy.Buffs;
 using RaindropLobotomy.Survivors;
+using RaindropLobotomy.Skills;
 
 [assembly: HG.Reflection.SearchableAttribute.OptIn]
 
@@ -37,12 +38,15 @@ namespace RaindropLobotomy {
             MainAssets = AssetBundle.LoadFromFile(assembly.Location.Replace("RaindropLobotomy.dll", "enkephalin"));
 
             OrdealManager.Initialize();
+            EGOManager.Initialize();
 
             ScanTypes<EnemyBase>(x => x.Create());
             ScanTypes<OrdealBase>(x => x.Create());
             ScanTypes<EGOSkillBase>(x => x.Create());
             ScanTypes<BuffBase>(x => x.Create());
-            ScanTypes<SurvivorBase>(x => x.Create());
+            // ScanTypes<SurvivorBase>(x => x.Create());
+            ScanTypes<CorrosionBase>(x => x.Create());
+            ScanTypes<SkillBase>(x => x.Create());
 
             StubShaders(MainAssets);
         }
@@ -74,6 +78,10 @@ namespace RaindropLobotomy {
             IEnumerable<Type> types = assembly.GetTypes().Where(x => !x.IsAbstract && x.IsSubclassOf(typeof(T)));
 
             foreach (Type type in types) {
+                if (typeof(T) == typeof(SurvivorBase) && type.IsSubclassOf(typeof(CorrosionBase))) {
+                    continue;
+                }
+
                 T instance = (T)Activator.CreateInstance(type);
                 action(instance);
             }

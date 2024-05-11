@@ -1,0 +1,91 @@
+using System;
+
+namespace RaindropLobotomy.Skills.Merc {
+    public class YieldMyFleshState : CoolerBasicMeleeAttack {
+        private float damageTaken = 0f;
+
+        public override float BaseDuration => 1.6f;
+
+        public override float DamageCoefficient => 4f;
+
+        public override string HitboxName => "Sword";
+
+        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+
+        public override float ProcCoefficient => 1f;
+
+        public override float HitPauseDuration => 0.05f;
+
+        public override GameObject SwingEffectPrefab => Assets.GameObject.MercSwordSlash;
+
+        public override string MuzzleString => "GroundLight1";
+
+        public override void OnEnter()
+        {
+            base.mecanimHitboxActiveParameter = "Sword.active";
+
+            base.OnEnter();
+
+            On.RoR2.HealthComponent.TakeDamage += ReceiveDamage;
+            characterBody.AddBuff(Buffs.Unrelenting.Instance.Buff);
+        }
+
+        private void ReceiveDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, RoR2.HealthComponent self, RoR2.DamageInfo damageInfo)
+        {
+            if (self == characterBody.healthComponent && !damageInfo.damageType.HasFlag(DamageType.FallDamage)) {
+                damageInfo.damage *= 2f;
+                damageTaken = damageInfo.damage;
+                Process();
+            }
+
+            orig(self, damageInfo);
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            On.RoR2.HealthComponent.TakeDamage -= ReceiveDamage;
+            characterBody.RemoveBuff(Buffs.Unrelenting.Instance.Buff);
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+        }
+
+        public void Process() {
+            if (damageTaken > 0f) {
+                float percentageTaken = damageTaken / healthComponent.fullCombinedHealth;
+
+                characterBody.SetBuffCount(Buffs.Resentment.Instance.Buff.buffIndex, (int)(percentageTaken * 100f));
+
+                base.skillLocator.special.SetSkillOverride(base.gameObject, YieldMyFlesh.ToClaimTheirBones, GenericSkill.SkillOverridePriority.Contextual);
+
+                AkSoundEngine.PostEvent(Events.Play_merc_shift_slice, base.gameObject);
+                AkSoundEngine.PostEvent(Events.Play_merc_shift_slice, base.gameObject);
+                AkSoundEngine.PostEvent(Events.Play_merc_shift_slice, base.gameObject);
+
+                EffectManager.SpawnEffect(Assets.GameObject.MercExposeConsumeEffect, new EffectData {
+                    origin = base.transform.position,
+                    scale = 3f
+                }, true);
+
+                outer.SetNextStateToMain();
+            }
+        }
+
+        public override void PlayAnimation()
+        {
+            string animationStateName = "GroundLight1";
+            bool @bool = animator.GetBool("isMoving");
+            bool bool2 = animator.GetBool("isGrounded");
+            if (!@bool && bool2)
+            {
+                PlayCrossfade("FullBody, Override", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
+                return;
+            }
+            PlayCrossfade("Gesture, Additive", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
+            PlayCrossfade("Gesture, Override", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
+        }
+    }
+}

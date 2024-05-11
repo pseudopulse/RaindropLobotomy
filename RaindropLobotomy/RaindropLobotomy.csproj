@@ -26,6 +26,7 @@
       <PackageReference Include="R2API.ContentManagement" Version="1.0.1" />
       <PackageReference Include="R2API.Core" Version="5.0.6" />
       <PackageReference Include="R2API.Language" Version="1.0.0" />
+      <PackageReference Include="R2API.Dot" Version="1.0.0" />
       <PackageReference Include="R2API.Prefab" Version="1.0.1" />
       <PackageReference Include="R2API.RecalculateStats" Version="1.0.0" />
       <PackageReference Include="R2API.Director" Version="1.0.0"/>

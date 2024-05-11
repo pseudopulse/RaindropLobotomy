@@ -18,6 +18,10 @@ namespace RaindropLobotomy.Utils
             return null;
         }
 
+        public static Vector3? GroundPoint(this Vector3 point) {
+            return RaycastToDirection(point, float.PositiveInfinity, Vector3.down, LayerIndex.world.mask);
+        }
+
         /// <summary>
         /// Takes a collection and shuffle sorts it around randomly.
         /// </summary>
@@ -237,5 +241,25 @@ namespace RaindropLobotomy.Utils
 
             return res;
         }
+    }
+
+    public class LazyIndex {
+        private string target;
+        private BodyIndex _value = BodyIndex.None;
+        public BodyIndex Value => UpdateValue();
+
+        public LazyIndex(string target) {
+            this.target = target;
+        }
+
+        public BodyIndex UpdateValue() {
+            if (_value == BodyIndex.None || _value == (BodyIndex)(-1)) {
+                _value = BodyCatalog.FindBodyIndex(target);
+            }
+
+            return _value;
+        }
+
+        public static implicit operator BodyIndex(LazyIndex index) => index.Value; 
     }
 }

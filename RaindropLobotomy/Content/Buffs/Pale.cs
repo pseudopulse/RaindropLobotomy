@@ -1,6 +1,7 @@
 using System;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using RaindropLobotomy.EGO.Viend;
 using RoR2.UI;
 
 namespace RaindropLobotomy.Buffs {
@@ -12,6 +13,7 @@ namespace RaindropLobotomy.Buffs {
         private static float PaleMinDuration = 3f;
         public static DamageColorIndex PaleColorIndex = (DamageColorIndex)194;
         private static Color32 PaleColor = new(0, 255, 255, 255);
+        private static BodyIndex MimicryViendIndex => EGOMimicry.MimicryViendIndex;
 
         public override void PostCreation()
         {
@@ -123,6 +125,10 @@ namespace RaindropLobotomy.Buffs {
                 float totalPale = damageInfo.damage;
                 float mult = totalPale * 0.01f;
                 float damage = targetMaxHP * mult;
+
+                if (self.body.bodyIndex == MimicryViendIndex) {
+                    damage *= 0.8f;
+                }
 
                 int paleToInflict = Mathf.FloorToInt(totalPale / 2);
                 float paleDuration = Util.Remap(totalPale, 0, 100, PaleMinDuration, PaleMaxDuration);

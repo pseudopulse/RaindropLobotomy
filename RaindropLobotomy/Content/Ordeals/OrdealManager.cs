@@ -129,7 +129,7 @@ namespace RaindropLobotomy.Ordeals
 
         private static OrdealBase GetNextOrdealType() {
             int i = Run.instance.stageClearCount;
-            OrdealLevel ordeal = OrdealLevel.MIDNIGHT;
+            OrdealLevel ordeal = OrdealLevel.DAWN;
 
             if (i > 2) ordeal = OrdealLevel.NOON;
             if (i > 4) ordeal = OrdealLevel.DUSK;
