@@ -11,6 +11,17 @@ namespace RaindropLobotomy.EGO {
         public static void Initialize() {
             On.RoR2.UI.CharacterSelectController.RebuildLocal += CharacterSelectController_RebuildLocal;
             On.RoR2.UI.CharacterSelectController.Awake += CharacterSelectController_Awake;
+            On.RoR2.CharacterSelectBarController.EnforceValidChoice += CharacterSelectBarController_EnforceValidChoice;
+        }
+
+        private static void CharacterSelectBarController_EnforceValidChoice(On.RoR2.CharacterSelectBarController.orig_EnforceValidChoice orig, CharacterSelectBarController self)
+        {
+            SurvivorDef surv = self.GetLocalUserExistingSurvivorPreference();
+            if (EGOCatalog.EGOReverseMap.ContainsKey(surv)) {
+                return;
+            }
+
+            orig(self);
         }
 
         private static void CharacterSelectController_Awake(On.RoR2.UI.CharacterSelectController.orig_Awake orig, RoR2.UI.CharacterSelectController self)

@@ -16,9 +16,15 @@ namespace RaindropLobotomy.EGO.Bandit {
 
         public override void FireProjectile()
         {
+            if (!isAuthority) {
+                return;
+            }
+
             EffectManager.SimpleEffect(EGOMagicBullet.TeleportEffect, base.transform.position, Quaternion.identity, true);
             TeleportHelper.TeleportBody(base.characterBody, base.currentTrajectoryInfo.hitPoint);
             EffectManager.SimpleEffect(EGOMagicBullet.TeleportEffect, base.transform.position, Quaternion.identity, true);
+
+            AkSoundEngine.PostEvent(Events.Play_bandit2_shift_enter, base.gameObject);
 
             BlastAttack attack = new();
             attack.attacker = base.gameObject;

@@ -25,6 +25,9 @@ namespace RaindropLobotomy.EGO.Viend {
             base.OnEnter();
 
             AkSoundEngine.PostEvent(Events.Play_bandit2_m2_slash, base.gameObject);
+
+            base.characterMotor.Motor.ForceUnground();
+            base.characterMotor.velocity += (base.characterDirection.forward * 16f) + (base.transform.up * 3f);
         }
 
         public override void PlayAnimation()
@@ -40,7 +43,7 @@ namespace RaindropLobotomy.EGO.Viend {
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Pain;
         }
     }
 }

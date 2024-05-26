@@ -49,6 +49,30 @@ namespace RaindropLobotomy {
             ScanTypes<SkillBase>(x => x.Create());
 
             StubShaders(MainAssets);
+
+            ForAllAssets<SkillDef>(x => ContentAddition.AddSkillDef(x));
+            ForAllAssets<SkillFamily>(x => ContentAddition.AddSkillFamily(x));
+            ForAllAssets<GameObject>(x => {
+                if (x.GetComponent<NetworkIdentity>()) {
+                    Debug.Log("Adding Networked Object: " + x);
+                    PrefabAPI.RegisterNetworkPrefab(x);
+                    ContentAddition.AddNetworkedObject(x);
+                }
+
+                if (x.GetComponent<EffectComponent>()) {
+                    ContentAddition.AddEffect(x);
+                }
+            });
+
+            On.RoR2.RoR2Application.Start += (o, s) => {
+                o(s);
+
+                string path = typeof(Main).Assembly.Location.Replace("RaindropLobotomy.dll", "");
+                AkSoundEngine.AddBasePath(path);
+
+                AkSoundEngine.LoadBank("InitRL", out _);
+                AkSoundEngine.LoadBank("RLBank", out _);
+            };
         }
 
         public static T Load<T>(string key) where T : UnityEngine.Object {
@@ -62,6 +86,7 @@ namespace RaindropLobotomy {
                 mat.shader = mat.shader.name switch {
                     "StubbedShader/deferred/hgstandard" => Assets.Shader.HGStandard,
                     "StubbedShader/fx/hgcloudremap" => Assets.Shader.HGCloudRemap,
+                    "Hopoo Games/FX/Cloud Remap" => Assets.Shader.HGCloudRemap,
                     _ => mat.shader
                 };
             }

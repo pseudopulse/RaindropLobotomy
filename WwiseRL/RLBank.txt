@@ -1,0 +1,26 @@
+Event	ID	Name			Wwise Object Path	Notes
+	445040061	Play_fragment_stab			\RL\Play_fragment_stab	
+	1177297364	Play_NT_goodbye			\RL\Play_NT_goodbye	
+	1294596810	Play_NT_claw			\RL\Play_NT_claw	
+	1971193517	Play_butterflyShot_white			\RL\Play_butterflyShot_white	
+	2481286749	Play_NT_shard			\RL\Play_NT_shard	
+	2550049732	Stop_fragment_scream			\RL\Stop_fragment_scream	
+	2575173911	Play_butterflyShot_black			\RL\Play_butterflyShot_black	
+	3013320095	Play_fruitloop_portal			\RL\Play_fruitloop_portal	
+	3362676750	Play_NT_bigslash			\RL\Play_NT_bigslash	
+	3575369541	Play_NT_hello			\RL\Play_NT_hello	
+	3795283858	Play_fragment_scream			\RL\Play_fragment_scream	
+	4021128509	Play_fruitloop_shot			\RL\Play_fruitloop_shot	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	26377023	Freischutz_Shot	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Freischutz_Shot_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Freischutz_Shot		36272
+	77842745	Nullthing_Skill3_Cast	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill3_Cast_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill3_Cast		13571
+	129937569	ButterFlyMan_Atk_White	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\ButterFlyMan_Atk_White_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\ButterFlyMan_Atk_White		31601
+	273629241	Cosmos_Sing	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\SFX\Cosmos_Sing_9EDFC787.wem		\Actor-Mixer Hierarchy\RL\Cosmos_Sing		509777
+	582371050	Nullthing_Skill3_Finish	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill3_Finish_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill3_Finish		14922
+	663419665	ButterFlyMan_StongAtk_Black	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\ButterFlyMan_StongAtk_Black_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\ButterFlyMan_StongAtk_Black		26018
+	817133299	Nullthing_Skill1_casting	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill1_casting_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill1_casting		22048
+	854411757	Freischutz_Create	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Freischutz_Create_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Freischutz_Create		37676
+	952535304	Cosmos_Hit	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\SFX\Cosmos_Hit_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Cosmos_Hit		34446
+	988601334	Nullthing_Skill1_Shang	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill1_Shang_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill1_Shang		8893
+

@@ -30,12 +30,21 @@ namespace RaindropLobotomy.EGO.Bandit {
         public static GameObject TeleportEffect;
         public static GameObject MagicBulletSlash;
 
+        public static GameObject MegaTracerPrefab;
+
+        public static SkillDef Despair;
+        public static BuffDef MB => Buffs.MagicBullet.Instance.Buff;
+        public static DamageAPI.ModdedDamageType DespairDamage = DamageAPI.ReserveDamageType();
+
         public override void Modify()
         {
             base.Modify();
 
             BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animBandit2;
             Load<GameObject>("DisplayMagicBullet.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animBandit2Display;
+
+            BodyPrefab.AddComponent<MagicBulletTargeter>();
+            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Assets.GameObject.VoidSurvivorCrosshair;
 
             BulletPrefab = Load<GameObject>("MagicBulletProjectile.prefab");
             BulletPrefab.GetComponentInChildren<MeshRenderer>().sharedMaterials = new Material[] {
@@ -48,6 +57,10 @@ namespace RaindropLobotomy.EGO.Bandit {
 
             PortalPrefab = Load<GameObject>("MagicBulletPortal.prefab");
             PortalPrefab.AddComponent<MagicBulletPortal>();
+
+            Material matMagicBulletPortal = Load<Material>("matMagicPortal.mat");
+            matMagicBulletPortal.SetTexture("_RemapTex", Assets.Texture2D.texRampMoonArenaWall);
+            matMagicBulletPortal.SetTexture("_Cloud1Tex", Assets.Texture2D.texCloudStroke1);
 
 
             matMagicBulletPortal2 = Load<Material>("matMagicPortal2.mat");
@@ -74,18 +87,69 @@ namespace RaindropLobotomy.EGO.Bandit {
             TracerPrefab.GetComponentInChildren<Light>().color = Color;
             ContentAddition.AddEffect(TracerPrefab);
 
+            MegaTracerPrefab = PrefabAPI.InstantiateClone(Assets.GameObject.TracerRailgunCryo, "FruitLoopsMegaBullet");
+            MegaTracerPrefab.FindParticle("BeamParticles, Rings").material = Assets.Material.matEliteLunarDonut;
+            MegaTracerPrefab.FindComponent<LineRenderer>("Beam, Linger").material = Assets.Material.matLunarWispMinigunTracer;
+            MegaTracerPrefab.FindComponent<LineRenderer>("Beam, Linger").startColor = new Color32(0, 65, 255, 255);
+            MegaTracerPrefab.FindComponent<LineRenderer>("Beam, Linger").startColor = new Color32(23, 0, 255, 255);
+            MegaTracerPrefab.FindComponent<ObjectScaleCurve>("mdlRailgunnerBeam").gameObject.SetActive(false);
+            ContentAddition.AddEffect(MegaTracerPrefab);
+
             FloodingBulletsPP = Load<GameObject>("MagicBulletPP.prefab");
 
             TeleportEffect = PrefabAPI.InstantiateClone(Assets.GameObject.Bandit2SmokeBomb, "FruitLoopsSmokebomb");
             TeleportEffect.transform.Find("Core").Find("Sparks").GetComponent<ParticleSystemRenderer>().material = Assets.Material.matHelfirePuff;
             TeleportEffect.transform.Find("Core").Find("Smoke, Edge Circle").GetComponent<ParticleSystemRenderer>().material = Assets.Material.matHelfirePuff;
-            TeleportEffect.transform.Find("Core").Find("Dust, CenterSphere").GetComponent<ParticleSystemRenderer>().material = Assets.Material.matOnHelfire;
+            TeleportEffect.transform.Find("Core").Find("Dust, CenterSphere").gameObject.SetActive(false);
             TeleportEffect.transform.Find("Core").Find("Dust, CenterTube").gameObject.SetActive(false);
+            var main = TeleportEffect.FindComponent<ParticleSystem>("Smoke, Edge Circle").main;
+            main.startSpeed = main.startSpeed.constant * 2f;
+            main.startSizeMultiplier = 0.6f;
             ContentAddition.AddEffect(TeleportEffect);
 
-            MagicBulletSlash = PrefabAPI.InstantiateClone(Assets.GameObject.AssassinSlash, "MagicBulletSlash");
-            MagicBulletSlash.transform.Find("SwingTrail").GetComponent<ParticleSystemRenderer>().material = Assets.Material.matHelfirePuff;
-            ContentAddition.AddEffect(MagicBulletSlash);
+            MagicBulletSlash = Load<GameObject>("MagicBulletSlash.prefab");
+
+            Despair = Load<SkillDef>("DespairBullet.asset");
+
+            On.RoR2.HealthComponent.TakeDamage += DespairMultiplier;
+        }
+
+        private void DespairMultiplier(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        {
+            if (self.body.teamComponent.teamIndex != TeamIndex.Player && damageInfo.HasModdedDamageType(DespairDamage)) {
+                damageInfo.damage *= 5f;
+                damageInfo.damageType &= ~DamageType.NonLethal;
+            }
+
+            orig(self, damageInfo);
+        }
+
+        public static bool GiveAmmo(CharacterBody body) {
+            SkillLocator loc = body.skillLocator;
+
+            if (NetworkServer.active) body.AddBuff(MB);
+
+            if (body.GetBuffCount(MB) >= 7) {
+                if (body.hasAuthority) {
+                    loc.primary.SetSkillOverride(body, Despair, GenericSkill.SkillOverridePriority.Contextual);
+                    loc.special.SetSkillOverride(body, Despair, GenericSkill.SkillOverridePriority.Contextual);
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public static void SpendAmmo(CharacterBody body) {
+            SkillLocator loc = body.skillLocator;
+
+            if (NetworkServer.active) body.SetBuffCount(MB.buffIndex, 0);
+
+            if (body.hasAuthority) {
+                loc.primary.UnsetSkillOverride(body, Despair, GenericSkill.SkillOverridePriority.Contextual);
+                loc.special.UnsetSkillOverride(body, Despair, GenericSkill.SkillOverridePriority.Contextual);
+            }
         }
 
         public override void SetupLanguage()
@@ -108,6 +172,25 @@ namespace RaindropLobotomy.EGO.Bandit {
 
             "RL_EGO_MAGICBULLET_SPECIAL_NAME".Add("Flooding Bullets");
             "RL_EGO_MAGICBULLET_SPECIAL_DESC".Add("<style=cDeath>Inevitable</style>. Fire <style=cIsUtility>piercing</style> bullets at <style=cIsDamage>all</style> targets who have <style=cIsUtility>Dark Flame</style>, dealing <style=cIsDamage>3x900%</style> damage.");
+
+            "RL_EGO_MAGICBULLET_KYS_NAME".Add("Bullet of Despair");
+            "RL_EGO_MAGICBULLET_KYS_DESC".Add("<style=cDeath>Indiscriminate.</style>. Fire a powerful piercing shot straight through yourself, dealing <style=cIsDamage>20% of your max hp</style> to you and <style=cIsDamage>5x that to enemies</style>. <style=cStack>This skill cannot kill you.</style>");
+        }
+    }
+
+    public class MagicBulletTargeter : HurtboxTracker {
+        public bool shouldTrack = true;
+        public override void Start()
+        {
+            targetingIndicatorPrefab = Assets.GameObject.HuntressTrackingIndicator;
+            maxSearchAngle = 25f;
+            maxSearchDistance = 60f;
+            targetType = TargetType.Enemy;
+            isActiveCallback = () => {
+                return shouldTrack;
+            };
+
+            base.Start();
         }
     }
 
@@ -131,6 +214,7 @@ namespace RaindropLobotomy.EGO.Bandit {
                 attack.weapon = portal.gameObject;
                 attack.origin = portal.transform.position;
                 attack.maxDistance = 900f;
+                attack.tracerEffectPrefab = EGOMagicBullet.MegaTracerPrefab;
                 attack.Fire();
 
                 EffectManager.SimpleEffect(Assets.GameObject.OmniImpactVFXHuntress, portal.transform.position, Quaternion.identity, true);

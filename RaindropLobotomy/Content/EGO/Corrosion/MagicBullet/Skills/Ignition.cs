@@ -28,6 +28,9 @@ namespace RaindropLobotomy.EGO.Bandit {
             FindModelChild("FlameSlash").gameObject.SetActive(true);
 
             AkSoundEngine.PostEvent(Events.Play_bandit2_m2_slash, base.gameObject);
+
+            base.characterMotor.Motor.ForceUnground();
+            base.characterMotor.velocity = (base.characterDirection.forward * 26f) + (base.transform.up * 3f);
         }
 
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
@@ -44,7 +47,7 @@ namespace RaindropLobotomy.EGO.Bandit {
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Pain;
         }
     }
 }

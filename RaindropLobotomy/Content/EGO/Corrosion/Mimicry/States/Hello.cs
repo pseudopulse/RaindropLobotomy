@@ -19,7 +19,12 @@ namespace RaindropLobotomy.EGO.Viend {
 
             AddRecoil(-1f, -2f, -0.5f, 0.5f);
             StartAimMode(aimRay);
-            AkSoundEngine.PostEvent(Events.Play_mage_m2_iceSpear_impact, base.gameObject);
+            
+            /*if (Util.CheckRoll(10f, 0)) {
+                AkSoundEngine.PostEvent("Play_NT_hello", base.gameObject);
+            }*/
+
+            AkSoundEngine.PostEvent("Play_NT_shard", base.gameObject);
 
             EffectManager.SimpleMuzzleFlash(Assets.GameObject.Muzzleflash1, base.gameObject, "MuzzleHandBeam", transmit: false);
             
@@ -31,11 +36,11 @@ namespace RaindropLobotomy.EGO.Viend {
                 bulletAttack.origin = aimRay.origin;
                 bulletAttack.aimVector = aimRay.direction;
                 bulletAttack.muzzleName = "MuzzleHandBeam";
-                bulletAttack.maxDistance = 40f;
+                bulletAttack.maxDistance = 80f;
                 bulletAttack.minSpread = 0f;
                 bulletAttack.maxSpread = base.characterBody.spreadBloomAngle;
                 bulletAttack.radius = 0.5f;
-                bulletAttack.falloffModel = BulletAttack.FalloffModel.None;
+                bulletAttack.falloffModel = BulletAttack.FalloffModel.Buckshot;
                 bulletAttack.smartCollision = true;
                 bulletAttack.damage = DamageCoefficient * base.damageStat;
                 bulletAttack.procCoefficient = 1f;
@@ -43,7 +48,7 @@ namespace RaindropLobotomy.EGO.Viend {
                 bulletAttack.isCrit = Util.CheckRoll(critStat, base.characterBody.master);
                 bulletAttack.tracerEffectPrefab = EGOMimicry.TracerHello;
                 bulletAttack.hitEffectPrefab = Assets.GameObject.OmniImpactVFXHuntress;
-                Debug.Log("firing bullet");
+                
                 bulletAttack.Fire();
             }
             

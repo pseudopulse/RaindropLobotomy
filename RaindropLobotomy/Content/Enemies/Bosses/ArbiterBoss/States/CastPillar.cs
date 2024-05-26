@@ -13,7 +13,7 @@ using System.Collections;
 
 namespace RaindropLobotomy.Enemies.ArbiterBoss {
     public class CastPillar : BaseSkillState {
-        public static string MuzzleName = "MuzzleL";
+        public static string MuzzleName = "MuzzleHand";
         public static float DamageCoefficient = 8f;
         //
         private Timer spawnPillar = new(0.8f, expires: true);
@@ -57,11 +57,11 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
             }
 
             if (spawnPillar.Tick()) {
-                GameObject.Instantiate(ArbiterBoss.FairyMuzzleFlash, FindModelChild("MuzzleL"));
+                GameObject.Instantiate(ArbiterBoss.FairyMuzzleFlash, FindModelChild("MuzzleHand"));
 
                 FireProjectileInfo info = new();
 
-                Transform point = FindModelChild("MuzzleL");
+                Transform point = FindModelChild("MuzzleHand");
 
                 target = base.characterBody.master.aiComponents[0].currentEnemy.gameObject?.transform;
 

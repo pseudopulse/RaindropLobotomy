@@ -32,7 +32,16 @@ namespace RaindropLobotomy.EGO.Bandit {
             StartAimMode(0.1f);
 
             base.characterBody.StartCoroutine(ProcessBullets());
-            pp = GameObject.Instantiate(EGOMagicBullet.FloodingBulletsPP);
+            // pp = GameObject.Instantiate(EGOMagicBullet.FloodingBulletsPP);
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            if (portal && base.characterMotor.isGrounded && portal.transform.parent) {
+                portal.transform.parent = null;
+            }
         }
 
         public IEnumerator ProcessBullets() {
@@ -45,11 +54,13 @@ namespace RaindropLobotomy.EGO.Bandit {
                 
                 List<HurtBox> targets = GetTargets();
 
-                if (targets.Count >= 9) {
-                    targets = targets.GetRange(0, 9);
+                if (targets.Count >= 3) {
+                    targets = targets.GetRange(0, 3);
                 }
 
                 if (targets.Count == 0) continue;
+
+                AkSoundEngine.PostEvent("Play_fruitloop_portal", base.gameObject);
 
                 foreach (HurtBox box in targets) {
                     Vector3 position = box.transform.position + Vector3.up * 3f;
@@ -80,10 +91,16 @@ namespace RaindropLobotomy.EGO.Bandit {
 
                 yield return new WaitForSeconds(1f);
 
-                attack.Fire();
-                portal.FireBullet(attack);
+                if (isAuthority) {
+                    attack.Fire();
+                    portal.FireBullet(attack);
+                }
+
+                AkSoundEngine.PostEvent("Play_fruitloop_shot", base.gameObject);
 
                 PlayAnimation("Gesture, Additive", "FireMainWeapon", "FireMainWeapon.playbackRate", 0.2f);
+
+                bool lastAmmo = EGOMagicBullet.GiveAmmo(characterBody);
 
                 yield return new WaitForSeconds(0.5f);
 
@@ -93,6 +110,10 @@ namespace RaindropLobotomy.EGO.Bandit {
 
                 toDestroy.Clear();
                 portal.outputPortals.Clear();
+
+                if (lastAmmo) {
+                    break;
+                }
 
                 yield return new WaitForSeconds(0.6f);
             }
@@ -139,7 +160,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             SphereSearch search = new();
             search.origin = base.transform.position;
             search.mask = LayerIndex.entityPrecise.mask;
-            search.radius = 140f;
+            search.radius = 60f;
             search.RefreshCandidates();
             search.FilterCandidatesByDistinctHurtBoxEntities();
             search.FilterCandidatesByHurtBoxTeam(TeamMask.GetUnprotectedTeams(GetTeam()));

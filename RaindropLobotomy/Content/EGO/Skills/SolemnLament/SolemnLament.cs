@@ -58,7 +58,7 @@ namespace RaindropLobotomy.EGO {
             
             LanguageAPI.Add("RL_KEYWORD_LAMENT", "Lament");
             LanguageAPI.Add("RL_SOLEMNLAMENT_NAME", "Solemn Lament");
-            LanguageAPI.Add("RL_SOLEMNLAMENT_DESC", "Fire alternating shots for <style=cIsDamage>45% damage</style> that <style=cIsUtility>seal</style> targets. Deals additional damage against <style=cIsUtility>fully sealed</style> targets.");
+            LanguageAPI.Add("RL_SOLEMNLAMENT_DESC", "Fire slow, alternating shots for <style=cIsDamage>145% damage</style> that <style=cIsUtility>seal</style> targets. Deals additional damage against <style=cIsUtility>fully sealed</style> targets.");
 
             GlobalEventManager.onServerDamageDealt += HandleSeal;
         }
@@ -73,7 +73,7 @@ namespace RaindropLobotomy.EGO {
             if (report.damageInfo.HasModdedDamageType(LamentType)) {
                 report.victimBody.AddTimedBuff(SealStack, 10f);
 
-                if (report.victimBody.GetBuffCount(SealStack) >= 8) {
+                if (report.victimBody.GetBuffCount(SealStack) >= 5) {
                     report.victimBody.SetBuffCount(SealStack.buffIndex, 0);
                     report.victimBody.AddTimedBuff(Seal, 3f);
                     EffectManager.SimpleEffect(Assets.GameObject.OmniImpactExecute, report.damageInfo.position, Quaternion.identity, false);
@@ -94,9 +94,9 @@ namespace RaindropLobotomy.EGO {
 
     public class LamentState : BaseSkillState, SteppedSkillDef.IStepSetter
     {
-        private float DamageCoefficient = 0.45f;
-        private float DamageCoefficientSealedTarget = 3.6f;
-        private float ShotsPerSecond = 3f;
+        private float DamageCoefficient = 1.4f;
+        private float DamageCoefficientSealedTarget = 5.7f;
+        private float ShotsPerSecond = 1.5f;
         private GameObject ImpactWhite => Load<GameObject>("LamentImpactWhite.prefab");
         private GameObject ImpactBlack => Load<GameObject>("LamentImpactBlack.prefab");
         private float Duration => 1f / ShotsPerSecond;
@@ -116,11 +116,13 @@ namespace RaindropLobotomy.EGO {
             {
                 PlayAnimation("Gesture Additive, Left", "FirePistol, Left");
                 FireBullet("MuzzleLeft");
+                AkSoundEngine.PostEvent("Play_butterflyShot_black", base.gameObject);
             }
             else
             {
                 PlayAnimation("Gesture Additive, Right", "FirePistol, Right");
                 FireBullet("MuzzleRight");
+                AkSoundEngine.PostEvent("Play_butterflyShot_white", base.gameObject);
             }
 
             duration = Duration / base.attackSpeedStat;
@@ -143,7 +145,6 @@ namespace RaindropLobotomy.EGO {
 
         public void FireBullet(string muzzle) {
             EffectManager.SimpleMuzzleFlash(Assets.GameObject.MuzzleflashBarrage, base.gameObject, muzzle, false);
-            AkSoundEngine.PostEvent(Events.Play_wCrit, base.gameObject);
 
             if (isAuthority) {
                 BulletAttack bulletAttack = new();

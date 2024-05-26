@@ -7,6 +7,8 @@ namespace RaindropLobotomy.EGO.Viend {
             base.OnEnter();
             FindModelChild("ScytheScaleBone").GetComponent<EGOMimicry.GoodbyeArmStretcher>().BeginGoodbye(0);
             base.StartAimMode();
+
+            AkSoundEngine.PostEvent("Play_NT_goodbye", base.gameObject);
         }
 
         public override void FixedUpdate()
@@ -43,7 +45,7 @@ namespace RaindropLobotomy.EGO.Viend {
             base.characterMotor.Motor.ForceUnground();
             base.characterMotor.velocity += (base.characterDirection.forward * 26f) + (base.transform.up * 9f);
 
-            AkSoundEngine.PostEvent(Events.Play_bandit2_m2_slash, base.gameObject);
+            AkSoundEngine.PostEvent("Play_NT_bigslash", base.gameObject);
         }
 
         public override void AuthorityOnFinish()

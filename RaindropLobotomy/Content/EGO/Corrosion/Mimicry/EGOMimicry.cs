@@ -1,6 +1,10 @@
 using System;
 using System.Linq;
 using RaindropLobotomy.Buffs;
+using UnityEngine.SceneManagement;
+using R2API.Networking.Interfaces;
+using UnityEngine.Networking.Types;
+using R2API.Networking;
 
 namespace RaindropLobotomy.EGO.Viend {
     public class EGOMimicry : CorrosionBase<EGOMimicry>
@@ -44,6 +48,10 @@ namespace RaindropLobotomy.EGO.Viend {
         };
 
         public static GameObject MistEffect;
+
+        public static int[] ShellCounts = new int[6] {
+            3, 5, 6, 6, 6, 3
+        };
 
         // TODO:
         // - fix m2 interrupting itself [ DONE ]
@@ -124,8 +132,8 @@ namespace RaindropLobotomy.EGO.Viend {
             main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             ContentAddition.AddEffect(SlashEffect);
 
-            MistEffect = Load<GameObject>("MistCloud.prefab");
-            ContentAddition.AddEffect(MistEffect);
+            // MistEffect = Load<GameObject>("MistCloud.prefab");
+            // ContentAddition.AddEffect(MistEffect);
 
             On.RoR2.Skills.SkillDef.IsReady += DisallowMimicWhenNoShell;
             On.RoR2.GlobalEventManager.OnCharacterDeath += WearShellOnKill;
@@ -137,6 +145,8 @@ namespace RaindropLobotomy.EGO.Viend {
             Goodbye = Load<SkillDef>("Goodbye.asset");
 
             TransformHooks();
+
+            NetworkingAPI.RegisterMessageType<SyncShell>();
         }
 
         private void FillDisallowedIndexes(On.RoR2.BodyCatalog.orig_Init orig)
@@ -165,6 +175,7 @@ namespace RaindropLobotomy.EGO.Viend {
         {
             if (report.damageInfo.HasModdedDamageType(WearShellType) && report.attackerBody && report.attackerBody.GetComponent<MimicryShellController>()) {
                 report.attackerBody.GetComponent<MimicryShellController>().UpdateShell(report.victimBody);
+                new SyncShell(report.attacker, report.victimBody).Send(NetworkDestination.Clients);
             }
 
             orig(self, report);
@@ -214,6 +225,42 @@ namespace RaindropLobotomy.EGO.Viend {
 
             "RL_EGO_MIMICRY_GOODBYE_NAME".Add("G?oOd??ByE?");
             "RL_EGO_MIMICRY_GOODBYE_DESC".Add("Leap forward and perform a devastating slash, dealing <style=cIsDamage>2200% damage</style>. <style=cDeath>If this kills, wear the target's shell.</style>");
+        }
+
+        public class SyncShell : INetMessage
+        {
+            public CharacterBody target;
+            public GameObject applyTo;
+            private NetworkInstanceId _target;
+            private NetworkInstanceId _applyTo;
+            public void Deserialize(NetworkReader reader)
+            {
+                _applyTo = reader.ReadNetworkId();
+                _target = reader.ReadNetworkId();
+
+                applyTo = Util.FindNetworkObject(_applyTo);
+                target = Util.FindNetworkObject(_target).GetComponent<CharacterBody>();
+            }
+
+            public void OnReceived()
+            {
+                applyTo.GetComponent<MimicryShellController>().UpdateShell(target);
+            }
+
+            public void Serialize(NetworkWriter writer)
+            {
+                writer.Write(applyTo.GetComponent<NetworkIdentity>().netId);
+                writer.Write(target.GetComponent<NetworkIdentity>().netId);
+            }
+
+            public SyncShell() {
+
+            }
+
+            public SyncShell(GameObject applyTo, CharacterBody target) {
+                this.applyTo = applyTo;
+                this.target = target;
+            }
         }
 
         public class GoodbyeArmStretcher : MonoBehaviour {
@@ -269,10 +316,13 @@ namespace RaindropLobotomy.EGO.Viend {
             public SkillDef WornShellSD;
             public BodyIndex TargetShell = BodyIndex.None;
             public GenericSkill mimicSlot;
+            public List<BodyIndex> shellsWorn = new();
+            private bool assignedMimicry = false;
+            private CharacterBody us;
 
             public void Start() {
                 mimicSlot = GetComponent<SkillLocator>().utility;
-                GetComponent<SkillLocator>().special.SetSkillOverride(base.gameObject, Goodbye, GenericSkill.SkillOverridePriority.Contextual);
+                us = GetComponent<CharacterBody>();
             }
 
             public void UpdateShell(CharacterBody body) {
@@ -280,6 +330,30 @@ namespace RaindropLobotomy.EGO.Viend {
 
                 foreach (BodyIndex index in BlacklistedBodyIndexes) {
                     if (body.bodyIndex == index) return;
+                }
+
+                if (!shellsWorn.Contains(body.bodyIndex)) {
+                    shellsWorn.Add(body.bodyIndex);
+                    
+                    if (NetworkServer.active) GetComponent<CharacterBody>().AddBuff(Buffs.Imitation.Instance.Buff);
+
+                    int index = 0;
+
+                    if (SceneCatalog.mostRecentSceneDef == Assets.SceneDef.moon || SceneCatalog.mostRecentSceneDef == Assets.SceneDef.moon2) {
+                        index = 5;
+                    }
+                    else {
+                        index = Run.instance.stageClearCount + 1 % 5;
+                        if (index == 0) index = 5;
+                        index--;
+                    }
+
+                    Debug.Log($"target shell count is {ShellCounts[index]} at index {index}");
+
+                    if (shellsWorn.Count >= ShellCounts[index] && !assignedMimicry) {
+                        if (us.hasAuthority) GetComponent<SkillLocator>().special.SetSkillOverride(base.gameObject, Goodbye, GenericSkill.SkillOverridePriority.Upgrade);
+                        assignedMimicry = true;
+                    }
                 }
 
                 List<GenericSkill> skills = body.GetComponents<GenericSkill>().ToList();
@@ -320,7 +394,7 @@ namespace RaindropLobotomy.EGO.Viend {
                 }
 
                 CharacterBody body2 = GetComponent<CharacterBody>();
-                body2.SetBuffCount(Buffs.WornShell.Instance.Buff.buffIndex, 1);
+                if (NetworkServer.active) body2.SetBuffCount(Buffs.WornShell.Instance.Buff.buffIndex, 1);
                 Buffs.WornShell.Instance.Buff.buffColor = body.bodyColor;
             }
         }
@@ -333,7 +407,7 @@ namespace RaindropLobotomy.EGO.Viend {
                 }
 
                 if (str == "HealthBarOrigin") {
-                    return null;
+                    return orig(self, str);
                 }
 
                 return orig(self, "MuzzleHandBeam");

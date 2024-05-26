@@ -43,7 +43,7 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
 
             forward = characterDirection.forward;
 
-            hand = FindModelChild("MuzzleL");
+            hand = FindModelChild("MuzzleHand");
             chargeEffect = GameObject.Instantiate(ChargeEffectPrefab, hand);
             chargeEffect.transform.localPosition = Vector3.zero;
         }

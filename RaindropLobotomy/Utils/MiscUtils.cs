@@ -219,11 +219,13 @@ namespace RaindropLobotomy.Utils
         public bool expired = false;
         private bool expires;
         private bool trueIfExp;
+        private bool resetOnExp;
 
-        public Timer(float dur, bool inverse = false, bool expires = false, bool trueOnExpire = false) {
+        public Timer(float dur, bool inverse = false, bool expires = false, bool trueOnExpire = false, bool resetOnExpire = false) {
             duration = dur;
             inv = inverse;
             trueIfExp = trueOnExpire;
+            this.resetOnExp = resetOnExpire;
             this.expires = expires;
             Reset();
         }
@@ -235,8 +237,13 @@ namespace RaindropLobotomy.Utils
             bool res = inv ? cur <= 0f : cur >= duration;
 
             if (expires) {
-                if (expired) return trueIfExp;
+                if (expired && !resetOnExp) return trueIfExp;
                 expired = res;
+                if (resetOnExp && expired) {
+                    expired = false;
+                    Reset();
+                    Debug.Log("resetting");
+                }
             }
 
             return res;

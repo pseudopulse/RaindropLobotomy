@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using Unity;
+using System.Linq;
 
 namespace RaindropLobotomy.Utils
 {
@@ -17,6 +18,32 @@ namespace RaindropLobotomy.Utils
             for (int i = 0; i < coms.Length; i++)
             {
                 Object.Destroy(coms[i]);
+            }
+        }
+
+        public static ParticleSystemRenderer FindParticle(this GameObject self, string name) {
+            return FindComponent<ParticleSystemRenderer>(self, name);
+        }
+
+        public static T FindComponent<T>(this GameObject self, string name) where T : Component {
+            return self.GetComponentsInChildren<T>().FirstOrDefault(x => x.gameObject.name == name);
+        }
+
+        public static T Clone<T>(this T obj)
+        {
+            var inst = obj.GetType().GetMethod("MemberwiseClone", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+
+            return (T)inst?.Invoke(obj, null);
+        }
+
+        public static void MakeAbideByScale(this ParticleSystem self) {
+            ParticleSystem.MainModule main = self.main;
+            main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+        }
+
+        public static void MakeAbideByScaleRecursively(this GameObject self) {
+            foreach (ParticleSystem system in self.GetComponentsInChildren<ParticleSystem>()) {
+                system.MakeAbideByScale();
             }
         }
 

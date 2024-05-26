@@ -14,7 +14,7 @@ using RaindropLobotomy.Buffs;
 
 namespace RaindropLobotomy.Enemies.ArbiterBoss {
     public class CastFairy : BaseSkillState {
-        public static string MuzzleName = "MuzzleL";
+        public static string MuzzleName = "MuzzleHand";
         public static float DamageCoefficient = 4f;
         public static GameObject Flash => ArbiterBoss.FairyMuzzleFlash;
         //
@@ -28,11 +28,11 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
             base.OnEnter();
     
             Debug.Log("playing fairy anim");
-            PlayAnimation("Gesture, Override", "CastFairy");
+            PlayAnimation("Gesture, Override", "CastFairy", "CastFairy.playbackRate", 0.7f);
 
             // GetModelAnimator().SetBool("shouldAimPitch", true);
 
-            Transform muzzle = FindModelChild("SlashMuzzle");
+            Transform muzzle = FindModelChild("MuzzleSlash");
 
             Debug.Log(muzzle.transform.position);
 
@@ -41,6 +41,8 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
             Debug.Log("pos: " + pos);*/
 
             GameObject swing = GameObject.Instantiate(ArbiterBoss.ArbiterSlashEffect, muzzle);
+            Debug.Log(swing.transform.position);
+            swing.transform.forward *= -1f;
             swing.GetComponent<ScaleParticleSystemDuration>().newDuration = 3f;
             Debug.Log(swing.transform.position);
 
@@ -63,7 +65,7 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
 
             base.characterBody.SetAimTimer(0.4f);
 
-            if (base.fixedAge >= 1f && !fired) {
+            if (base.fixedAge >= 0.5f && !fired) {
                 Ray lrRay = base.GetAimRay();
 
                 AkSoundEngine.PostEvent(Events.Play_MULT_m1_snipe_shoot, base.gameObject);
@@ -79,11 +81,10 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
                 bulletAttack.origin = lrRay.origin;
                 bulletAttack.aimVector = lrRay.direction;
                 bulletAttack.minSpread = 0f;
-                bulletAttack.maxDistance = 70f;
+                bulletAttack.maxDistance = 50f;
                 bulletAttack.maxSpread = 0f;
                 bulletAttack.damage = base.damageStat * 4f;
                 bulletAttack.AddModdedDamageType(Fairy.FairyOnHit);
-                bulletAttack.force = 4000f;
                 bulletAttack.isCrit = Util.CheckRoll(critStat, base.characterBody.master);
                 bulletAttack.radius = 0.4f;
                 bulletAttack.smartCollision = false;
@@ -101,7 +102,6 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
         public override void OnExit()
         {
             base.OnExit();
-            GetModelAnimator().SetBool("shouldAimPitch", false);
         }
     }
 }

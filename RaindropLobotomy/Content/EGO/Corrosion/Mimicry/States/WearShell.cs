@@ -24,7 +24,7 @@ namespace RaindropLobotomy.EGO.Viend {
         {
             base.OnEnter();
 
-            AkSoundEngine.PostEvent(Events.Play_bandit2_m2_slash, base.gameObject);
+            AkSoundEngine.PostEvent("Play_NT_bigslash", base.gameObject);
         }
 
         public override void PlayAnimation()

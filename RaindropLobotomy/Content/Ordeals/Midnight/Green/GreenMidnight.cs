@@ -36,7 +36,7 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green
             GameObject pref = Load<GameObject>("LastHelixSpawner.prefab");
             GameObject spawner = GameObject.Instantiate(pref);
             ScriptedCombatEncounter sce = spawner.GetComponent<ScriptedCombatEncounter>();
-            sce.spawns[0].explicitSpawnPosition = TeleporterInteraction.instance.transform;
+            // sce.spawns[0].explicitSpawnPosition = TeleporterInteraction.instance.transform;
             sce.BeginEncounter();
         }
     }

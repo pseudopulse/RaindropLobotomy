@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using RoR2;
 
 namespace RaindropLobotomy.EGO.Bandit {
     public class MagicBullet : BaseSkillState {
@@ -29,16 +30,10 @@ namespace RaindropLobotomy.EGO.Bandit {
             mbp1.outputPortals.Add(mbp2);
             mbp2.isOutput = true;
 
-            BullseyeSearch search = new();
-            search.maxAngleFilter = 35f;
-            search.searchOrigin = aimRay.origin;
-            search.maxDistanceFilter = 140f;
-            search.teamMaskFilter = TeamMask.GetUnprotectedTeams(base.GetTeam());
-            search.searchDirection = aimRay.direction;
-            search.sortMode = BullseyeSearch.SortMode.Angle;
-            search.RefreshCandidates();
 
-            HurtBox box = search.GetResults().OrderBy(x => Vector3.Distance(x.transform.position, search.searchOrigin)).FirstOrDefault();
+            MagicBulletTargeter targeter = base.characterBody.GetComponent<MagicBulletTargeter>();
+
+            HurtBox box = targeter.target?.GetComponent<HurtBox>() ?? null;
 
             if (box) {
                 Vector3 position = box.transform.position + Vector3.up * 3f;
@@ -54,6 +49,8 @@ namespace RaindropLobotomy.EGO.Bandit {
                 mbp2.transform.position = position;
                 mbp2.aimTarget = box.transform;
             }
+
+            AkSoundEngine.PostEvent("Play_fruitloop_portal", base.gameObject);
         }
 
         public override void FixedUpdate()
@@ -62,7 +59,7 @@ namespace RaindropLobotomy.EGO.Bandit {
 
             StartAimMode(0.1f);
 
-            if (base.fixedAge >= 0.5f && !firedBullet && isAuthority) {
+            if (base.fixedAge >= 0.5f && !firedBullet) {
                 firedBullet = true;
 
                 Vector3 position = portal1.transform.position;
@@ -76,6 +73,8 @@ namespace RaindropLobotomy.EGO.Bandit {
 
                 Transform muzzle = FindModelChild(BulletMuzzle);
                 float distance = Vector3.Distance(muzzle.position, portal1.transform.position);
+
+                AkSoundEngine.PostEvent("Play_fruitloop_shot", base.gameObject);
 
                 BulletAttack attack = new();
                 attack.damage = base.damageStat * DamageCoefficient;
@@ -91,9 +90,13 @@ namespace RaindropLobotomy.EGO.Bandit {
                 attack.radius = 0.5f;
                 attack.smartCollision = true;
                 attack.maxDistance = distance;
+
+                EGOMagicBullet.GiveAmmo(characterBody);
                 
-                attack.Fire();
-                mbp1.FireBullet(attack);
+                if (isAuthority) {
+                    attack.Fire();
+                    mbp1.FireBullet(attack);
+                }
             }
 
             if (base.fixedAge >= 1.2f) {

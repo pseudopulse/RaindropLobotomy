@@ -16,6 +16,8 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green
     public class LastHelix : EnemyBase<LastHelix>
     {
         public static GameObject LaserPrefab;
+        public static GameObject PlasmaPrefab;
+        public static GameObject IndicatorPrefab;
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("LastHelixBody.prefab");
@@ -28,22 +30,42 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green
 
 
             // EFFECTS
-            LaserPrefab = PrefabAPI.InstantiateClone(Assets.GameObject.EyeBeamRoboBallMini, "HelixLaser");
-            LaserPrefab.transform.Find("TechyLine").GetComponent<LineRenderer>().material = Assets.Material.matMoonElevatorBeam;
-            LaserPrefab.transform.Find("TechyLine").GetComponent<LineRenderer>().startWidth = 3f;
-            LaserPrefab.transform.Find("TechyLine").GetComponent<LineRenderer>().endWidth = 3f;
-            LaserPrefab.transform.Find("TechyLine").GetComponent<LineRenderer>().widthMultiplier = 1f;
-            LaserPrefab.transform.Find("LaserFront").GetComponent<LineRenderer>().enabled = false;
-            LaserPrefab.transform.Find("LaserFront").GetComponent<LineRenderer>().startWidth = 2.5f;
-            LaserPrefab.transform.Find("LaserFront").GetComponent<LineRenderer>().endWidth = 2.5f;
-            LaserPrefab.transform.Find("LaserFront").GetComponent<LineRenderer>().widthMultiplier = 1f;
-            LaserPrefab.transform.Find("LaserFront").Find("Ring").gameObject.SetActive(false);
-            LaserPrefab.transform.Find("LaserFront").Find("Ring, Bright").gameObject.SetActive(false);
-            LaserPrefab.transform.Find("LaserFront").Find("SquareFlare").gameObject.SetActive(false);
-            LaserPrefab.transform.Find("LaserFront").Find("HitFlash").gameObject.SetActive(false);
-            LaserPrefab.transform.Find("LaserEnd").Find("Fire").GetComponent<ParticleSystemRenderer>().material = Assets.Material.matVoidSurvivorBlasterFireCorrupted;
-            LaserPrefab.transform.Find("LaserEnd").Find("SquareFlare").gameObject.SetActive(false);
-            LaserPrefab.transform.Find("LaserEnd").Find("HitFlash").gameObject.SetActive(false);
+            LaserPrefab = Load<GameObject>("HelixLaser.prefab");
+            PlasmaPrefab = Load<GameObject>("PlasmaTrailSegment.prefab");
+            IndicatorPrefab = Load<GameObject>("HelixLaserIndicator.prefab");
+
+            PlasmaPrefab.AddComponent<PlasmaDamage>();
+        }
+    }
+
+    public class PlasmaDamage : MonoBehaviour {
+        public CharacterBody owner;
+        public float damagePerSecond;
+        private int ticksPerSecond = 5;
+        private float delay => 1f / ticksPerSecond;
+        private float stopwatch = 0f;
+        private float damage => damagePerSecond / ticksPerSecond;
+        private OverlapAttack attack;
+        public void Start() {
+            attack = new();
+            attack.damage = damage;
+            attack.attacker = owner.gameObject;
+            attack.procCoefficient = 0;
+            attack.damageColorIndex = DamageColorIndex.Poison;
+            attack.hitBoxGroup = GetComponent<HitBoxGroup>();
+            attack.isCrit = false;
+        }
+
+        public void FixedUpdate() {
+            if (NetworkServer.active) {
+                stopwatch += Time.fixedDeltaTime;
+
+                if (stopwatch >= delay) {
+                    stopwatch = 0f;
+                    attack.ResetIgnoredHealthComponents();
+                    attack.Fire();
+                }
+            }
         }
     }
 }

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3897456055
+CRC: 3630036389
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 35cdf037afa45b9598ff9dfd28dc20c1
+    Hash: 4144fc32c29e397811739cd85ede51cc
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 8a53420aa159c35bfb9be286a0ff673d
+    Hash: b7fc12d9b43587a751007d791840bc20
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -42,11 +42,17 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
+- Class: 114
+  Script: {fileID: 306635731, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 708136152, guid: e161fae64b898bc22624d03ed611378f, type: 3}
 - Class: 114
@@ -54,39 +60,45 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 1143142494, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1790887305, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1512185436, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1395413934, guid: da77c7bbf69f66ab2145560542327715, type: 3}
-- Class: 114
-  Script: {fileID: 1144835783, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1918207524, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 306635731, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1480773730, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 1790887305, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 488236779, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 161585894, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1144835783, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1530905962, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1512185436, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1480773730, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1357070253, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 682687671, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: 1395413934, guid: da77c7bbf69f66ab2145560542327715, type: 3}
+- Class: 114
+  Script: {fileID: 1392865457, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 2137989374, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: 170120512, guid: 3ff99aa2a19071810a63a4e9dbf06a54, type: 3}
+- Class: 114
+  Script: {fileID: 717380117, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 525344718, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -1752031980, guid: b2ac317a67c468eb8fd6ed06da7572d4, type: 3}
 - Class: 114
   Script: {fileID: -130519023, guid: b2ac317a67c468eb8fd6ed06da7572d4, type: 3}
-- Class: 114
-  Script: {fileID: 1392865457, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -110,17 +122,15 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -2096938146, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1530905962, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 161585894, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: -380008858, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -1720486850, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: -1202376046, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -578974823, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -960361785, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -140,6 +150,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -1888550019, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: -492659515, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -1578512655, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -152,13 +164,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 717380117, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 525344718, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: -789927658, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -565067572, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1391837873, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -172,8 +182,12 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -1895344032, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: -1746479147, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -1568778350, guid: 050936fea8909af15a3fd3b64da1ff83, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 120
   Script: {instanceID: 0}
 - Class: 135
   Script: {instanceID: 0}
@@ -193,6 +207,8 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Goodbye.asset
 - Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/sdYMF.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Noon/cscGreenNoon.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/plasma/matHelixPlasma.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/mdl/mdlCENSORED.prefab
 - Assets/RaindropLobotomy/Ordeals/Green/Noon/mdl/matGreenNoon.mat
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/BinahBody.prefab
@@ -201,7 +217,10 @@ Assets:
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/buffs/bdFairy.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal2.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/counter/DigitMeshHolder.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicator.mat
 - Assets/RaindropLobotomy/DamageTypes/Pale/bdPale.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/Ignition.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal.mat
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/effects/LamentImpactBlack.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/SteamMachineMaster.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/mdl/matMagicBullet.mat
@@ -209,29 +228,39 @@ Assets:
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/portal/ArbiterPillarShader.shader
 - Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaBody.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/MagicBulletPortal.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/effects/matFragmentThrust.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/matFragment.mat
 - Assets/RaindropLobotomy/Enemies/Bosses/Claw/ClawBody.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/MimicryDisplay.prefab
 - Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/sdTCTB.asset
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixSpawner.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletSpecial.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/mdl/matMimicry.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/effects/matMimicrySlash.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBullet.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/matSingingMachine.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicatorBeam.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Bewitch.asset
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/LastHelix.png
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Buff/SM_MusicBuff.asset
 - Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/bdUnrelenting.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_ut.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/mdlFragment.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/overlay/matFragmentOverlay.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/flame/Fire.prefab
 - Assets/RaindropLobotomy/Ordeals/UI/Noon.png
 - Assets/RaindropLobotomy/Enemies/Bosses/Claw/mdl/matClawMetal.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/CENSOREDMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/slash/matMBSlash.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Open.asset
 - Assets/RaindropLobotomy/Survivors/Argalia/ArgaliaBody.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/SM_BewitchedBuff.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/BewitchedIndicator.prefab
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/matLamentBlack.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/SteamMachineBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/FloodingBullets.asset
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/skills/sd_Binah_FAIRY.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_pr.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal1.mat
 - Assets/RaindropLobotomy/Ordeals/UI/Midnight.png
 - Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/sdFragmentsEGO.asset
@@ -241,54 +270,78 @@ Assets:
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/FragmentMaster.prefab
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/vfx/matArbiterSlash.mat
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/mdlLastHelix.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/SilentAdvance.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/bdWornShell.asset
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/TexLamentWhite.png
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/mdl/matBinah.mat
 - Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaScythe.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/effects/MistCloud.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/BewitchedIndicator.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/bdMagicBullet.asset
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/skills/sf_Binah_PR.asset
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/bdSealed.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Mimic.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/DespairBullet.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixArcs.mat
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixBody.prefab
 - Assets/RaindropLobotomy/Survivors/Argalia/sdArgalia.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/HelixLaser.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/bullet/MagicBulletProjectile.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Claw.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/effects/SpearThrust.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Close.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/mdl/DisplayMagicBullet.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletUtil.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/sf_SM_Bewitch.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/SingingMachineMaster.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/sf_SM_Hinge.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/MagicBulletBody.prefab
 - Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/bdResentment.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/sdMimicry.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletPrimary.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixPuff.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/matBewitchedIndicator.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicatorCross.mat
 - Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaCloak.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/MagicBulletPP.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/mdlSingingMachine.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/HelixLaserIndicator.prefab
 - Assets/RaindropLobotomy/Ordeals/Green/Noon/GreenNoonMaster.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/FragmentsEGOBody.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/plasma/PlasmaTrailSegment.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletSecondary.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundLaserFlare.mat
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/SolemnLament.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixLaser.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/mdl/matSteamMachine.mat
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/cscHelix.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/flame/matDarkFlame.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/sdMagicBulletEGO.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Hello.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/MimicryBody.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/texSingingMachine.png
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/portal/PortalEffect.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/mdl/MimicryEGO.fbx
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/effects/LamentImpactWhite.prefab
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/PillarProjectile.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/bdImitation.asset
 - Assets/RaindropLobotomy/Survivors/Argalia/buffs/Resonance/bdResonance.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/SingingMachineBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_sp.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/FragmentBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/WearShell.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_se.asset
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/matHelix.mat
 - Assets/RaindropLobotomy/Ordeals/Green/Noon/GreenNoonBody.prefab
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/sdSolemnLament.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/mdl/matFragmentsEGO.mat
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/matLamentWhite.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/bdDarkFlame.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/texAlphaGradient2Mask.png
 - Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/CENSOREDBody.prefab
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/TexLamentBlack.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/slash/MagicBulletSlash.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/matFragmentFlower.mat
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/bdSealStack.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/plasma/HelixPlasmaTrail.prefab
 Dependencies: []

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+	<RootPaths>
+		<ProjectRoot>Z:\home\pseudopulse\tmp\RaindropLobotomy\</ProjectRoot>
+		<SourceFilesRoot>Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>Z:\home\pseudopulse\tmp\RaindropLobotomy\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>Z:\home\pseudopulse\tmp\RaindropLobotomy\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="694894649" Language="English(US)" Hash="3398086000">
+			<ObjectPath>\SoundBanks\RL\RLBank</ObjectPath>
+			<ShortName>RLBank</ShortName>
+			<Path>English(US)/RLBank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2575173911" Name="Play_butterflyShot_black" ObjectPath="\Events\RL\Play_butterflyShot_black">
+					<IncludedMemoryFiles>
+						<File Id="663419665" Language="English(US)">
+							<ShortName>ButterFlyMan_StongAtk_Black.wav</ShortName>
+							<Path>Voices/English(US)/ButterFlyMan_StongAtk_Black_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1971193517" Name="Play_butterflyShot_white" ObjectPath="\Events\RL\Play_butterflyShot_white">
+					<IncludedMemoryFiles>
+						<File Id="129937569" Language="English(US)">
+							<ShortName>ButterFlyMan_Atk_White.wav</ShortName>
+							<Path>Voices/English(US)/ButterFlyMan_Atk_White_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3795283858" Name="Play_fragment_scream" ObjectPath="\Events\RL\Play_fragment_scream">
+					<IncludedMemoryFiles>
+						<File Id="273629241" Language="SFX">
+							<ShortName>Cosmos_Sing.wav</ShortName>
+							<Path>SFX/Cosmos_Sing_9EDFC787.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="445040061" Name="Play_fragment_stab" ObjectPath="\Events\RL\Play_fragment_stab">
+					<IncludedMemoryFiles>
+						<File Id="952535304" Language="SFX">
+							<ShortName>Cosmos_Hit.wav</ShortName>
+							<Path>SFX/Cosmos_Hit_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3013320095" Name="Play_fruitloop_portal" ObjectPath="\Events\RL\Play_fruitloop_portal">
+					<IncludedMemoryFiles>
+						<File Id="854411757" Language="English(US)">
+							<ShortName>Freischutz_Create.wav</ShortName>
+							<Path>Voices/English(US)/Freischutz_Create_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4021128509" Name="Play_fruitloop_shot" ObjectPath="\Events\RL\Play_fruitloop_shot">
+					<IncludedMemoryFiles>
+						<File Id="26377023" Language="English(US)">
+							<ShortName>Freischutz_Shot.wav</ShortName>
+							<Path>Voices/English(US)/Freischutz_Shot_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3362676750" Name="Play_NT_bigslash" ObjectPath="\Events\RL\Play_NT_bigslash">
+					<IncludedMemoryFiles>
+						<File Id="582371050" Language="English(US)">
+							<ShortName>Nullthing_Skill3_Finish.wav</ShortName>
+							<Path>Voices/English(US)/Nullthing_Skill3_Finish_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1294596810" Name="Play_NT_claw" ObjectPath="\Events\RL\Play_NT_claw"/>
+				<Event Id="1177297364" Name="Play_NT_goodbye" ObjectPath="\Events\RL\Play_NT_goodbye">
+					<IncludedMemoryFiles>
+						<File Id="77842745" Language="English(US)">
+							<ShortName>Nullthing_Skill3_Cast.wav</ShortName>
+							<Path>Voices/English(US)/Nullthing_Skill3_Cast_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3575369541" Name="Play_NT_hello" ObjectPath="\Events\RL\Play_NT_hello">
+					<IncludedMemoryFiles>
+						<File Id="817133299" Language="English(US)">
+							<ShortName>Nullthing_Skill1_casting.wav</ShortName>
+							<Path>Voices/English(US)/Nullthing_Skill1_casting_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2481286749" Name="Play_NT_shard" ObjectPath="\Events\RL\Play_NT_shard">
+					<IncludedMemoryFiles>
+						<File Id="988601334" Language="English(US)">
+							<ShortName>Nullthing_Skill1_Shang.wav</ShortName>
+							<Path>Voices/English(US)/Nullthing_Skill1_Shang_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2550049732" Name="Stop_fragment_scream" ObjectPath="\Events\RL\Stop_fragment_scream"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="26377023" Language="English(US)">
+					<ShortName>Freischutz_Shot.wav</ShortName>
+					<Path>Voices/English(US)/Freischutz_Shot_3F75BDB9.wem</Path>
+				</File>
+				<File Id="77842745" Language="English(US)">
+					<ShortName>Nullthing_Skill3_Cast.wav</ShortName>
+					<Path>Voices/English(US)/Nullthing_Skill3_Cast_3F75BDB9.wem</Path>
+				</File>
+				<File Id="129937569" Language="English(US)">
+					<ShortName>ButterFlyMan_Atk_White.wav</ShortName>
+					<Path>Voices/English(US)/ButterFlyMan_Atk_White_3F75BDB9.wem</Path>
+				</File>
+				<File Id="273629241" Language="SFX">
+					<ShortName>Cosmos_Sing.wav</ShortName>
+					<Path>SFX/Cosmos_Sing_9EDFC787.wem</Path>
+				</File>
+				<File Id="582371050" Language="English(US)">
+					<ShortName>Nullthing_Skill3_Finish.wav</ShortName>
+					<Path>Voices/English(US)/Nullthing_Skill3_Finish_3F75BDB9.wem</Path>
+				</File>
+				<File Id="663419665" Language="English(US)">
+					<ShortName>ButterFlyMan_StongAtk_Black.wav</ShortName>
+					<Path>Voices/English(US)/ButterFlyMan_StongAtk_Black_3F75BDB9.wem</Path>
+				</File>
+				<File Id="817133299" Language="English(US)">
+					<ShortName>Nullthing_Skill1_casting.wav</ShortName>
+					<Path>Voices/English(US)/Nullthing_Skill1_casting_3F75BDB9.wem</Path>
+				</File>
+				<File Id="854411757" Language="English(US)">
+					<ShortName>Freischutz_Create.wav</ShortName>
+					<Path>Voices/English(US)/Freischutz_Create_3F75BDB9.wem</Path>
+				</File>
+				<File Id="952535304" Language="SFX">
+					<ShortName>Cosmos_Hit.wav</ShortName>
+					<Path>SFX/Cosmos_Hit_3F75BDB9.wem</Path>
+				</File>
+				<File Id="988601334" Language="English(US)">
+					<ShortName>Nullthing_Skill1_Shang.wav</ShortName>
+					<Path>Voices/English(US)/Nullthing_Skill1_Shang_3F75BDB9.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+		<SoundBank Id="1355168291" Language="SFX" Hash="4204904655">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

@@ -5,6 +5,7 @@ namespace RaindropLobotomy.Enemies.SteamMachine {
         private GameObject sprayInstance;
         private Transform muzzle;
         private Timer sprayTimer = new(0.2f);
+        private bool started = false;
         public override void OnEnter()
         {
             base.OnEnter();
@@ -21,19 +22,9 @@ namespace RaindropLobotomy.Enemies.SteamMachine {
             if (base.fixedAge <= 0.5f) return;
             if (base.fixedAge >= 2.3f) { outer.SetNextStateToMain(); return; }
 
-            if (!sprayInstance) {
-                sprayInstance = GameObject.Instantiate(Assets.GameObject.DroneFlamethrowerEffect, muzzle);
-                sprayInstance.transform.forward = -muzzle.forward;
-                sprayInstance.transform.localScale = new(0.01f, 0.01f, 0.01f);
-                sprayInstance.transform.GetComponent<DynamicBone>().enabled = false;
-                Transform bone1 = sprayInstance.transform.Find("Bone1");
-                bone1.GetComponent<LineRenderer>().sharedMaterials = new Material[] {
-                    Assets.Material.matEnvSteam, Assets.Material.matEnvSteam, Assets.Material.matEnvSteam, Assets.Material.matEnvSteam, Assets.Material.matEnvSteam, Assets.Material.matEnvSteam, Assets.Material.matEnvSteam, Assets.Material.matEnvSteam, Assets.Material.matEnvSteam,
-                };
-                bone1.transform.localPosition = new(0f, 0f, -2f);
-                bone1.Find("Bone2").transform.localPosition = new(0f, 0f, 20f);
-                sprayInstance.transform.Find("Billboard").gameObject.SetActive(false);
-                sprayInstance.transform.Find("Point Light").gameObject.SetActive(false);
+            if (!started) {
+                FindModelChild("Spray").GetComponent<ParticleSystem>().Play();
+                started = true;
             }
 
 
@@ -60,7 +51,7 @@ namespace RaindropLobotomy.Enemies.SteamMachine {
         public override void OnExit()
         {
             base.OnExit();
-            if (sprayInstance) Destroy(sprayInstance);
+            FindModelChild("Spray").GetComponent<ParticleSystem>().Stop();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

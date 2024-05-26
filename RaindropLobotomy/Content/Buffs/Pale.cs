@@ -8,7 +8,7 @@ namespace RaindropLobotomy.Buffs {
     public class Pale : BuffBase
     {
         public override BuffDef Buff => Load<BuffDef>("bdPale.asset");
-        public static DamageAPI.ModdedDamageType PaleDamage;
+        public static DamageAPI.ModdedDamageType PaleDamage = DamageAPI.ReserveDamageType();
         private static float PaleMaxDuration = 10f;
         private static float PaleMinDuration = 3f;
         public static DamageColorIndex PaleColorIndex = (DamageColorIndex)194;

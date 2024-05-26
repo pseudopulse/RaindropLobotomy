@@ -12,6 +12,7 @@ using HarmonyLib;
 using RoR2.CharacterAI;
 using UnityEngine.UI;
 using TMPro;
+using RoR2.EntityLogic;
 
 namespace RaindropLobotomy.Ordeals
 {
@@ -71,14 +72,23 @@ namespace RaindropLobotomy.Ordeals
             ordealPopupUI.transform.Find("Backdrop").GetComponent<Image>().color = new Color32(95, 95, 95, 255);
             ordealPopupUI.transform.Find("Backdrop").GetComponent<RectTransform>().localScale = new(0.5f, 1f, 1f);
             ordealPopupUI.transform.Find("Blur").GetComponent<RectTransform>().localScale = new(0.5f, 1f, 1f);
-            ordealPopupUI.transform.Find("DisableDuringSwiping").Find("DisplayArea").Find("UnlockedImagePanel").gameObject.SetActive(false);
+            GameObject imagePanel = ordealPopupUI.transform.Find("DisableDuringSwiping").Find("DisplayArea").Find("UnlockedImagePanel").gameObject;
+            imagePanel.transform.Find("BG").gameObject.SetActive(false);
+            imagePanel.transform.localPosition = new(-374, 0, 0);
+
+            GameObject imagePanel2 = GameObject.Instantiate(imagePanel, imagePanel.transform.parent);
+            imagePanel2.transform.localPosition = new(374, 0, 0);
+
             Transform textRoot = ordealPopupUI.transform.Find("DisableDuringSwiping").Find("DisplayArea").Find("StackedTextPanel");
             textRoot.GetComponent<VerticalLayoutGroup>().spacing = 30;
             textRoot.Find("Title").GetComponent<HGTextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
+            textRoot.Find("Title").transform.localPosition = new(0, 5, 0);
             textRoot.Find("UnlockDescription").GetComponent<HGTextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
             GameObject sub = GameObject.Instantiate(textRoot.Find("UnlockDescription").gameObject, textRoot);
             sub.GetComponent<HGTextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
             sub.transform.SetSiblingIndex(0);
+            textRoot.Find("UnlockDescription").localScale *= 0.7f;
+            textRoot.Find("UnlockDescription").localPosition = new(0, -45, 0);
             ChildLocator loc = ordealPopupUI.AddComponent<ChildLocator>();
             loc.transformPairs = new ChildLocator.NameTransformPair[] {
                 new() {
@@ -93,7 +103,16 @@ namespace RaindropLobotomy.Ordeals
                     transform = textRoot.Find("UnlockDescription"),
                     name = "Subtitle"
                 },
+                new() {
+                    transform = imagePanel.transform,
+                    name = "LeftIcon"
+                },
+                new() {
+                    transform = imagePanel2.transform,
+                    name = "RightIcon"
+                }
             };
+
         }
 
         private static void SetupOrdeal(HUD hudInst) {
@@ -115,8 +134,10 @@ namespace RaindropLobotomy.Ordeals
             ui.transform.localPosition = new(0, 90, 0);
             ChildLocator loc = ui.GetComponent<ChildLocator>();
             ChangeText(loc.FindChild("Name"), ordeal.Name, ordeal.Color);
-            ChangeText(loc.FindChild("OrdealLevel"), ordeal.RiskTitle, ordeal.Color);
+            ChangeText(loc.FindChild("OrdealLevel"), $"<sprite=1> {ordeal.RiskTitle} <sprite=2>", ordeal.Color);
             ChangeText(loc.FindChild("Subtitle"), ordeal.Subtitle, ordeal.Color);
+            ChangeIcon(loc.FindChild("LeftIcon"), ordeal);
+            ChangeIcon(loc.FindChild("RightIcon"), ordeal);
         }
 
         private static void ChangeText(Transform transform, string text, Color32 col) {
@@ -127,9 +148,20 @@ namespace RaindropLobotomy.Ordeals
             gui.alignment = TextAlignmentOptions.Center;
         }
 
+        private static void ChangeIcon(Transform transform, OrdealBase ordeal) {
+            Image image = transform.Find("Icon").GetComponent<Image>();
+            image.sprite = ordeal.OrdealLevel switch {
+                OrdealLevel.DAWN => Load<Sprite>("Dawn.png"),
+                 OrdealLevel.NOON => Load<Sprite>("Noon.png"),
+                OrdealLevel.DUSK => Load<Sprite>("Dawn.png"),
+                OrdealLevel.MIDNIGHT => Load<Sprite>("Midnight.png"),
+            };
+            image.color = ordeal.Color;
+        }
+
         private static OrdealBase GetNextOrdealType() {
             int i = Run.instance.stageClearCount;
-            OrdealLevel ordeal = OrdealLevel.DAWN;
+            OrdealLevel ordeal = OrdealLevel.NOON;
 
             if (i > 2) ordeal = OrdealLevel.NOON;
             if (i > 4) ordeal = OrdealLevel.DUSK;
@@ -138,7 +170,10 @@ namespace RaindropLobotomy.Ordeals
 
             OrdealBase[] options = ordeals[ordeal].ToArray();
 
+            Debug.Log("Setting ordeal to: " + ordeal.ToString());
+
             if (options.Length == 0) {
+                Debug.Log("no options for that ordea, returning.");
                 return null;
             }
 
@@ -156,12 +191,14 @@ namespace RaindropLobotomy.Ordeals
             public void Start() {
                 totalDuration = ordeal.OrdealLevel switch {
                     OrdealLevel.DAWN => 60 * 5f,
-                    OrdealLevel.NOON => 60 * 7f,
+                    OrdealLevel.NOON => 60 * 1f,
                     OrdealLevel.DUSK => 60 * 9f,
                     OrdealLevel.MIDNIGHT => 60 * 7f,
                     _ => 60 * 5f
                 };
+                
                 duration = totalDuration;
+
 
                 ChildLocator loc = GetComponent<ChildLocator>();
                 timer = GetComponent<TimerText>();
