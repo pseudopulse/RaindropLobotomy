@@ -75,6 +75,9 @@
         <HintPath>libs\Zio.dll</HintPath>
         <Private>false</Private>
       </Reference>
+      <Reference Include="Decalicious">
+        <HintPath>.\libs\Decalicious.dll</HintPath>
+      </Reference>
     </ItemGroup>
   
   </Project>

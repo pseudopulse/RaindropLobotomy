@@ -1,187 +1,71 @@
 using System;
-using RoR2.CharacterAI;
 
 namespace RaindropLobotomy.Ordeals.Midnight.Green {
     public class SpinState : BaseHelixWeapon {
+        public Transform endPoint1;
+        public Transform endPoint2;
         public GameObject laserInst1;
-        public Transform endPointC;
-
-        private GameObject chargeEffect;
-        private GameObject telegraphEffect;
+        public GameObject laserInst2;
         private Timer chargeUpTimer = new(5f);
+        //
         private Transform particleSystem;
         private LineRenderer beam;
         private float mult => Mathf.Lerp(0f, 1f, chargeUpTimer.cur / 5f);
         private float targetBeamWidth = 0f;
 
+        private Timer bulletTimer = new(1f / 10, false, true, false, true);
+        private float damageCoeff = 6f / 10;
+
         //
 
-        // private GameObject indicator;
-        private GameObject beam2;
-        //
-        private bool summonedDeathRay = false;
-        private BaseAI ai;
-        private Vector3 position;
-        private Transform target {
-            get {
-                return ai.currentEnemy.gameObject?.transform ?? null;
-            }
-        }
-
-        private LaserPattern currentPattern;
-        private float belowMapPos = -300f;
-        private Timer plasmaDepositInterval = new(0.085f, expires: true, resetOnExpire: true);
-
-        private class LaserPattern {
-            Vector3[] points;
-            int currentPoint;
-            public bool isDone;
-            public float speed;
-            private float belowMapPos = -300f;
-
-            public LaserPattern(Vector3[] targetPoints) {
-                points = targetPoints;
-                currentPoint = 0;
-                isDone = false;
-            }
-
-            public Vector3 Update(Vector3 current) {
-                if (currentPoint > points.Length - 1) {
-                    Debug.Log("Points have all been iterated, marking this pattern as done.");
-                    currentPoint = points.Length - 1;
-                    isDone = true;
-                }
-
-                Vector3 output = points[currentPoint];
-                output.y = belowMapPos;
-
-                Debug.Log("current point: " + current);
-                Debug.Log("output point: " + output);
-                Debug.Log("distance: " + Vector3.Distance(current, output));
-
-                if (Vector3.Distance(current, output) < 1f) {
-                    Debug.Log("advancing to the next point");
-                    currentPoint++;
-                }
-
-                return output;
-            }
-        }
+        private Transform particleSystem2;
+        private LineRenderer beam2;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            // endPoint1 = InitializeLazer(muzzleL, out laserInst1);
-            // endPoint2 = InitializeLazer(muzzleR, out laserInst2);
-            endPointC = InitializeLazer(muzzleV, out laserInst1);
-            laserInst1.transform.parent = null;
-            laserInst1.transform.up = Vector3.up;
-            endPointC.transform.position = new(endPointC.position.x, 9000, endPointC.position.z);
+            endPoint1 = InitializeLazer(muzzleL, out laserInst1);
+            endPoint2 = InitializeLazer(muzzleR, out laserInst2);
+
+            endPoint1.transform.up = -muzzleL.right;
+            endPoint2.transform.up = -muzzleR.right;
 
             beam = laserInst1.FindComponent<LineRenderer>("Beam");
             targetBeamWidth = beam.startWidth;
             particleSystem = laserInst1.FindParticle("Rings").transform;
+            particleSystem.gameObject.SetActive(false);
 
-            //
-
-            ai = characterBody.master.aiComponents[0];
-
-            // indicator = GameObject.Instantiate(LastHelix.IndicatorPrefab, GetRandomPositionIgnoreNodegraph(base.transform.position, 30f, 60f), Quaternion.identity);
-            // indicator.transform.up = Vector3.up;
+            beam2 = laserInst2.FindComponent<LineRenderer>("Beam");
+            particleSystem2 = laserInst2.FindParticle("Rings").transform;
+            particleSystem2.gameObject.SetActive(false);
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
 
+            endPoint2.transform.position = new Ray(muzzleR.transform.position, -muzzleR.right).GetPoint(5000);
+            endPoint1.transform.position = new Ray(muzzleL.transform.position, -muzzleL.right).GetPoint(5000);
+
             if (!chargeUpTimer.Tick()) {
-                Debug.Log("rizzing up that charge timer");
-
-                Debug.Log(mult);
-
                 float width = targetBeamWidth * mult;
                 beam.startWidth = width;
                 beam.endWidth = width;
 
-                particleSystem.localScale = Vector3.one * mult;
-            }
-            else if (!summonedDeathRay) {
-                Vector3 random = GetRandomPositionIgnoreNodegraph(base.transform.position, 40f, 70f);
+                beam2.startWidth = width;
+                beam2.endWidth = width;
 
-                beam2 = GameObject.Instantiate(LastHelix.LaserPrefab, new(random.x, belowMapPos, random.z), Quaternion.identity);
-                beam2.transform.up = Vector3.up;
-                beam2.transform.Find("LaserEnd").localPosition += Vector3.up * 1200;
-
-                summonedDeathRay = true;
-
-                ai.FindEnemyHurtBox(4000f, true, false);
+                return;
             }
 
-            if ((currentPattern == null || currentPattern.isDone) && summonedDeathRay) {
-                Vector3[] nodes = LastHelixLaserPatterns.GetPointSet(base.transform.position, 20f);
-
-                beam2.transform.position = nodes[0];
-
-                currentPattern = new(nodes)
-                {
-                    speed = 40f
-                };
+            if (bulletTimer.Tick()) {
+                GetBulletAttack(muzzleL, -muzzleL.right, base.damageStat * damageCoeff, 3f).Fire();
+                GetBulletAttack(muzzleR, -muzzleR.right, base.damageStat * damageCoeff, 3f).Fire();
             }
 
-
-            if (currentPattern != null && !currentPattern.isDone && summonedDeathRay) {
-                Vector3 output = currentPattern.Update(beam2.transform.position);
-
-                Vector3 next = Vector3.MoveTowards(beam2.transform.position, output, currentPattern.speed * Time.fixedDeltaTime);
-
-                beam2.transform.position = next;
-
-                if (plasmaDepositInterval.Tick()) {
-                    Debug.Log("spawning plasma");
-
-                    Vector3 plasmaTrailRaycastPoint = next + (Vector3.up * 900f);
-
-                    RaycastHit[] hits = Physics.SphereCastAll(plasmaTrailRaycastPoint, 0.2f, Vector3.down, 4000f, LayerIndex.world.mask);
-
-                    foreach (RaycastHit hit in hits) {
-                        GameObject prefab = GameObject.Instantiate(LastHelix.PlasmaPrefab, hit.point, Quaternion.identity);
-                        PlasmaDamage plasma = prefab.GetComponent<PlasmaDamage>();
-                        plasma.owner = base.characterBody;
-                        plasma.damagePerSecond = base.damageStat * 6f;
-                    }
-                }
-            }
-        }
-
-        public Vector3 GetRandomPositionIgnoreNodegraph(Vector3 origin, float min, float max, int attempts = 0) {
-            Vector3 dirVec = Vector3.zero;
-
-            // generate a random forward vector
-            while (dirVec == Vector3.zero) {
-                dirVec = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
-            }
-
-            // decide how far along the direction point should be
-            float dist = Random.Range(min, max);
-
-            Vector3 pos = ValidatePosition(origin + (dirVec * dist));
-
-            if (pos == base.transform.position && attempts < 20) {
-                // invalid spot, reroll (up to a limit)
-                return GetRandomPositionIgnoreNodegraph(origin, min, max, attempts + 1);
-            }
-            
-            return pos;
-        }
-
-        public Vector3 ValidatePosition(Vector3 position) {
-            Vector3 pos = position;
-
-            if (Physics.Raycast(pos + (Vector3.up * 10f), Vector3.down, out RaycastHit hit, 200f, LayerIndex.world.mask)) {
-                return hit.point;
-            }
-
-            return base.transform.position;
+            cannonL.localRotation = Quaternion.Euler(Vector3.Lerp(cannonL.localRotation.eulerAngles, new(0f, 0f, 0f), Mathf.Clamp01((base.fixedAge - 5f) / 2f)));
+            cannonR.localRotation = Quaternion.Euler(Vector3.Lerp(cannonR.localRotation.eulerAngles, new(0f, 180f, 0f), Mathf.Clamp01((base.fixedAge - 5f) / 2f)));
+            pivot.transform.Rotate(new Vector3(0, 0, 20) * Time.fixedDeltaTime, Space.Self);
         }
     }
 }

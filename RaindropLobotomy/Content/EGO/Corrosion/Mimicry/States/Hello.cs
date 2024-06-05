@@ -2,7 +2,7 @@ using System;
 
 namespace RaindropLobotomy.EGO.Viend {
     public class Hello : BaseSkillState {
-        public static float DamageCoefficient = 2.75f;
+        public static float DamageCoefficient = 3.25f;
         public static float BaseDuration = 0.6f;
 
         private float duration;

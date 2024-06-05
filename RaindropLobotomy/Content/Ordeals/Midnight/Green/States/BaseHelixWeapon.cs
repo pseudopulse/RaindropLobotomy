@@ -29,5 +29,21 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green {
             Vector3 norm = (position - cannon.transform.position).normalized;
             cannon.localRotation = Quaternion.Euler(0, norm.y, 0);
         }
+
+        public BulletAttack GetBulletAttack(Transform muzzle, Vector3 forward, float damage, float radius) {
+            BulletAttack attack = new();
+            attack.damage = damage;
+            attack.origin = muzzle.transform.position;
+            attack.aimVector = forward;
+            attack.falloffModel = BulletAttack.FalloffModel.None;
+            attack.owner = base.gameObject;
+            attack.procCoefficient = 0f;
+            attack.stopperMask = LayerIndex.noCollision.mask;
+            attack.radius = radius;
+            attack.smartCollision = false;
+            attack.maxDistance = 4000f;
+            
+            return attack;
+        }
     }
 }

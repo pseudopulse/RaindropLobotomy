@@ -52,7 +52,7 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Frozen;
         }
 
         public override void FixedUpdate()

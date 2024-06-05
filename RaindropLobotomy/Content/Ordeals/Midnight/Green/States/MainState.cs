@@ -10,5 +10,6 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green {
             laserInst = GameObject.Instantiate(LastHelix.LaserPrefab, p.transform.position, Quaternion.identity);
             laserInst.transform.Find("LaserEnd").transform.position = new(p.transform.position.x, 4000f, p.transform.position.z);
         }
+        
     }
 }

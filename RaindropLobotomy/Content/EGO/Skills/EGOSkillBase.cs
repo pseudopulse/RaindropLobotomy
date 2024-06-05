@@ -231,14 +231,15 @@ namespace RaindropLobotomy.EGO
                 if (rendInfo.renderer is SkinnedMeshRenderer) {
                     info.mesh = (rendInfo.renderer as SkinnedMeshRenderer).sharedMesh;
                 }
-                else {
+                else if (rendInfo.renderer is MeshRenderer) {
                     info.mesh = rendInfo.renderer.GetComponent<MeshFilter>().mesh;
                 }
 
-                Debug.Log("set info mesh to: " + info.mesh);
-
-                info.rotation = rendInfo.renderer.transform.localRotation;
-                info.scale = rendInfo.renderer.transform.localScale;
+                if (info.mesh) {
+                    Debug.Log("set info mesh to: " + info.mesh);
+                    info.rotation = rendInfo.renderer.transform.localRotation;
+                    info.scale = rendInfo.renderer.transform.localScale;
+                }
             }
         }
 
@@ -251,7 +252,7 @@ namespace RaindropLobotomy.EGO
             if (info.renderer is SkinnedMeshRenderer) {
                 (info.renderer as SkinnedMeshRenderer).sharedMesh = store.mesh;
             }
-            else {
+            else if (info.renderer is MeshRenderer) {
                 info.renderer.GetComponent<MeshFilter>().sharedMesh = store.mesh;
             }
 
@@ -293,7 +294,7 @@ namespace RaindropLobotomy.EGO
                 if (rendInfo.renderer is SkinnedMeshRenderer) {
                     info.mesh = (rendInfo.renderer as SkinnedMeshRenderer).sharedMesh;
                 }
-                else {
+                else if (rendInfo.renderer is MeshRenderer) {
                     info.mesh = rendInfo.renderer.GetComponent<MeshFilter>().mesh;
                 }
 

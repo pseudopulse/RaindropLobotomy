@@ -53,18 +53,6 @@ namespace RaindropLobotomy.EGO.Viend {
             3, 5, 6, 6, 6, 3
         };
 
-        // TODO:
-        // - fix m2 interrupting itself [ DONE ]
-        // - fix camera bug caused by improper positioning of collider [ DONE ]
-        // - fix vfx being too large
-        // - add g??OdB?yE [ DONE ]
-        // - potentially make anims? [ NOT DOING ]
-        // - make stolen skills inherit charge stats [ DONE ]
-        // - fix not using the correct value to determine cd lmao [ DONE ]
-        // - implement Imitation
-        // - fix broken skills: [ DONE ]
-        // -- Clay Templar Minigun
-
         public static List<SkillDef> HighPriority = new() {
             Assets.SkillDef.ImpBodyBlink,
             Assets.SkillDef.BisonBodyCharge,
@@ -97,8 +85,11 @@ namespace RaindropLobotomy.EGO.Viend {
             Assets.GameObject.GupBody,
             Assets.GameObject.GipBody,
             Assets.GameObject.GeepBody,
-            Assets.GameObject.JellyfishBody
+            Assets.GameObject.JellyfishBody,
+            Assets.GameObject.BisonBody
         };
+
+        public static SkillDef Fallback => Assets.SkillDef.CommandoSlide;
 
         public static List<BodyIndex> BlacklistedBodyIndexes;
 
@@ -109,6 +100,7 @@ namespace RaindropLobotomy.EGO.Viend {
             RuntimeAnimatorController animController = Assets.GameObject.VoidSurvivorDisplay.GetComponentInChildren<Animator>().runtimeAnimatorController;
 
             BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animVoidSurvivor;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Assets.ItemDisplayRuleSet.idrsVoidSurvivor;
             BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<ChildLocator>().FindChild("ScytheScaleBone").AddComponent<GoodbyeArmStretcher>();
             Load<GameObject>("MimicryDisplay.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = animController;
             BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Assets.GameObject.VoidSurvivorBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
@@ -212,10 +204,10 @@ namespace RaindropLobotomy.EGO.Viend {
             "RL_EGO_MIMICRY_PASSIVE_DESC".Add("Gain stacks of <style=cIsDamage>Imitation</style> as you acquire unique shells. After reaching enough <style=cIsDamage>Imitation</style>, replace your special with <style=cDeath>G?oOd??ByE?</style>");
 
             "RL_EGO_MIMICRY_PRIMARY_NAME".Add("H??eLlO?");
-            "RL_EGO_MIMICRY_PRIMARY_DESC".Add("Fire a medium-range blast for <style=cIsDamage>275% damage</style>.");
+            "RL_EGO_MIMICRY_PRIMARY_DESC".Add("Fire a medium-range blast for <style=cIsDamage>325% damage</style>.");
 
             "RL_EGO_MIMICRY_SECONDARY_NAME".Add("C?lA?w");
-            "RL_EGO_MIMICRY_SECONDARY_DESC".Add("Swipe forward, dealing <style=cIsDamage>500% damage</style> and <style=cIsHealing>healing 40% of damage dealt</style>.");
+            "RL_EGO_MIMICRY_SECONDARY_DESC".Add("Lunge and swipe forward, dealing <style=cIsDamage>500% damage</style> and <style=cIsHealing>healing 40% of damage dealt</style>. Hold up to 2 charges.");
 
             "RL_EGO_MIMICRY_UTILITY_NAME".Add("M?iMiC??");
             "RL_EGO_MIMICRY_UTILITY_DESC".Add("Activate the effect of your <style=cIsUtility>current shell</style>, if you have one.");
@@ -328,8 +320,10 @@ namespace RaindropLobotomy.EGO.Viend {
             public void UpdateShell(CharacterBody body) {
                 Debug.Log("Wearing a shell!");
 
+                bool useFallbackSkill = false;
+
                 foreach (BodyIndex index in BlacklistedBodyIndexes) {
-                    if (body.bodyIndex == index) return;
+                    if (body.bodyIndex == index) useFallbackSkill = true;
                 }
 
                 if (!shellsWorn.Contains(body.bodyIndex)) {
@@ -356,32 +350,39 @@ namespace RaindropLobotomy.EGO.Viend {
                     }
                 }
 
-                List<GenericSkill> skills = body.GetComponents<GenericSkill>().ToList();
-                skills = skills.OrderBy(x => x.skillDef.baseRechargeInterval).ToList();
+                SkillDef copySkill = EGOMimicry.Fallback;
 
-                GenericSkill skill = skills.FirstOrDefault(x => HighPriority.Contains(x.skillDef));
+                if (!useFallbackSkill) {
+                    List<GenericSkill> skills = body.GetComponents<GenericSkill>().ToList();
+                    skills = skills.OrderBy(x => x.skillDef.baseRechargeInterval).ToList();
 
-                if (!skill) {
-                    skill = skills.FirstOrDefault(x => x.skillDef.activationStateMachineName != "Body");
-                    if (!skill) skill = skills.First();
+                    GenericSkill skill = skills.FirstOrDefault(x => HighPriority.Contains(x.skillDef));
+
+                    if (!skill) {
+                        skill = skills.FirstOrDefault(x => x.skillDef.activationStateMachineName != "Body");
+                        if (!skill) skill = skills.First();
+
+                        copySkill = skill.skillDef;
+                    }
                 }
 
                 TargetShell = body.bodyIndex;
 
                 if (mimicSlot && mimicSlot.skillDef == MimicSkillDef) {
-                    mimicSlot.skillDef.activationStateMachineName = "Weapon";
-                    mimicSlot.skillDef.activationState = skill.skillDef.activationState;
+                    mimicSlot.skillDef.activationStateMachineName = "Mimic";
+                    mimicSlot.skillDef.activationState = copySkill.activationState;
                     mimicSlot.skillDef.beginSkillCooldownOnSkillEnd = true;
-                    mimicSlot.skillDef.baseMaxStock = skill.skillDef.baseMaxStock;
-                    mimicSlot.skillDef.stockToConsume = skill.skillDef.stockToConsume;
-                    mimicSlot.skillDef.rechargeStock = skill.skillDef.rechargeStock;
+                    mimicSlot.skillDef.baseMaxStock = copySkill.baseMaxStock;
+                    mimicSlot.skillDef.stockToConsume = copySkill.stockToConsume;
+                    mimicSlot.skillDef.rechargeStock = copySkill.rechargeStock;
                     mimicSlot.skillDef.interruptPriority = InterruptPriority.Any;
                     mimicSlot.skillDef.fullRestockOnAssign = true;
-                    mimicSlot.skillDef.isCombatSkill = skill.skillDef.isCombatSkill;
-                    mimicSlot.skillDef.resetCooldownTimerOnUse = skill.skillDef.resetCooldownTimerOnUse;
-                    mimicSlot.skillDef.mustKeyPress = skill.skillDef.mustKeyPress;
+                    mimicSlot.skillDef.isCombatSkill = copySkill.isCombatSkill;
+                    mimicSlot.skillDef.resetCooldownTimerOnUse = copySkill.resetCooldownTimerOnUse;
+                    mimicSlot.skillDef.mustKeyPress = copySkill.mustKeyPress;
+                    mimicSlot.skillDef.cancelSprintingOnActivation = copySkill.cancelSprintingOnActivation;
 
-                    float targetCD = skill.skillDef.baseRechargeInterval;
+                    float targetCD = copySkill.baseRechargeInterval;
                     targetCD *= 0.65f;
 
                     Debug.Log("target's modified cd: " + targetCD);
@@ -460,6 +461,7 @@ namespace RaindropLobotomy.EGO.Viend {
                 if (self.characterBody && self.characterBody.bodyIndex == MimicryViendIndex) {
                     if (IsAStolenSkill(self)) {
                         self.damageStat *= 1.75f;
+                        self.attackSpeedStat *= 1.75f;
                     }
                 }
             };

@@ -31,7 +31,8 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green {
             }
     
             if (base.fixedAge >= 3f && begun) {
-                outer.SetNextState(new SpinState());
+                outer.SetNextState(new BeamState());
+                EntityStateMachine.FindByCustomName(base.gameObject, "Weapon").SetNextState(new SpinState());
                 return;
             }
         }

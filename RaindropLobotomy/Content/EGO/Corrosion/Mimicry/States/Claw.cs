@@ -27,7 +27,7 @@ namespace RaindropLobotomy.EGO.Viend {
             AkSoundEngine.PostEvent(Events.Play_bandit2_m2_slash, base.gameObject);
 
             base.characterMotor.Motor.ForceUnground();
-            base.characterMotor.velocity += (base.characterDirection.forward * 16f) + (base.transform.up * 3f);
+            base.characterMotor.velocity += (base.characterDirection.forward * 16f) + (Vector3.up * 5f);
         }
 
         public override void PlayAnimation()

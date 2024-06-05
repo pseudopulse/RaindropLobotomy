@@ -42,6 +42,10 @@ namespace RaindropLobotomy.Enemies
             AddSpawnCard();
             AddDirectorCard();
             PostCreation();
+
+            if (typeof(Abnormality).IsAssignableFrom(this.GetType())) {
+                AbnormalityManager.AddAbnormality(this as Abnormality);
+            }
         }
 
         public abstract void LoadPrefabs();

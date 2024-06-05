@@ -1,4 +1,4 @@
-using System;
+/*using System;
 
 namespace RaindropLobotomy.Survivors.Argalia {
     public class Argalia : SurvivorBase<Argalia>
@@ -49,4 +49,4 @@ namespace RaindropLobotomy.Survivors.Argalia {
             "RL_SPECIAL_FINALE_DESC".Add("");
         }
     }
-}
+}*/

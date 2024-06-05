@@ -12,11 +12,18 @@ using RoR2.CharacterAI;
 
 namespace RaindropLobotomy.Enemies.Fragment
 {
-    public class UniverseFragment : EnemyBase<UniverseFragment>
+    public class UniverseFragment : EnemyBase<UniverseFragment>, Abnormality
     {
         public static BuffDef BewitchedDebuff;
         public static GameObject ScreamEffect;
         public static GameObject SpearThrust;
+
+        public RiskLevel ThreatLevel => RiskLevel.Teth;
+
+        public SpawnCard SpawnCard => Load<CharacterSpawnCard>("cscFragment.asset");
+
+        public bool IsTool => false;
+
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("FragmentBody.prefab");

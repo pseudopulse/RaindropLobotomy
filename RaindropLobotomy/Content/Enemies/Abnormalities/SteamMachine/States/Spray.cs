@@ -4,13 +4,15 @@ namespace RaindropLobotomy.Enemies.SteamMachine {
     public class Spray : BaseState {
         private GameObject sprayInstance;
         private Transform muzzle;
-        private Timer sprayTimer = new(0.2f);
+        private Timer sprayTimer = new(0.2f, false, true, false, true);
         private bool started = false;
+        private Animator animator;
         public override void OnEnter()
         {
             base.OnEnter();
-            PlayAnimation("Gesture, Override", "Spray", "Spray.playbackRate", 2.6f);
+            PlayAnimation("Gesture, Override", "Spray", "Spray.playbackRate", 8f);
             muzzle = FindModelChild("Nozzle");
+            animator = GetModelAnimator();
         }
 
         public override void FixedUpdate()
@@ -19,29 +21,31 @@ namespace RaindropLobotomy.Enemies.SteamMachine {
 
             base.characterBody.SetAimTimer(1f);
 
-            if (base.fixedAge <= 0.5f) return;
-            if (base.fixedAge >= 2.3f) { outer.SetNextStateToMain(); return; }
-
-            if (!started) {
+            if (!started && animator.GetFloat("sprayBegun") >= 0.5f) {
                 FindModelChild("Spray").GetComponent<ParticleSystem>().Play();
                 started = true;
             }
 
+            if (animator.GetFloat("sprayBegun") <= 0.2f && started) {
+                outer.SetNextStateToMain();
+                return;
+            }
 
-            if (sprayTimer.Tick()) {
+
+            if (sprayTimer.Tick() && started) {
                 BulletAttack attack = new();
-                attack.damage = base.damageStat * 4f;
+                attack.damage = base.damageStat * 4f * sprayTimer.duration;
                 attack.aimVector = -muzzle.transform.forward;
                 attack.weapon = muzzle.gameObject;
                 attack.owner = base.gameObject;
                 attack.falloffModel = BulletAttack.FalloffModel.None;
                 attack.isCrit = base.RollCrit();
-                attack.stopperMask = LayerIndex.noCollision.mask;
+                attack.stopperMask = LayerIndex.world.mask;
                 attack.origin = muzzle.transform.position;
                 attack.procCoefficient = 1f;
                 attack.radius = 1f;
                 attack.smartCollision = true;
-                attack.maxDistance = 40f;
+                attack.maxDistance = 35f;
                 attack.muzzleName = "Nozzle";
                 
                 attack.Fire();
@@ -56,7 +60,7 @@ namespace RaindropLobotomy.Enemies.SteamMachine {
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Frozen;
         }
     }
 }

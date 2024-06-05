@@ -1,4 +1,4 @@
-using System;
+/*using System;
 
 namespace RaindropLobotomy.Survivors.Argalia {
     public class Allegro : BaseSkillState {
@@ -58,4 +58,4 @@ namespace RaindropLobotomy.Survivors.Argalia {
             return swingEffectInstance;
         }
     }
-}
+}*/

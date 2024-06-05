@@ -15,6 +15,7 @@ using RaindropLobotomy.EGO;
 using RaindropLobotomy.Buffs;
 using RaindropLobotomy.Survivors;
 using RaindropLobotomy.Skills;
+using RaindropLobotomy.EGO.Gifts;
 
 [assembly: HG.Reflection.SearchableAttribute.OptIn]
 
@@ -31,22 +32,27 @@ namespace RaindropLobotomy {
 
         public static AssetBundle MainAssets;
         public static BepInEx.Logging.ManualLogSource ModLogger;
+        public static ConfigFile config;
 
         public void Awake() {
             assembly = typeof(Main).Assembly;
             ModLogger = Logger;
             MainAssets = AssetBundle.LoadFromFile(assembly.Location.Replace("RaindropLobotomy.dll", "enkephalin"));
 
+            config = Config;
+
             OrdealManager.Initialize();
             EGOManager.Initialize();
+            AbnormalityManager.Initialize();
 
             ScanTypes<EnemyBase>(x => x.Create());
-            ScanTypes<OrdealBase>(x => x.Create());
+            // ScanTypes<OrdealBase>(x => x.Create());
             ScanTypes<EGOSkillBase>(x => x.Create());
             ScanTypes<BuffBase>(x => x.Create());
-            // ScanTypes<SurvivorBase>(x => x.Create());
+            ScanTypes<SurvivorBase>(x => x.Create());
             ScanTypes<CorrosionBase>(x => x.Create());
             ScanTypes<SkillBase>(x => x.Create());
+            ScanTypes<EGOGiftBase>(x => x.Initialize());
 
             StubShaders(MainAssets);
 

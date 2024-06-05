@@ -47,15 +47,6 @@ namespace RaindropLobotomy.Skills.Merc {
         public override void BeginMeleeAttackEffect()
         {
             base.BeginMeleeAttackEffect();
-
-            foreach (ParticleSystem system in swingEffectInstance.GetComponentsInChildren<ParticleSystem>()) {
-                if (!system.name.Contains("SwingTrail")) {
-                    continue;
-                }
-                ParticleSystem.MainModule main = system.main;
-                main.scalingMode = ParticleSystemScalingMode.Local;
-                system.transform.localScale *= hitBoxScale;
-            }
         }
 
         public override void PlayAnimation()

@@ -42,7 +42,7 @@ namespace RaindropLobotomy.EGO.Bandit {
 
             BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animBandit2;
             Load<GameObject>("DisplayMagicBullet.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animBandit2Display;
-
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Assets.ItemDisplayRuleSet.idrsBandit2;
             BodyPrefab.AddComponent<MagicBulletTargeter>();
             BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Assets.GameObject.VoidSurvivorCrosshair;
 

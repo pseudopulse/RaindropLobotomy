@@ -31,7 +31,7 @@ namespace RaindropLobotomy.Survivors
         
         public virtual void Create()
         {
-            ContentAddition.AddBody(BodyPrefab);
+            if (BodyPrefab) ContentAddition.AddBody(BodyPrefab);
             if (MasterPrefab) ContentAddition.AddMaster(MasterPrefab);
             ContentAddition.AddSurvivorDef(Survivor);
 

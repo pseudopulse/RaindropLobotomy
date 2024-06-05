@@ -4,7 +4,7 @@ using Rewired.ComponentControls.Effects;
 namespace RaindropLobotomy.Ordeals.Noon.Green {
     public class Saw : CoolerBasicMeleeAttack
     {
-        public override float BaseDuration => 4f;
+        public override float BaseDuration => 3f;
 
         public override float DamageCoefficient => 6f / hitRate;
 

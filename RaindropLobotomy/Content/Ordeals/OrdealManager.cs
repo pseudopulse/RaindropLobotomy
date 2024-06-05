@@ -27,7 +27,24 @@ namespace RaindropLobotomy.Ordeals
         private static GameObject ordealUI;
         private static GameObject ordealPopupUI;
 
+        public class OrdealConfig : ConfigClass
+        {
+            public override string Section => "Mechanics :: Ordeals";
+            public bool Enabled => Option<bool>("Enabled", "Should ordeals appear during runs?", true);
+            public bool ShowPopup => Option<bool>("Show Ordeal Popup", "Should the ordeal popup appear when an ordeal spawns?", true);
+            public float DawnTimer => Option<float>("Activation Time - DAWN", "The time it takes (in seconds) for a Dawn ordeal to appear.", 60f * 5f);
+            public float NoonTimer => Option<float>("Activation Time - NOON", "The time it takes (in seconds) for a Noon ordeal to appear.", 60f * 5f);
+            public float DuskTimer => Option<float>("Activation Time - DUSK", "The time it takes (in seconds) for a Dusk ordeal to appear.", 60f * 6f);
+            public float MidnightTimer => Option<float>("Activation Time - MIDNIGHT", "The time it takes (in seconds) for a Midnight ordeal to appear.", 60f * 7f);
+        }
+
+        public static OrdealConfig Config = new();
+
         public static void Initialize() {
+            if (!Config.Enabled) {
+                return;
+            }
+
             CreateOrdealPopupUI();
             CreateOrdealTimerUI();
             On.RoR2.UI.HUD.Awake += PickOrdeal;
@@ -130,6 +147,10 @@ namespace RaindropLobotomy.Ordeals
         }
 
         public static void SpawnOrdealPopupUI(OrdealBase ordeal) {
+            if (!Config.ShowPopup) {
+                return;
+            }
+
             GameObject ui = GameObject.Instantiate(ordealPopupUI, HUD.instancesList[0].mainContainer.transform);
             ui.transform.localPosition = new(0, 90, 0);
             ChildLocator loc = ui.GetComponent<ChildLocator>();
@@ -161,12 +182,14 @@ namespace RaindropLobotomy.Ordeals
 
         private static OrdealBase GetNextOrdealType() {
             int i = Run.instance.stageClearCount;
-            OrdealLevel ordeal = OrdealLevel.NOON;
+            OrdealLevel ordeal = OrdealLevel.DAWN;
 
-            if (i > 2) ordeal = OrdealLevel.NOON;
-            if (i > 4) ordeal = OrdealLevel.DUSK;
+            if (i > 2) ordeal = OrdealLevel.DAWN;
+            if (i > 4) ordeal = OrdealLevel.NOON;
             if (i > 6) ordeal = OrdealLevel.DUSK;
             if (i > 8) ordeal = OrdealLevel.MIDNIGHT;
+
+            // ordeal = OrdealLevel.MIDNIGHT;
 
             OrdealBase[] options = ordeals[ordeal].ToArray();
 
@@ -190,14 +213,15 @@ namespace RaindropLobotomy.Ordeals
 
             public void Start() {
                 totalDuration = ordeal.OrdealLevel switch {
-                    OrdealLevel.DAWN => 60 * 5f,
-                    OrdealLevel.NOON => 60 * 1f,
-                    OrdealLevel.DUSK => 60 * 9f,
-                    OrdealLevel.MIDNIGHT => 60 * 7f,
+                    OrdealLevel.DAWN => Config.DawnTimer,
+                    OrdealLevel.NOON => Config.NoonTimer,
+                    OrdealLevel.DUSK => Config.DuskTimer,
+                    OrdealLevel.MIDNIGHT => Config.MidnightTimer,
                     _ => 60 * 5f
                 };
                 
-                duration = totalDuration;
+                // duration = totalDuration;
+                duration = 10f;
 
 
                 ChildLocator loc = GetComponent<ChildLocator>();
@@ -219,7 +243,7 @@ namespace RaindropLobotomy.Ordeals
 
                 if (duration <= 0f) {
                     timer.enabled = false;
-                    timer.targetLabel.text = "XX:XX:XX";
+                    timer.targetLabel.text = "XX:XX";
                 }
 
                 if (duration <= 0f && !startedOrdeal) {

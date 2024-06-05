@@ -47,6 +47,10 @@ namespace RaindropLobotomy.Utils
             }
         }
 
+        public static Vector3 Nullify(this Vector3 self, bool x, bool y, bool z) {
+            return new Vector3(x ? 0f: self.x, y ? 0f : self.y, z ? 0f : self.z);
+        }
+
         public static void RemoveComponent<T>(this Component self) where T : Component
         {
             Object.Destroy(self.GetComponent<T>());

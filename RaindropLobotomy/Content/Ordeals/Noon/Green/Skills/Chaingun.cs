@@ -36,6 +36,9 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
             if (!defensive) {
                 base.StartAimMode();
             }
+            else {
+                base.StartAimMode(10f);
+            }
 
             if (base.fixedAge >= duration) {
                 outer.SetNextStateToMain();
@@ -52,8 +55,6 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
                     FireBulletAuthority();
                 }
             }
-
-            Debug.Log(GetModelAnimator().GetFloat("aimYawCycle"));
         }
 
         public void FireBulletAuthority() {
@@ -88,11 +89,12 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
         {
             base.OnExit();
             GetModelAnimator().SetBool("isFiring", false);
+            base.StartAimMode(2f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Frozen;
         }
     }
 }

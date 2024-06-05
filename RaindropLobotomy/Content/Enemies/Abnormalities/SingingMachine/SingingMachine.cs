@@ -12,9 +12,16 @@ using RoR2.CharacterAI;
 
 namespace RaindropLobotomy.Enemies.SingingMachine
 {
-    public class SingingMachine : EnemyBase<SingingMachine>
+    public class SingingMachine : EnemyBase<SingingMachine>, Abnormality
     {
         public static BuffDef BewitchedDebuff;
+
+        public RiskLevel ThreatLevel => RiskLevel.He;
+
+        public SpawnCard SpawnCard => Load<CharacterSpawnCard>("cscSingingMachine.asset");
+
+        public bool IsTool => false;
+
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("SingingMachineBody.prefab");

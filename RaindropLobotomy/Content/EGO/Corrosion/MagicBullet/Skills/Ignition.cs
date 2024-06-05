@@ -25,7 +25,7 @@ namespace RaindropLobotomy.EGO.Bandit {
 
             PlayAnimation("Gesture, Additive", "SlashBlade", "SlashBlade.playbackRate", duration);
 
-            FindModelChild("FlameSlash").gameObject.SetActive(true);
+            // FindModelChild("FlameSlash").gameObject.SetActive(true);
 
             AkSoundEngine.PostEvent(Events.Play_bandit2_m2_slash, base.gameObject);
 
@@ -42,7 +42,7 @@ namespace RaindropLobotomy.EGO.Bandit {
         public override void OnExit()
         {
             base.OnExit();
-            FindModelChild("FlameSlash").gameObject.SetActive(false);
+            // FindModelChild("FlameSlash").gameObject.SetActive(false);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

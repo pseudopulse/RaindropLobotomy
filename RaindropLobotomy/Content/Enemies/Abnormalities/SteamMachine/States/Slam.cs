@@ -6,6 +6,7 @@ namespace RaindropLobotomy.Enemies.SteamMachine {
         public bool performedSlam = false;
         private Vector3 forward;
         private OverlapAttack attack;
+        private Animator animator;
         public override void OnEnter()
         {
             base.OnEnter();
@@ -22,19 +23,26 @@ namespace RaindropLobotomy.Enemies.SteamMachine {
             attack.forceVector = Vector3.up;
 
             base.characterBody.SetAimTimer(0.3f);
+
+            animator = GetModelAnimator();
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
 
-            if (base.fixedAge >= 0.4f) {
+            if (animator.GetFloat("slashBegun") >= 0.5f) {
                 attack.Fire();
             }
 
             if (base.fixedAge >= 2f) {
                 outer.SetNextStateToMain();
             }
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Frozen;
         }
     }
 }

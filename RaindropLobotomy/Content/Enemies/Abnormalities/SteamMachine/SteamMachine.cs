@@ -12,14 +12,18 @@ using RoR2.CharacterAI;
 
 namespace RaindropLobotomy.Enemies.SteamMachine
 {
-    public class SteamMachine : EnemyBase<SteamMachine>
+    public class SteamMachine : EnemyBase<SteamMachine>, Abnormality
     {
+        public RiskLevel ThreatLevel => RiskLevel.He;
+
+        public SpawnCard SpawnCard => Load<CharacterSpawnCard>("cscSteamMachine.asset");
+
+        public bool IsTool => false;
+
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("SteamMachineBody.prefab");
             prefabMaster = Load<GameObject>("SteamMachineMaster.prefab");
-
-            // TODO: swap bulbs for matArtifactGlassOverlay
 
             ChildLocator loc = prefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<ChildLocator>();
             Transform root = loc.FindChild("BulbRoot");

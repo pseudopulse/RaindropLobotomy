@@ -34,5 +34,29 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green {
 
             return nodes;
         }
+
+        public static Vector3[] GetSpiralPointSet(Vector3 origin, float scalar, float initialRadius, int loops = 5) {
+            Vector3[] points = new Vector3[360 * loops];
+
+            float radius = initialRadius;
+            float radialStep = (scalar - initialRadius) / (loops * 360f);
+
+            for (int i = 0; i < 360 * loops; i++) {
+                int j = i > 360 ? i - 360 : i;
+
+                float rad = j * 2 * Mathf.PI / 360f;
+                float vert = Mathf.Sin(rad);
+                float horiz = Mathf.Cos(rad);
+
+                Vector3 dir = new(horiz, 0, vert);
+
+                Vector3 point = origin + dir * radius;
+                radius += radialStep;
+
+                points[i] = point;
+            }
+
+            return points;
+        }
     }
 }

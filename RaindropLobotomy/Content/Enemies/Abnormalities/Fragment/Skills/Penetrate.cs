@@ -13,29 +13,39 @@ namespace RaindropLobotomy.Enemies.Fragment {
 
         public override float ProcCoefficient => 1f;
 
-        public override float HitPauseDuration => 0f;
+        public override float HitPauseDuration => 0.001f;
 
-        public override GameObject SwingEffectPrefab => null;
+        public override GameObject SwingEffectPrefab => UniverseFragment.SpearThrust;
 
-        public override string MuzzleString => "MuzzleTendril";
+        public override string MuzzleString => "SpearMuzzle";
+        public override string MechanimHitboxParameter => "piercing";
         private bool spawnedEffect = false;
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            AkSoundEngine.PostEvent("Play_fragment_stab", base.gameObject);
+        }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             base.characterMotor.velocity = Vector3.zero;
+        }
 
-            if (base.fixedAge >= 0.4f && !spawnedEffect) {
-                spawnedEffect = true;
-
-                GameObject.Instantiate(UniverseFragment.SpearThrust, FindModelChild("SpearMuzzle"));
-            }
+        public override void BeginMeleeAttackEffect()
+        {
+            base.BeginMeleeAttackEffect();
         }
 
         public override void PlayAnimation()
         {
-            PlayAnimation("Gesture, Override", "Penetrate", "Penetrate.playbackRate", 1f);
-            AkSoundEngine.PostEvent("Play_fragment_stab", base.gameObject);
+            PlayAnimation("Gesture, Override", "Penetrate", "Penetrate.playbackRate", duration);
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Frozen;
         }
     }
 }

@@ -71,5 +71,10 @@ namespace RaindropLobotomy.Enemies.Fragment {
             AkSoundEngine.PostEvent("Stop_fragment_scream", base.gameObject);
             GetModelAnimator().SetBool("isScreaming", false);
         }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Frozen;
+        }
     }
 }
