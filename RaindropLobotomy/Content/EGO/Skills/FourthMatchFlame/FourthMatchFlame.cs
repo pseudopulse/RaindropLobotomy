@@ -1,4 +1,4 @@
-using RoR2;
+/*using RoR2;
 using R2API;
 using R2API.Utils;
 using EntityStates.Huntress;
@@ -225,4 +225,4 @@ namespace RaindropLobotomy.EGO {
             outer.SetNextStateToMain();
         }
     }
-}
+}*/

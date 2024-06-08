@@ -38,6 +38,14 @@ namespace RaindropLobotomy.Enemies.Fragment {
             base.BeginMeleeAttackEffect();
         }
 
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType |= DamageType.SlowOnHit;
+            overlapAttack.teamIndex = TeamIndex.Neutral;
+            overlapAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
+        }
+
         public override void PlayAnimation()
         {
             PlayAnimation("Gesture, Override", "Penetrate", "Penetrate.playbackRate", duration);

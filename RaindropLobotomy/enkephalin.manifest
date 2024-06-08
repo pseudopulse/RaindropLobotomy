@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4055752650
+CRC: 3981946729
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ef6e2e33f14e5165a7cccf2391b5c1e1
+    Hash: d6c32645d03ae1fbc62df9ab1ab57903
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2ceaf12a83103978881f29510f6d9027
@@ -373,6 +373,7 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/mdl/MimicryEGO.fbx
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/cscSingingMachine.asset
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/effects/LamentImpactWhite.prefab
+- Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/bdAccPast.asset
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/PillarProjectile.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/bdImitation.asset
 - Assets/RaindropLobotomy/Survivors/Argalia/buffs/Resonance/bdResonance.asset
