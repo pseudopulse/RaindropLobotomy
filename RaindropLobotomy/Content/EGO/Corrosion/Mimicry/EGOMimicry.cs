@@ -318,7 +318,7 @@ namespace RaindropLobotomy.EGO.Viend {
             }
 
             public void UpdateShell(CharacterBody body) {
-                Debug.Log("Wearing a shell!");
+                // Debug.Log("Wearing a shell!");
 
                 bool useFallbackSkill = false;
 
@@ -342,7 +342,7 @@ namespace RaindropLobotomy.EGO.Viend {
                         index--;
                     }
 
-                    Debug.Log($"target shell count is {ShellCounts[index]} at index {index}");
+                    // Debug.Log($"target shell count is {ShellCounts[index]} at index {index}");
 
                     if (shellsWorn.Count >= ShellCounts[index] && !assignedMimicry) {
                         if (us.hasAuthority) GetComponent<SkillLocator>().special.SetSkillOverride(base.gameObject, Goodbye, GenericSkill.SkillOverridePriority.Upgrade);
@@ -385,10 +385,10 @@ namespace RaindropLobotomy.EGO.Viend {
                     float targetCD = copySkill.baseRechargeInterval;
                     targetCD *= 0.65f;
 
-                    Debug.Log("target's modified cd: " + targetCD);
+                    // Debug.Log("target's modified cd: " + targetCD);
                     
                     float newCD = Mathf.Min(targetCD, 5f);
-                    Debug.Log("clamped cd: " + newCD);
+                    // Debug.Log("clamped cd: " + newCD);
 
                     mimicSlot.skillDef.baseRechargeInterval = newCD;
                     mimicSlot.RecalculateFinalRechargeInterval();
@@ -428,7 +428,7 @@ namespace RaindropLobotomy.EGO.Viend {
                     Animator anim = self.GetModelAnimator();
                     bool state = anim.HasState(anim.GetLayerIndex(str), Animator.StringToHash(str2));
 
-                    Debug.Log("has state: " + state);
+                    // Debug.Log("has state: " + state);
 
                     if (!state) {
                         orig(self, "LeftArm, Override", "FireHandBeam");
@@ -444,7 +444,7 @@ namespace RaindropLobotomy.EGO.Viend {
                     Animator anim = self.GetModelAnimator();
                     bool state = anim.HasState(anim.GetLayerIndex(str), Animator.StringToHash(str2));
 
-                    Debug.Log("has state: " + state);
+                    // Debug.Log("has state: " + state);
 
                     if (!state) {
                         orig(self, "LeftArm, Override", "FireHandBeam", "HandBeam.playbackRate", f);

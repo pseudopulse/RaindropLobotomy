@@ -20,11 +20,11 @@ namespace RaindropLobotomy.Skills.Merc {
         
             "RL_SKILL_YMF_NAME".Add("Yield My Flesh");
             "RL_SKILL_YMF_DESC".Add(
-                "<style=cDeath>Unrelenting.</style> Slash forward, dealing <style=cIsDamage>400% damage</style>. If you took damage during this skill, replace it with <style=cIsDamage>To Claim Their Bones</style>."
+                "<style=cDeath>Unrelenting.</style> Slash forward, dealing <style=cIsDamage>400% damage</style>. If you took damage during this skill, activate <style=cIsDamage>To Claim Their Bones</style>."
             );
 
             "RL_KEYWORD_TCTB".Add(
-                "<style=cKeywordName>To Claim Their Bones</style>Perform a wide slash for <style=cIsDamage>400%-4600%</style> damage. Heal <style=cIsUtility>0.5%-5%</style> health for every target hit. <style=cIsDamage>Radius, damage, and healing scales with the damage taken to use this skill</style>."
+                "<style=cKeywordName>To Claim Their Bones</style>Perform 4 slashes, totaling <style=cIsDamage>400%-4600%</style> damage. Heal <style=cIsUtility>15%</style> of damage dealt. <style=cIsDamage>Radius and damage scale with the damage taken to use this skill</style>."
             );
 
             "RL_SKILL_TCTB_NAME".Add("To Claim Their Bones");

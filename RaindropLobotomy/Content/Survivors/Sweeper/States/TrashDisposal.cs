@@ -37,7 +37,7 @@ namespace RaindropLobotomy.Survivors.Sweeper {
         {
             base.FixedUpdate();
 
-            Debug.Log(animator.GetFloat("slamContact"));
+            // Debug.Log(animator.GetFloat("slamContact"));
 
             if (!base.isGrounded && animator.GetFloat("slamBegun") > 0.5f) {
                 animator.SetFloat("Slam.playbackRate", 0f);

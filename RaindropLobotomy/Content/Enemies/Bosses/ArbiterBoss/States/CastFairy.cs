@@ -27,24 +27,24 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
         {
             base.OnEnter();
     
-            Debug.Log("playing fairy anim");
+            // Debug.Log("playing fairy anim");
             PlayAnimation("Gesture, Override", "CastFairy", "CastFairy.playbackRate", 0.7f);
 
             // GetModelAnimator().SetBool("shouldAimPitch", true);
 
             Transform muzzle = FindModelChild("MuzzleSlash");
 
-            Debug.Log(muzzle.transform.position);
+            // Debug.Log(muzzle.transform.position);
 
             /*Vector3 pos = base.transform.position + (Vector3.up + (base.characterDirection.forward * 0.4f));
             Quaternion forward = Quaternion.LookRotation(base.characterDirection.forward) * Quaternion.AngleAxis(180, Vector3.up);
-            Debug.Log("pos: " + pos);*/
+            // Debug.Log("pos: " + pos);*/
 
             GameObject swing = GameObject.Instantiate(ArbiterBoss.ArbiterSlashEffect, muzzle);
-            Debug.Log(swing.transform.position);
+            // Debug.Log(swing.transform.position);
             swing.transform.forward *= -1f;
             swing.GetComponent<ScaleParticleSystemDuration>().newDuration = 3f;
-            Debug.Log(swing.transform.position);
+            // Debug.Log(swing.transform.position);
 
             /*swing = GameObject.Instantiate(Assets.GameObject.MercSwordFinisherSlash, muzzle.transform.position, muzzle.transform.rotation);
             swing.GetComponent<ScaleParticleSystemDuration>().newDuration = swing.GetComponent<ScaleParticleSystemDuration>().initialDuration;*/

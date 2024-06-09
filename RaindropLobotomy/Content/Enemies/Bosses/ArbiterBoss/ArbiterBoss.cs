@@ -202,8 +202,8 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
                     Spearhead.up = rotation;
                     Spearhead.position = next;
 
-                    Debug.Log(Spearhead.position + " : sp");
-                    Debug.Log(TargetPos + " : tp");
+                    // Debug.Log(Spearhead.position + " : sp");
+                    // Debug.Log(TargetPos + " : tp");
 
                     if (Vector3.Distance(Spearhead.position, TargetPos) < 0.5f) {
                         Detonate();

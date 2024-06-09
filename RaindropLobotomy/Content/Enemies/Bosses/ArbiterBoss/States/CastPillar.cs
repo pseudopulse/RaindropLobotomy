@@ -24,7 +24,7 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
         {
             base.OnEnter();
     
-            Debug.Log("playing fairy anim");
+            // Debug.Log("playing fairy anim");
             
             GetModelAnimator().SetBool("isInShockwave", true);
             PlayAnimation("Gesture, Override", "CastShockwave", "CastShockwave.playbackRate", 3f);

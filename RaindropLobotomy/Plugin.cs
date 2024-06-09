@@ -46,7 +46,7 @@ namespace RaindropLobotomy {
             AbnormalityManager.Initialize();
 
             ScanTypes<EnemyBase>(x => x.Create());
-            // ScanTypes<OrdealBase>(x => x.Create());
+            ScanTypes<OrdealBase>(x => x.Create());
             ScanTypes<EGOSkillBase>(x => x.Create());
             ScanTypes<BuffBase>(x => x.Create());
             ScanTypes<SurvivorBase>(x => x.Create());
@@ -60,7 +60,7 @@ namespace RaindropLobotomy {
             ForAllAssets<SkillFamily>(x => ContentAddition.AddSkillFamily(x));
             ForAllAssets<GameObject>(x => {
                 if (x.GetComponent<NetworkIdentity>()) {
-                    Debug.Log("Adding Networked Object: " + x);
+                    // Debug.Log("Adding Networked Object: " + x);
                     PrefabAPI.RegisterNetworkPrefab(x);
                     ContentAddition.AddNetworkedObject(x);
                 }

@@ -22,9 +22,9 @@ namespace RaindropLobotomy.EGO {
         public override void OnSkillChangeUpdate(CharacterModel model, bool equipped)
         {
             RendererStore store = GetRendererStore(model);
-            Debug.Log("reloading: "+ equipped);
+            // Debug.Log("reloading: "+ equipped);
             if (!equipped) {
-                Debug.Log("reloading from store");
+                // Debug.Log("reloading from store");
                 store.noUpdateIndices = new int[0];
                 model.baseRendererInfos[4].renderer.gameObject.SetActive(true);
 
@@ -36,7 +36,7 @@ namespace RaindropLobotomy.EGO {
                 }
             }
             else {
-                Debug.Log("loading gun replacements");
+                // Debug.Log("loading gun replacements");
                 store.noUpdateIndices = new int[] { 4 };
                 model.baseRendererInfos[4].renderer.gameObject.SetActive(false);
 
@@ -102,7 +102,7 @@ namespace RaindropLobotomy.EGO {
             laser = GameObject.Instantiate(FourthMatchFlame.BeamFMF, base.transform.position, Quaternion.identity);
             beam = laser.GetComponent<LineRenderer>();
 
-            Debug.Log("beam?: " + beam);
+            // Debug.Log("beam?: " + beam);
 
             muzzle = FindModelChild("MuzzleSniper");
         }
@@ -113,8 +113,8 @@ namespace RaindropLobotomy.EGO {
 
             StartAimMode(2f);
 
-            Debug.Log("beam?: " + beam);
-            Debug.Log("muzzle?: " + muzzle);
+            // Debug.Log("beam?: " + beam);
+            // Debug.Log("muzzle?: " + muzzle);
 
             beam.SetPosition(0, muzzle.transform.position);
             beam.SetPosition(1, GetAimRay().GetPoint(40f));

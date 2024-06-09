@@ -10,7 +10,7 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
         {
             base.OnEnter();
 
-            Debug.Log("toggling model for: " + modelLocator.modelTransform.GetChild(0).gameObject);
+            // Debug.Log("toggling model for: " + modelLocator.modelTransform.GetChild(0).gameObject);
             model = base.modelLocator.modelTransform.gameObject;
 
             // KillYourself(false);
@@ -32,7 +32,7 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
 
         public void KillYourself(bool kys) {
             foreach (Renderer renderer in model.GetComponentsInChildren<Renderer>(true)) {
-                Debug.Log("killing your elf: " + kys);
+                // Debug.Log("killing your elf: " + kys);
                 renderer.enabled = kys;
             }
         }

@@ -57,7 +57,7 @@ namespace RaindropLobotomy.Buffs {
                 });
             }
             else {
-                Debug.LogError("Failed to apply Pale Damage Color IL Hook");
+                // Debug.LogError("Failed to apply Pale Damage Color IL Hook");
             }
         }
 
@@ -103,18 +103,18 @@ namespace RaindropLobotomy.Buffs {
                 c.Emit(OpCodes.Ldarg_0);
                 c.EmitDelegate<Action<CharacterBody>>((x) => {
                     int paleCount = x.GetBuffCount(Buff);
-                    // Debug.Log("pale count is: " + paleCount);
+                    // // Debug.Log("pale count is: " + paleCount);
                     if (paleCount <= 0) return;
                     paleCount = Mathf.Clamp(paleCount, 0, 99);
 
                     float penaltyAdd = paleCount * 0.01f;
 
                     x.cursePenalty += penaltyAdd;
-                    // Debug.Log("curse penalty: " + x.cursePenalty);
+                    // // Debug.Log("curse penalty: " + x.cursePenalty);
                 });
             }
             else {
-                Debug.LogError("Failed to apply Pale Damage IL Hook");
+                // Debug.LogError("Failed to apply Pale Damage IL Hook");
             }
         }
 

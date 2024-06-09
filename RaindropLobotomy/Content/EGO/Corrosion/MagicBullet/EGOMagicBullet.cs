@@ -223,33 +223,33 @@ namespace RaindropLobotomy.EGO.Bandit {
 
         /*public void OnTriggerEnter(Collider collider) {
             if (isOutput) {
-                Debug.Log("output portal, returning.");
+                // Debug.Log("output portal, returning.");
                 return;
             }
 
-            Debug.Log("object has entered our trigger");
-            Debug.Log(collider.gameObject.name);
+            // Debug.Log("object has entered our trigger");
+            // Debug.Log(collider.gameObject.name);
 
             if (collider.gameObject.name == "PortalCollider") {
                 GameObject proj = collider.transform.root.gameObject;
                 ProjectileController controller = proj.GetComponent<ProjectileController>();
                 ProjectileDamage damage = controller.GetComponent<ProjectileDamage>();
 
-                Debug.Log("proceeded with teleport");
+                // Debug.Log("proceeded with teleport");
 
                 for (int i = 0; i < outputPortals.Count; i++) {
                     if (!NetworkServer.active) break;
 
                     MagicBulletPortal output = outputPortals[i];
 
-                    Debug.Log("outputting to portal: " + output);
-                    Debug.Log("output portal is: " + output.isOutput);
+                    // Debug.Log("outputting to portal: " + output);
+                    // Debug.Log("output portal is: " + output.isOutput);
                     
                     ProjectileManager.instance.FireProjectile(proj, output.transform.position, Util.QuaternionSafeLookRotation(output.transform.forward),
                     controller.owner, damage.damage, 0f, damage.crit);
                 }
 
-                Debug.Log("destroying self");
+                // Debug.Log("destroying self");
 
                 GameObject.Destroy(proj);
             }

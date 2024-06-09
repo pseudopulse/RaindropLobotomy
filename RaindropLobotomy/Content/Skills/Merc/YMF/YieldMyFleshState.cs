@@ -19,6 +19,7 @@ namespace RaindropLobotomy.Skills.Merc {
         public override GameObject SwingEffectPrefab => Assets.GameObject.MercSwordSlash;
 
         public override string MuzzleString => "GroundLight1";
+        private Transform attacker;
 
         public override void OnEnter()
         {
@@ -32,9 +33,10 @@ namespace RaindropLobotomy.Skills.Merc {
 
         private void ReceiveDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, RoR2.HealthComponent self, RoR2.DamageInfo damageInfo)
         {
-            if (self == characterBody.healthComponent && !damageInfo.damageType.HasFlag(DamageType.FallDamage)) {
+            if (self == characterBody.healthComponent && !damageInfo.damageType.HasFlag(DamageType.FallDamage) && damageInfo.attacker) {
                 damageInfo.damage *= 2f;
                 damageTaken = damageInfo.damage;
+                attacker = damageInfo.attacker.transform;
                 Process();
             }
 
@@ -54,12 +56,11 @@ namespace RaindropLobotomy.Skills.Merc {
         }
 
         public void Process() {
-            if (damageTaken > 0f) {
+            if (damageTaken > 0f && attacker) {
                 float percentageTaken = damageTaken / healthComponent.fullCombinedHealth;
 
                 characterBody.SetBuffCount(Buffs.Resentment.Instance.Buff.buffIndex, (int)(percentageTaken * 100f));
 
-                base.skillLocator.special.SetSkillOverride(base.gameObject, YieldMyFlesh.ToClaimTheirBones, GenericSkill.SkillOverridePriority.Contextual);
 
                 AkSoundEngine.PostEvent(Events.Play_merc_shift_slice, base.gameObject);
                 AkSoundEngine.PostEvent(Events.Play_merc_shift_slice, base.gameObject);
@@ -70,7 +71,7 @@ namespace RaindropLobotomy.Skills.Merc {
                     scale = 3f
                 }, true);
 
-                outer.SetNextStateToMain();
+                outer.SetNextState(new ToClaimTheirBones(attacker));
             }
         }
 

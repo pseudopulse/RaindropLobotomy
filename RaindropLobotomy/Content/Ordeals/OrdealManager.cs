@@ -135,7 +135,7 @@ namespace RaindropLobotomy.Ordeals
         private static void SetupOrdeal(HUD hudInst) {
             OrdealBase ordeal = GetNextOrdealType();
             if (ordeal == null) {
-                Debug.Log("returning because no ordeal");
+                // Debug.Log("returning because no ordeal");
                 return;
             }
 
@@ -184,19 +184,18 @@ namespace RaindropLobotomy.Ordeals
             int i = Run.instance.stageClearCount;
             OrdealLevel ordeal = OrdealLevel.DAWN;
 
-            if (i > 2) ordeal = OrdealLevel.DAWN;
-            if (i > 4) ordeal = OrdealLevel.NOON;
-            if (i > 6) ordeal = OrdealLevel.DUSK;
-            if (i > 8) ordeal = OrdealLevel.MIDNIGHT;
+            if (i > 1) ordeal = OrdealLevel.NOON;
+            if (i > 2) ordeal = OrdealLevel.DUSK;
+            if (i > 4) ordeal = OrdealLevel.MIDNIGHT;
 
             // ordeal = OrdealLevel.MIDNIGHT;
 
             OrdealBase[] options = ordeals[ordeal].ToArray();
 
-            Debug.Log("Setting ordeal to: " + ordeal.ToString());
+            // Debug.Log("Setting ordeal to: " + ordeal.ToString());
 
             if (options.Length == 0) {
-                Debug.Log("no options for that ordea, returning.");
+                // Debug.Log("no options for that ordea, returning.");
                 return null;
             }
 

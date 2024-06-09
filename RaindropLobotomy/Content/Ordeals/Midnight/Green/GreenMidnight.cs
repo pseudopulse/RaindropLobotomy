@@ -31,7 +31,7 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green
                 return;
             }
 
-            Debug.Log("Spawning the ordeal of green midnight");
+            // Debug.Log("Spawning the ordeal of green midnight");
 
             GameObject pref = Load<GameObject>("LastHelixSpawner.prefab");
             GameObject spawner = GameObject.Instantiate(pref);

@@ -50,7 +50,7 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green {
 
             public Vector3 Update(Vector3 current) {
                 if (currentPoint > points.Length - 1) {
-                    Debug.Log("Points have all been iterated, marking this pattern as done.");
+                    // Debug.Log("Points have all been iterated, marking this pattern as done.");
                     currentPoint = points.Length - 1;
                     isDone = true;
                 }
@@ -93,9 +93,9 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green {
             base.FixedUpdate();
 
             if (!chargeUpTimer.Tick()) {
-                Debug.Log("rizzing up that charge timer");
+                // Debug.Log("rizzing up that charge timer");
 
-                Debug.Log(mult);
+                // Debug.Log(mult);
 
                 float width = targetBeamWidth * mult;
                 beam.startWidth = width;

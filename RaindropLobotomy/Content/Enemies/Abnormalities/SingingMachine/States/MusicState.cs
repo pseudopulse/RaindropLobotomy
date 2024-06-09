@@ -28,7 +28,7 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
         {
             base.OnEnter();
 
-            Debug.Log("entered music state");
+            // Debug.Log("entered music state");
 
             mainState = (EntityStateMachine.FindByCustomName(gameObject, "Body").state as SingingMachineMain);
 
@@ -40,6 +40,9 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
             }
 
             instance = GameObject.Instantiate(prefab, base.gameObject.transform.position, Quaternion.identity);
+            NetworkServer.Spawn(instance);
+
+            base.characterBody.AddBuff(RoR2Content.Buffs.Immune);
         }
 
         public override void FixedUpdate()
@@ -55,9 +58,9 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
 
             if (stopwatch >= 0.1f) {
                 stopwatch = 0f;
-                EffectManager.SpawnEffect(Assets.GameObject.SpurtGenericBlood, new EffectData {
+                EffectManager.SpawnEffect(Assets.GameObject.SpurtImpBlood, new EffectData {
                     origin = mainState.hinge.position, 
-                    scale = 2f,
+                    scale = 9f,
                     rotation = Quaternion.LookRotation(Random.onUnitSphere)
                 }, true);
             }
@@ -71,6 +74,8 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
 
             mainState.disallowLidStateChange = false;
             mainState.lidState = SingingMachineMain.SingingMachineLidState.Open;
+
+            base.characterBody.RemoveBuff(RoR2Content.Buffs.Immune);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

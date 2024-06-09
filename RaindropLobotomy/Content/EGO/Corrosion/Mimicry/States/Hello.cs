@@ -24,7 +24,8 @@ namespace RaindropLobotomy.EGO.Viend {
                 AkSoundEngine.PostEvent("Play_NT_hello", base.gameObject);
             }*/
 
-            AkSoundEngine.PostEvent("Play_NT_shard", base.gameObject);
+            // AkSoundEngine.PostEvent("Play_NT_shard", base.gameObject);
+            AkSoundEngine.PostEvent(Events.Play_lunar_exploder_m1_fire, base.gameObject);
 
             EffectManager.SimpleMuzzleFlash(Assets.GameObject.Muzzleflash1, base.gameObject, "MuzzleHandBeam", transmit: false);
             

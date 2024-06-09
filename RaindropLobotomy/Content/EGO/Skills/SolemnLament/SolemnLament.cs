@@ -21,13 +21,13 @@ namespace RaindropLobotomy.EGO {
         {
             RendererStore store = GetRendererStore(model);
             if (!equipped) {
-                Debug.Log("reloading from store");
+                // Debug.Log("reloading from store");
                 store.noUpdateIndices = new int[0];
                 ReloadFromStore(model.baseRendererInfos[0], store[0]);
                 ReloadFromStore(model.baseRendererInfos[1], store[1]);
             }
             else {
-                Debug.Log("loading gun replacements");
+                // Debug.Log("loading gun replacements");
                 store.noUpdateIndices = new int[] { 0, 1 };
                 model.baseRendererInfos[0].defaultMaterial = matLamentBlack;
                 model.baseRendererInfos[0].renderer.material = matLamentBlack;

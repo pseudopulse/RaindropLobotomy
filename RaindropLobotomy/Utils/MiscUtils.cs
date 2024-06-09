@@ -262,7 +262,7 @@ namespace RaindropLobotomy.Utils
                 if (resetOnExp && expired) {
                     expired = false;
                     Reset();
-                    Debug.Log("resetting");
+                    // Debug.Log("resetting");
                 }
             }
 

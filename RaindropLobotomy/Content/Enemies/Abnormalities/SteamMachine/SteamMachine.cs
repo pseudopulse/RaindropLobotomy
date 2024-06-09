@@ -98,7 +98,7 @@ namespace RaindropLobotomy.Enemies.SteamMachine
                         display[3] = int.Parse(m[1].ToString());
                     }
 
-                    Debug.Log("Setting to: " + display.ToString());
+                    // Debug.Log("Setting to: " + display.ToString());
                     
                     for (int i = 0; i < Bulbs.Length; i++) {
                         Bulbs[i].mesh = Digits[display[i]];

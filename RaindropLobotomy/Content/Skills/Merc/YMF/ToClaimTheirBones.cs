@@ -1,58 +1,132 @@
 using System;
+using System.Collections;
+using RaindropLobotomy.Survivors.Sweeper;
 
 namespace RaindropLobotomy.Skills.Merc {
-    public class ToClaimTheirBones : CoolerBasicMeleeAttack
+    public class ToClaimTheirBones : BaseSkillState
     {
-        public override float BaseDuration => 0.6f;
-
-        public override float DamageCoefficient => damageCoeff;
-
-        public override string HitboxName => "Sword";
-
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
-
-        public override float ProcCoefficient => 2f;
-
-        public override float HitPauseDuration => 0.5f;
-
-        public override GameObject SwingEffectPrefab => Assets.GameObject.MercSwordFinisherSlash;
-
-        public override string MuzzleString => "GroundLight1";
-
-        private float hitBoxScale = 1f;
+        private OverlapAttack attack;
+        private Animator animator;
         private float damageCoeff;
-
+        private HitBoxGroup hitBoxGroup;
+        private float hitBoxScale;
+        private Transform target;
+        private Vector3 lastTargetPosition;
+        private bool wasFlying = false;
+        private bool alreadySpawned = false;
+        private GameObject swingEffectInstance;
+        private string rizz = "GroundLight1";
+        private GameObject swingEffectPrefab => Assets.GameObject.MercSwordFinisherSlash;
+        public ToClaimTheirBones(Transform enemy) {
+            target = enemy;
+            lastTargetPosition = target.position;
+        }
         public override void OnEnter()
         {
-            base.mecanimHitboxActiveParameter = "Sword.active";
-            
             int resentment = base.characterBody.GetBuffCount(Buffs.Resentment.Instance.Buff);
+            characterBody.AddBuff(Buffs.Unrelenting.Instance.Buff);
 
             hitBoxScale = Util.Remap(resentment, 0, 100, 1.7f, 6f);
-            damageCoeff = Util.Remap(resentment, 0, 100, 4f, 46f);
+            damageCoeff = Util.Remap(resentment, 0, 100, 4f / 4, 46f / 4);
+
+            hitBoxGroup = FindHitBoxGroup("Sword");
+
+            attack = new();
+            attack.damage = damageCoeff;
+            attack.attacker = base.gameObject;
+            attack.hitBoxGroup = hitBoxGroup;
+            attack.damageType |= DamageType.ApplyMercExpose;
+            attack.damageType |= DamageType.BonusToLowHealth;
+            attack.damageType |= DamageType.CrippleOnHit;
+            attack.damageType |= DamageType.SlowOnHit;
+            attack.damageType |= DamageType.Stun1s;
+            attack.teamIndex = base.GetTeam();
+            attack.hitEffectPrefab = Assets.GameObject.OmniImpactVFXSlashMerc;
+            attack.isCrit = base.RollCrit();
+            attack.procCoefficient = 1.5f;
+            attack.AddModdedDamageType(Sweeper.BigLifesteal);
 
             base.OnEnter();
 
-            base.hitBoxGroup.hitBoxes[0].transform.localScale *= hitBoxScale;
+            hitBoxGroup.hitBoxes[0].transform.localScale *= hitBoxScale;
+
+            base.characterBody.StartCoroutine(NahIdLose());
+
+            animator = GetModelAnimator();
+        }
+
+        public IEnumerator NahIdLose() {
+            yield return new WaitForSeconds(0.35f);
+            RandomTeleport();
+            yield return new WaitForSeconds(0.3f);
+            PlayAnimation("GroundLight1", 0.4f);
+            rizz = "GroundLight1";
+            yield return new WaitForSeconds(0.4f);
+            
+            RandomTeleport();
+            yield return new WaitForSeconds(0.3f);
+            PlayAnimation("GroundLight2", 0.4f);
+            rizz = "GroundLight2";
+            yield return new WaitForSeconds(0.4f);
+
+            RandomTeleport();
+            yield return new WaitForSeconds(0.3f);
+            PlayAnimation("GroundLight1", 0.4f);
+            rizz = "GroundLight1";
+            yield return new WaitForSeconds(0.4f);
+
+            RandomTeleport();
+            yield return new WaitForSeconds(0.3f);
+            PlayAnimation("GroundLight2", 0.4f);
+            rizz = "GroundLight2";
+
+            yield return new WaitForSeconds(1f);
+            outer.SetNextStateToMain();
+        }
+
+        public void RandomTeleport() {
+            Vector3 pos = lastTargetPosition + (Random.onUnitSphere * 4f);
+            pos += Vector3.up * 2f;
+
+            TeleportHelper.TeleportBody(base.characterBody, pos);
+
+            EffectManager.SimpleEffect(Assets.GameObject.MercExposeConsumeEffect, pos, Quaternion.identity, true);
         }
 
         public override void OnExit()
         {
             base.OnExit();
-            base.hitBoxGroup.hitBoxes[0].transform.localScale /= hitBoxScale;
-            base.characterBody.SetBuffCount(Buffs.Resentment.Instance.Buff.buffIndex, 0);
-            base.characterBody.skillLocator.special.UnsetSkillOverride(base.gameObject, YieldMyFlesh.ToClaimTheirBones, GenericSkill.SkillOverridePriority.Contextual);
+            hitBoxGroup.hitBoxes[0].transform.localScale /= hitBoxScale;
+            characterBody.RemoveBuff(Buffs.Unrelenting.Instance.Buff);
+            characterBody.SetBuffCount(Buffs.Resentment.Instance.Buff.buffIndex, 0);
+             if (swingEffectInstance) {
+                GameObject.Destroy(swingEffectInstance);
+            }
         }
 
-        public override void BeginMeleeAttackEffect()
-        {
-            base.BeginMeleeAttackEffect();
+        public override void FixedUpdate() {
+            base.FixedUpdate();
+
+            if (target) {
+                lastTargetPosition = target.position;
+            }
+
+            base.characterMotor.velocity = Vector3.zero;
+            base.characterDirection.forward = (lastTargetPosition - base.transform.position).normalized;
+
+            if (animator.GetFloat("Sword.active") >= 0.5f) {
+                attack.Fire();
+                BeginMeleeAttackEffect(rizz);
+            }
         }
 
-        public override void PlayAnimation()
+        public void PlayAnimation(string animationStateName, float duration)
         {
-            string animationStateName = "GroundLight1";
-		
+            if (swingEffectInstance) {
+                GameObject.Destroy(swingEffectInstance);
+            }
+            attack.ResetIgnoredHealthComponents();
+            alreadySpawned = false;
             bool @bool = animator.GetBool("isMoving");
             bool bool2 = animator.GetBool("isGrounded");
             if (!@bool && bool2)
@@ -65,17 +139,24 @@ namespace RaindropLobotomy.Skills.Merc {
                 PlayCrossfade("Gesture, Override", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
             }
 
-            AkSoundEngine.PostEvent(Events.Play_merc_m1_hard_swing, base.gameObject);
+            AkSoundEngine.PostEvent(animationStateName == "GroundLight1" ? Events.Play_merc_m1_hard_swing : Events.Play_merc_sword_swing, base.gameObject);
         }
 
-        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        protected virtual void BeginMeleeAttackEffect(string muzzle)
         {
-            base.AuthorityModifyOverlapAttack(overlapAttack);
-            overlapAttack.damageType |= DamageType.ApplyMercExpose;
-            overlapAttack.damageType |= DamageType.BonusToLowHealth;
-            overlapAttack.damageType |= DamageType.CrippleOnHit;
-            overlapAttack.damageType |= DamageType.SlowOnHit;
-            overlapAttack.damageType |= DamageType.Stun1s;
+            if (alreadySpawned) {
+                return;
+            }
+
+            Transform transform = FindModelChild(muzzle);
+            
+            swingEffectInstance = Object.Instantiate(swingEffectPrefab, transform);
+            ScaleParticleSystemDuration component = swingEffectInstance.GetComponent<ScaleParticleSystemDuration>();
+            
+            component.newDuration = component.initialDuration;
+            
+
+            alreadySpawned = true;
         }
     }
 }

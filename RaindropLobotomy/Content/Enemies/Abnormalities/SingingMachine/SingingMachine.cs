@@ -16,7 +16,7 @@ namespace RaindropLobotomy.Enemies.SingingMachine
     {
         public static BuffDef BewitchedDebuff;
 
-        public RiskLevel ThreatLevel => RiskLevel.He;
+        public RiskLevel ThreatLevel => RiskLevel.Teth;
 
         public SpawnCard SpawnCard => Load<CharacterSpawnCard>("cscSingingMachine.asset");
 

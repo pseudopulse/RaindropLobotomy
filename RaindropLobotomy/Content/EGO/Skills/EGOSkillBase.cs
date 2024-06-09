@@ -136,7 +136,7 @@ namespace RaindropLobotomy.EGO
                 });
             }
             else {
-                Debug.Log("Failed to match for ego IL hook.");
+                // Debug.Log("Failed to match for ego IL hook.");
             }
         }
 
@@ -236,7 +236,7 @@ namespace RaindropLobotomy.EGO
                 }
 
                 if (info.mesh) {
-                    Debug.Log("set info mesh to: " + info.mesh);
+                    // Debug.Log("set info mesh to: " + info.mesh);
                     info.rotation = rendInfo.renderer.transform.localRotation;
                     info.scale = rendInfo.renderer.transform.localScale;
                 }
@@ -247,7 +247,7 @@ namespace RaindropLobotomy.EGO
             info.defaultMaterial = store.mat;
             info.renderer.material = store.mat;
 
-            Debug.Log("store mesh: " + store.mesh);
+            // Debug.Log("store mesh: " + store.mesh);
             
             if (info.renderer is SkinnedMeshRenderer) {
                 (info.renderer as SkinnedMeshRenderer).sharedMesh = store.mesh;
@@ -298,7 +298,7 @@ namespace RaindropLobotomy.EGO
                     info.mesh = rendInfo.renderer.GetComponent<MeshFilter>().mesh;
                 }
 
-                Debug.Log("set info mesh to: " + info.mesh);
+                // Debug.Log("set info mesh to: " + info.mesh);
 
                 info.rotation = rendInfo.renderer.transform.localRotation;
                 info.scale = rendInfo.renderer.transform.localScale;

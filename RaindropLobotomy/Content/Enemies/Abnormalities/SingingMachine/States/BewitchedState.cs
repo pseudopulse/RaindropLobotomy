@@ -75,7 +75,7 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
 
             aiESM = enemyAI.GetComponent<EntityStateMachine>();
 
-            Debug.Log("Bewitching enemy: " + enemy);
+            // Debug.Log("Bewitching enemy: " + enemy);
 
             indicator = GameObject.Instantiate(indicatorPrefab, enemyBody.transform);
             indicator.transform.position = new(enemyBody.corePosition.x, enemyBody.corePosition.y + (enemyBody.radius) + 3f, enemyBody.corePosition.z);
@@ -128,7 +128,7 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
             if (Vector3.Distance(enemy.transform.position, base.transform.position) < 5f && !begunJump) {
                 begunJump = true;
 
-                Debug.Log("jumping");
+                // Debug.Log("jumping");
 
                 float ySpeed = Trajectory.CalculateInitialYSpeed(0.7f, ((base.transform.position.y + 3f) - enemyBody.corePosition.y));
                 float xOff = (base.transform.position.x - enemyBody.corePosition.x);
@@ -140,12 +140,12 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
                 enemyBody.GetComponent<CharacterMotor>().disableAirControlUntilCollision = true;
                 enemyBody.GetComponent<CharacterMotor>().Motor.ForceUnground();
 
-                Debug.Log(enemyBody.GetComponent<CharacterMotor>().velocity);
+                // Debug.Log(enemyBody.GetComponent<CharacterMotor>().velocity);
             }
 
             if (Vector3.Distance(new(enemy.transform.position.x, 0, enemy.transform.position.z), new(base.transform.position.x, 0, base.transform.position.z)) < 0.6f && !crushing) {
                 crushing = true;
-                Debug.Log("CRUSHING!");
+                // Debug.Log("CRUSHING!");
                 enemyBody.GetComponent<CharacterMotor>().enabled = false;
                 enemyBody.GetComponent<CharacterBody>().baseMoveSpeed = 0f;
                 enemyBody.GetComponent<CharacterBody>().moveSpeed = 0f;

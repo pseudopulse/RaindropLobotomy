@@ -1,4 +1,4 @@
-using System;
+/*using System;
 
 namespace RaindropLobotomy.EGO.Arti {
     public class EGOFragments : CorrosionBase<EGOFragments>
@@ -48,4 +48,4 @@ namespace RaindropLobotomy.EGO.Arti {
             "RL_EGO_FRAGMENTS_SPECIAL_DESC".Add("Sing, dealing <style=cIsDamage>4x400%</style> damage and <style=cIsUtility>slowing</style> targets. Targets that are <style=cDeath>Enlightened</style> will not be hit.");
         }
     }
-}
+}*/
