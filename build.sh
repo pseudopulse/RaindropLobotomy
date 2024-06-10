@@ -10,6 +10,7 @@ rm -rf RLBuild
 mkdir RLBuild
 cp -r WwiseRL/* RLBuild
 cp manifest.json RLBuild
+cp icon.png RLBuild
 cp README.md RLBuild
 cp RaindropLobotomy/enkephalin RLBuild
 cp RaindropLobotomy/bin/Debug/netstandard2.0/RaindropLobotomy.dll RLBuild

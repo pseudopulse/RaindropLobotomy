@@ -41,7 +41,7 @@ namespace RaindropLobotomy.EGO.Viend {
                 bulletAttack.minSpread = 0f;
                 bulletAttack.maxSpread = base.characterBody.spreadBloomAngle;
                 bulletAttack.radius = 0.5f;
-                bulletAttack.falloffModel = BulletAttack.FalloffModel.Buckshot;
+                bulletAttack.falloffModel = BulletAttack.FalloffModel.DefaultBullet;
                 bulletAttack.smartCollision = true;
                 bulletAttack.damage = DamageCoefficient * base.damageStat;
                 bulletAttack.procCoefficient = 1f;

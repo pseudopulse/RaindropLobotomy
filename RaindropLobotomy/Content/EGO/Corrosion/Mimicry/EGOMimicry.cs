@@ -76,7 +76,10 @@ namespace RaindropLobotomy.EGO.Viend {
             Assets.SkillDef.RailgunnerBodyFireMineBlinding,
             Assets.SkillDef.RailgunnerBodyFireMineConcussive,
             Assets.SkillDef.VoidBlinkDown,
-            Assets.SkillDef.VoidBlinkUp
+            Assets.SkillDef.VoidBlinkUp,
+            Load<SkillDef>("SilentAdvance.asset"),
+            Load<SkillDef>("Scream.asset"),
+            Load<SkillDef>("SweeperUtility.asset"),
         };
 
         public static List<GameObject> DisallowedBodies = new() {
@@ -86,7 +89,9 @@ namespace RaindropLobotomy.EGO.Viend {
             Assets.GameObject.GipBody,
             Assets.GameObject.GeepBody,
             Assets.GameObject.JellyfishBody,
-            Assets.GameObject.BisonBody
+            Assets.GameObject.BisonBody,
+            Assets.GameObject.MagmaWormBody,
+            Assets.GameObject.ElectricWormBody
         };
 
         public static SkillDef Fallback => Assets.SkillDef.CommandoSlide;
@@ -150,6 +155,14 @@ namespace RaindropLobotomy.EGO.Viend {
             foreach (GameObject body in DisallowedBodies) {
                 BlacklistedBodyIndexes.Add(body.GetComponent<CharacterBody>().bodyIndex);
             }
+
+            BlacklistedBodyIndexes.Add(new LazyIndex("BobombBody"));
+            BlacklistedBodyIndexes.Add(new LazyIndex("BodyBrassMonolith"));
+            BlacklistedBodyIndexes.Add(new LazyIndex("CoilGolemBody"));
+            BlacklistedBodyIndexes.Add(new LazyIndex("FrostWispBody"));
+            BlacklistedBodyIndexes.Add(new LazyIndex("BobombBody"));
+            BlacklistedBodyIndexes.Add(new LazyIndex("RunshroomBody"));
+            BlacklistedBodyIndexes.Add(new LazyIndex("SteamMachineBody"));
         }
 
         private void Heal(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
@@ -361,9 +374,9 @@ namespace RaindropLobotomy.EGO.Viend {
                     if (!skill) {
                         skill = skills.FirstOrDefault(x => x.skillDef.activationStateMachineName != "Body");
                         if (!skill) skill = skills.First();
-
-                        copySkill = skill.skillDef;
                     }
+
+                    copySkill = skill.skillDef;
                 }
 
                 TargetShell = body.bodyIndex;

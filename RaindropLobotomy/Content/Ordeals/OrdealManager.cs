@@ -219,8 +219,8 @@ namespace RaindropLobotomy.Ordeals
                     _ => 60 * 5f
                 };
                 
-                // duration = totalDuration;
-                duration = 10f;
+                duration = totalDuration;
+                // duration = 10f;
 
 
                 ChildLocator loc = GetComponent<ChildLocator>();

@@ -16,17 +16,27 @@ using RaindropLobotomy.Buffs;
 using RaindropLobotomy.Survivors;
 using RaindropLobotomy.Skills;
 using RaindropLobotomy.EGO.Gifts;
+using Survariants;
 
 [assembly: HG.Reflection.SearchableAttribute.OptIn]
 
 namespace RaindropLobotomy {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
+    [BepInDependency(Survariants.Survariants.PluginGUID)]
+    [BepInDependency(R2API.DotAPI.PluginGUID)]
+    [BepInDependency(DamageAPI.PluginGUID, BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(LanguageAPI.PluginGUID, BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(RecalculateStatsAPI.PluginGUID, BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(DirectorAPI.PluginGUID, BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(R2API.Networking.NetworkingAPI.PluginGUID, BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(PrefabAPI.PluginGUID, BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(R2API.ContentManagement.R2APIContentManager.PluginGUID, BepInDependency.DependencyFlags.HardDependency)]
     
     public class Main : BaseUnityPlugin {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
-        public const string PluginAuthor = "pseudopulse";
+        public const string PluginAuthor = "BALLS";
         public const string PluginName = "RaindropLobotomy";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.0.4";
 
         public static Assembly assembly;
 
@@ -42,7 +52,6 @@ namespace RaindropLobotomy {
             config = Config;
 
             OrdealManager.Initialize();
-            EGOManager.Initialize();
             AbnormalityManager.Initialize();
 
             ScanTypes<EnemyBase>(x => x.Create());

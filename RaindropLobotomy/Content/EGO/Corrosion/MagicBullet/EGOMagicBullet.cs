@@ -117,7 +117,7 @@ namespace RaindropLobotomy.EGO.Bandit {
         private void DespairMultiplier(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (self.body.teamComponent.teamIndex != TeamIndex.Player && damageInfo.HasModdedDamageType(DespairDamage)) {
-                damageInfo.damage *= 5f;
+                damageInfo.damage *= 10f;
                 damageInfo.damageType &= ~DamageType.NonLethal;
             }
 
@@ -168,13 +168,13 @@ namespace RaindropLobotomy.EGO.Bandit {
             "RL_EGO_MAGICBULLET_SECONDARY_DESC".Add("Strike forward, dealing <style=cIsDamage>450% damage</style> and inflicting <style=cIsUtility>Dark Flame</style>.");
 
             "RL_EGO_MAGICBULLET_UTILITY_NAME".Add("Silent Advance");
-            "RL_EGO_MAGICBULLET_UTILITY_DESC".Add("<style=cIsUtility>Teleport</style> a medium distance. Hit nearby targets for <style=cIsDamage>200%</style>, inflicting <style=cIsUtility>Dark Flame</style>.");
+            "RL_EGO_MAGICBULLET_UTILITY_DESC".Add("<style=cIsUtility>Teleport</style> a medium distance. Hit nearby targets for <style=cIsDamage>200%</style> damage, inflicting <style=cIsUtility>Dark Flame</style>.");
 
             "RL_EGO_MAGICBULLET_SPECIAL_NAME".Add("Flooding Bullets");
-            "RL_EGO_MAGICBULLET_SPECIAL_DESC".Add("<style=cDeath>Inevitable</style>. Fire <style=cIsUtility>piercing</style> bullets at <style=cIsDamage>all</style> targets who have <style=cIsUtility>Dark Flame</style>, dealing <style=cIsDamage>3x900%</style> damage.");
+            "RL_EGO_MAGICBULLET_SPECIAL_DESC".Add("<style=cDeath>Inevitable</style>. Fire <style=cIsUtility>piercing</style> bullets at up to <style=cIsDamage>3 targets</style>, dealing <style=cIsDamage>3x900%</style> damage.");
 
             "RL_EGO_MAGICBULLET_KYS_NAME".Add("Bullet of Despair");
-            "RL_EGO_MAGICBULLET_KYS_DESC".Add("<style=cDeath>Indiscriminate.</style>. Fire a powerful piercing shot straight through yourself, dealing <style=cIsDamage>20% of your max hp</style> to you and <style=cIsDamage>5x that to enemies</style>. <style=cStack>This skill cannot kill you.</style>");
+            "RL_EGO_MAGICBULLET_KYS_DESC".Add("<style=cDeath>Indiscriminate.</style>. Fire a powerful piercing shot straight through yourself, dealing <style=cIsDamage>10% of your max hp</style> to you and <style=cIsDamage>10x that to enemies</style>. <style=cStack>This skill cannot kill you.</style>");
         }
     }
 

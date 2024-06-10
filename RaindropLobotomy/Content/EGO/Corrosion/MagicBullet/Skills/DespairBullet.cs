@@ -7,7 +7,7 @@ namespace RaindropLobotomy.EGO.Bandit {
         public string BulletMuzzle = "MuzzleShotgun";
         public GameObject PortalPrefab => EGOMagicBullet.PortalPrefab;
         public GameObject BulletPrefab => EGOMagicBullet.BulletPrefab;
-        public float DamageCoefficient = 0.2f;
+        public float DamageCoefficient = 0.1f;
         //
         private Animator animator;
         private AimAnimator aimAnimator;

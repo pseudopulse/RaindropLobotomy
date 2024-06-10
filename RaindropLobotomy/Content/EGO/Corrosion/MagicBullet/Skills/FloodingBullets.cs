@@ -32,6 +32,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             StartAimMode(0.1f);
 
             base.characterBody.StartCoroutine(ProcessBullets());
+            base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
             // pp = GameObject.Instantiate(EGOMagicBullet.FloodingBulletsPP);
         }
 
@@ -132,6 +133,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             aimAnimator.enabled = true;
             GameObject.Destroy(portal.gameObject);
             GameObject.Destroy(pp);
+            base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
         }
 
         public BulletAttack GetBullet() {

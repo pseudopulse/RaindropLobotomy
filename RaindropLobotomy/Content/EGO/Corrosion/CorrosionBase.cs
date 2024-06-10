@@ -10,6 +10,7 @@ using Unity;
 using HarmonyLib;
 using RoR2.CharacterAI;
 using RaindropLobotomy.Survivors;
+using Survariants;
 
 namespace RaindropLobotomy.EGO
 {
@@ -31,15 +32,15 @@ namespace RaindropLobotomy.EGO
         public abstract SurvivorDef TargetSurvivorDef { get; }
         public abstract UnlockableDef RequiredUnlock { get; }
         public abstract Color Color { get; }
-        public EGODef EGO;
+        public SurvivorVariantDef EGO;
         public override void Create()
         {
             base.Create();
 
-            EGO = ScriptableObject.CreateInstance<EGODef>();
+            EGO = ScriptableObject.CreateInstance<SurvivorVariantDef>();
             (EGO as ScriptableObject).name = EGODisplayName;
             EGO.DisplayName = EGODisplayName;
-            EGO.Corrosion = Survivor;
+            EGO.VariantSurvivor = Survivor;
             EGO.TargetSurvivor = TargetSurvivorDef;
             EGO.RequiredUnlock = RequiredUnlock;
             EGO.Color = Color;
@@ -47,7 +48,7 @@ namespace RaindropLobotomy.EGO
 
             Survivor.hidden = true;
 
-            EGOCatalog.AddEGOCorrosion(EGO);
+            SurvivorVariantCatalog.AddSurvivorVariant(EGO);
         }
     }
 }

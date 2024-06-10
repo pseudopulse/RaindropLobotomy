@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1571774341
+CRC: 3089564424
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4a06c4208af520ec1760b905fa77ed8c
+    Hash: 7dc6fe4f315caa77f21bf2d35a4a9e56
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2ceaf12a83103978881f29510f6d9027
@@ -228,6 +228,7 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Goodbye.asset
 - Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/sdYMF.asset
 - Assets/RaindropLobotomy/Ordeals/Green/Noon/cscGreenNoon.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Thunderslam.png
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/plasma/matHelixPlasma.mat
 - Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/edClockworkSpring.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/mdl/mdlCENSORED.prefab
@@ -249,6 +250,7 @@ Assets:
 - Assets/RaindropLobotomy/Survivors/Sweeper/mdl/matSweeper.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/cscSteamMachine.asset
 - Assets/RaindropLobotomy/Survivors/Sweeper/ai/SweeperAIMaster.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Hungering_Gaze.png
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/mdl/matMagicBullet.mat
 - Assets/RaindropLobotomy/Enemies/Bosses/Claw/mdl/matClaw.mat
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/portal/ArbiterPillarShader.shader
@@ -258,10 +260,13 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/sdFMF_Fire.asset
 - Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/EPDT_Clockwork.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/matFragment.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/Scream.asset
 - Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/mdlFourthMatchFlame.prefab
 - Assets/RaindropLobotomy/Survivors/Sweeper/mdl/mdlSweeper.prefab
 - Assets/RaindropLobotomy/Enemies/Bosses/Claw/ClawBody.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/MimicryDisplay.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperUtility.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperSpecial.asset
 - Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/sdTCTB.asset
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixSpawner.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletSpecial.asset
@@ -278,6 +283,7 @@ Assets:
 - Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/matSweeperSlash.mat
 - Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/bdUnrelenting.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_ut.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepM2.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/mdlFragment.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/overlay/matFragmentOverlay.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/flame/Fire.prefab
@@ -285,10 +291,13 @@ Assets:
 - Assets/RaindropLobotomy/Ordeals/UI/Noon.png
 - Assets/RaindropLobotomy/Enemies/Bosses/Claw/mdl/matClawMetal.mat
 - Assets/RaindropLobotomy/Enemies/AbnormalityDirector.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperSecondary.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/CENSOREDMaster.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/slash/matMBSlash.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Open.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/sf_Fragment_PRIMARY.asset
 - Assets/RaindropLobotomy/Survivors/Argalia/ArgaliaBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBullet.png
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/SM_BewitchedBuff.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/BewitchedIndicator.prefab
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/matLamentBlack.mat
@@ -300,11 +309,13 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal1.mat
 - Assets/RaindropLobotomy/Ordeals/UI/Midnight.png
 - Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/sdFragmentsEGO.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/Ignition.png
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixMaster.prefab
 - Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/sdFMF_Cancel.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Buff/SingingMachineBuffWard_T1.prefab
 - Assets/RaindropLobotomy/Ordeals/UI/Dawn.png
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/FragmentMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/SeventhBullet.png
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/vfx/matArbiterSlash.mat
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/mdlLastHelix.prefab
 - Assets/RaindropLobotomy/Enemies/AbnoDCCS.asset
@@ -344,6 +355,8 @@ Assets:
 - Assets/RaindropLobotomy/Survivors/Sweeper/ai/SweeperAIBody.prefab
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixPuff.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/matBewitchedIndicator.mat
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Phase_Blink.png
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/sf_Fragment_SECONDARY.asset
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicatorCross.mat
 - Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaCloak.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/MagicBulletPP.prefab
@@ -357,33 +370,43 @@ Assets:
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundLaserFlare.mat
 - Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/matFourthMatchFlame.mat
 - Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/SweeperSlashLeft.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Power_Mode.png
 - Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/MatchFlameCharge.prefab
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/SolemnLament.prefab
 - Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/FourthMatchFlame.fbx
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepR.asset
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixLaser.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/mdl/matSteamMachine.mat
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/cscHelix.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/flame/matDarkFlame.mat
 - Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/SweeperSlashRight.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/sdMagicBulletEGO.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepShift.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Hello.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/MimicryBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/FloodingBullets.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/Despair.png
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/texSingingMachine.png
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/portal/PortalEffect.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/mdl/MimicryEGO.fbx
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/SilentAdvance.png
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/cscSingingMachine.asset
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/effects/LamentImpactWhite.prefab
 - Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/bdAccPast.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/Penetrate.asset
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/PillarProjectile.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepM1.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/bdImitation.asset
 - Assets/RaindropLobotomy/Survivors/Argalia/buffs/Resonance/bdResonance.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/SingingMachineBody.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_sp.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/FragmentBody.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/WearShell.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Laser_Glaive.png
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_se.asset
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/matHelix.mat
 - Assets/RaindropLobotomy/Ordeals/Green/Noon/GreenNoonBody.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperPrimary.asset
 - Assets/RaindropLobotomy/EGO/Gifts/ITD_Gift.asset
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/sdSolemnLament.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/mdl/matFragmentsEGO.mat

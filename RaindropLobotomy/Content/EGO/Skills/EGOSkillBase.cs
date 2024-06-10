@@ -103,9 +103,8 @@ namespace RaindropLobotomy.EGO
             );
 
             if (found) {
-                c.Index -= 4;
-                c.RemoveRange(5);
-                c.Emit(OpCodes.Nop);
+                c.Index -= 3;
+                c.RemoveRange(4);
                 c.Emit(OpCodes.Nop);
                 c.Emit(OpCodes.Nop);
                 c.Emit(OpCodes.Nop);
@@ -119,7 +118,7 @@ namespace RaindropLobotomy.EGO
                     for (int i = 0; i < SkinDef.RuntimeSkin.rendererInfoBuffer.Count; i++) {
                         bool disallow = false;
 
-                        if (store) {
+                        if (store != null) {
                             for (int j = 0; j < store.noUpdateIndices.Length; j++) {
                                 int index = store.noUpdateIndices[j];
                                 if (i == index) {

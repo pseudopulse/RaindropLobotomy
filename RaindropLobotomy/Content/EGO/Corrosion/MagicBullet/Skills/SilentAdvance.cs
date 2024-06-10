@@ -11,6 +11,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             base.endpointVisualizerRadiusScale = 2f;
             base.baseMinimumDuration = 0.15f;
             base.projectilePrefab = Assets.GameObject.Fireball; // the game expects this to be set
+            AkSoundEngine.PostEvent(Events.Play_bandit2_shift_enter, base.gameObject);
             base.OnEnter();
         }
 
@@ -24,7 +25,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             TeleportHelper.TeleportBody(base.characterBody, base.currentTrajectoryInfo.hitPoint);
             EffectManager.SimpleEffect(EGOMagicBullet.TeleportEffect, base.transform.position, Quaternion.identity, true);
 
-            AkSoundEngine.PostEvent(Events.Play_bandit2_shift_enter, base.gameObject);
+            AkSoundEngine.PostEvent(Events.Play_bandit2_shift_exit, base.gameObject);
 
             BlastAttack attack = new();
             attack.attacker = base.gameObject;

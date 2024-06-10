@@ -78,6 +78,9 @@
       <Reference Include="Decalicious">
         <HintPath>.\libs\Decalicious.dll</HintPath>
       </Reference>
+      <Reference Include="Survariants">
+        <HintPath>.\libs\Survariants.dll</HintPath>
+      </Reference>
     </ItemGroup>
   
   </Project>
