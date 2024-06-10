@@ -136,8 +136,8 @@ namespace RaindropLobotomy.EGO.Viend {
             main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             ContentAddition.AddEffect(SlashEffect);
 
-            // MistEffect = Load<GameObject>("MistCloud.prefab");
-            // ContentAddition.AddEffect(MistEffect);
+            MistEffect = Load<GameObject>("MistCloud.prefab");
+            ContentAddition.AddEffect(MistEffect);
 
             On.RoR2.Skills.SkillDef.IsReady += DisallowMimicWhenNoShell;
             On.RoR2.GlobalEventManager.OnCharacterDeath += WearShellOnKill;
@@ -195,10 +195,10 @@ namespace RaindropLobotomy.EGO.Viend {
             if (report.damageInfo.HasModdedDamageType(MistType)) {
                 EffectManager.SpawnEffect(MistEffect, new EffectData {
                     origin = report.victimBody.corePosition,
-                    scale = report.victimBody.radius
+                    scale = report.victimBody.bestFitRadius
                 }, true);
 
-                GameObject.Destroy(report.victimBody.gameObject);
+                if (report.victimBody.modelLocator?.modelTransform) GameObject.Destroy(report.victimBody.modelLocator.modelTransform.gameObject);
             }
         }
 

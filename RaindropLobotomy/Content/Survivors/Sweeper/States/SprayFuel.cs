@@ -23,11 +23,11 @@ namespace RaindropLobotomy.Survivors.Sweeper {
                 outer.SetNextStateToMain();
             }
 
-            base.characterMotor.velocity = base.characterMotor.velocity.Nullify(true, false, true);
+            // base.characterMotor.velocity = base.characterMotor.velocity.Nullify(true, false, true);
 
             StartAimMode(0.5f);
 
-            if (anim.GetFloat("ejectSpray") >= 0.8f && !hasShot) {
+            if (anim.GetFloat("ejectSpray") >= 0.8f && !hasShot && base.isAuthority) {
                 hasShot = true;
 
                 Transform muzzle = FindModelChild("MuzzleBacktank");
@@ -43,6 +43,11 @@ namespace RaindropLobotomy.Survivors.Sweeper {
                     info.owner = base.gameObject;
                     
                     ProjectileManager.instance.FireProjectile(info);
+                }
+
+                if (Sweeper.Config.DoRecoil) {
+                    base.characterMotor.Motor.ForceUnground();
+                    base.characterMotor.velocity = -base.inputBank.aimDirection * 26f;
                 }
             }
         }

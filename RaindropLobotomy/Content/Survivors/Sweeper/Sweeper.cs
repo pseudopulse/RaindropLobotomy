@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using R2API.Networking;
+using R2API.Networking.Interfaces;
 using RoR2.CharacterAI;
 using ThreeEyedGames;
 
@@ -23,6 +25,13 @@ namespace RaindropLobotomy.Survivors.Sweeper {
         public static GameObject AcidProjectile;
         public static GameObject AcidGlob;
         private static GameObject AcidGlobGhost;
+        public static SweeperConfig Config = new();
+
+        public class SweeperConfig : ConfigClass
+        {
+            public override string Section => "Survivors :: A Sweeper";
+            public bool DoRecoil => Option<bool>("Utility Recoil", "Should Scatter Fuel have backwards recoil?", true);
+        }
 
 
         public static string[] numerics => new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -33,7 +42,7 @@ namespace RaindropLobotomy.Survivors.Sweeper {
         // lore
 
         public static string GenerateRandomName() {
-            int length = Random.Range(5, 11);
+            int length = Random.Range(8, 16);
             string str = "";
 
             for (int i = 0; i < length; i++) {
@@ -133,6 +142,8 @@ namespace RaindropLobotomy.Survivors.Sweeper {
             AcidGlobGhost.FindParticle("Goo, WS").material = Load<Material>("matSweeperSlash.mat");
             AcidGlobGhost.FindParticle("Goo Drippings").material = Assets.Material.matBloodSiphon;
             AcidGlobGhost.FindComponent<TrailRenderer>("Trail").material = Load<Material>("matSweeperSlash.mat");
+
+            NetworkingAPI.RegisterMessageType<SyncNameOverride>();
         }
 
         private void OnSweeperKill(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
@@ -153,6 +164,41 @@ namespace RaindropLobotomy.Survivors.Sweeper {
                 }
 
                 ProjectileManager.instance.FireProjectile(info);
+            }
+        }
+
+        public class SyncNameOverride : INetMessage
+        {
+            public GameObject applyTo;
+            private NetworkInstanceId _applyTo;
+            public string nameReplacement;
+            public void Deserialize(NetworkReader reader)
+            {
+                _applyTo = reader.ReadNetworkId();
+                nameReplacement = reader.ReadString();
+
+                applyTo = Util.FindNetworkObject(_applyTo);
+            }
+
+            public void OnReceived()
+            {
+                // Debug.Log("name override received: " + nameReplacement);
+                // applyTo.AddComponent<AllyNameOverride>().OverrideName = nameReplacement;
+            }
+
+            public void Serialize(NetworkWriter writer)
+            {
+                writer.Write(applyTo.GetComponent<NetworkIdentity>().netId);
+                writer.Write(nameReplacement);
+            }
+
+            public SyncNameOverride() {
+
+            }
+
+            public SyncNameOverride(GameObject applyTo, string str) {
+                this.applyTo = applyTo;
+                this.nameReplacement = str;
             }
         }
 
@@ -241,6 +287,8 @@ namespace RaindropLobotomy.Survivors.Sweeper {
                         master.onBodyStart += (body) => {
                             AllyNameOverride nameOverride = body.AddComponent<AllyNameOverride>();
                             nameOverride.OverrideName = GenerateRandomName();
+                            Debug.Log("syncing name override");
+                            new SyncNameOverride(body.gameObject, nameOverride.OverrideName).Send(NetworkDestination.Clients);
                         };
                     };
                     summon.inventoryToCopy = master.inventory;

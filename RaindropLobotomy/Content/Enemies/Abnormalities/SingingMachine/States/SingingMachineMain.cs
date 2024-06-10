@@ -54,8 +54,10 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
                 stopwatch += Time.fixedDeltaTime;
                 if (stopwatch >= (1f / hitrate)) {
                     stopwatch = 0f;
-                    attack.ResetIgnoredHealthComponents();
-                    attack.Fire();
+                    if (base.isAuthority) {
+                        attack.ResetIgnoredHealthComponents();
+                        attack.Fire();
+                    }
                 }
             }
 

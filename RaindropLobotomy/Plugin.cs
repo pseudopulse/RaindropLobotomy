@@ -79,6 +79,10 @@ namespace RaindropLobotomy {
                 }
             });
 
+            ScanTypes<EntityState>((Type x) => {
+                ContentAddition.AddEntityState(x, out _);
+            });
+
             On.RoR2.RoR2Application.Start += (o, s) => {
                 o(s);
 
@@ -124,6 +128,18 @@ namespace RaindropLobotomy {
 
                 T instance = (T)Activator.CreateInstance(type);
                 action(instance);
+            }
+        }
+
+        public static void ScanTypes<T>(Action<Type> action) {
+            IEnumerable<Type> types = assembly.GetTypes().Where(x => !x.IsAbstract && x.IsSubclassOf(typeof(T)));
+
+            foreach (Type type in types) {
+                if (typeof(T) == typeof(SurvivorBase) && type.IsSubclassOf(typeof(CorrosionBase))) {
+                    continue;
+                }
+
+                action(type);
             }
         }
     }

@@ -32,7 +32,7 @@ namespace RaindropLobotomy.Enemies.SteamMachine {
             }
 
 
-            if (sprayTimer.Tick() && started) {
+            if (sprayTimer.Tick() && started && base.isAuthority) {
                 BulletAttack attack = new();
                 attack.damage = base.damageStat * 4f * sprayTimer.duration;
                 attack.aimVector = -muzzle.transform.forward;

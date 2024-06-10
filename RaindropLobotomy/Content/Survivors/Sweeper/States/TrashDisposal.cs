@@ -54,7 +54,7 @@ namespace RaindropLobotomy.Survivors.Sweeper {
 
                 Vector3 pos = modelLocator.modelTransform.position + (characterDirection.forward * 2.23f);
 
-                EffectManager.SimpleEffect(Sweeper.AcidSprayEffect, pos, Quaternion.identity, true);
+                EffectManager.SimpleEffect(Sweeper.AcidSprayEffect, pos, Quaternion.identity, false);
                 AkSoundEngine.PostEvent(Events.Play_acid_larva_attack1_explo, base.gameObject);
 
                 BulletAttack attack = new();
@@ -68,11 +68,13 @@ namespace RaindropLobotomy.Survivors.Sweeper {
                 attack.damageType |= DamageType.IgniteOnHit;
                 attack.origin = base.transform.position;
                 attack.aimVector = Vector3.Reflect((pos - characterBody.corePosition).normalized, Vector3.up);
-                EffectManager.SimpleEffect(Sweeper.AcidSprayEffect, pos, Quaternion.LookRotation(characterDirection.forward, attack.aimVector), true);
+                EffectManager.SimpleEffect(Sweeper.AcidSprayEffect, pos, Quaternion.LookRotation(characterDirection.forward, attack.aimVector), false);
                 attack.isCrit = base.RollCrit();
-                attack.Fire();
-                attack.aimVector = base.characterDirection.forward;
-                attack.Fire();
+                if (base.isAuthority) {
+                    attack.Fire();
+                    attack.aimVector = base.characterDirection.forward;
+                    attack.Fire();
+                }
             }
 
             base.duration = canExit ? base.baseDuration / attackSpeedStat : 9999999f;

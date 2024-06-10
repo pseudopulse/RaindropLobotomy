@@ -35,6 +35,15 @@ Ordeals will appear after spending too long on the same stage. Can be configured
 ![Magic Bullet](https://i.postimg.cc/hv69d1QP/12-02-10-screenshot.png)
 
 ## Changelog
+# 1.1.2
+- most stuff is networked now
+- sweeper's Scatter Fuel now has backwards recoil and no longer locks movement (can be configured off)
+- ally sweeper names are longer
+- g?ood?bye no longer breaks on kill occassionally
+- g?ood?bye properly turns enemies into a fine, red.. uhhh... cloud..?
+- magic bullet bandit now has proper footsteps and ragdolls on death
+- magic bullet bandit's ignition hitbox is now identical to regular bandit's slash
+- mimicry now ragdolls on death
 # 1.1.1
 - fixed mithrix breaking sometimes
 - fixed ordeals making the hud invisible in multiplayer

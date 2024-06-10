@@ -60,9 +60,9 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
                 stopwatch = 0f;
                 EffectManager.SpawnEffect(Assets.GameObject.SpurtImpBlood, new EffectData {
                     origin = mainState.hinge.position, 
-                    scale = 9f,
+                    scale = 14f,
                     rotation = Quaternion.LookRotation(Random.onUnitSphere)
-                }, true);
+                }, false);
             }
         }
 
@@ -70,12 +70,13 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
         {
             base.OnExit();
 
-            GameObject.Destroy(instance);
-
             mainState.disallowLidStateChange = false;
             mainState.lidState = SingingMachineMain.SingingMachineLidState.Open;
 
-            base.characterBody.RemoveBuff(RoR2Content.Buffs.Immune);
+            if (base.isAuthority) {
+                base.characterBody.RemoveBuff(RoR2Content.Buffs.Immune);
+                GameObject.Destroy(instance);
+            }
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

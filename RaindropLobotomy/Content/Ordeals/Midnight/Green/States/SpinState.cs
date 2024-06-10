@@ -24,6 +24,7 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green {
         public override void OnEnter()
         {
             base.OnEnter();
+            
             endPoint1 = InitializeLazer(muzzleL, out laserInst1);
             endPoint2 = InitializeLazer(muzzleR, out laserInst2);
 
@@ -58,7 +59,7 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green {
                 return;
             }
 
-            if (bulletTimer.Tick()) {
+            if (bulletTimer.Tick() && NetworkServer.active) {
                 GetBulletAttack(muzzleL, -muzzleL.right, base.damageStat * damageCoeff, 3f).Fire();
                 GetBulletAttack(muzzleR, -muzzleR.right, base.damageStat * damageCoeff, 3f).Fire();
             }

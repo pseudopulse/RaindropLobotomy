@@ -88,6 +88,14 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green {
             // indicator.transform.up = Vector3.up;
         }
 
+        public override void OnExit()
+        {
+            base.OnExit();
+
+            Destroy(laserInst1);
+            Destroy(beam2);
+        }
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -127,9 +135,9 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green {
                 };
             }
 
-            if (bullet.Tick() && summonedDeathRay) {
-                GetBulletAttack(muzzleV, Vector3.up, base.damageStat * damageCoeff, 3f);
-                GetBulletAttack(endpointD, Vector3.down, base.damageStat * damageCoeff, 3f);
+            if (bullet.Tick() && summonedDeathRay && NetworkServer.active) {
+                GetBulletAttack(muzzleV, Vector3.up, base.damageStat * damageCoeff, 3f).Fire();
+                GetBulletAttack(endpointD, Vector3.down, base.damageStat * damageCoeff, 3f).Fire();
             }
 
 

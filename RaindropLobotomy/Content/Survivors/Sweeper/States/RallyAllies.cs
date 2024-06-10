@@ -24,7 +24,7 @@ namespace RaindropLobotomy.Survivors.Sweeper {
                 outer.SetNextStateToMain();
             }
 
-            if (!rallied && animator.GetFloat("rallyBegun") > 0.5f) {
+            if (!rallied && animator.GetFloat("rallyBegun") > 0.5f && NetworkServer.active) {
                 rallied = true;
                 Rally();
             }

@@ -31,7 +31,7 @@ namespace RaindropLobotomy.Enemies.SteamMachine {
         {
             base.FixedUpdate();
 
-            if (animator.GetFloat("slashBegun") >= 0.5f) {
+            if (animator.GetFloat("slashBegun") >= 0.5f && base.isAuthority) {
                 attack.Fire();
             }
 

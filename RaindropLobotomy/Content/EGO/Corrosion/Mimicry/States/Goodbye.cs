@@ -76,11 +76,13 @@ namespace RaindropLobotomy.EGO.Viend {
         public override void BeginMeleeAttackEffect()
         {
             base.BeginMeleeAttackEffect();
-            ParticleSystem system = swingEffectInstance.transform.Find("Rotator").Find("SwingTrail").GetComponent<ParticleSystem>();
-            ParticleSystem.MainModule main = system.main;
-            ParticleSystem.MinMaxCurve curve = main.startSize;
-            curve.constant *= 2f;
-            main.startLifetimeMultiplier *= 2f;
+            if (swingEffectInstance) {
+                ParticleSystem system = swingEffectInstance.transform.Find("Rotator").Find("SwingTrail").GetComponent<ParticleSystem>();
+                ParticleSystem.MainModule main = system.main;
+                ParticleSystem.MinMaxCurve curve = main.startSize;
+                curve.constant *= 2f;
+                main.startLifetimeMultiplier *= 2f;
+            }
         }
     }
 

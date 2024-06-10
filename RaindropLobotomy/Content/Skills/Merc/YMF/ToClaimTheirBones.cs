@@ -106,6 +106,13 @@ namespace RaindropLobotomy.Skills.Merc {
 
         public override void FixedUpdate() {
             base.FixedUpdate();
+            
+            if (animator.GetFloat("Sword.active") >= 0.5f) {
+                BeginMeleeAttackEffect(rizz);
+                if (base.isAuthority) attack.Fire();
+            }
+
+            if (!base.isAuthority) return;
 
             if (target) {
                 lastTargetPosition = target.position;
@@ -113,11 +120,6 @@ namespace RaindropLobotomy.Skills.Merc {
 
             base.characterMotor.velocity = Vector3.zero;
             base.characterDirection.forward = (lastTargetPosition - base.transform.position).normalized;
-
-            if (animator.GetFloat("Sword.active") >= 0.5f) {
-                attack.Fire();
-                BeginMeleeAttackEffect(rizz);
-            }
         }
 
         public void PlayAnimation(string animationStateName, float duration)

@@ -13,6 +13,8 @@ using RoR2.CharacterAI;
 using UnityEngine.UI;
 using TMPro;
 using RoR2.EntityLogic;
+using R2API.Networking.Interfaces;
+using R2API.Networking;
 
 namespace RaindropLobotomy.Ordeals
 {
@@ -50,6 +52,8 @@ namespace RaindropLobotomy.Ordeals
             CreateOrdealTimerUI();
             On.RoR2.Stage.Start += PickOrdeal;
             On.RoR2.Stage.OnDisable += ClearOrdeal;
+
+            NetworkingAPI.RegisterMessageType<OrdealReceived>();
         }
 
         private static void ClearOrdeal(On.RoR2.Stage.orig_OnDisable orig, RoR2.Stage self)
@@ -62,6 +66,7 @@ namespace RaindropLobotomy.Ordeals
         private static void PickOrdeal(On.RoR2.Stage.orig_Start orig, RoR2.Stage self)
         {
             orig(self);
+            Debug.Log("setting up ordeal");
             SetupOrdeal(self);
         }
 
@@ -90,6 +95,38 @@ namespace RaindropLobotomy.Ordeals
                     name = "Icon"
                 },
             };
+        }
+
+        public class OrdealReceived : INetMessage
+        {
+            public int ordeal;
+            public int index;
+            public void Deserialize(NetworkReader reader)
+            {
+                ordeal = reader.ReadInt32();
+                index = reader.ReadInt32();
+            }
+
+            public void OnReceived()
+            {
+                List<OrdealBase> options = ordeals[(OrdealLevel)ordeal];
+                SetupOrdeal(options[index]);
+            }
+
+            public void Serialize(NetworkWriter writer)
+            {
+                writer.Write(ordeal);
+                writer.Write(index);
+            }
+
+            public OrdealReceived() {
+
+            }
+
+            public OrdealReceived(int ordeal, int index) {
+                this.ordeal = ordeal;
+                this.index = index;
+            }
         }
 
         private static void CreateOrdealPopupUI() { 
@@ -149,6 +186,20 @@ namespace RaindropLobotomy.Ordeals
             }
             
             OrdealTimer timer = stage.AddComponent<OrdealTimer>();
+            timer.ordeal = ordeal;
+
+            Timer = timer;
+
+            ObjectivePanelController.collectObjectiveSources += CollectSources;
+        }
+
+        private static void SetupOrdeal(OrdealBase ordeal) {
+            if (ordeal == null) {
+                // Debug.Log("returning because no ordeal");
+                return;
+            }
+            
+            OrdealTimer timer = RoR2.Stage.instance.AddComponent<OrdealTimer>();
             timer.ordeal = ordeal;
 
             Timer = timer;
@@ -224,7 +275,11 @@ namespace RaindropLobotomy.Ordeals
                 return null;
             }
 
-            return options[Run.instance.stageRng.RangeInt(0, options.Length)];
+            int index = Run.instance.stageRng.RangeInt(0, options.Length);
+
+            new OrdealReceived((int)ordeal, index).Send(NetworkDestination.Clients);
+
+            return options[index];
         }
 
         public class OrdealTimer : MonoBehaviour {

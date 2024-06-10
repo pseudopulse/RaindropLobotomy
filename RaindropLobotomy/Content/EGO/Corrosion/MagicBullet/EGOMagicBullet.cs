@@ -46,6 +46,8 @@ namespace RaindropLobotomy.EGO.Bandit {
             BodyPrefab.AddComponent<MagicBulletTargeter>();
             BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Assets.GameObject.VoidSurvivorCrosshair;
 
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Assets.GameObject.GenericFootstepDust;
+
             BulletPrefab = Load<GameObject>("MagicBulletProjectile.prefab");
             BulletPrefab.GetComponentInChildren<MeshRenderer>().sharedMaterials = new Material[] {
                 Assets.Material.matHelfirePuff,

@@ -7,7 +7,7 @@ namespace RaindropLobotomy.EGO.Bandit {
 
         public override float DamageCoefficient => 4f;
 
-        public override string HitboxName => "Slash";
+        public override string HitboxName => "SlashBlade";
 
         public override GameObject HitEffectPrefab => Assets.GameObject.VoidImpactEffect;
 
@@ -17,7 +17,7 @@ namespace RaindropLobotomy.EGO.Bandit {
 
         public override GameObject SwingEffectPrefab => EGOMagicBullet.MagicBulletSlash;
 
-        public override string MuzzleString => "MuzzleBlade";
+        public override string MuzzleString => "MuzzleSlashBlade";
 
         public override void OnEnter()
         {

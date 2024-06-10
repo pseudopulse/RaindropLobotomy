@@ -35,6 +35,8 @@ namespace RaindropLobotomy.Enemies.Fragment {
             if (pulse.Tick()) {
                 pulse.Reset();
 
+                if (!FindModelChild("Flower")) return;
+
                 Vector3 pos = FindModelChild("Flower").position;
 
                 EffectManager.SpawnEffect(UniverseFragment.ScreamEffect, new EffectData {
@@ -56,7 +58,9 @@ namespace RaindropLobotomy.Enemies.Fragment {
                 attack.damageType = DamageType.SlowOnHit;
                 attack.baseForce = 40f;
 
-                attack.Fire();
+                if (base.isAuthority) {
+                    attack.Fire();
+                }
             }
         }
 
@@ -69,7 +73,9 @@ namespace RaindropLobotomy.Enemies.Fragment {
             base.characterDirection.enabled = true;
 
             AkSoundEngine.PostEvent("Stop_fragment_scream", base.gameObject);
-            GetModelAnimator().SetBool("isScreaming", false);
+            if (GetModelAnimator()) {
+                GetModelAnimator().SetBool("isScreaming", false);
+            }
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
