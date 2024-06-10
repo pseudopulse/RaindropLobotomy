@@ -39,10 +39,6 @@ namespace RaindropLobotomy.EGO.Bandit {
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
-            if (portal && base.characterMotor.isGrounded && portal.transform.parent) {
-                portal.transform.parent = null;
-            }
         }
 
         public IEnumerator ProcessBullets() {
@@ -99,7 +95,7 @@ namespace RaindropLobotomy.EGO.Bandit {
 
                 AkSoundEngine.PostEvent("Play_fruitloop_shot", base.gameObject);
 
-                PlayAnimation("Gesture, Additive", "FireMainWeapon", "FireMainWeapon.playbackRate", 0.2f);
+                // PlayAnimation("Gesture, Additive", "FireMainWeapon", "FireMainWeapon.playbackRate", 0.2f);
 
                 bool lastAmmo = EGOMagicBullet.GiveAmmo(characterBody);
 
@@ -112,7 +108,13 @@ namespace RaindropLobotomy.EGO.Bandit {
                 toDestroy.Clear();
                 portal.outputPortals.Clear();
 
+                bool allowed = IsAllowedToContinue();
+
                 if (lastAmmo) {
+                    break;
+                }
+
+                if (!allowed) {
                     break;
                 }
 
@@ -124,7 +126,7 @@ namespace RaindropLobotomy.EGO.Bandit {
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Frozen;
+            return InterruptPriority.Skill;
         }
 
         public override void OnExit()
@@ -133,7 +135,17 @@ namespace RaindropLobotomy.EGO.Bandit {
             aimAnimator.enabled = true;
             GameObject.Destroy(portal.gameObject);
             GameObject.Destroy(pp);
+
+            for (int i = 0; i < toDestroy.Count; i++) {
+                GameObject.Destroy(toDestroy[i]);
+            }
             base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
+        }
+
+        public bool IsAllowedToContinue() {
+            base.skillLocator.special.DeductStock(1);
+
+            return base.skillLocator.special.stock > 0;
         }
 
         public BulletAttack GetBullet() {

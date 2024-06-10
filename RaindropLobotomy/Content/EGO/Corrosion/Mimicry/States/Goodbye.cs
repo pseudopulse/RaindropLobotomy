@@ -8,7 +8,9 @@ namespace RaindropLobotomy.EGO.Viend {
             FindModelChild("ScytheScaleBone").GetComponent<EGOMimicry.GoodbyeArmStretcher>().BeginGoodbye(0);
             base.StartAimMode();
 
-            AkSoundEngine.PostEvent("Play_NT_goodbye", base.gameObject);
+            if (EGOMimicry.config.PlayGoodbyeAudio) {
+                AkSoundEngine.PostEvent("Play_NT_goodbye", base.gameObject);
+            }
         }
 
         public override void FixedUpdate()

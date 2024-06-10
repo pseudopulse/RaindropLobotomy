@@ -61,7 +61,6 @@ namespace RaindropLobotomy.EGO.Viend {
             Assets.SkillDef.FireConstructBeam,
             Assets.SkillDef.RaidCrabMultiBeam,
             Assets.SkillDef.GrandParentChannelSun,
-            Assets.SkillDef.BeetleGuardBodySunder,
             Assets.SkillDef.HuntressBodyBlink,
             Assets.SkillDef.HuntressBodyMiniBlink,
             Assets.SkillDef.MageBodyWall,
@@ -97,6 +96,14 @@ namespace RaindropLobotomy.EGO.Viend {
         public static SkillDef Fallback => Assets.SkillDef.CommandoSlide;
 
         public static List<BodyIndex> BlacklistedBodyIndexes;
+
+        public class EGOMimicryConfig : ConfigClass
+        {
+            public override string Section => "EGO Corrosions :: Mimicry";
+            public bool PlayGoodbyeAudio => base.Option<bool>("Goodbye Audio", "Play the Goodbye sound effect when using the Goodbye skill.", true);
+        }
+
+        public static EGOMimicryConfig config = new();
 
         public override void Modify()
         {
@@ -424,7 +431,10 @@ namespace RaindropLobotomy.EGO.Viend {
                     return orig(self, str);
                 }
 
-                return orig(self, "MuzzleHandBeam");
+                Transform handBeam = orig(self, "MuzzleHandBeam");
+
+                if (handBeam) return handBeam;
+                return orig(self, str);
             };
 
             On.ChildLocator.FindChildIndex_string += (orig, self, str) => {
@@ -433,7 +443,10 @@ namespace RaindropLobotomy.EGO.Viend {
                     return c;
                 }
 
-                return orig(self, "MuzzleHandBeam");
+                int handBeam = orig(self, "MuzzleHandBeam");
+
+                if (handBeam != -1) return handBeam;
+                return orig(self, str);
             };
 
             On.EntityStates.EntityState.PlayAnimation_string_string += (orig, self, str, str2) => {

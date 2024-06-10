@@ -39,6 +39,7 @@ namespace RaindropLobotomy.Ordeals
         }
 
         public static OrdealConfig Config = new();
+        public static OrdealTimer Timer;
 
         public static void Initialize() {
             if (!Config.Enabled) {
@@ -47,10 +48,18 @@ namespace RaindropLobotomy.Ordeals
 
             CreateOrdealPopupUI();
             CreateOrdealTimerUI();
-            On.RoR2.UI.HUD.Awake += PickOrdeal;
+            On.RoR2.Stage.Start += PickOrdeal;
+            On.RoR2.Stage.OnDisable += ClearOrdeal;
         }
 
-        private static void PickOrdeal(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+        private static void ClearOrdeal(On.RoR2.Stage.orig_OnDisable orig, RoR2.Stage self)
+        {
+            orig(self);
+
+            ObjectivePanelController.collectObjectiveSources -= CollectSources;
+        }
+
+        private static void PickOrdeal(On.RoR2.Stage.orig_Start orig, RoR2.Stage self)
         {
             orig(self);
             SetupOrdeal(self);
@@ -132,18 +141,26 @@ namespace RaindropLobotomy.Ordeals
 
         }
 
-        private static void SetupOrdeal(HUD hudInst) {
-            OrdealBase ordeal = GetNextOrdealType();
+        private static void SetupOrdeal(RoR2.Stage stage) {
+            OrdealBase ordeal = GetNextOrdealType(SceneCatalog.mostRecentSceneDef);
             if (ordeal == null) {
                 // Debug.Log("returning because no ordeal");
                 return;
             }
+            
+            OrdealTimer timer = stage.AddComponent<OrdealTimer>();
+            timer.ordeal = ordeal;
 
-            Transform parent = hudInst.transform.Find("MainContainer").Find("MainUIArea").Find("SpringCanvas").Find("UpperLeftCluster");
-            GameObject hud = GameObject.Instantiate(ordealUI, parent);
-            hud.transform.localPosition = new(100, -160, 0);
-            OrdealController cont = hud.AddComponent<OrdealController>();
-            cont.ordeal = ordeal;
+            Timer = timer;
+
+            ObjectivePanelController.collectObjectiveSources += CollectSources;
+        }
+
+        private static void CollectSources(CharacterMaster master, List<ObjectivePanelController.ObjectiveSourceDescriptor> sources) {
+            sources.Add(new ObjectivePanelController.ObjectiveSourceDescriptor() {
+                master = master,
+                objectiveType = typeof(OrdealObjective),
+                source = Timer});
         }
 
         public static void SpawnOrdealPopupUI(OrdealBase ordeal) {
@@ -180,13 +197,21 @@ namespace RaindropLobotomy.Ordeals
             image.color = ordeal.Color;
         }
 
-        private static OrdealBase GetNextOrdealType() {
-            int i = Run.instance.stageClearCount;
+        private static OrdealBase GetNextOrdealType(SceneDef scene) {
+            if (scene.sceneType != SceneType.Stage) return null;
+            if (scene.cachedName == "moon" || scene.cachedName == "moon2") return null;
+
+            int i = (Run.instance.stageClearCount + 1) % 5;
+            Debug.Log(i);
             OrdealLevel ordeal = OrdealLevel.DAWN;
 
-            if (i > 1) ordeal = OrdealLevel.NOON;
-            if (i > 2) ordeal = OrdealLevel.DUSK;
-            if (i > 4) ordeal = OrdealLevel.MIDNIGHT;
+            ordeal = i switch {
+                1 => OrdealLevel.DAWN,
+                2 => OrdealLevel.DAWN,
+                3 => OrdealLevel.NOON,
+                4 => OrdealLevel.NOON,
+                0 => OrdealLevel.MIDNIGHT
+            };
 
             // ordeal = OrdealLevel.MIDNIGHT;
 
@@ -202,12 +227,10 @@ namespace RaindropLobotomy.Ordeals
             return options[Run.instance.stageRng.RangeInt(0, options.Length)];
         }
 
-
-        public class OrdealController : MonoBehaviour {
+        public class OrdealTimer : MonoBehaviour {
             private float totalDuration;
-            private float duration;
+            public float duration;
             public OrdealBase ordeal;
-            public TimerText timer;
             private bool startedOrdeal = false;
 
             public void Start() {
@@ -221,35 +244,36 @@ namespace RaindropLobotomy.Ordeals
                 
                 duration = totalDuration;
                 // duration = 10f;
-
-
-                ChildLocator loc = GetComponent<ChildLocator>();
-                timer = GetComponent<TimerText>();
-                loc.FindChild("Icon").GetComponent<Image>().sprite = ordeal.OrdealLevel switch {
-                    OrdealLevel.DAWN => Load<Sprite>("Dawn.png"),
-                    OrdealLevel.NOON => Load<Sprite>("Noon.png"),
-                    OrdealLevel.DUSK => Load<Sprite>("Dawn.png"),
-                    OrdealLevel.MIDNIGHT => Load<Sprite>("Midnight.png"),
-                };
-                loc.FindChild("Icon").GetComponent<Image>().color = ordeal.Color;
             }
 
             public void FixedUpdate() {
-                if (duration >= 0f) {
-                    duration -= Time.fixedDeltaTime;
-                    timer.seconds = duration;
-                }
-
-                if (duration <= 0f) {
-                    timer.enabled = false;
-                    timer.targetLabel.text = "XX:XX";
-                }
+                duration -= Time.fixedDeltaTime;
 
                 if (duration <= 0f && !startedOrdeal) {
                     startedOrdeal = true;
-                    OrdealManager.SpawnOrdealPopupUI(ordeal);
-                    ordeal.OnSpawnOrdeal(RoR2.Stage.instance);
+
+                    SpawnOrdealPopupUI(ordeal);
+                    
+                    if (NetworkServer.active) {
+                        ordeal.OnSpawnOrdeal(RoR2.Stage.instance);
+                    }
                 }
+            }
+        }
+
+        public class OrdealObjective : ObjectivePanelController.ObjectiveTracker {
+            public OrdealTimer ordealTimer = null;
+            public override string GenerateString()
+            {
+                if (ordealTimer == null) ordealTimer = sourceDescriptor.source as OrdealTimer;
+                string col = $"#{ColorUtility.ToHtmlStringRGBA(ordealTimer.ordeal.Color)}";
+
+                return 
+                $"Prepare for the <color={col}>{ordealTimer.ordeal.RiskTitle}</color> - <style=cStack>({(ordealTimer.duration >= 0f ? TimeSpan.FromSeconds(ordealTimer.duration).ToString(@"mm\:ss") : "XX:XX")})</style>";
+            }
+            public override bool IsDirty()
+            {
+                return true;
             }
         }
     }

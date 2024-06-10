@@ -23,7 +23,7 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green
 
         public override string RiskTitle => "Ordeal of Green Midnight";
 
-        public override Color32 Color => new Color(0.4117647f, 0.6431373f, 24f / 85f);
+        public override Color32 Color => new(23, 240, 0, 255);
 
         public override void OnSpawnOrdeal(RoR2.Stage stage)
         {

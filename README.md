@@ -35,6 +35,18 @@ Ordeals will appear after spending too long on the same stage. Can be configured
 ![Magic Bullet](https://i.postimg.cc/hv69d1QP/12-02-10-screenshot.png)
 
 ## Changelog
+# 1.1.1
+- fixed mithrix breaking sometimes
+- fixed ordeals making the hud invisible in multiplayer
+- changed how ordeals are picked, now preset for the 5 stages in a loop instead of repeating midnight after s5
+- moved ordeals to the objectives tab (they are not required to leave the stage!!)
+# 1.1.0
+- fixed Beetle Guards sunder being shelled when it shouldnt (it doesnt work)
+- fixed bug where equipping merc's beheaded skin after previously equipping solemn lament would break rendering for the rest of the session
+- made flooding bullets have 3 charges and consume 1 per shot
+- flooding bullets can now be canceled early, only consuming charges equiv to 1 shot
+- lowered sfx volume across the board
+- made sfx properly follow the in-game sound volume slider
 # 1.0.4
 - fixed silent advance creating an infinitely looping sound effect
 - fixed mb bandit skill descs

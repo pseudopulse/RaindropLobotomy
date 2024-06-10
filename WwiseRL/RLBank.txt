@@ -12,6 +12,9 @@ Event	ID	Name			Wwise Object Path	Notes
 	3795283858	Play_fragment_scream			\RL\Play_fragment_scream	
 	4021128509	Play_fruitloop_shot			\RL\Play_fruitloop_shot	
 
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	26377023	Freischutz_Shot	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Freischutz_Shot_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Freischutz_Shot		36272
 	77842745	Nullthing_Skill3_Cast	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill3_Cast_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill3_Cast		13571

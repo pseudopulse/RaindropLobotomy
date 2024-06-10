@@ -128,7 +128,7 @@ namespace RaindropLobotomy.EGO
                             }
                         }
 
-                        if (!disallow) {
+                        if (!disallow && i < model.baseRendererInfos.Length) {
                             model.baseRendererInfos[i] = SkinDef.RuntimeSkin.rendererInfoBuffer[i];
                         }
                     }
