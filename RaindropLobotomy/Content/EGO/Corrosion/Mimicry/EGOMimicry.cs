@@ -90,7 +90,9 @@ namespace RaindropLobotomy.EGO.Viend {
             Assets.GameObject.JellyfishBody,
             Assets.GameObject.BisonBody,
             Assets.GameObject.MagmaWormBody,
-            Assets.GameObject.ElectricWormBody
+            Assets.GameObject.ElectricWormBody,
+            Assets.GameObject.VerminBody,
+            Assets.GameObject.BeetleGuardBody
         };
 
         public static SkillDef Fallback => Assets.SkillDef.CommandoSlide;
@@ -331,10 +333,22 @@ namespace RaindropLobotomy.EGO.Viend {
             public List<BodyIndex> shellsWorn = new();
             private bool assignedMimicry = false;
             private CharacterBody us;
+            private float shellCooldown = 0f;
+            private float lastEnemyHp = 0f;
 
             public void Start() {
                 mimicSlot = GetComponent<SkillLocator>().utility;
                 us = GetComponent<CharacterBody>();
+            }
+
+            public void FixedUpdate() {
+                if (shellCooldown >= 0f) {
+                    shellCooldown -= Time.fixedDeltaTime;
+                }
+
+                if (shellCooldown <= 0f) {
+                    lastEnemyHp = 0f;
+                }
             }
 
             public void UpdateShell(CharacterBody body) {
@@ -344,6 +358,21 @@ namespace RaindropLobotomy.EGO.Viend {
 
                 foreach (BodyIndex index in BlacklistedBodyIndexes) {
                     if (body.bodyIndex == index) useFallbackSkill = true;
+                }
+
+                bool onlyAllowHigherShell = shellCooldown >= 0f;
+
+                if (onlyAllowHigherShell) {
+                    if (body.maxHealth >= lastEnemyHp) {
+                        lastEnemyHp = body.maxHealth;
+                    }
+                    else {
+                        return;
+                    }
+                }
+                
+                if (shellCooldown <= 0f) {
+                    shellCooldown = 2f;
                 }
 
                 if (!shellsWorn.Contains(body.bodyIndex)) {

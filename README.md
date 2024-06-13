@@ -10,6 +10,7 @@ Survivors:
 Survivor Variants:
 - Bandit :: Magic Bullet
 - Void Fiend :: Mimicry
+- Blade Lineage Mercenary
 
 Items:
 - Clockwork Spring (Steam Machine ego gift)
@@ -30,11 +31,19 @@ Ordeals:
 
 Ordeals will appear after spending too long on the same stage. Can be configured.
 
+![Blade Lineage Mercenary](https://i.postimg.cc/hjpC10Hd/07-41-03-screenshot.png)
 ![Sweeper](https://i.postimg.cc/7Lkn99s5/12-02-12-screenshot.png)
 ![Mimicry](https://i.postimg.cc/fWr7pDqn/12-02-05-screenshot.png)
 ![Magic Bullet](https://i.postimg.cc/hv69d1QP/12-02-10-screenshot.png)
 
 ## Changelog
+# 1.2.0
+- added new survivor variant: blade lineage mercenary
+- reduced the base health of Process of Understanding to 740
+# 1.1.4
+- we love ability stealing
+# 1.1.3
+- shelling an enemy with Wear Shell or Goodbye now incurs a 2 second period where you cannot shell an enemy weaker than your current shell. this ensures you will always shell the strongest available during these skills.
 # 1.1.2
 - most stuff is networked now
 - sweeper's Scatter Fuel now has backwards recoil and no longer locks movement (can be configured off)

@@ -1,0 +1,461 @@
+/*using System;
+using RaindropLobotomy.Buffs;
+
+namespace RaindropLobotomy.EGO.Merc {
+    public class ToClaimTheirBones : BaseState {
+        private float bonusDamage = 0f;
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            int count = base.characterBody.GetBuffCount(Poise.Instance.Buff);
+            count = Mathf.Clamp(count, 0, 20);
+            bonusDamage = 1f + (count * 0.1f);
+
+            base.characterBody.AddBuff(Unrelenting.Instance.Buff);
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            if (base.fixedAge >= 0.5f) {
+                outer.SetNextState(new ToClaimTheirBones_Transition(0f, new ToClaimTheirBones_1(bonusDamage)));
+            }
+        }
+    }
+
+    public class ToClaimTheirBones_Exit : BaseState {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            base.characterBody.RemoveBuff(Unrelenting.Instance.Buff);
+            base.characterBody.skillLocator.special.UnsetSkillOverride(base.gameObject, BLMerc.ToClaimTheirBones, GenericSkill.SkillOverridePriority.Contextual);
+            outer.SetNextStateToMain();
+        }
+    }
+
+    public class ToClaimTheirBones_Transition : BaseState {
+        public float duration;
+        public EntityState next;
+        private bool force = false;
+
+        public ToClaimTheirBones_Transition(float duration, EntityState next, bool force = false) {
+            this.duration = duration;
+            this.next = next;
+            this.force = force;
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            if (force) base.characterMotor.velocity = Vector3.zero;
+
+            if (base.fixedAge >= duration) {
+                outer.SetNextState(next);
+            }
+        }
+    }
+
+    public class ToClaimTheirBones_5 : CoolerBasicMeleeAttack
+    {
+        public override float BaseDuration => 1f;
+
+        public override float DamageCoefficient => 20f;
+
+        public override string HitboxName => "WhirlwindAir";
+
+        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+
+        public override float ProcCoefficient => 3f;
+
+        public override float HitPauseDuration => 0.05f;
+
+        public override GameObject SwingEffectPrefab => BLMerc.DarkRadial2;
+
+        public override string MuzzleString => "WhirlwindAir";
+
+        public override string MechanimHitboxParameter => "Sword.active";
+        private float bonusDamage;
+        private bool hasExited = false;
+        private GameObject visuals;
+
+        public ToClaimTheirBones_5(float bonusDamage, GameObject visuals) {
+            this.bonusDamage = bonusDamage;
+            this.visuals = visuals;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+
+            base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+            
+            PlayAnimation("FullBody, Override", "WhirlwindAirExit");
+
+            if (base.isAuthority) {
+                BlastAttack attack = new();
+                attack.attacker = base.gameObject;
+                attack.attackerFiltering = AttackerFiltering.NeverHitSelf;
+                attack.baseDamage = base.damageStat * damageCoefficient;
+                attack.crit = base.RollCrit();
+                attack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+                attack.radius = 20f;
+                attack.position = base.transform.position;
+                attack.teamIndex = base.GetTeam();
+                attack.procCoefficient = 3f;
+                attack.baseDamage *= bonusDamage;
+
+                EffectManager.SpawnEffect(Assets.GameObject.HermitCrabBombExplosion, new EffectData {
+                    origin = attack.position,
+                    scale = attack.radius
+                }, true);
+
+                attack.Fire();
+            }
+        }
+
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damage *= bonusDamage;
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            if (!base.isGrounded) {
+                base.characterMotor.velocity = Vector3.down * 200f + (base.characterDirection.forward * 36f);
+                base.fixedAge = 0f;
+            }
+
+            if (base.isGrounded && !hasExited) {
+                hasExited = true;
+                base.characterMotor.velocity = Vector3.zero;
+                GameObject.Destroy(visuals);
+                outer.SetNextState(new ToClaimTheirBones_Transition(1f, new ToClaimTheirBones_Exit()));
+            }
+        }
+
+        public override void PlayAnimation()
+        {
+            PlayCrossfade("FullBody, Override", "WhirlwindAir", "Whirlwind.playbackRate", duration, 0.1f);
+            AkSoundEngine.PostEvent(Events.Play_merc_sword_swing, base.gameObject);
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
+        public override void AuthorityOnFinish()
+        {
+            outer.SetNextState(new ToClaimTheirBones_Transition(1f, new ToClaimTheirBones_Exit()));
+        }
+    }
+
+    public class ToClaimTheirBones_4 : CoolerBasicMeleeAttack
+    {
+        public override float BaseDuration => 0.4f;
+
+        public override float DamageCoefficient => 10f;
+
+        public override string HitboxName => "WhirlwindAir";
+
+        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+
+        public override float ProcCoefficient => 2f;
+
+        public override float HitPauseDuration => 0.05f;
+
+        public override GameObject SwingEffectPrefab => BLMerc.Upslash;
+
+        public override string MuzzleString => "WhirlwindAir";
+
+        public override string MechanimHitboxParameter => "Sword.active";
+        private float bonusDamage;
+        private GameObject visuals;
+        public ToClaimTheirBones_4(float bonusDamage) {
+            this.bonusDamage = bonusDamage;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            base.characterMotor.Motor.ForceUnground();
+            base.characterMotor.velocity = Vector3.up * 86f + (base.characterDirection.forward * 8f);
+
+            visuals = GameObject.Instantiate(BLMerc.WarpTrail, FindModelChild("WhirlwindAir"));
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            PlayAnimation("FullBody, Override", "UppercutExit");
+        }
+
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damage *= bonusDamage;
+            overlapAttack.forceVector = Vector3.up * 3000f;
+        }
+
+        public override void PlayAnimation()
+        {
+            PlayCrossfade("FullBody, Override", "Uppercut", "Uppercut.playbackRate", duration, 0.1f);
+            AkSoundEngine.PostEvent(Events.Play_merc_m2_uppercut, base.gameObject);
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
+        public override void AuthorityOnFinish()
+        {
+            GameObject.Instantiate(BLMerc.DarkFlare, visuals.transform);
+            outer.SetNextState(new ToClaimTheirBones_Transition(1.5f, new ToClaimTheirBones_5(bonusDamage, visuals), true));
+        }
+    }
+
+    public class ToClaimTheirBones_3 : CoolerBasicMeleeAttack
+    {
+        public override float BaseDuration => 0.5f;
+
+        public override float DamageCoefficient => 10f;
+
+        public override string HitboxName => "WhirlwindGround";
+
+        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+
+        public override float ProcCoefficient => 1.5f;
+
+        public override float HitPauseDuration => 0.05f;
+
+        public override GameObject SwingEffectPrefab => BLMerc.DarkRadial;
+
+        public override string MuzzleString => "WhirlwindGround";
+
+        public override string MechanimHitboxParameter => "Sword.active";
+        private float bonusDamage;
+        private Vector3 forward;
+
+        public ToClaimTheirBones_3(float bonusDamage) {
+            this.bonusDamage = bonusDamage;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            base.characterMotor.Motor.ForceUnground();
+            forward = Random.onUnitSphere;
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            // base.characterMotor.velocity = base.characterDirection.forward * 40f;
+            base.characterBody.isSprinting = true;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            PlayAnimation("FullBody, Override", "WhirlwindGroundExit");
+        }
+
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damage *= bonusDamage;
+        }
+
+        public override void PlayAnimation()
+        {
+            PlayCrossfade("FullBody, Override", "WhirlwindGround", "Whirlwind.playbackRate", duration, 0.1f);
+
+            AkSoundEngine.PostEvent(Events.Play_merc_sword_swing, base.gameObject);
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
+        public override void AuthorityOnFinish()
+        {
+            outer.SetNextState(new ToClaimTheirBones_Transition(0.3f, new ToClaimTheirBones_4(bonusDamage)));
+        }
+    }
+
+    public class ToClaimTheirBones_2 : CoolerBasicMeleeAttack
+    {
+        public override float BaseDuration => 0.6f;
+
+        public override float DamageCoefficient => 7f;
+
+        public override string HitboxName => "Sword";
+
+        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+
+        public override float ProcCoefficient => 1f;
+
+        public override float HitPauseDuration => 0.05f;
+
+        public override GameObject SwingEffectPrefab => BLMerc.DarkSlash;
+
+        public override string MuzzleString => "GroundLight2";
+
+        public override string MechanimHitboxParameter => "Sword.active";
+        private float bonusDamage;
+        private Vector3 forward;
+
+        public ToClaimTheirBones_2(float bonusDamage) {
+            this.bonusDamage = bonusDamage;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            base.characterMotor.Motor.ForceUnground();
+            forward = Random.onUnitSphere;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+        }
+
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damage *= bonusDamage;
+        }
+
+        public override void PlayAnimation()
+        {
+            string animationStateName = "GroundLight2";
+            bool @bool = animator.GetBool("isMoving");
+            bool bool2 = animator.GetBool("isGrounded");
+            if (!@bool && bool2)
+            {
+                PlayCrossfade("FullBody, Override", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
+                return;
+            }
+            PlayCrossfade("Gesture, Additive", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
+            PlayCrossfade("Gesture, Override", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
+
+            AkSoundEngine.PostEvent(Events.Play_merc_sword_swing, base.gameObject);
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            
+            base.characterBody.isSprinting = true;
+            // base.characterMotor.velocity = base.characterDirection.forward * 10f;
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
+        public override void AuthorityOnFinish()
+        {
+            outer.SetNextState(new ToClaimTheirBones_Transition(0.1f, new ToClaimTheirBones_3(bonusDamage)));
+        }
+    }
+
+    public class ToClaimTheirBones_1 : CoolerBasicMeleeAttack
+    {
+        public override float BaseDuration => 0.4f;
+
+        public override float DamageCoefficient => 5f;
+
+        public override string HitboxName => "Sword";
+
+        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+
+        public override float ProcCoefficient => 1f;
+
+        public override float HitPauseDuration => 0.05f;
+
+        public override GameObject SwingEffectPrefab => BLMerc.DarkSlash;
+
+        public override string MuzzleString => "GroundLight1";
+
+        public override string MechanimHitboxParameter => "Sword.active";
+        private float bonusDamage;
+        private Vector3 forward;
+
+        public ToClaimTheirBones_1(float bonusDamage) {
+            this.bonusDamage = bonusDamage;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            base.characterMotor.Motor.ForceUnground();
+            forward = Random.onUnitSphere;
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            
+            base.characterBody.isSprinting = true;
+            // base.characterMotor.velocity = base.characterDirection.forward * 10f;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+        }
+
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damage *= bonusDamage;
+        }
+
+        public override void PlayAnimation()
+        {
+            string animationStateName = "GroundLight1";
+            bool @bool = animator.GetBool("isMoving");
+            bool bool2 = animator.GetBool("isGrounded");
+            if (!@bool && bool2)
+            {
+                PlayCrossfade("FullBody, Override", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
+                return;
+            }
+            PlayCrossfade("Gesture, Additive", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
+            PlayCrossfade("Gesture, Override", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
+
+            AkSoundEngine.PostEvent(Events.Play_merc_sword_swing, base.gameObject);
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
+        public override void AuthorityOnFinish()
+        {
+            outer.SetNextState(new ToClaimTheirBones_Transition(0.2f, new ToClaimTheirBones_2(bonusDamage)));
+        }
+    }
+}*/
