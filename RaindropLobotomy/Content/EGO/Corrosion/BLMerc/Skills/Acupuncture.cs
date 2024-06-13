@@ -19,12 +19,14 @@ namespace RaindropLobotomy.EGO.Merc {
         public override GameObject SwingEffectPrefab => BLMerc.Spear;
 
         public override string MuzzleString => "Thrust";
+        private Vector3 vector;
 
         public override void OnEnter()
         {
             base.OnEnter();
             base.characterMotor.Motor.ForceUnground();
-            base.characterMotor.velocity = (base.characterDirection.forward * 56f);
+            base.characterDirection.forward = base.inputBank.aimDirection;
+            vector = base.inputBank.aimDirection;
 
             base.gameObject.layer = LayerIndex.fakeActor.intVal;
             base.characterMotor.Motor.RebuildCollidableLayers();
@@ -69,6 +71,9 @@ namespace RaindropLobotomy.EGO.Merc {
         {
             base.FixedUpdate();
             base.characterBody.isSprinting = true;
+
+            base.characterDirection.forward = vector;
+            base.characterMotor.velocity = vector * 32f;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

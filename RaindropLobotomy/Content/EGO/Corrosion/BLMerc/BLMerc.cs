@@ -84,7 +84,7 @@ namespace RaindropLobotomy.EGO.Merc {
         {
             orig(self);
 
-            AddOverlay(CharacterModel.doppelgangerMaterial, IsBoning(self.body) || (self.body && self.body.inventory.GetItemCount(RoR2Content.Items.InvadingDoppelganger) > 0));
+            AddOverlay(CharacterModel.doppelgangerMaterial, IsBoning(self.body) || (self.body && self.body.inventory && self.body.inventory.GetItemCount(RoR2Content.Items.InvadingDoppelganger) > 0));
 
             void AddOverlay(Material overlayMaterial, bool condition)
             {
@@ -99,7 +99,7 @@ namespace RaindropLobotomy.EGO.Merc {
         {
             orig(self);
 
-            self.UpdateSingleTemporaryVisualEffect(ref self.doppelgangerEffectInstance, CharacterBody.AssetReferences.doppelgangerEffectPrefab, self.bestFitRadius, IsBoning(self) || self.inventory.GetItemCount(RoR2Content.Items.InvadingDoppelganger) > 0, "Head");
+            self.UpdateSingleTemporaryVisualEffect(ref self.doppelgangerEffectInstance, CharacterBody.AssetReferences.doppelgangerEffectPrefab, self.bestFitRadius, IsBoning(self) || ((self.inventory != null && (self.inventory.GetItemCount(RoR2Content.Items.InvadingDoppelganger) > 0))), "Head");
         }
 
         private bool IsBoning(CharacterBody body) {

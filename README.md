@@ -37,6 +37,11 @@ Ordeals will appear after spending too long on the same stage. Can be configured
 ![Magic Bullet](https://i.postimg.cc/hv69d1QP/12-02-10-screenshot.png)
 
 ## Changelog
+# 1.2.2
+- Acupuncture now dashes to where you're aiming instead of directly forwards
+# 1.2.1
+- fixed BL merc shitting nullrefs every frame if a living body had no inventory assigned
+- undocumented from 1.2.0: blind vermin can no longer be shelled
 # 1.2.0
 - added new survivor variant: blade lineage mercenary
 - reduced the base health of Process of Understanding to 740
