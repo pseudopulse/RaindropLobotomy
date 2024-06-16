@@ -9,7 +9,7 @@ namespace RaindropLobotomy.EGO.Bandit {
         public string BulletMuzzle = "MuzzleShotgun";
         public GameObject PortalPrefab => EGOMagicBullet.PortalPrefab;
         public GameObject BulletPrefab => EGOMagicBullet.BulletPrefab;
-        public float DamageCoefficient = 9f;
+        public float DamageCoefficient = 11f;
         //
         private Animator animator;
         private AimAnimator aimAnimator;
@@ -32,7 +32,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             StartAimMode(0.1f);
 
             base.characterBody.StartCoroutine(ProcessBullets());
-            base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
+            base.characterBody.AddBuff(RoR2Content.Buffs.ElephantArmorBoost);
             // pp = GameObject.Instantiate(EGOMagicBullet.FloodingBulletsPP);
         }
 
@@ -57,7 +57,12 @@ namespace RaindropLobotomy.EGO.Bandit {
 
                 if (targets.Count == 0) continue;
 
-                AkSoundEngine.PostEvent("Play_fruitloop_portal", base.gameObject);
+                if (EGOMagicBullet.config.UseVanillaSounds) {
+                    AkSoundEngine.PostEvent(Events.Play_mage_m2_shoot, base.gameObject);
+                }
+                else {
+                    AkSoundEngine.PostEvent("Play_fruitloop_portal", base.gameObject);
+                }
 
                 foreach (HurtBox box in targets) {
                     Vector3 position = box.transform.position + Vector3.up * 3f;
@@ -93,7 +98,12 @@ namespace RaindropLobotomy.EGO.Bandit {
                     portal.FireBullet(attack);
                 }
 
-                AkSoundEngine.PostEvent("Play_fruitloop_shot", base.gameObject);
+                if (EGOMagicBullet.config.UseVanillaSounds) {
+                    AkSoundEngine.PostEvent(Events.Play_bandit2_m1_rifle, base.gameObject);
+                }
+                else {
+                    AkSoundEngine.PostEvent("Play_fruitloop_shot", base.gameObject);
+                }
 
                 // PlayAnimation("Gesture, Additive", "FireMainWeapon", "FireMainWeapon.playbackRate", 0.2f);
 
@@ -139,7 +149,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             for (int i = 0; i < toDestroy.Count; i++) {
                 GameObject.Destroy(toDestroy[i]);
             }
-            base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
+            base.characterBody.RemoveBuff(RoR2Content.Buffs.ElephantArmorBoost);
         }
 
         public bool IsAllowedToContinue() {

@@ -31,6 +31,11 @@ namespace RaindropLobotomy.Survivors.Sweeper {
         {
             public override string Section => "Survivors :: A Sweeper";
             public bool DoRecoil => Option<bool>("Utility Recoil", "Should Scatter Fuel have backwards recoil?", true);
+
+            public override void Initialize()
+            {
+                _ = DoRecoil;
+            }
         }
 
 

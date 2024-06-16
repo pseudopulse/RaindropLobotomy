@@ -103,6 +103,11 @@ namespace RaindropLobotomy.EGO.Viend {
         {
             public override string Section => "EGO Corrosions :: Mimicry";
             public bool PlayGoodbyeAudio => base.Option<bool>("Goodbye Audio", "Play the Goodbye sound effect when using the Goodbye skill.", true);
+
+            public override void Initialize()
+            {
+                _ = PlayGoodbyeAudio;
+            }
         }
 
         public static EGOMimicryConfig config = new();

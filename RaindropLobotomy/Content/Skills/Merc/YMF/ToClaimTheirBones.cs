@@ -99,7 +99,7 @@ namespace RaindropLobotomy.Skills.Merc {
             hitBoxGroup.hitBoxes[0].transform.localScale /= hitBoxScale;
             characterBody.RemoveBuff(Buffs.Unrelenting.Instance.Buff);
             characterBody.SetBuffCount(Buffs.Resentment.Instance.Buff.buffIndex, 0);
-             if (swingEffectInstance) {
+            if (swingEffectInstance) {
                 GameObject.Destroy(swingEffectInstance);
             }
         }

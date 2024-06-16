@@ -5,7 +5,7 @@ namespace RaindropLobotomy.EGO.Bandit {
     public class Ignition : CoolerBasicMeleeAttack {
         public override float BaseDuration => 0.4f;
 
-        public override float DamageCoefficient => 4f;
+        public override float DamageCoefficient => 5.5f;
 
         public override string HitboxName => "SlashBlade";
 

@@ -8,12 +8,13 @@ namespace RaindropLobotomy.EGO.Bandit {
         public string BulletMuzzle = "MuzzleShotgun";
         public GameObject PortalPrefab => EGOMagicBullet.PortalPrefab;
         public GameObject BulletPrefab => EGOMagicBullet.BulletPrefab;
-        public float DamageCoefficient = 3.8f;
+        public float DamageCoefficient = 4.8f;
         //
         private GameObject portal1;
         private GameObject portal2;
         private MagicBulletPortal mbp1;
         private bool firedBullet = false;
+        private bool shouldConsumeAmmo = false;
 
         public override void OnEnter()
         {
@@ -36,6 +37,8 @@ namespace RaindropLobotomy.EGO.Bandit {
             HurtBox box = targeter.target?.GetComponent<HurtBox>() ?? null;
 
             if (box) {
+                shouldConsumeAmmo = true;
+
                 Vector3 position = box.transform.position + Vector3.up * 3f;
 
                 for (int i = 0; i < 50; i++) {
@@ -50,7 +53,12 @@ namespace RaindropLobotomy.EGO.Bandit {
                 mbp2.aimTarget = box.transform;
             }
 
-            AkSoundEngine.PostEvent("Play_fruitloop_portal", base.gameObject);
+            if (EGOMagicBullet.config.UseVanillaSounds) {
+                AkSoundEngine.PostEvent(Events.Play_mage_m2_shoot, base.gameObject);
+            }
+            else {
+                AkSoundEngine.PostEvent("Play_fruitloop_portal", base.gameObject);
+            }
         }
 
         public override void FixedUpdate()
@@ -74,7 +82,12 @@ namespace RaindropLobotomy.EGO.Bandit {
                 Transform muzzle = FindModelChild(BulletMuzzle);
                 float distance = Vector3.Distance(muzzle.position, portal1.transform.position);
 
-                AkSoundEngine.PostEvent("Play_fruitloop_shot", base.gameObject);
+                if (EGOMagicBullet.config.UseVanillaSounds) {
+                    AkSoundEngine.PostEvent(Events.Play_bandit2_m1_rifle, base.gameObject);
+                }
+                else {
+                    AkSoundEngine.PostEvent("Play_fruitloop_shot", base.gameObject);
+                }
 
                 BulletAttack attack = new();
                 attack.damage = base.damageStat * DamageCoefficient;
@@ -91,7 +104,9 @@ namespace RaindropLobotomy.EGO.Bandit {
                 attack.smartCollision = true;
                 attack.maxDistance = distance;
 
-                EGOMagicBullet.GiveAmmo(characterBody);
+                if (shouldConsumeAmmo) {
+                    EGOMagicBullet.GiveAmmo(characterBody);
+                }
                 
                 if (isAuthority) {
                     attack.Fire();

@@ -16,7 +16,7 @@ namespace RaindropLobotomy.Buffs {
         {
             orig(self, damageInfo, victim);
 
-            if (damageInfo.crit && damageInfo.attacker) {
+            if (damageInfo.crit && damageInfo.attacker && damageInfo.attacker.GetComponent<CharacterBody>()) {
                 int count = damageInfo.attacker.GetComponent<CharacterBody>().GetBuffCount(Buff);
                 
                 if (count > 0) {
@@ -24,7 +24,7 @@ namespace RaindropLobotomy.Buffs {
                 }
             }
 
-            if (damageInfo.attacker && damageInfo.HasModdedDamageType(GivePoise)) {
+            if (damageInfo.attacker && damageInfo.HasModdedDamageType(GivePoise) && damageInfo.attacker.GetComponent<CharacterBody>()) {
                 int count = damageInfo.attacker.GetComponent<CharacterBody>().GetBuffCount(Buff);
                 damageInfo.attacker.GetComponent<CharacterBody>().SetBuffCount(Buff.buffIndex, Mathf.Clamp(count + 1, 0, 20));
             }

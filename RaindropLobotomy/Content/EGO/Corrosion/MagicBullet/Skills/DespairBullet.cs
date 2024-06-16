@@ -14,6 +14,7 @@ namespace RaindropLobotomy.EGO.Bandit {
         private MagicBulletPortal portal;
         private MagicBulletPortal output;
 
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -31,9 +32,15 @@ namespace RaindropLobotomy.EGO.Bandit {
         public IEnumerator ProcessBullet() {
             GameObject portalInst = GameObject.Instantiate(PortalPrefab, FindModelChild(PortalMuzzle));
             portal = portalInst.GetComponent<MagicBulletPortal>();
-            AkSoundEngine.PostEvent("Play_fruitloop_portal", base.gameObject);
+            
+            if (EGOMagicBullet.config.UseVanillaSounds) {
+                AkSoundEngine.PostEvent(Events.Play_mage_m2_shoot, base.gameObject);
+            }
+            else {
+                AkSoundEngine.PostEvent("Play_fruitloop_portal", base.gameObject);
+            }
 
-            GameObject portalInst2 = GameObject.Instantiate(PortalPrefab, FindModelChild("DespairPortal"));
+            GameObject portalInst2 = GameObject.Instantiate(PortalPrefab, base.transform.position, Quaternion.identity);
             output = portalInst2.GetComponent<MagicBulletPortal>();
 
             portal.outputPortals.Add(output);
@@ -48,7 +55,12 @@ namespace RaindropLobotomy.EGO.Bandit {
                 portal.FireBullet(attack);
             }
 
-            AkSoundEngine.PostEvent("Play_fruitloop_shot", base.gameObject);
+            if (EGOMagicBullet.config.UseVanillaSounds) {
+                AkSoundEngine.PostEvent(Events.Play_bandit2_m1_rifle, base.gameObject);
+            }
+            else {
+                AkSoundEngine.PostEvent("Play_fruitloop_shot", base.gameObject);
+            }
 
 
             yield return new WaitForSeconds(0.5f);
@@ -72,6 +84,11 @@ namespace RaindropLobotomy.EGO.Bandit {
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            if (output) {
+                output.transform.position = (base.GetAimRay().origin) + (-(base.GetAimRay().direction) * 5f);
+                output.transform.forward = (base.GetAimRay().GetPoint(50f) - output.transform.position).normalized;
+            }
 
             StartAimMode(0.1f);
         }

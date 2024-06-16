@@ -11,6 +11,7 @@ Survivor Variants:
 - Bandit :: Magic Bullet
 - Void Fiend :: Mimicry
 - Blade Lineage Mercenary
+- Commando :: Solemn Lament
 
 Items:
 - Clockwork Spring (Steam Machine ego gift)
@@ -31,12 +32,43 @@ Ordeals:
 
 Ordeals will appear after spending too long on the same stage. Can be configured.
 
+## Content Screenshots
+<details><summary>Survivor Previews</summary>
+
+![Solemn Lament](https://i.postimg.cc/sgVDPJS3/03-51-41-screenshot.png)
 ![Blade Lineage Mercenary](https://i.postimg.cc/hjpC10Hd/07-41-03-screenshot.png)
 ![Sweeper](https://i.postimg.cc/7Lkn99s5/12-02-12-screenshot.png)
 ![Mimicry](https://i.postimg.cc/fWr7pDqn/12-02-05-screenshot.png)
 ![Magic Bullet](https://i.postimg.cc/hv69d1QP/12-02-10-screenshot.png)
 
+</details>
+
+## Credits
+pseudopulse - programming, models, animations
+
+smxrez - Solemn Lament gun replacement model, playtesting
+
+monsterskinman - playtesting, ideas
+
+project moon - making the amazing series where all of the visual designs, sounds, and sprites here come from
+
 ## Changelog
+# 1.3.2
+- buffed magic bullet damage coefficients
+- bullet of despair now fires to the cursor
+- flooding bullets gives more armor
+- added a config option to replace solemn lament's ding sound with the crit sound effect
+- added a config option to replace magic bullet's gunshot and portal open with vanilla sounds
+- firing magic bullet now only consumes ammo if it auto-aimed onto an enemy (manually aimed shots dont count towards the 7)
+- made configs generate on mod load instead of the first time they get accessed
+- readme update 2: electric boogaloo
+# 1.3.1
+- updated desc
+# 1.3.0
+- added new survivor variant: solemn lament commando
+- fixed bl merc throwing a nullref when a forgotten relics lightning rod landed a crit (so true??)
+# 1.2.3
+- fixed Unrelenting and HiddenInvincibility granted by Yield My Flesh / To Claim Their Bones being really inconsistent (sometimes not being granted, sometimes never getting removed)
 # 1.2.2
 - Acupuncture now dashes to where you're aiming instead of directly forwards
 # 1.2.1
@@ -87,10 +119,3 @@ Ordeals will appear after spending too long on the same stage. Can be configured
 - readme update
 # 1.0.0
 - release
-
-## Credits
-pseudopulse - programming, models, animations
-
-smxrez - Solemn Lament gun replacement model, playtesting
-
-monsterskinman - playtesting, ideas

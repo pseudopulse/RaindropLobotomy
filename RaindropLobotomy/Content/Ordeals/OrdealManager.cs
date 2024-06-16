@@ -38,6 +38,16 @@ namespace RaindropLobotomy.Ordeals
             public float NoonTimer => Option<float>("Activation Time - NOON", "The time it takes (in seconds) for a Noon ordeal to appear.", 60f * 5f);
             public float DuskTimer => Option<float>("Activation Time - DUSK", "The time it takes (in seconds) for a Dusk ordeal to appear.", 60f * 6f);
             public float MidnightTimer => Option<float>("Activation Time - MIDNIGHT", "The time it takes (in seconds) for a Midnight ordeal to appear.", 60f * 7f);
+
+            public override void Initialize()
+            {
+                _ = Enabled;
+                _ = ShowPopup;
+                _ = DawnTimer;
+                _ = NoonTimer;
+                _ = DuskTimer;
+                _ = MidnightTimer;
+            }
         }
 
         public static OrdealConfig Config = new();

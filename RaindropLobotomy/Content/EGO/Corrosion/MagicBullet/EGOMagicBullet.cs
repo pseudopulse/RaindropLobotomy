@@ -36,6 +36,19 @@ namespace RaindropLobotomy.EGO.Bandit {
         public static BuffDef MB => Buffs.MagicBullet.Instance.Buff;
         public static DamageAPI.ModdedDamageType DespairDamage = DamageAPI.ReserveDamageType();
 
+        public class MagicBulletConfig : ConfigClass
+        {
+            public override string Section => "EGO Corrosions :: Magic Bullet";
+            public bool UseVanillaSounds => Option<bool>("Use Vanilla Sounds", "Should Magic Bullet use vanilla sound effects?", false);
+
+            public override void Initialize()
+            {
+                _ = UseVanillaSounds;
+            }
+        }
+
+        public static MagicBulletConfig config = new();
+
         public override void Modify()
         {
             base.Modify();
@@ -164,16 +177,16 @@ namespace RaindropLobotomy.EGO.Bandit {
             "RL_EGO_MAGICBULLET_PASSIVE_DESC".Add("Upon reaching <style=cIsDamage>7</style> stacks of <style=cIsUtility>Magic Bullet</style>, replace your primary and special with <style=cDeath>Bullet of Despair</style>.");
 
             "RL_EGO_MAGICBULLET_PRIMARY_NAME".Add("Magic Bullet");
-            "RL_EGO_MAGICBULLET_PRIMARY_DESC".Add("<style=cDeath>Inevitable</style>. Fire a <style=cIsUtility>piercing</style> bullet for <style=cIsDamage>380% damage</style>. The bullet will <style=cIsUtility>automatically target</style> an enemy near your aim.");
+            "RL_EGO_MAGICBULLET_PRIMARY_DESC".Add("<style=cDeath>Inevitable</style>. Fire a <style=cIsUtility>piercing</style> bullet for <style=cIsDamage>480% damage</style>. The bullet will <style=cIsUtility>automatically target</style> an enemy near your aim.");
 
             "RL_EGO_MAGICBULLET_SECONDARY_NAME".Add("Ignition");
-            "RL_EGO_MAGICBULLET_SECONDARY_DESC".Add("Strike forward, dealing <style=cIsDamage>450% damage</style> and inflicting <style=cIsUtility>Dark Flame</style>.");
+            "RL_EGO_MAGICBULLET_SECONDARY_DESC".Add("Strike forward, dealing <style=cIsDamage>550% damage</style> and inflicting <style=cIsUtility>Dark Flame</style>.");
 
             "RL_EGO_MAGICBULLET_UTILITY_NAME".Add("Silent Advance");
-            "RL_EGO_MAGICBULLET_UTILITY_DESC".Add("<style=cIsUtility>Teleport</style> a medium distance. Hit nearby targets for <style=cIsDamage>200%</style> damage, inflicting <style=cIsUtility>Dark Flame</style>.");
+            "RL_EGO_MAGICBULLET_UTILITY_DESC".Add("<style=cIsUtility>Teleport</style> a medium distance. Hit nearby targets for <style=cIsDamage>300%</style> damage, inflicting <style=cIsUtility>Dark Flame</style>.");
 
             "RL_EGO_MAGICBULLET_SPECIAL_NAME".Add("Flooding Bullets");
-            "RL_EGO_MAGICBULLET_SPECIAL_DESC".Add("<style=cDeath>Inevitable</style>. Fire <style=cIsUtility>piercing</style> bullets at up to <style=cIsDamage>3 targets</style>, dealing <style=cIsDamage>3x900%</style> damage.");
+            "RL_EGO_MAGICBULLET_SPECIAL_DESC".Add("<style=cDeath>Inevitable</style>. Fire <style=cIsUtility>piercing</style> bullets at up to <style=cIsDamage>3 targets</style>, dealing <style=cIsDamage>3x1100%</style> damage.");
 
             "RL_EGO_MAGICBULLET_KYS_NAME".Add("Bullet of Despair");
             "RL_EGO_MAGICBULLET_KYS_DESC".Add("<style=cDeath>Indiscriminate.</style>. Fire a powerful piercing shot straight through yourself, dealing <style=cIsDamage>10% of your max hp</style> to you and <style=cIsDamage>10x that to enemies</style>. <style=cStack>This skill cannot kill you.</style>");

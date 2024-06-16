@@ -9,8 +9,8 @@ namespace RaindropLobotomy.EGO.Merc {
             base.OnEnter();
 
             if (NetworkServer.active) {
-                base.characterBody.RemoveBuff(Unrelenting.Instance.Buff);
-                base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
+                base.characterBody.SetBuffCount(Unrelenting.Instance.Buff.buffIndex, 0);
+                base.characterBody.SetBuffCount(RoR2Content.Buffs.HiddenInvincibility.buffIndex, 0);
             }
 
             outer.SetNextStateToMain();

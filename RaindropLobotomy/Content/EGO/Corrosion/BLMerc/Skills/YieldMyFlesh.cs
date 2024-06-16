@@ -95,8 +95,8 @@ namespace RaindropLobotomy.EGO.Merc {
 
                 base.characterBody.SetBuffCount(Poise.Instance.Buff.buffIndex, 0);
 
-                base.characterBody.AddBuff(Unrelenting.Instance.Buff);
-                base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                base.characterBody.SetBuffCount(Unrelenting.Instance.Buff.buffIndex, 0);
+                base.characterBody.SetBuffCount(RoR2Content.Buffs.HiddenInvincibility.buffIndex, 1);
 
                 if (base.isAuthority) {
                     outer.SetNextState(new ToClaimTheirBones_Transition(0f, new ToClaimTheirBones_1(bonusDamage, attacker)));
