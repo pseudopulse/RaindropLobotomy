@@ -44,6 +44,10 @@ namespace RaindropLobotomy {
         public static BepInEx.Logging.ManualLogSource ModLogger;
         public static ConfigFile config;
 
+        public static float[] RandomizedPercentages = new float[25];
+        private float stopwatch = 0f;
+        public static Dictionary<HealthComponent, int> PercentagesMap = new();
+
         public void Awake() {
             assembly = typeof(Main).Assembly;
             ModLogger = Logger;
@@ -115,6 +119,30 @@ namespace RaindropLobotomy {
             T[] ts = MainAssets.LoadAllAssets<T>();
             for (int i = 0; i < ts.Length; i++) {
                 action(ts[i]);
+            }
+        }
+
+        public static float GetPercentage(HealthComponent comp) {
+            if (comp == null) {
+                return 1f;
+            }
+
+            if (!PercentagesMap.ContainsKey(comp)) {
+                PercentagesMap[comp] = Random.Range(0, RandomizedPercentages.Length);
+            }
+
+            return RandomizedPercentages[PercentagesMap[comp]];
+        }
+
+        public void FixedUpdate() {
+            stopwatch += Time.fixedDeltaTime;
+
+            if (stopwatch >= 0.8f) {
+                stopwatch = 0f;
+
+                for (int i = 0; i < RandomizedPercentages.Length; i++) {
+                    RandomizedPercentages[i] = Random.Range(0f, 1f);
+                }
             }
         }
 

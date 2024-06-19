@@ -22,6 +22,8 @@ namespace RaindropLobotomy.Enemies.SingingMachine
 
         public bool IsTool => false;
 
+        public override string ConfigName => "Singing Machine";
+
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("SingingMachineBody.prefab");

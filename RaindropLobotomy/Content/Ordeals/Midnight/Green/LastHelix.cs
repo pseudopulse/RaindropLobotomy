@@ -18,6 +18,9 @@ namespace RaindropLobotomy.Ordeals.Midnight.Green
         public static GameObject LaserPrefab;
         public static GameObject PlasmaPrefab;
         public static GameObject IndicatorPrefab;
+
+        public override string ConfigName => "Helix of the End";
+
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("LastHelixBody.prefab");

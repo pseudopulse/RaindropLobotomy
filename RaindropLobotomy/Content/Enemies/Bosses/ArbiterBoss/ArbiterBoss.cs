@@ -26,7 +26,16 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
         //
         public static GameObject PillarProjectile;
         public static GameObject PillarPortalEffect;
+
+        public override string ConfigName => "An Arbiter";
+
         //
+
+        public override void Create()
+        {
+            // unfinished, dont load
+        }
+
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("BinahBody.prefab");

@@ -20,6 +20,8 @@ namespace RaindropLobotomy.Enemies.SteamMachine
 
         public bool IsTool => false;
 
+        public override string ConfigName => "Steam Transport Machine";
+
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("SteamMachineBody.prefab");

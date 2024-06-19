@@ -12,6 +12,7 @@ Survivor Variants:
 - Void Fiend :: Mimicry
 - Blade Lineage Mercenary
 - Commando :: Solemn Lament
+- MULT :: Grinder MK. 5-2
 
 Items:
 - Clockwork Spring (Steam Machine ego gift)
@@ -20,6 +21,7 @@ Enemies:
 - Fragment of the Universe
 - Steam Transport Machine
 - Singing Machine
+- 1.76 MHz
 
 Skills:
 - Yield My Flesh (Mercenary Special)
@@ -35,6 +37,7 @@ Ordeals will appear after spending too long on the same stage. Can be configured
 ## Content Screenshots
 <details><summary>Survivor Previews</summary>
 
+![Grinder MK52](https://i.postimg.cc/sXLKt4Yh/12-41-32-screenshot.png)
 ![Solemn Lament](https://i.postimg.cc/sgVDPJS3/03-51-41-screenshot.png)
 ![Blade Lineage Mercenary](https://i.postimg.cc/hjpC10Hd/07-41-03-screenshot.png)
 ![Sweeper](https://i.postimg.cc/7Lkn99s5/12-02-12-screenshot.png)
@@ -53,6 +56,10 @@ monsterskinman - playtesting, ideas
 project moon - making the amazing series where all of the visual designs, sounds, and sprites here come from
 
 ## Changelog
+# 1.4.0
+- survivor variant: grinder mk5-2 mult
+- enemy: 1.76 MHz
+- added configs for enabling/disabling enemies
 # 1.3.2
 - buffed magic bullet damage coefficients
 - bullet of despair now fires to the cursor

@@ -24,6 +24,8 @@ namespace RaindropLobotomy.Enemies.Fragment
 
         public bool IsTool => false;
 
+        public override string ConfigName => "Fragment of the Universe";
+
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("FragmentBody.prefab");

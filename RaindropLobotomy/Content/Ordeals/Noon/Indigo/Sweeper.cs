@@ -6,6 +6,9 @@ namespace RaindropLobotomy.Ordeals.Noon.Indigo {
     {
         public static CharacterSpawnCard cscSweeper;
         public static GameObject BodyPrefab;
+
+        public override string ConfigName => "A Sweeper (Enemy)";
+
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("SweeperAIBody.prefab");

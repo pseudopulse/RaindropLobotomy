@@ -6,6 +6,9 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
     {
         public LazyIndex noon = new("GreenNoonBody");
         public static DamageAPI.ModdedDamageType NoonInvulnFrontal = DamageAPI.ReserveDamageType();
+
+        public override string ConfigName => "Process of Understanding";
+
         public override void LoadPrefabs()
         {
             prefab = Load<GameObject>("GreenNoonBody.prefab");

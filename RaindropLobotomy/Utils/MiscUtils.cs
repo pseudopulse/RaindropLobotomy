@@ -230,6 +230,44 @@ namespace RaindropLobotomy.Utils
                 return new Vector3[] { center };
             }
         }
+
+        public static Vector3 GetRandomGroundNode(NodeFlags reqFlags, NodeFlags forbiddenFlags, HullMask hull) {
+            if (SceneInfo.instance && SceneInfo.instance.groundNodes) {
+                NodeGraph graph = SceneInfo.instance.groundNodes;
+
+                List<Vector3> valid = new();
+
+                foreach (NodeGraph.Node node in graph.nodes) {
+                    if (
+                        (node.forbiddenHulls & hull) == 0 &&
+                        (node.flags & reqFlags) == reqFlags &&
+                        (node.flags & forbiddenFlags) == 0
+                    ) {
+                        valid.Add(node.position);
+                    }
+                }
+
+                if (valid.Count > 0) {
+                    return valid.GetRandom();
+                }
+                else {
+                    return Random.onUnitSphere * 500f;
+                }
+            }
+            else {
+                return Random.onUnitSphere * 500f;
+            }
+        }
+
+        public static AnimatorOverrideController FixOverrideController(RuntimeAnimatorController target, AnimatorOverrideController original) {
+            AnimatorOverrideController controller = new(target);
+
+            foreach (AnimationClip clip in original.animationClips) {
+                Debug.Log(clip.name + " - clip");
+            }
+
+            return controller;
+        }
     }
 
     public class Timer {

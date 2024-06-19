@@ -31,8 +31,13 @@ namespace RaindropLobotomy.Enemies
         public GameObject prefabMaster;
         public CharacterBody body;
         public CharacterMaster master;
+        public abstract string ConfigName { get; }
         public virtual void Create()
         {
+            if (!Main.config.Bind<bool>(ConfigName, "Enabled", true, "Should this enemy appear in runs?").Value) {
+                return;
+            }
+
             LoadPrefabs();
             body = prefab.GetComponent<CharacterBody>();
             if (prefabMaster) {
