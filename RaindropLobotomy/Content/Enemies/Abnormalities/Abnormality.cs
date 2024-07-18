@@ -47,7 +47,7 @@ namespace RaindropLobotomy.Enemies {
         {
             orig(self);
 
-            if (!GameObject.Find("AbnormalityDirector(Clone)")) {
+            if (!GameObject.Find("AbnormalityDirector(Clone)") && Abnormalities.Where(x => !x.IsTool).Count() > 0) {
                 GameObject dir = GameObject.Instantiate(AbnoDirector);
             }
         }

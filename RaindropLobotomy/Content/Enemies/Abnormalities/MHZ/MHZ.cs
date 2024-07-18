@@ -168,12 +168,12 @@ namespace RaindropLobotomy.Enemies.MHZ {
                 hud.skillIcons[0], hud.skillIcons[1], hud.skillIcons[2], hud.skillIcons[3], hud.healthBar
             );
 
-            if (body.hasAuthority && !HUDOverlay) {
+            /*if (body.hasAuthority && !HUDOverlay) {
                 HUDOverlay = GameObject.Instantiate(Load<GameObject>("MHZStaticOverlay.prefab"));
                 var marker = HUDOverlay.AddComponent<HUDStaticMarker>();
                 marker.killOurselves = true;
                 marker.target = body;
-            }
+            }*/
         }
 
         private void AddStaticMarkers(CharacterBody body, params Component[] components) {

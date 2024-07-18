@@ -56,6 +56,21 @@ monsterskinman - playtesting, ideas
 project moon - making the amazing series where all of the visual designs, sounds, and sprites here come from
 
 ## Changelog
+# 1.4.3
+- having stacks of Charge grants +3.5% movement speed per stack
+- you can no longer re-apply seal to an enemy who already has seal
+- the duration of seal is now half as long on bosses
+- To Claim Their Bones now checks if it would fling you out and map and downslams instead
+- Rest now only does an upward launch if you cancel it via jump instead of shift
+- Acupuncture now casts in 0.25s instead of 0.5s, distance traveled remains the same (faster more responsive dash)
+# 1.4.2
+- now no longer spawns an AbnormalityDirector if no abnos are enabled, preventing shitloads of error spam
+# 1.4.1
+- grinder mk5-2 now does an upwards leap after leaving rest mode
+- landing a hit on Terminate now halts your fall
+- slowed down the static of 1.76 MHz
+- made the static of 1.76 MHz grayscale
+- made Disable Limiter not target destroyable props like barrels or sulfur pods
 # 1.4.0
 - survivor variant: grinder mk5-2 mult
 - enemy: 1.76 MHz

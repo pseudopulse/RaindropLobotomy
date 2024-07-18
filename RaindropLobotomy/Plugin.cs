@@ -36,7 +36,7 @@ namespace RaindropLobotomy {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "BALLS";
         public const string PluginName = "RaindropLobotomy";
-        public const string PluginVersion = "1.0.4";
+        public const string PluginVersion = "1.4.3";
 
         public static Assembly assembly;
 

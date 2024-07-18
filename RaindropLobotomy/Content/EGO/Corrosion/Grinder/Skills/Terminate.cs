@@ -9,6 +9,8 @@ namespace RaindropLobotomy.EGO.Toolbot {
         private float freq = 1f / TickRate;
         private float stopwatch = 1f / TickRate;
         private GameObject spinEffect;
+        //
+        private bool hitLastAttack = false;
 
         public override void OnEnter()
         {
@@ -55,6 +57,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
                 attack.isCrit = base.RollCrit();
                 attack.ResetIgnoredHealthComponents();
                 UpdateDamageType();
+                hitLastAttack = attack.Fire();
 
                 stopwatch = 0f;
 
@@ -62,8 +65,10 @@ namespace RaindropLobotomy.EGO.Toolbot {
                     outer.SetNextStateToMain();
                 }
             }
-
-            attack.Fire();
+            
+            if (hitLastAttack && base.characterMotor.velocity.y < 0f) {
+                base.characterMotor.velocity.y += (Mathf.Abs(Physics.gravity.y) * 0.66f) * Time.fixedDeltaTime;
+            }
         }
 
         public override void OnExit()

@@ -65,6 +65,12 @@ namespace RaindropLobotomy.EGO.Toolbot {
             if (base.fixedAge >= 1f && inputBank.skill3.down) {
                 outer.SetNextStateToMain();
             }
+
+            else if (base.fixedAge >= 1f && inputBank.jump.down) {
+                base.characterMotor.Motor.ForceUnground();
+                base.characterMotor.velocity = Vector3.up * 30f;
+                outer.SetNextStateToMain();
+            }
         }
 
         public void UpdateSkill(GenericSkill slot, float delta) {
@@ -92,6 +98,8 @@ namespace RaindropLobotomy.EGO.Toolbot {
             base.modelLocator.normalizeToFloor = false;
             
             AkSoundEngine.PostEvent(Events.Play_MULT_shift_end, base.gameObject);
+
+            EffectManager.SimpleEffect(Assets.GameObject.Bandit2SmokeBombMini, base.transform.position, Quaternion.identity, false);
         }
     }
 }

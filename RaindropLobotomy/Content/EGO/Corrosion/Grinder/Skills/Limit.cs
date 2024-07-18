@@ -90,6 +90,10 @@ namespace RaindropLobotomy.EGO.Toolbot {
             }
 
             foreach (HurtBox box in boxes) {
+                if (!box.healthComponent.body || !box.healthComponent.body.master) {
+                    continue;
+                }
+                
                 line.Add(new(box.transform.position));
             }
 

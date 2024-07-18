@@ -88,6 +88,10 @@ namespace RaindropLobotomy.EGO.Merc {
             damageCoefficient *= bonusDamage;
             base.OnEnter();
 
+            if (!Physics.Raycast(base.transform.position, forward, 90f, LayerIndex.world.mask)) {
+                forward = Vector3.down;
+            }
+
             base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
         }
 

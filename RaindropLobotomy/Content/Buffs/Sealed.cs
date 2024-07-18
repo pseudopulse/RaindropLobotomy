@@ -19,8 +19,8 @@ namespace RaindropLobotomy.Buffs {
         {
             orig(self, damageInfo, victim);
 
-            if (damageInfo.HasModdedDamageType(SolemnLament.Seal) && victim) {
-                victim.GetComponent<CharacterBody>().AddTimedBuff(Buff, 15f, 4);
+            if (damageInfo.HasModdedDamageType(SolemnLament.Seal) && victim && victim.GetComponent<CharacterBody>().GetBuffCount(Buff) < 4) {
+                victim.GetComponent<CharacterBody>().AddTimedBuff(Buff, victim.GetComponent<CharacterBody>().isChampion ? 7.5f : 15f, 4);
             }
         }
 

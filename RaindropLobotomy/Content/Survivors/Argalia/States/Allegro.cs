@@ -4,7 +4,7 @@ namespace RaindropLobotomy.Survivors.Argalia {
     public class Allegro : BaseSkillState {
         public static float DamageCoefficient = 2.2f;
         public static float Duration = 0.4f;
-        public static string Muzzle = "MuzzleHorizontalSlash";
+        public static string Muzzle = "Slash, L";
         //
         private OverlapAttack attack;
         private GameObject effect;
@@ -13,7 +13,7 @@ namespace RaindropLobotomy.Survivors.Argalia {
             attack = new();
             attack.attacker = base.gameObject;
             attack.damage = base.damageStat * DamageCoefficient;
-            attack.hitBoxGroup = FindHitBoxGroup("HorizontalSlash");
+            attack.hitBoxGroup = FindHitBoxGroup("SlashStandard");
             attack.attackerFiltering = AttackerFiltering.NeverHitSelf;
             attack.procCoefficient = 1f;
             attack.procChainMask = default;
@@ -24,7 +24,7 @@ namespace RaindropLobotomy.Survivors.Argalia {
 
             AkSoundEngine.PostEvent(Events.Play_merc_sword_swing, base.gameObject);
 
-            effect = SpawnMeleeEffect(Assets.GameObject.MercSwordFinisherSlash, Muzzle);
+            effect = SpawnMeleeEffect(Argalia.SlashR, Muzzle);
         }
 
         public override void FixedUpdate()

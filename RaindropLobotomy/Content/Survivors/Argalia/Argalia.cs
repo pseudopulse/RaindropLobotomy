@@ -10,10 +10,14 @@ namespace RaindropLobotomy.Survivors.Argalia {
         public override GameObject MasterPrefab => null;
         public static BuffDef ResonanceBuff;
         public static DamageAPI.ModdedDamageType ResonanceDamageType = DamageAPI.ReserveDamageType();
+        //
+        public static GameObject SlashR;
 
         public override void Modify()
         {
             ResonanceBuff = Load<BuffDef>("bdResonance.asset");
+
+            SlashR = Load<GameObject>("ReverbSlash_R.prefab");
         }
         public override void SetupLanguage()
         {

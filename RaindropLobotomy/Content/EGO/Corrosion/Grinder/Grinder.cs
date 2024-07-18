@@ -57,6 +57,18 @@ namespace RaindropLobotomy.EGO.Toolbot {
 
             On.RoR2.DotController.AddDot += OnInflictDOT;
             On.RoR2.Skills.SkillDef.IsReady += ChargeBlocker;
+
+            RecalculateStatsAPI.GetStatCoefficients += ChargeStats;
+        }
+
+        private void ChargeStats(CharacterBody sender, StatHookEventArgs args)
+        {
+            int c = sender.GetBuffCount(Charge);
+            float mult = c * 0.035f;
+
+            if (c > 0) {
+                args.moveSpeedMultAdd += mult;
+            }
         }
 
         private bool ChargeBlocker(On.RoR2.Skills.SkillDef.orig_IsReady orig, RoR2.Skills.SkillDef self, GenericSkill skillSlot)

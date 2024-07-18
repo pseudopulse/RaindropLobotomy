@@ -4,7 +4,7 @@ using System.Text;
 namespace RaindropLobotomy.EGO.Merc {
     public class Acupuncture : CoolerBasicMeleeAttack
     {
-        public override float BaseDuration => 0.5f;
+        public override float BaseDuration => 0.25f;
 
         public override float DamageCoefficient => 4f;
 
@@ -73,7 +73,7 @@ namespace RaindropLobotomy.EGO.Merc {
             base.characterBody.isSprinting = true;
 
             base.characterDirection.forward = vector;
-            base.characterMotor.velocity = vector * 32f;
+            base.characterMotor.velocity = vector * 64f;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
