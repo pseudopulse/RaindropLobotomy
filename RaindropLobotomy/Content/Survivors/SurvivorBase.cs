@@ -33,7 +33,7 @@ namespace RaindropLobotomy.Survivors
         {
             if (BodyPrefab) ContentAddition.AddBody(BodyPrefab);
             if (MasterPrefab) ContentAddition.AddMaster(MasterPrefab);
-            ContentAddition.AddSurvivorDef(Survivor);
+            if (Survivor) ContentAddition.AddSurvivorDef(Survivor);
 
             Modify();
             SetupLanguage();

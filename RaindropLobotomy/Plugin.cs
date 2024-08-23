@@ -31,6 +31,7 @@ namespace RaindropLobotomy {
     [BepInDependency(R2API.Networking.NetworkingAPI.PluginGUID, BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency(PrefabAPI.PluginGUID, BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency(R2API.ContentManagement.R2APIContentManager.PluginGUID, BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.rob.Paladin", BepInDependency.DependencyFlags.SoftDependency)]
     
     public class Main : BaseUnityPlugin {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
@@ -47,11 +48,28 @@ namespace RaindropLobotomy {
         public static float[] RandomizedPercentages = new float[25];
         private float stopwatch = 0f;
         public static Dictionary<HealthComponent, int> PercentagesMap = new();
+        // compat
+        public static bool paladinInstalled;
+
+        public class MainConfiguration : ConfigClass
+        {
+            public override string Section => "Main Configuration";
+            public bool SuppressDuplicateVariants => Option<bool>("Suppress Duplicate Variants", "Prevent a vanilla-targeted variant from loading if another mod survivor has a copy of that variant. (ex: Index Messenger Mercenary wont load if Paladin is present, as he receives Index Messenger Paladin)", true);
+
+            public override void Initialize()
+            {
+                
+            }
+        }
+
+        public static MainConfiguration MainConfig = new();
 
         public void Awake() {
             assembly = typeof(Main).Assembly;
             ModLogger = Logger;
             MainAssets = AssetBundle.LoadFromFile(assembly.Location.Replace("RaindropLobotomy.dll", "enkephalin"));
+
+            paladinInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rob.Paladin");
 
             config = Config;
 
@@ -63,7 +81,6 @@ namespace RaindropLobotomy {
             ScanTypes<EGOSkillBase>(x => x.Create());
             ScanTypes<BuffBase>(x => x.Create());
             ScanTypes<SurvivorBase>(x => x.Create());
-            ScanTypes<CorrosionBase>(x => x.Create());
             ScanTypes<SkillBase>(x => x.Create());
             ScanTypes<EGOGiftBase>(x => x.Initialize());
 
@@ -96,6 +113,16 @@ namespace RaindropLobotomy {
                 AkSoundEngine.LoadBank("InitRL", out _);
                 AkSoundEngine.LoadBank("RLBank", out _);
             };
+        }
+
+        public void Start() { // needs to happen in start to ensure we do this after any other mods we might softdep on have done theirs
+            ScanTypes<CorrosionBase>(x => 
+                {
+                    if (x.AreWeAllowedToLoad()) { // do a check first as some variants are given to different mods when present (ex: index mercenary -> index paladin)
+                        x.Create();
+                    }
+                }
+            );
         }
 
         public static T Load<T>(string key) where T : UnityEngine.Object {

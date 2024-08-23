@@ -24,6 +24,28 @@ namespace RaindropLobotomy.Utils
             return false;
         }
 
+        public static bool GetIsAttacking(this CharacterBody body) {
+            List<string> esms = new();
+
+            foreach (GenericSkill skill in body.GetComponents<GenericSkill>()) {
+                if (skill.skillDef) {
+                    if (!esms.Contains(skill.skillDef.activationStateMachineName)) {
+                        esms.Add(skill.skillDef.activationStateMachineName);
+                    }
+                }
+            }
+
+            foreach (string str in esms) {
+                EntityStateMachine machine = EntityStateMachine.FindByCustomName(body.gameObject, str);
+
+                if (!machine.IsInMainState()) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         /// <summary>Clears the inventory of a CharacterBody</summary>
         public static void ClearInventory(this CharacterBody body)
         {

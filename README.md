@@ -56,11 +56,15 @@ monsterskinman - playtesting, ideas
 project moon - making the amazing series where all of the visual designs, sounds, and sprites here come from
 
 ## Changelog
+# 1.5.0
+- added new variant: Index Messenger Mercenary
+- added new alternate variant: ㅑㅜㅇㄷ튿ㄴㄴ둫ㄷ게밈여ㅜ (goes to Paladin if he is installed. by default, replaces Index Messenger Mercenary. functionally the same, has a different skin)
+
 # 1.4.3
 - having stacks of Charge grants +3.5% movement speed per stack
 - you can no longer re-apply seal to an enemy who already has seal
 - the duration of seal is now half as long on bosses
-- To Claim Their Bones now checks if it would fling you out and map and downslams instead
+- To Claim Their Bones now checks if it would fling you out of the map and downslams instead
 - Rest now only does an upward launch if you cancel it via jump instead of shift
 - Acupuncture now casts in 0.25s instead of 0.5s, distance traveled remains the same (faster more responsive dash)
 # 1.4.2

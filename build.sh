@@ -5,6 +5,9 @@ cp RaindropLobotomy/enkephalin RaindropLobotomy/bin/Debug/netstandard2.0/
 rm -rf ~/.config/r2modmanPlus-local/RiskOfRain2/profiles/RaindropLobotomy/BepInEx/plugins/RaindropLobotomy
 cp -r WwiseRL/* RaindropLobotomy/bin/Debug/netstandard2.0/
 cp -r RaindropLobotomy/bin/Debug/netstandard2.0/  ~/.config/r2modmanPlus-local/RiskOfRain2/profiles/RaindropLobotomy/BepInEx/plugins/RaindropLobotomy
+rm ~/.config/r2modmanPlus-local/RiskOfRain2/profiles/RaindropLobotomy/BepInEx/plugins/RaindropLobotomy/PaladinMod.dll
+rm ~/.config/r2modmanPlus-local/RiskOfRain2/profiles/RaindropLobotomy/BepInEx/plugins/RaindropLobotomy/Decalicious.dll
+rm ~/.config/r2modmanPlus-local/RiskOfRain2/profiles/RaindropLobotomy/BepInEx/plugins/RaindropLobotomy/Survariants.dll
 
 rm -rf RLBuild
 mkdir RLBuild

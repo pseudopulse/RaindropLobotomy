@@ -81,6 +81,9 @@
       <Reference Include="Survariants">
         <HintPath>.\libs\Survariants.dll</HintPath>
       </Reference>
+      <Reference Include="PaladinMod">
+        <HintPath>.\libs\PaladinMod.dll</HintPath>
+      </Reference>
     </ItemGroup>
   
   </Project>
