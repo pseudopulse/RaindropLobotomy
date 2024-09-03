@@ -16,14 +16,14 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	26377023	Freischutz_Shot	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Freischutz_Shot_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Freischutz_Shot		36272
-	77842745	Nullthing_Skill3_Cast	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill3_Cast_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill3_Cast		13571
-	129937569	ButterFlyMan_Atk_White	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\ButterFlyMan_Atk_White_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\ButterFlyMan_Atk_White		31601
-	273629241	Cosmos_Sing	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\SFX\Cosmos_Sing_9EDFC787.wem		\Actor-Mixer Hierarchy\RL\Cosmos_Sing		509777
-	582371050	Nullthing_Skill3_Finish	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill3_Finish_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill3_Finish		14922
-	663419665	ButterFlyMan_StongAtk_Black	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\ButterFlyMan_StongAtk_Black_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\ButterFlyMan_StongAtk_Black		26018
-	817133299	Nullthing_Skill1_casting	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill1_casting_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill1_casting		22048
-	854411757	Freischutz_Create	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Freischutz_Create_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Freischutz_Create		37676
-	952535304	Cosmos_Hit	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\SFX\Cosmos_Hit_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Cosmos_Hit		34446
-	988601334	Nullthing_Skill1_Shang	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill1_Shang_3F75BDB9.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill1_Shang		8893
+	26377023	Freischutz_Shot	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Freischutz_Shot_8E324C96.wem		\Actor-Mixer Hierarchy\RL\Freischutz_Shot		36296
+	77842745	Nullthing_Skill3_Cast	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill3_Cast_8E324C96.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill3_Cast		13595
+	129937569	ButterFlyMan_Atk_White	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\ButterFlyMan_Atk_White_8E324C96.wem		\Actor-Mixer Hierarchy\RL\ButterFlyMan_Atk_White		31625
+	273629241	Cosmos_Sing	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\SFX\Cosmos_Sing_56CEF360.wem		\Actor-Mixer Hierarchy\RL\Cosmos_Sing		509801
+	582371050	Nullthing_Skill3_Finish	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill3_Finish_8E324C96.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill3_Finish		14946
+	663419665	ButterFlyMan_StongAtk_Black	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\ButterFlyMan_StongAtk_Black_8E324C96.wem		\Actor-Mixer Hierarchy\RL\ButterFlyMan_StongAtk_Black		26042
+	817133299	Nullthing_Skill1_casting	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill1_casting_8E324C96.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill1_casting		22072
+	854411757	Freischutz_Create	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Freischutz_Create_8E324C96.wem		\Actor-Mixer Hierarchy\RL\Freischutz_Create		37700
+	952535304	Cosmos_Hit	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\SFX\Cosmos_Hit_8E324C96.wem		\Actor-Mixer Hierarchy\RL\Cosmos_Hit		34470
+	988601334	Nullthing_Skill1_Shang	Z:\home\pseudopulse\tmp\RaindropLobotomy\.cache\Windows\Voices\English(US)\Nullthing_Skill1_Shang_8E324C96.wem		\Actor-Mixer Hierarchy\RL\Nullthing_Skill1_Shang		8917
 

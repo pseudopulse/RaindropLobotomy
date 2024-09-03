@@ -56,9 +56,8 @@ monsterskinman - playtesting, ideas
 project moon - making the amazing series where all of the visual designs, sounds, and sprites here come from
 
 ## Changelog
-# 1.5.0
-- added new variant: Index Messenger Mercenary
-- added new alternate variant: ㅑㅜㅇㄷ튿ㄴㄴ둫ㄷ게밈여ㅜ (goes to Paladin if he is installed. by default, replaces Index Messenger Mercenary. functionally the same, has a different skin)
+# 1.4.4
+- updated for SOTS
 
 # 1.4.3
 - having stacks of Charge grants +3.5% movement speed per stack

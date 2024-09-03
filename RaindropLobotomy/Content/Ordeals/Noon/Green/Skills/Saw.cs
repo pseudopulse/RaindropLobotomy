@@ -10,7 +10,7 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
 
         public override string HitboxName => "Saw";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.OmniImpactVFX;
+        public override GameObject HitEffectPrefab => Paths.GameObject.OmniImpactVFX;
 
         public override float ProcCoefficient => 0.4f;
 
@@ -41,7 +41,7 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
             saw = FindModelChild("Sawblade");
             saw.GetComponent<RotateAroundAxis>().enabled = true;
 
-            sawblade = GameObject.Instantiate(Assets.GameObject.ToolbotBuzzsawEffectLoop, FindModelChild("SawMuzzle"));
+            sawblade = GameObject.Instantiate(Paths.GameObject.ToolbotBuzzsawEffectLoop, FindModelChild("SawMuzzle"));
             sawblade.transform.localRotation = Quaternion.Euler(90, 0, 0);
 
             forward = characterDirection.forward;

@@ -9,7 +9,7 @@ namespace RaindropLobotomy.Enemies.Fragment {
 
         public override string HitboxName => "StabHitbox";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.VoidImpactEffect;
+        public override GameObject HitEffectPrefab => Paths.GameObject.VoidImpactEffect;
 
         public override float ProcCoefficient => 1f;
 

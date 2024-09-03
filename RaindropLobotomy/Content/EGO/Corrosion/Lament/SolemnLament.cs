@@ -7,7 +7,7 @@ namespace RaindropLobotomy.EGO.Commando {
 
         public override string Description => "Where does one go when they die?";
 
-        public override SurvivorDef TargetSurvivorDef => Assets.SurvivorDef.Commando;
+        public override SurvivorDef TargetSurvivorDef => Paths.SurvivorDef.Commando;
 
         public override UnlockableDef RequiredUnlock => null;
 
@@ -47,11 +47,13 @@ namespace RaindropLobotomy.EGO.Commando {
         {
             base.Modify();
 
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animCommando;
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Assets.ItemDisplayRuleSet.idrsCommando;
-            Load<GameObject>("LamentDisplay.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animCommandoDisplay;
-            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Assets.GameObject.CommandoBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Assets.GameObject.GenericFootstepDust;
+            BodyPrefab.GetComponent<CameraTargetParams>().cameraParams = Paths.CharacterCameraParams.ccpStandard;
+
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animCommando;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Paths.ItemDisplayRuleSet.idrsCommando;
+            Load<GameObject>("LamentDisplay.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animCommandoDisplay;
+            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Paths.GameObject.CommandoBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Paths.GameObject.GenericFootstepDust;
 
             LamentMuzzleFlashBlack = Load<GameObject>("LamentMuzzleFlashBlack.prefab");
             LamentMuzzleFlashWhite = Load<GameObject>("LamentMuzzleFlashWhite.prefab");

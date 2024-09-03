@@ -7,7 +7,7 @@ namespace RaindropLobotomy.EGO.Arti {
 
         public override string Description => "You see a song in front of you. It's approaching, becoming more colorful by the second.";
 
-        public override SurvivorDef TargetSurvivorDef => Assets.SurvivorDef.Mage;
+        public override SurvivorDef TargetSurvivorDef => Paths.SurvivorDef.Mage;
 
         public override UnlockableDef RequiredUnlock => null;
 

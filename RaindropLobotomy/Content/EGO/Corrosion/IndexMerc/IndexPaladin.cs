@@ -5,11 +5,11 @@ using Survariants;
 namespace RaindropLobotomy.EGO.Merc {
     public class IndexPaladin : CorrosionBase<IndexPaladin>
     {
-        public override string EGODisplayName => "Index Messenger Mercenary";
+        public override string EGODisplayName => "Index Messenger Paladin";
 
-        public override string Description => "guh?";
+        public override string Description => "I have the talent to walk the path in front of me, if nothing else...";
 
-        public override SurvivorDef TargetSurvivorDef => Assets.SurvivorDef.Merc;
+        public override SurvivorDef TargetSurvivorDef => Paths.SurvivorDef.Merc;
 
         public override UnlockableDef RequiredUnlock => null;
 
@@ -29,9 +29,10 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override void Create()
         {
-            SetupPaladinVariant();
-            Modify();
-            IndexMerc.SharedSetup();
+            // SetupPaladinVariant();
+            // SetupLanguage();
+            // Modify();
+            // IndexMerc.SharedSetup();
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
@@ -77,7 +78,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
             locator.passiveSkill.skillNameToken = "RL_INDEXMERC_PASSIVE_NAME";
             locator.passiveSkill.skillDescriptionToken = "RL_INDEXMERC_PASSIVE_DESC";
-            locator.passiveSkill.icon = null;
+            locator.passiveSkill.icon = Load<Sprite>("OmPower.png");
 
             // TODO:
             // replace passive vfx
@@ -97,7 +98,7 @@ namespace RaindropLobotomy.EGO.Merc {
                     },*/
                     new CharacterModel.RendererInfo {
                         renderer = model.transform.Find("Armature/meshSword").GetComponent<SkinnedMeshRenderer>(),
-                        defaultMaterial = matYanadin,
+                        defaultMaterial = Load<Material>("matIndexMerc.mat"),
                         defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On
                     },
                     new CharacterModel.RendererInfo {
@@ -136,7 +137,7 @@ namespace RaindropLobotomy.EGO.Merc {
         {
             base.SetupLanguage();
 
-            "RL_INDEXPALADIN_NAME".Add("ㅑㅜㅇㄷ튿ㄴㄴ둫ㄷ게밈여ㅜ");
+            "RL_INDEXPALADIN_NAME".Add("Index Messenger Paladin");
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using R2API.Networking.Interfaces;
 using UnityEngine.Networking.Types;
 using R2API.Networking;
+using System.Collections;
 
 namespace RaindropLobotomy.EGO.Viend {
     public class EGOMimicry : CorrosionBase<EGOMimicry>
@@ -13,7 +14,7 @@ namespace RaindropLobotomy.EGO.Viend {
 
         public override string Description => "And the many shells cried out one word...";
 
-        public override SurvivorDef TargetSurvivorDef => Assets.SurvivorDef.VoidSurvivor;
+        public override SurvivorDef TargetSurvivorDef => Paths.SurvivorDef.VoidSurvivor;
 
         public override UnlockableDef RequiredUnlock => null;
 
@@ -54,48 +55,48 @@ namespace RaindropLobotomy.EGO.Viend {
         };
 
         public static List<SkillDef> HighPriority = new() {
-            Assets.SkillDef.ImpBodyBlink,
-            Assets.SkillDef.BisonBodyCharge,
-            Assets.SkillDef.ImpBossBodyFireVoidspikes,
-            Assets.SkillDef.VoidJailerChargeCapture,
-            Assets.SkillDef.FireConstructBeam,
-            Assets.SkillDef.RaidCrabMultiBeam,
-            Assets.SkillDef.GrandParentChannelSun,
-            Assets.SkillDef.HuntressBodyBlink,
-            Assets.SkillDef.HuntressBodyMiniBlink,
-            Assets.SkillDef.MageBodyWall,
-            Assets.SkillDef.BanditBodyCloak,
-            Assets.SkillDef.CaptainTazer,
-            Assets.SkillDef.EngiBodyPlaceTurret,
-            Assets.SkillDef.EngiBodyPlaceWalkerTurret,
-            Assets.SkillDef.ThrowPylon,
-            Assets.SkillDef.ThrowGrenade,
-            Assets.SkillDef.MercBodyEvis,
-            Assets.SkillDef.MercBodyEvisProjectile,
-            Assets.SkillDef.RailgunnerBodyFireMineBlinding,
-            Assets.SkillDef.RailgunnerBodyFireMineConcussive,
-            Assets.SkillDef.VoidBlinkDown,
-            Assets.SkillDef.VoidBlinkUp,
+            Paths.SkillDef.ImpBodyBlink,
+            Paths.SkillDef.BisonBodyCharge,
+            Paths.SkillDef.ImpBossBodyFireVoidspikes,
+            Paths.SkillDef.VoidJailerChargeCapture,
+            Paths.SkillDef.FireConstructBeam,
+            Paths.SkillDef.RaidCrabMultiBeam,
+            Paths.SkillDef.GrandParentChannelSun,
+            Paths.SkillDef.HuntressBodyBlink,
+            Paths.SkillDef.HuntressBodyMiniBlink,
+            Paths.SkillDef.MageBodyWall,
+            Paths.SkillDef.BanditBodyCloak,
+            Paths.SkillDef.CaptainTazer,
+            Paths.SkillDef.EngiBodyPlaceTurret,
+            Paths.SkillDef.EngiBodyPlaceWalkerTurret,
+            Paths.SkillDef.ThrowPylon,
+            Paths.SkillDef.ThrowGrenade,
+            Paths.SkillDef.MercBodyEvis,
+            Paths.SkillDef.MercBodyEvisProjectile,
+            Paths.SkillDef.RailgunnerBodyFireMineBlinding,
+            Paths.SkillDef.RailgunnerBodyFireMineConcussive,
+            Paths.SkillDef.VoidBlinkDown,
+            Paths.SkillDef.VoidBlinkUp,
             Load<SkillDef>("SilentAdvance.asset"),
             Load<SkillDef>("Scream.asset"),
             Load<SkillDef>("SweeperUtility.asset"),
         };
 
         public static List<GameObject> DisallowedBodies = new() {
-            Assets.GameObject.BeetleBody,
-            Assets.GameObject.VoidInfestorBody,
-            Assets.GameObject.GupBody,
-            Assets.GameObject.GipBody,
-            Assets.GameObject.GeepBody,
-            Assets.GameObject.JellyfishBody,
-            Assets.GameObject.BisonBody,
-            Assets.GameObject.MagmaWormBody,
-            Assets.GameObject.ElectricWormBody,
-            Assets.GameObject.VerminBody,
-            Assets.GameObject.BeetleGuardBody
+            Paths.GameObject.BeetleBody,
+            Paths.GameObject.VoidInfestorBody,
+            Paths.GameObject.GupBody,
+            Paths.GameObject.GipBody,
+            Paths.GameObject.GeepBody,
+            Paths.GameObject.JellyfishBody,
+            Paths.GameObject.BisonBody,
+            Paths.GameObject.MagmaWormBody,
+            Paths.GameObject.ElectricWormBody,
+            Paths.GameObject.VerminBody,
+            Paths.GameObject.BeetleGuardBody
         };
 
-        public static SkillDef Fallback => Assets.SkillDef.CommandoSlide;
+        public static SkillDef Fallback => Paths.SkillDef.CommandoSlide;
 
         public static List<BodyIndex> BlacklistedBodyIndexes;
 
@@ -116,28 +117,30 @@ namespace RaindropLobotomy.EGO.Viend {
         {
             base.Modify();
 
-            RuntimeAnimatorController animController = Assets.GameObject.VoidSurvivorDisplay.GetComponentInChildren<Animator>().runtimeAnimatorController;
+            BodyPrefab.GetComponent<CameraTargetParams>().cameraParams = Paths.CharacterCameraParams.ccpStandard;
 
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animVoidSurvivor;
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Assets.ItemDisplayRuleSet.idrsVoidSurvivor;
+            RuntimeAnimatorController animController = Paths.GameObject.VoidSurvivorDisplay.GetComponentInChildren<Animator>().runtimeAnimatorController;
+
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animVoidSurvivor;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Paths.ItemDisplayRuleSet.idrsVoidSurvivor;
             BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<ChildLocator>().FindChild("ScytheScaleBone").AddComponent<GoodbyeArmStretcher>();
             Load<GameObject>("MimicryDisplay.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = animController;
-            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Assets.GameObject.VoidSurvivorBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
+            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Paths.GameObject.VoidSurvivorBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
             BodyPrefab.AddComponent<MimicryShellController>();
 
             matMimicrySlash = Load<Material>("matMimicrySlash.mat");
-            matMimicrySlash.SetTexture("_RemapTex", Assets.Texture2D.texRampInfusion);
-            matMimicrySlash.SetTexture("_Cloud1Tex", Assets.Texture2D.texCloudCaustic3);
-            matMimicrySlash.SetTexture("_Cloud2Tex", Assets.Texture2D.texCloudWaterFoam1);
-            matMimicrySlash.SetTexture("_MainTex", Assets.Texture2D.texOmniHitspark2Mask);
+            matMimicrySlash.SetTexture("_RemapTex", Paths.Texture2D.texRampInfusion);
+            matMimicrySlash.SetTexture("_Cloud1Tex", Paths.Texture2D.texCloudCaustic3);
+            matMimicrySlash.SetTexture("_Cloud2Tex", Paths.Texture2D.texCloudWaterFoam1);
+            matMimicrySlash.SetTexture("_MainTex", Paths.Texture2D.texOmniHitspark2Mask);
             matMimicrySlash.SetShaderKeywords(new string[] { "USE_CLOUDS" });
 
-            TracerHello = PrefabAPI.InstantiateClone(Assets.GameObject.TracerCommandoBoost, "TracerHello");
-            TracerHello.GetComponent<LineRenderer>().material = Assets.Material.matLunarGolemChargeGlow;
+            TracerHello = PrefabAPI.InstantiateClone(Paths.GameObject.TracerCommandoBoost, "TracerHello");
+            TracerHello.GetComponent<LineRenderer>().material = Paths.Material.matLunarGolemChargeGlow;
             TracerHello.GetComponent<Tracer>().speed = 370;
             ContentAddition.AddEffect(TracerHello);
 
-            SlashEffect = PrefabAPI.InstantiateClone(Assets.GameObject.VoidSurvivorMeleeSlash3, "MimicrySlash");
+            SlashEffect = PrefabAPI.InstantiateClone(Paths.GameObject.VoidSurvivorMeleeSlash3, "MimicrySlash");
             SlashEffect.transform.Find("Rotator").Find("SwingTrail").GetComponent<ParticleSystemRenderer>().material = matMimicrySlash;
             ParticleSystem.MainModule main = SlashEffect.transform.Find("Rotator").Find("SwingTrail").GetComponent<ParticleSystem>().main;
             main.scalingMode = ParticleSystemScalingMode.Hierarchy;
@@ -160,9 +163,9 @@ namespace RaindropLobotomy.EGO.Viend {
             NetworkingAPI.RegisterMessageType<SyncShell>();
         }
 
-        private void FillDisallowedIndexes(On.RoR2.BodyCatalog.orig_Init orig)
+        private IEnumerator FillDisallowedIndexes(On.RoR2.BodyCatalog.orig_Init orig)
         {
-            orig();
+            yield return orig();
 
             BlacklistedBodyIndexes = new();
 
@@ -387,7 +390,7 @@ namespace RaindropLobotomy.EGO.Viend {
 
                     int index = 0;
 
-                    if (SceneCatalog.mostRecentSceneDef == Assets.SceneDef.moon || SceneCatalog.mostRecentSceneDef == Assets.SceneDef.moon2) {
+                    if (SceneCatalog.mostRecentSceneDef == Paths.SceneDef.moon || SceneCatalog.mostRecentSceneDef == Paths.SceneDef.moon2) {
                         index = 5;
                     }
                     else {
@@ -499,7 +502,7 @@ namespace RaindropLobotomy.EGO.Viend {
                 orig(self, str, str2);
             };
 
-            On.EntityStates.EntityState.PlayAnimation_string_string_string_float += (orig, self, str, str2, str3, f) => {
+            On.EntityStates.EntityState.PlayAnimation_string_string_string_float_float += (orig, self, str, str2, str3, f, f2) => {
                 if (self.characterBody && self.characterBody.bodyIndex == MimicryViendIndex) {
                     Animator anim = self.GetModelAnimator();
                     bool state = anim.HasState(anim.GetLayerIndex(str), Animator.StringToHash(str2));
@@ -507,12 +510,12 @@ namespace RaindropLobotomy.EGO.Viend {
                     // Debug.Log("has state: " + state);
 
                     if (!state) {
-                        orig(self, "LeftArm, Override", "FireHandBeam", "HandBeam.playbackRate", f);
+                        orig(self, "LeftArm, Override", "FireHandBeam", "HandBeam.playbackRate", f, f2);
                         return;
                     }
                 }
 
-                orig(self, str, str2, str3, f);
+                orig(self, str, str2, str3, f, f2);
             };
 
             On.EntityStates.BaseState.OnEnter += (orig, self) => {
@@ -526,7 +529,7 @@ namespace RaindropLobotomy.EGO.Viend {
                 }
             };
 
-            On.RoR2.EntityStateMachine.FixedUpdate += (orig, self) => {
+            On.RoR2.EntityStateMachine.ManagedFixedUpdate += (orig, self, delta) => {
                 bool wasS1Down = false;
                 bool stolen = self.state != null && IsAStolenSkill(self.state);
                 bool didWeEvenRun = false;
@@ -538,7 +541,7 @@ namespace RaindropLobotomy.EGO.Viend {
                     didWeEvenRun = true;
                 }
 
-                orig(self);
+                orig(self, delta);
 
                 if (didWeEvenRun) {
                     self.state.inputBank.skill1.down = wasS1Down;

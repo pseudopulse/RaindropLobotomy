@@ -1,4 +1,5 @@
 using System;
+using RaindropLobotomy.EGO.Merc;
 using RoR2.Orbs;
 
 namespace RaindropLobotomy.Buffs {
@@ -14,11 +15,12 @@ namespace RaindropLobotomy.Buffs {
 
         private void OnStruck(DamageReport report)
         {
+            float mult = report.victimBodyIndex == IndexMerc.IndexGiantFistBody ? 2f : 1f;
             if (report.attackerBody && report.victimBody) {
                 if (report.victimBody.HasBuff(Buff)) {
                     LightningOrb orb = new();
                     orb.lightningType = LightningOrb.LightningType.RazorWire;
-                    orb.damageValue = report.victimBody.baseDamage * 2f;
+                    orb.damageValue = report.victimBody.baseDamage * 2f * mult;
                     orb.damageColorIndex = DamageColorIndex.Item;
                     orb.attacker = report.victimBody.gameObject;
                     orb.bouncesRemaining = 0;

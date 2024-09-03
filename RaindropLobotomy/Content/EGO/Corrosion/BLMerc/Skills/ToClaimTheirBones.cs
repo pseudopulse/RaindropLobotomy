@@ -60,7 +60,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "WhirlwindAir";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 3f;
 
@@ -124,7 +124,7 @@ namespace RaindropLobotomy.EGO.Merc {
                 attack.baseDamage *= bonusDamage;
                 attack.damageType |= DamageType.CrippleOnHit;
 
-                EffectManager.SpawnEffect(Assets.GameObject.HermitCrabBombExplosion, new EffectData {
+                EffectManager.SpawnEffect(Paths.GameObject.HermitCrabBombExplosion, new EffectData {
                     origin = attack.position,
                     scale = attack.radius
                 }, true);
@@ -183,7 +183,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "WhirlwindAir";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 2f;
 
@@ -289,7 +289,7 @@ namespace RaindropLobotomy.EGO.Merc {
             attack.damageType |= DamageType.Stun1s;
             attack.damageType |= DamageType.BleedOnHit;
             attack.teamIndex = base.GetTeam();
-            attack.hitEffectPrefab = Assets.GameObject.OmniImpactVFXSlashMerc;
+            attack.hitEffectPrefab = Paths.GameObject.OmniImpactVFXSlashMerc;
             attack.isCrit = base.RollCrit();
             attack.procCoefficient = 1.5f;
 
@@ -396,7 +396,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
             TeleportHelper.TeleportBody(base.characterBody, pos);
 
-            EffectManager.SimpleEffect(Assets.GameObject.MercExposeConsumeEffect, pos, Quaternion.identity, true);
+            EffectManager.SimpleEffect(Paths.GameObject.MercExposeConsumeEffect, pos, Quaternion.identity, true);
         }
 
         public override void OnExit()
@@ -432,7 +432,7 @@ namespace RaindropLobotomy.EGO.Merc {
         {
             TeleportHelper.TeleportBody(base.characterBody, teleportPosition);
 
-            EffectManager.SimpleEffect(Assets.GameObject.MercExposeConsumeEffect, teleportPosition, Quaternion.identity, true);
+            EffectManager.SimpleEffect(Paths.GameObject.MercExposeConsumeEffect, teleportPosition, Quaternion.identity, true);
             outer.SetNextState(new ToClaimTheirBones_Transition(0.2f, new ToClaimTheirBones_2(bonusDamage, visuals, lastTargetPosition)));
         }
     }

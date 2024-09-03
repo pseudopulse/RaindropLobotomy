@@ -15,7 +15,7 @@ namespace RaindropLobotomy.EGO.Commando {
 
             GetComponent<ContactDamage>().enabled = true;
 
-            EffectManager.SpawnEffect(Assets.GameObject.Bandit2SmokeBomb, new EffectData {
+            EffectManager.SpawnEffect(Paths.GameObject.Bandit2SmokeBomb, new EffectData {
                 origin = base.transform.position,
                 scale = 2f
             }, false);
@@ -64,7 +64,7 @@ namespace RaindropLobotomy.EGO.Commando {
             base.gameObject.layer = LayerIndex.defaultLayer.intVal;
             base.characterMotor.Motor.RebuildCollidableLayers();
 
-            EffectManager.SpawnEffect(Assets.GameObject.Bandit2SmokeBomb, new EffectData {
+            EffectManager.SpawnEffect(Paths.GameObject.Bandit2SmokeBomb, new EffectData {
                 origin = base.transform.position,
                 scale = 2f
             }, false);

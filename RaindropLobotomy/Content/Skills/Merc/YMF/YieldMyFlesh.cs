@@ -5,7 +5,7 @@ namespace RaindropLobotomy.Skills.Merc {
     {
         public override SkillDef SkillDef => Load<SkillDef>("sdYMF.asset");
 
-        public override SurvivorDef Survivor => Assets.SurvivorDef.Merc;
+        public override SurvivorDef Survivor => Paths.SurvivorDef.Merc;
 
         public override SkillSlot Slot => SkillSlot.Special;
 

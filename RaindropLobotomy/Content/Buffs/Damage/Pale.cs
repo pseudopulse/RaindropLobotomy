@@ -18,7 +18,7 @@ namespace RaindropLobotomy.Buffs {
         public override void PostCreation()
         {
             On.RoR2.DamageColor.FindColor += GetPaleColor;
-            On.RoR2.HealthComponent.TakeDamage += ReceivedPaleDamage;
+            On.RoR2.HealthComponent.TakeDamageProcess += ReceivedPaleDamage;
             IL.RoR2.CharacterBody.RecalculateStats += PaleCurse;
             IL.RoR2.UI.HealthBar.UpdateBarInfos += PaleCurseColor;
         }
@@ -118,7 +118,7 @@ namespace RaindropLobotomy.Buffs {
             }
         }
 
-        private void ReceivedPaleDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void ReceivedPaleDamage(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (damageInfo.HasModdedDamageType(PaleDamage)) {                
                 float targetMaxHP = self.fullHealth;

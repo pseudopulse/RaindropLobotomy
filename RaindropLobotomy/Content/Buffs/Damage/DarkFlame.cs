@@ -28,8 +28,8 @@ namespace RaindropLobotomy.Buffs {
             On.RoR2.CharacterBody.AddBuff_BuffIndex += OnAddDarkFlame;
 
             DarkFlameEffect = new();
-            DarkFlameEffect.fireEffectPrefab = Assets.GameObject.HelfireEffect;
-            DarkFlameEffect.overlayMaterial = Assets.Material.matOnHelfire;
+            DarkFlameEffect.fireEffectPrefab = Paths.GameObject.HelfireEffect;
+            DarkFlameEffect.overlayMaterial = Paths.Material.matOnHelfire;
             DarkFlameEffect.startSound = "Play_item_proc_igniteOnKill_Loop";
 			DarkFlameEffect.stopSound = "Stop_item_proc_igniteOnKill_Loop";
 

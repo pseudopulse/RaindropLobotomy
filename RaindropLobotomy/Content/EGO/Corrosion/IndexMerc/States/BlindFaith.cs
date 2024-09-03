@@ -19,7 +19,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override GameObject SwingEffectPrefab => step == 2 ? Load<GameObject>("ErodedSlashBig.prefab") : Load<GameObject>("ErodedSlash.prefab");
 
-        public override string MuzzleString => paladinInstalled ? ( step == 0 ? "SlashRight" : "SlashLeft") : (step == 0 ? "GroundLight1" : step == 1 ? "GroundLight2" : "GroundLight3");
+        public override string MuzzleString => paladinInstalled ? ( step == 0 ? "SwingRight" : "SwingLeft") : (step == 0 ? "GroundLight1" : step == 1 ? "GroundLight2" : "GroundLight3");
         public override string MechanimHitboxParameter => paladinInstalled ? null : "Sword.active";
         private int step = 0;
 
@@ -46,9 +46,9 @@ namespace RaindropLobotomy.EGO.Merc {
                         }
                         break;
                     case 2:
-                        PlayCrossfade("Gesture, Override", "Slash1Combo", "Slash.playbackRate", this.duration, 0.05f);
+                        PlayCrossfade("Gesture, Override", "Slash1", "Slash.playbackRate", this.duration, 0.05f);
                         if (!this.animator.GetBool("isMoving") && this.animator.GetBool("isGrounded")) {
-                            PlayCrossfade("FullBody, Override", "Slash1Combo", "Slash.playbackRate", this.duration, 0.05f);
+                            PlayCrossfade("FullBody, Override", "Slash1", "Slash.playbackRate", this.duration, 0.05f);
                         }
                         break;
                 }
@@ -63,7 +63,7 @@ namespace RaindropLobotomy.EGO.Merc {
                         PlayAnimationMerc("GroundLight2");
                         break;
                     case 2:
-                        PlayAnimationMerc("GroundLight3");
+                        PlayAnimationMerc("GroundLight1");
                         break;
                 }
             }
@@ -72,12 +72,22 @@ namespace RaindropLobotomy.EGO.Merc {
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
-            Debug.Log("modifying with inflicterosion");
+    
             if (step == 2) {
                 overlapAttack.AddModdedDamageType(Erosion.InflictTwoErosion);
             }
             else {
                 overlapAttack.AddModdedDamageType(Erosion.InflictErosion);
+            }
+        }
+
+        public override void BeginMeleeAttackEffect()
+        {
+            base.BeginMeleeAttackEffect();
+
+            if (paladinInstalled) {
+                swingEffectInstance.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+                // shift vfx by 90 degrees to compensate for different muzzle orientation
             }
         }
 

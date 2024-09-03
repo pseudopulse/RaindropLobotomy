@@ -15,7 +15,7 @@ global using Object = UnityEngine.Object;
 global using UnityEngine.Networking;
 global using BepInEx.Configuration;
 global using static R2API.RecalculateStatsAPI;
-global using Assets = RaindropLobotomy.Utils.Assets;
+global using Paths = RaindropLobotomy.Utils.Assets;
 global using static R2API.DirectorAPI;
 global using Stage = R2API.DirectorAPI.Stage;
 global using static RaindropLobotomy.Main;

@@ -16,7 +16,7 @@ namespace RaindropLobotomy.Skills.Merc {
         private bool alreadySpawned = false;
         private GameObject swingEffectInstance;
         private string rizz = "GroundLight1";
-        private GameObject swingEffectPrefab => Assets.GameObject.MercSwordFinisherSlash;
+        private GameObject swingEffectPrefab => Paths.GameObject.MercSwordFinisherSlash;
         public ToClaimTheirBones(Transform enemy) {
             target = enemy;
             lastTargetPosition = target.position;
@@ -41,7 +41,7 @@ namespace RaindropLobotomy.Skills.Merc {
             attack.damageType |= DamageType.SlowOnHit;
             attack.damageType |= DamageType.Stun1s;
             attack.teamIndex = base.GetTeam();
-            attack.hitEffectPrefab = Assets.GameObject.OmniImpactVFXSlashMerc;
+            attack.hitEffectPrefab = Paths.GameObject.OmniImpactVFXSlashMerc;
             attack.isCrit = base.RollCrit();
             attack.procCoefficient = 1.5f;
             attack.AddModdedDamageType(Sweeper.BigLifesteal);
@@ -90,7 +90,7 @@ namespace RaindropLobotomy.Skills.Merc {
 
             TeleportHelper.TeleportBody(base.characterBody, pos);
 
-            EffectManager.SimpleEffect(Assets.GameObject.MercExposeConsumeEffect, pos, Quaternion.identity, true);
+            EffectManager.SimpleEffect(Paths.GameObject.MercExposeConsumeEffect, pos, Quaternion.identity, true);
         }
 
         public override void OnExit()

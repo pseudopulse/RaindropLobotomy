@@ -80,7 +80,7 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
             indicator = GameObject.Instantiate(indicatorPrefab, enemyBody.transform);
             indicator.transform.position = new(enemyBody.corePosition.x, enemyBody.corePosition.y + (enemyBody.radius) + 3f, enemyBody.corePosition.z);
 
-            EffectManager.SimpleEffect(Assets.GameObject.OmniImpactExecute, indicator.transform.position, Quaternion.identity, false);
+            EffectManager.SimpleEffect(Paths.GameObject.OmniImpactExecute, indicator.transform.position, Quaternion.identity, false);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

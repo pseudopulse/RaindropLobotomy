@@ -43,8 +43,8 @@ namespace RaindropLobotomy.Enemies.SteamMachine
                     }
                 }
 
-                outer.GetComponent<MeshRenderer>().material = Assets.Material.matArtifactGlassOverlay;
-                inner.Find("Digit").GetComponent<MeshRenderer>().material = Assets.Material.matGrandparentFistGlowing;
+                outer.GetComponent<MeshRenderer>().material = Paths.Material.matArtifactGlassOverlay;
+                inner.Find("Digit").GetComponent<MeshRenderer>().material = Paths.Material.matGrandparentFistGlowing;
             }
 
             RegisterEnemy(prefab, prefabMaster);

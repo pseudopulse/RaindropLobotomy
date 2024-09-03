@@ -49,7 +49,7 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
 
             CreateVFX();
 
-            On.RoR2.HealthComponent.TakeDamage += (orig, self, info) => {
+            On.RoR2.HealthComponent.TakeDamageProcess += (orig, self, info) => {
                 orig(self, info);
                 if (self.name.Contains("BinahBody")) {
                     self.body.skillLocator.special.ExecuteIfReady();
@@ -65,14 +65,14 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
 
         public void CreateVFX() {
             // standard fairy charge
-            ArbiterSlashEffect = PrefabAPI.InstantiateClone(Assets.GameObject.MercSwordFinisherSlash, "ArbiterSlashEffect");
+            ArbiterSlashEffect = PrefabAPI.InstantiateClone(Paths.GameObject.MercSwordFinisherSlash, "ArbiterSlashEffect");
             ArbiterSlashEffect.transform.Find("Sparks").gameObject.SetActive(false);
             ArbiterSlashEffect.transform.Find("SwingTrail").GetComponent<ParticleSystemRenderer>().material = ArbiterMaterials.matArbiterSlashMat;
             ArbiterSlashEffect.transform.GetComponent<DestroyOnTimer>().enabled = false;
 
             // standard fairy tracer
-            FairyTracerEffect = PrefabAPI.InstantiateClone(Assets.GameObject.VoidSurvivorBeamTracer, "FairyTracerEffect");
-            FairyTracerEffect.GetComponent<LineRenderer>().sharedMaterials = new Material[] { Assets.Material.matConstructBeamInitial };
+            FairyTracerEffect = PrefabAPI.InstantiateClone(Paths.GameObject.VoidSurvivorBeamTracer, "FairyTracerEffect");
+            FairyTracerEffect.GetComponent<LineRenderer>().sharedMaterials = new Material[] { Paths.Material.matConstructBeamInitial };
             FairyTracerEffect.GetComponent<LineRenderer>().textureMode = LineTextureMode.Tile;
             FairyTracerEffect.GetComponent<LineRenderer>().widthMultiplier = 2f;
             FairyTracerEffect.GetComponent<LineRenderer>().startColor = new Color32(241, 255, 0, 49);
@@ -81,7 +81,7 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
             ContentAddition.AddEffect(FairyTracerEffect);
 
             // fairy tracer slash
-            FairyTracerSlashEffect = PrefabAPI.InstantiateClone(Assets.GameObject.ImpactMercEvis, "FairyTracerSlash");
+            FairyTracerSlashEffect = PrefabAPI.InstantiateClone(Paths.GameObject.ImpactMercEvis, "FairyTracerSlash");
             FairyTracerSlashEffect.transform.Find("Hologram").GetComponent<ParticleSystemRenderer>().enabled = false;
             FairyTracerSlashEffect.transform.Find("Flash").GetComponent<ParticleSystemRenderer>().material = ArbiterMaterials.matArbiterSlashMat;
             FairyTracerSlashEffect.transform.Find("SwingTrail").GetComponent<ParticleSystemRenderer>().enabled = false;
@@ -100,46 +100,46 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
             ContentAddition.AddEffect(FairyTracerSlashEffect);
 
             // fairy muzzle flash
-            FairyMuzzleFlash = PrefabAPI.InstantiateClone(Assets.GameObject.MuzzleflashFireMeatBall, "FairyMuzzleFlash");
-            FairyMuzzleFlash.GetComponentInChildren<ParticleSystemRenderer>().material = Assets.Material.matMagmaWormFireballTrail;
+            FairyMuzzleFlash = PrefabAPI.InstantiateClone(Paths.GameObject.MuzzleflashFireMeatBall, "FairyMuzzleFlash");
+            FairyMuzzleFlash.GetComponentInChildren<ParticleSystemRenderer>().material = Paths.Material.matMagmaWormFireballTrail;
             ContentAddition.AddEffect(FairyMuzzleFlash);
 
             // shockwave charge
-            ShockwaveChargeEffect = PrefabAPI.InstantiateClone(Assets.GameObject.VoidSurvivorChargeMegaBlaster, "ShockwaveChargeEffect");
+            ShockwaveChargeEffect = PrefabAPI.InstantiateClone(Paths.GameObject.VoidSurvivorChargeMegaBlaster, "ShockwaveChargeEffect");
             ShockwaveChargeEffect.transform.Find("Base").gameObject.SetActive(false);
             ShockwaveChargeEffect.transform.Find("Base (1)").gameObject.SetActive(false);
             ShockwaveChargeEffect.transform.Find("Sparks, In").gameObject.SetActive(false);
             ShockwaveChargeEffect.transform.Find("Sparks, Misc").gameObject.SetActive(false);
-            ShockwaveChargeEffect.transform.Find("OrbCore").GetComponent<MeshRenderer>().sharedMaterials = new Material[] { Assets.Material.matGrandParentMoonCore, Assets.Material.matVoidBlinkPortal };
+            ShockwaveChargeEffect.transform.Find("OrbCore").GetComponent<MeshRenderer>().sharedMaterials = new Material[] { Paths.Material.matGrandParentMoonCore, Paths.Material.matVoidBlinkPortal };
             ShockwaveChargeEffect.transform.GetComponent<ObjectScaleCurve>().enabled = false;
             ShockwaveChargeEffect.transform.localScale = Vector3.zero;
             
             // shockwave telegraph
-            ShockwaveTelegraphEffect = PrefabAPI.InstantiateClone(Assets.GameObject.VagrantNovaAreaIndicator, "ShockwaveAreaIndicator");
-            ShockwaveTelegraphEffect.GetComponentInChildren<ParticleSystemRenderer>().material = Assets.Material.matGrandParentSunChannelStartBeam;
+            ShockwaveTelegraphEffect = PrefabAPI.InstantiateClone(Paths.GameObject.VagrantNovaAreaIndicator, "ShockwaveAreaIndicator");
+            ShockwaveTelegraphEffect.GetComponentInChildren<ParticleSystemRenderer>().material = Paths.Material.matGrandParentSunChannelStartBeam;
             ShockwaveTelegraphEffect.GetComponent<MeshRenderer>().sharedMaterials = new Material[] {
-                Assets.Material.matVoidDeathBombAreaIndicatorBack,
-                Assets.Material.matMoonbatteryGlassDistortion,
-                Assets.Material.matParentTeleportIndicator,
-                Assets.Material.matAreaIndicatorRim
+                Paths.Material.matVoidDeathBombAreaIndicatorBack,
+                Paths.Material.matMoonbatteryGlassDistortion,
+                Paths.Material.matParentTeleportIndicator,
+                Paths.Material.matAreaIndicatorRim
             };
             ShockwaveTelegraphEffect.GetComponent<ObjectScaleCurve>().enabled = false;
             ShockwaveTelegraphEffect.transform.localScale = Vector3.zero;
 
             // shockwave effect
-            ShockwaveEffect = PrefabAPI.InstantiateClone(Assets.GameObject.RailgunnerMineExplosion, "ShockwaveEffect");
+            ShockwaveEffect = PrefabAPI.InstantiateClone(Paths.GameObject.RailgunnerMineExplosion, "ShockwaveEffect");
             ShockwaveEffect.transform.Find("Sphere, Distortion").gameObject.SetActive(false);
             ShockwaveEffect.transform.Find("Core").gameObject.SetActive(false);
             ShockwaveEffect.transform.Find("Flash, White").gameObject.SetActive(false);
             ShockwaveEffect.transform.Find("Flash, Colored").gameObject.SetActive(false);
-            ShockwaveEffect.transform.Find("SparksOut").GetComponent<ParticleSystemRenderer>().material = Assets.Material.matGrandParentSunGlow;
-            ShockwaveEffect.transform.Find("Sphere, Color").GetComponent<ParticleSystemRenderer>().material = Assets.Material.matMagmaWormExplosionSphere;
+            ShockwaveEffect.transform.Find("SparksOut").GetComponent<ParticleSystemRenderer>().material = Paths.Material.matGrandParentSunGlow;
+            ShockwaveEffect.transform.Find("Sphere, Color").GetComponent<ParticleSystemRenderer>().material = Paths.Material.matMagmaWormExplosionSphere;
             ShockwaveEffect.transform.Find("Point Light").GetComponent<Light>().color = new Color32(255, 191, 42, 255);
             
             // portal effect
             PillarPortalEffect = Load<GameObject>("PortalEffect.prefab");
-            // PillarPortalEffect.transform.Find("Plane").GetComponent<MeshRenderer>().sharedMaterials = new Material[] { Assets.Material.matOmniRing1ArchWisp, Assets.Material.matGrandParentSunGlow };
-            // PillarPortalEffect.transform.Find("Plane (1)").GetComponent<MeshRenderer>().sharedMaterials = new Material[] { Assets.Material.matArtifactShellDistortion, Assets.Material.matMegaDroneFlare1 };
+            // PillarPortalEffect.transform.Find("Plane").GetComponent<MeshRenderer>().sharedMaterials = new Material[] { Paths.Material.matOmniRing1ArchWisp, Paths.Material.matGrandParentSunGlow };
+            // PillarPortalEffect.transform.Find("Plane (1)").GetComponent<MeshRenderer>().sharedMaterials = new Material[] { Paths.Material.matArtifactShellDistortion, Paths.Material.matMegaDroneFlare1 };
         }
 
         public class ArbiterArcingPillarBehaviour : MonoBehaviour {
@@ -157,7 +157,7 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
             private float speed = 20f;
             private float totalDistTraversed = 0f;
             public int waveProjectileCount = 6;
-            public GameObject waveProjectilePrefab => Assets.GameObject.BrotherSunderWave;
+            public GameObject waveProjectilePrefab => Paths.GameObject.BrotherSunderWave;
             private float yPerSec => TotalYToRaise / timer.duration;
 
             public void Start() {
@@ -247,7 +247,7 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
         public class DetonateOnImpact : MonoBehaviour, IProjectileImpactBehavior
         {
             public int waveProjectileCount = 6;
-            public GameObject waveProjectilePrefab => Assets.GameObject.BrotherSunderWave;
+            public GameObject waveProjectilePrefab => Paths.GameObject.BrotherSunderWave;
             public ProjectileController projectile;
             public ProjectileDamage projectileDamage;
             public bool hasFiredRing = false;

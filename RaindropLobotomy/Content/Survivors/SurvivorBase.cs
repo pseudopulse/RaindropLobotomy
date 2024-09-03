@@ -9,6 +9,7 @@ using RoR2.ExpansionManagement;
 using Unity;
 using HarmonyLib;
 using RoR2.CharacterAI;
+using KinematicCharacterController;
 
 namespace RaindropLobotomy.Survivors
 {
@@ -34,6 +35,13 @@ namespace RaindropLobotomy.Survivors
             if (BodyPrefab) ContentAddition.AddBody(BodyPrefab);
             if (MasterPrefab) ContentAddition.AddMaster(MasterPrefab);
             if (Survivor) ContentAddition.AddSurvivorDef(Survivor);
+
+            if (BodyPrefab) {
+                KinematicCharacterMotor motor = BodyPrefab.GetComponent<KinematicCharacterMotor>();
+                if (motor) {
+                    motor.playerCharacter = true;
+                }
+            }
 
             Modify();
             SetupLanguage();

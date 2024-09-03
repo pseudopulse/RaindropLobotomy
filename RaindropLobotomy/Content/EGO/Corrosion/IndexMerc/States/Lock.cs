@@ -22,6 +22,13 @@ namespace RaindropLobotomy.EGO.Merc {
             }
 
             outer.SetNextStateToMain();
+
+            if (paladinInstalled) {
+                PlayAnimation("Gesture, Override", "ThrowSpell", "ChargeSpell.playbackRate", 0.8f);
+            }
+            else {
+                
+            }
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

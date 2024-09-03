@@ -66,7 +66,7 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
 
             else {
                 Destroy(this.GetModelTransform().gameObject);
-                EffectManager.SpawnEffect(Assets.GameObject.OmniExplosionVFX, new EffectData {
+                EffectManager.SpawnEffect(Paths.GameObject.OmniExplosionVFX, new EffectData {
                     origin = base.characterBody.corePosition,
                     scale = base.characterBody.bestFitRadius,
                 }, false);

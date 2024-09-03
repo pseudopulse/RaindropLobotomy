@@ -71,14 +71,14 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
             bulletAttack.maxSpread = 9f;
             bulletAttack.damage = base.damageStat;
             bulletAttack.force = 40f;
-            bulletAttack.tracerEffectPrefab = Assets.GameObject.TracerCommandoBoost;
+            bulletAttack.tracerEffectPrefab = Paths.GameObject.TracerCommandoBoost;
             bulletAttack.muzzleName = "MuzzleCannon";
-            bulletAttack.hitEffectPrefab = Assets.GameObject.OmniImpactVFX;
+            bulletAttack.hitEffectPrefab = Paths.GameObject.OmniImpactVFX;
             bulletAttack.isCrit = Util.CheckRoll(critStat, base.characterBody.master);
             bulletAttack.radius = 0.2f;
             bulletAttack.smartCollision = true;
 
-            EffectManager.SimpleMuzzleFlash(Assets.GameObject.MuzzleflashBarrage, base.gameObject, "MuzzleCannon", true);
+            EffectManager.SimpleMuzzleFlash(Paths.GameObject.MuzzleflashBarrage, base.gameObject, "MuzzleCannon", true);
 
             AkSoundEngine.PostEvent(Events.Play_commando_R, base.gameObject);
 

@@ -15,7 +15,7 @@ namespace RaindropLobotomy.Ordeals.Noon.Indigo {
             prefabMaster = Load<GameObject>("SweeperAIMaster.prefab");
 
             BodyPrefab = prefab;
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Assets.GameObject.GenericFootstepDust;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Paths.GameObject.GenericFootstepDust;
 
             RegisterEnemy(prefab, prefabMaster);
 

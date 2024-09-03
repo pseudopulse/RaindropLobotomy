@@ -58,7 +58,7 @@ namespace RaindropLobotomy.Enemies.SingingMachine {
 
             if (stopwatch >= 0.1f) {
                 stopwatch = 0f;
-                EffectManager.SpawnEffect(Assets.GameObject.SpurtImpBlood, new EffectData {
+                EffectManager.SpawnEffect(Paths.GameObject.SpurtImpBlood, new EffectData {
                     origin = mainState.hinge.position, 
                     scale = 14f,
                     rotation = Quaternion.LookRotation(Random.onUnitSphere)

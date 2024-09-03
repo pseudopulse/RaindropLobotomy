@@ -6,9 +6,9 @@ namespace RaindropLobotomy.EGO.Merc {
     {
         public override string EGODisplayName => "Index Messenger Mercenary";
 
-        public override string Description => "guh?";
+        public override string Description => "We move according to the Prescripts at all times.";
 
-        public override SurvivorDef TargetSurvivorDef => Assets.SurvivorDef.Merc;
+        public override SurvivorDef TargetSurvivorDef => Paths.SurvivorDef.Merc;
 
         public override UnlockableDef RequiredUnlock => null;
 
@@ -23,6 +23,7 @@ namespace RaindropLobotomy.EGO.Merc {
         public override string RequiresAbsentMod => "com.rob.Paladin"; // if paladin is present, index variant goes to him instead
         public static LazyIndex IndexMercBody = new("IndexMercBody");
         public static LazyIndex IndexPaladinBody = new("IndexPaladinBody");
+        public static LazyIndex IndexGiantFistBody = new("GiantFistBody");
         public static GameObject GiantFistBody;
         public static GameObject GiantFistMaster;
         public static GameObject LockingBolt;
@@ -30,22 +31,32 @@ namespace RaindropLobotomy.EGO.Merc {
         public static SkillDef Defense;
         public static SkillDef Evade;
         public static SkillDef Energize;
+        public static GameObject ErodedPuddle;
         public static DamageAPI.ModdedDamageType LockType = DamageAPI.ReserveDamageType();
         public static bool HasRunSharedSetup = false;
+
+        // TODO:
+        // - fix dynamic bones (fun) 
+        // - maybe change the radius distrib so the bottom has more radius than the top?
+
+        public override void Create()
+        {
+            
+        }
 
         public override void Modify()
         {
             base.Modify();
             
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animMerc;
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Assets.ItemDisplayRuleSet.idrsMerc;
-            // Load<GameObject>("IndexMercDisplay.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animMercDisplay;
-            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Assets.GameObject.MercBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Assets.GameObject.GenericFootstepDust;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animMerc;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Paths.ItemDisplayRuleSet.idrsMerc;
+            // Load<GameObject>("IndexMercDisplay.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animMercDisplay;
+            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Paths.GameObject.MercBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Paths.GameObject.GenericFootstepDust;
             EntityStateMachine.FindByCustomName(BodyPrefab, "Body").mainStateType = new(typeof(IndexMercMain));
             BodyPrefab.AddComponent<IndexPrescriptTargeter>();
             // BodyPrefab.AddComponent<IndexLockTargeter>();
-            
+
             SharedSetup();
         }
 
@@ -57,7 +68,6 @@ namespace RaindropLobotomy.EGO.Merc {
             HasRunSharedSetup = true;
 
             GameObject sword = Load<GameObject>("CrashingSwordProjectile.prefab");
-            sword.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>().Add(Erosion.InflictTenErosion);
             sword.AddComponent<DistortedBladeProjectile>();
             ContentAddition.AddProjectile(sword);
 
@@ -74,7 +84,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
             LockingBolt = Load<GameObject>("LockingBolt.prefab");
             LockingBolt.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>().Add(LockType);
-            LockingBolt.GetComponent<ProjectileImpactExplosion>().explosionEffect = Assets.GameObject.ExplosionLunarSun;
+            LockingBolt.GetComponent<ProjectileImpactExplosion>().explosionEffect = Paths.GameObject.ExplosionLunarSun;
             ContentAddition.AddProjectile(LockingBolt);
 
             "RL_INDEXMERC_PASSIVE_NAME".Add("Ominous Power");
@@ -87,7 +97,7 @@ namespace RaindropLobotomy.EGO.Merc {
             "RL_INDEXMERC_SECONDARY_DESC".Add("Lock a target for <style=cIsDamage>240% damage</style>. If the target is attacking, <style=cDeath>interrupt</style> them and deal <style=cIsDamage>800% damage</style> instead.");
 
             "RL_INDEXMERC_UTILITY_NAME".Add("Distorted Blade");
-            "RL_INDEXMERC_UTILITY_DESC".Add("<style=cIsDamage>Eroding.</style> Slam your blade down from the sky, dealing <style=cIsDamage>1400%</style> damage in targeted area area and inflicting <style=cIsUtility>10</style> <style=cIsDamage>Erosion</style>.");
+            "RL_INDEXMERC_UTILITY_DESC".Add("<style=cIsDamage>Eroding.</style> Slam your blade down from the sky, dealing <style=cIsDamage>1400%</style> damage in targeted area area and inflicting <style=cIsUtility>10</style> <style=cIsDamage>Erosion</style> over time.");
 
             "RL_INDEXMERC_SPECIAL_NAME".Add("Deliver Prescript");
             "RL_INDEXMERC_SPECIAL_DESC".Add("Select 1 of 4 <style=cIsUtility>prescripts</style> to grant to yourself or an ally.");
@@ -104,13 +114,13 @@ namespace RaindropLobotomy.EGO.Merc {
             Energize = Load<SkillDef>("PrescriptEnergize.asset");
 
             string PrescriptAttack_Name = "Prescript: Attack";
-            string PrescriptAttack_Desc = "Gain <style=cIsDamage>+25% damage</style>, <style=cIsDamage>+25% attack speed</style>, and <style=cIsUtility>chance-based items activate more</style>. <style=cDeath>Lasts 7.5 seconds</style>.";
+            string PrescriptAttack_Desc = "Gain <style=cIsDamage>+25% damage</style>, <style=cIsDamage>+75% attack speed</style>, and <style=cIsUtility>chance-based items activate more</style>. <style=cDeath>Lasts 7.5 seconds</style>.";
             string PrescriptDefense_Name = "Prescript: Defense";
             string PrescriptDefense_Desc = "Gain <style=cIsDamage>35 armor</style>, <style=cIsHealing>+150% health regeneration</style>, and <style=cIsDamage>20% maximum health</style> as <style=cIsUtility>shield</style>. Reflect <style=cIsDamage>200%</style> of damage taken to attackers. <style=cDeath>Lasts 10 seconds</style>.";
             string PrescriptEvasion_Name = "Prescript: Evasion";
             string PrescriptEvasion_Desc = "Gain <style=cIsUtility>+50% movement speed</style>, <style=cIsUtility>+200% acceleration</style>, and <style=cIsHealing>2 extra jumps</style>. <style=cDeath>Lasts 7.5 seconds</style>.";
             string PrescriptEnergize_Name = "Prescript: Recharge";
-            string PrescriptEnergize_Desc = "Reduce <style=cIsDamage>skill cooldowns</style> by <style=cIsUtility>35%</style>, and gain <style=cIsDamage>+1 skill charges</style>. <style=cIsUtility>Refresh all cooldowns</style>. <style=cDeath>Lasts 10 seconds</style>.";
+            string PrescriptEnergize_Desc = "Reduce <style=cIsDamage>skill cooldowns</style> by <style=cIsUtility>50%</style>. <style=cIsUtility>Refresh all cooldowns</style>. <style=cDeath>Lasts 10 seconds</style>.";
 
             "RL_PRESCRIPT_ATTACK_NAME".Add(PrescriptAttack_Name);
             "RL_PRESCRIPT_ATTACK_DESC".Add(PrescriptAttack_Desc);
@@ -136,10 +146,25 @@ namespace RaindropLobotomy.EGO.Merc {
                 """
             );
 
-            On.RoR2.HealthComponent.TakeDamage += OnTakeDamage;
+            ErodedPuddle = PrefabAPI.InstantiateClone(Paths.GameObject.CrocoLeapAcid, "ErosionPuddle");
+            ErodedPuddle.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>().Add(Erosion.InflictErosion);
+            ErodedPuddle.GetComponent<ProjectileDotZone>().damageCoefficient = 1f;
+            ErodedPuddle.GetComponent<ProjectileDotZone>().resetFrequency = 2f;
+            ErodedPuddle.GetComponent<ProjectileDotZone>().lifetime = 5f;
+            ErodedPuddle.GetComponentInChildren<ObjectScaleCurve>().transform.localScale = new(16f, 1f, 16f);
+            ErodedPuddle.GetComponentInChildren<HitBox>().transform.localScale *= 2f;
+        
+            ContentAddition.AddProjectile(ErodedPuddle);
+
+            sword.GetComponent<ProjectileExplosion>().fireChildren = true;
+            sword.GetComponent<ProjectileExplosion>().childrenProjectilePrefab = ErodedPuddle;
+            sword.GetComponent<ProjectileExplosion>().childrenCount = 1;
+            sword.GetComponent<ProjectileExplosion>().childrenDamageCoefficient = 0.06f;
+
+            On.RoR2.HealthComponent.TakeDamageProcess += OnTakeDamage;
         }
 
-        private static void OnTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private static void OnTakeDamage(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (damageInfo.HasModdedDamageType(LockType)) {
                 bool attacking = self.body.GetIsAttacking();
@@ -161,7 +186,7 @@ namespace RaindropLobotomy.EGO.Merc {
         public class IndexLockTargeter : HurtboxTracker {
             public override void Start()
             {
-                base.targetingIndicatorPrefab = Assets.GameObject.HuntressTrackingIndicator;
+                base.targetingIndicatorPrefab = Paths.GameObject.HuntressTrackingIndicator;
                 base.maxSearchAngle = 25f;
                 base.maxSearchDistance = 60f;
                 base.searchDelay = 0.1f;
@@ -176,7 +201,7 @@ namespace RaindropLobotomy.EGO.Merc {
         public class IndexPrescriptTargeter : HurtboxTracker {
             public override void Start()
             {
-                base.targetingIndicatorPrefab = Assets.GameObject.HuntressTrackingIndicator;
+                base.targetingIndicatorPrefab = Paths.GameObject.HuntressTrackingIndicator;
                 base.maxSearchAngle = 25f;
                 base.maxSearchDistance = 60f;
                 base.searchDelay = 0.1f;
@@ -225,8 +250,15 @@ namespace RaindropLobotomy.EGO.Merc {
         }
 
         public class DistortedBladeProjectile : MonoBehaviour {
-            public float timer = 1f;
+            public float timer = 0.8f;
+            public Material mat;
+            public void Start() {
+                mat = GetComponentInChildren<MeshRenderer>().material;
+            }
+            
             public void FixedUpdate() {
+                mat.SetVector("_ObjectPos", base.transform.position);
+
                 timer -= Time.fixedDeltaTime;
                 if (timer <= 0f && NetworkServer.active) {
                     GetComponent<ProjectileExplosion>().DetonateServer();

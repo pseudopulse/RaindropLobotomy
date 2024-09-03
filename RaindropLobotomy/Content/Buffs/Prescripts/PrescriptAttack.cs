@@ -1,4 +1,5 @@
 using System;
+using RaindropLobotomy.EGO.Merc;
 
 namespace RaindropLobotomy.Buffs {
     public class PrescriptAttack : BuffBase<PrescriptAttack>
@@ -25,8 +26,9 @@ namespace RaindropLobotomy.Buffs {
         private void IncreaseStats(CharacterBody sender, StatHookEventArgs args)
         {
             if (sender.HasBuff(Buff)) {
-                args.attackSpeedMultAdd += 0.25f;
-                args.damageMultAdd += 0.25f;
+                float mult = sender.bodyIndex == IndexMerc.IndexGiantFistBody ? 2f : 1f;
+                args.attackSpeedMultAdd += 0.75f * mult;
+                args.damageMultAdd += 0.25f * mult;
             }
         }
     }

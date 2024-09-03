@@ -60,9 +60,9 @@ namespace RaindropLobotomy.Survivors.Sweeper {
         public override void Create()
         {
             base.Create();
-            BodyPrefab.GetComponent<CameraTargetParams>().cameraParams = Assets.CharacterCameraParams.ccpStandard;
+            BodyPrefab.GetComponent<CameraTargetParams>().cameraParams = Paths.CharacterCameraParams.ccpStandard;
             BodyPrefab.AddComponent<SweeperAllyBehaviour>();
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Assets.GameObject.GenericFootstepDust;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Paths.GameObject.GenericFootstepDust;
         }
 
         public override void SetupLanguage()
@@ -96,11 +96,11 @@ namespace RaindropLobotomy.Survivors.Sweeper {
             );
 
 
-            AcidSprayEffect = PrefabAPI.InstantiateClone(Assets.GameObject.AcidLarvaLeapExplosion, "SweeperAcidImpact");
-            AcidSprayEffect.FindParticle("Billboard, Directional").material = Assets.Material.matBloodHumanLarge;
+            AcidSprayEffect = PrefabAPI.InstantiateClone(Paths.GameObject.AcidLarvaLeapExplosion, "SweeperAcidImpact");
+            AcidSprayEffect.FindParticle("Billboard, Directional").material = Paths.Material.matBloodHumanLarge;
             AcidSprayEffect.FindParticle("Billboard, Big Splash").gameObject.SetActive(false);
-            AcidSprayEffect.FindParticle("Billboard, Splash").material = Assets.Material.matBloodSiphon;
-            AcidSprayEffect.FindParticle("Billboard, Dots").material = Assets.Material.matBloodGeneric;
+            AcidSprayEffect.FindParticle("Billboard, Splash").material = Paths.Material.matBloodSiphon;
+            AcidSprayEffect.FindParticle("Billboard, Dots").material = Paths.Material.matBloodGeneric;
             AcidSprayEffect.FindComponent<Light>("Point light").color = new Color32(207, 59, 46, 255);
             ContentAddition.AddEffect(AcidSprayEffect);
 
@@ -111,18 +111,18 @@ namespace RaindropLobotomy.Survivors.Sweeper {
             On.RoR2.GlobalEventManager.OnHitEnemy += Heal;
             On.RoR2.GlobalEventManager.OnCharacterDeath += OnSweeperKill;
 
-            AcidProjectile = PrefabAPI.InstantiateClone(Assets.GameObject.BeetleQueenAcid, "SweeperMoltenCorpse");
-            Material newMat = Object.Instantiate(Assets.Material.matBeetleQueenAcidDecal);
+            AcidProjectile = PrefabAPI.InstantiateClone(Paths.GameObject.BeetleQueenAcid, "SweeperMoltenCorpse");
+            Material newMat = Object.Instantiate(Paths.Material.matBeetleQueenAcidDecal);
             newMat.SetColor("_Color", new Color32(203, 7, 0, 255));
             newMat.SetVector("_CutoffScroll", new(5, 5, -5, -5));
             newMat.SetFloat("_AlphaBoost", 0.44f);
-            newMat.SetTexture("_RemapTex", Assets.Texture2D.texRampTeslaCoil);
+            newMat.SetTexture("_RemapTex", Paths.Texture2D.texRampTeslaCoil);
 
-            AcidProjectile.FindParticle("Gas").gameObject.SetActive(false);
-            AcidProjectile.FindComponent<Light>("Point Light").color = new Color32(255, 0, 7, 255);
-            AcidProjectile.FindParticle("Spittle").material = Assets.Material.matBloodSiphon;
-            AcidProjectile.FindComponent<MeshRenderer>("Decal").material = newMat;
-            AcidProjectile.FindComponent<Decal>("Decal").Material = newMat;
+            // AcidProjectile.FindParticle("Gas").gameObject.SetActive(false);
+            // AcidProjectile.FindComponent<Light>("Point Light").color = new Color32(255, 0, 7, 255);
+            // AcidProjectile.FindParticle("Spittle").material = Paths.Material.matBloodSiphon;
+            // AcidProjectile.FindComponent<MeshRenderer>("Decal").material = newMat;
+            // AcidProjectile.FindComponent<Decal>("Decal").Material = newMat;
 
             AcidProjectile.GetComponent<ProjectileDotZone>().lifetime = 5f;
             AcidProjectile.GetComponent<ProjectileDotZone>().damageCoefficient = 1f;
@@ -130,22 +130,22 @@ namespace RaindropLobotomy.Survivors.Sweeper {
             ContentAddition.AddProjectile(AcidProjectile);
 
 
-            AcidGlob = PrefabAPI.InstantiateClone(Assets.GameObject.CrocoSpit, "AcidGlobProjectile");
-            AcidGlobGhost = PrefabAPI.InstantiateClone(Assets.GameObject.CrocoSpitGhost, "AcidGlobGhost");
+            AcidGlob = PrefabAPI.InstantiateClone(Paths.GameObject.CrocoSpit, "AcidGlobProjectile");
+            AcidGlobGhost = PrefabAPI.InstantiateClone(Paths.GameObject.CrocoSpitGhost, "AcidGlobGhost");
 
             AcidGlob.GetComponent<ProjectileController>().ghostPrefab = AcidGlobGhost;
             AcidGlob.GetComponent<Rigidbody>().useGravity = true;
 
             AcidGlob.GetComponent<ProjectileDamage>().damageType = DamageType.IgniteOnHit;
 
-            AcidGlob.GetComponent<ProjectileImpactExplosion>().explosionEffect = Assets.GameObject.BleedOnHitAndExplodeExplosion;
+            AcidGlob.GetComponent<ProjectileImpactExplosion>().explosionEffect = Paths.GameObject.BleedOnHitAndExplodeExplosion;
             AcidGlob.GetComponent<ProjectileImpactExplosion>().impactEffect = null;
 
             ContentAddition.AddProjectile(AcidGlob);
 
-            AcidGlobGhost.FindParticle("Flashes").material = Assets.Material.matMageFirebolt;
+            AcidGlobGhost.FindParticle("Flashes").material = Paths.Material.matMageFirebolt;
             AcidGlobGhost.FindParticle("Goo, WS").material = Load<Material>("matSweeperSlash.mat");
-            AcidGlobGhost.FindParticle("Goo Drippings").material = Assets.Material.matBloodSiphon;
+            AcidGlobGhost.FindParticle("Goo Drippings").material = Paths.Material.matBloodSiphon;
             AcidGlobGhost.FindComponent<TrailRenderer>("Trail").material = Load<Material>("matSweeperSlash.mat");
 
             NetworkingAPI.RegisterMessageType<SyncNameOverride>();

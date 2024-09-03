@@ -9,7 +9,7 @@ namespace RaindropLobotomy.Survivors.Sweeper {
 
         public override string HitboxName => "Sweep";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.SpurtGenericBlood;
+        public override GameObject HitEffectPrefab => Paths.GameObject.SpurtGenericBlood;
 
         public override float ProcCoefficient => 1;
 

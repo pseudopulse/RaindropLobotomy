@@ -9,7 +9,7 @@ namespace RaindropLobotomy.EGO.Bandit {
 
         public override string HitboxName => "SlashBlade";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.VoidImpactEffect;
+        public override GameObject HitEffectPrefab => Paths.GameObject.VoidImpactEffect;
 
         public override float ProcCoefficient => 1f;
 

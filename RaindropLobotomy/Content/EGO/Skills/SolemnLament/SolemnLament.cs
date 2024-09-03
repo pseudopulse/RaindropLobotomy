@@ -5,7 +5,7 @@ namespace RaindropLobotomy.EGO {
     public class SolemnLament : EGOSkillBase
     {
         public override SkillDef SkillDef => Load<SteppedSkillDef>("sdSolemnLament.asset");
-        public override SurvivorDef Survivor => Assets.SurvivorDef.Commando;
+        public override SurvivorDef Survivor => Paths.SurvivorDef.Commando;
 
         public override SkillSlot Slot => SkillSlot.Primary;
         public override UnlockableDef Unlock => null;
@@ -76,7 +76,7 @@ namespace RaindropLobotomy.EGO {
                 if (report.victimBody.GetBuffCount(SealStack) >= 5) {
                     report.victimBody.SetBuffCount(SealStack.buffIndex, 0);
                     report.victimBody.AddTimedBuff(Seal, 3f);
-                    EffectManager.SimpleEffect(Assets.GameObject.OmniImpactExecute, report.damageInfo.position, Quaternion.identity, false);
+                    EffectManager.SimpleEffect(Paths.GameObject.OmniImpactExecute, report.damageInfo.position, Quaternion.identity, false);
                     
                     SetStateOnHurt hurt = report.victimBody.GetComponent<SetStateOnHurt>();
                     if (hurt) {
@@ -144,7 +144,7 @@ namespace RaindropLobotomy.EGO {
         }
 
         public void FireBullet(string muzzle) {
-            EffectManager.SimpleMuzzleFlash(Assets.GameObject.MuzzleflashBarrage, base.gameObject, muzzle, false);
+            EffectManager.SimpleMuzzleFlash(Paths.GameObject.MuzzleflashBarrage, base.gameObject, muzzle, false);
 
             if (isAuthority) {
                 BulletAttack bulletAttack = new();
@@ -156,7 +156,7 @@ namespace RaindropLobotomy.EGO {
                 bulletAttack.maxSpread = base.characterBody.spreadBloomAngle;
                 bulletAttack.damage = base.damageStat;
                 bulletAttack.force = 40f;
-                bulletAttack.tracerEffectPrefab = Assets.GameObject.TracerBandit2Rifle;
+                bulletAttack.tracerEffectPrefab = Paths.GameObject.TracerBandit2Rifle;
                 bulletAttack.muzzleName = muzzle;
                 bulletAttack.hitEffectPrefab = muzzle == "MuzzleLeft" ? ImpactBlack : ImpactWhite;
                 bulletAttack.isCrit = Util.CheckRoll(critStat, base.characterBody.master);

@@ -21,9 +21,9 @@ namespace RaindropLobotomy.EGO.Gifts {
         public void Initialize() {
             if (!EGOTier) {
                 EGOTier = Load<ItemTierDef>("ITD_Gift.asset");
-                EGOTier.bgIconTexture = Assets.ItemTierDef.BossTierDef.bgIconTexture;
-                EGOTier.dropletDisplayPrefab = Assets.ItemTierDef.BossTierDef.dropletDisplayPrefab;
-                EGOTier.highlightPrefab = Assets.ItemTierDef.BossTierDef.highlightPrefab;
+                EGOTier.bgIconTexture = Paths.ItemTierDef.BossTierDef.bgIconTexture;
+                EGOTier.dropletDisplayPrefab = Paths.ItemTierDef.BossTierDef.dropletDisplayPrefab;
+                EGOTier.highlightPrefab = Paths.ItemTierDef.BossTierDef.highlightPrefab;
 
                 ContentAddition.AddItemTierDef(EGOTier);
             }
@@ -37,7 +37,7 @@ namespace RaindropLobotomy.EGO.Gifts {
             if (EquipmentDef) {
                 ContentAddition.AddEquipmentDef(EquipmentDef);
                 EquipmentDef.isBoss = true;
-                /// EquipmentDef.GetType().GetProperty("bgIconTexture", (BindingFlags)(-1)).SetValue(EquipmentDef, Assets.Texture2D.texBossBGIcon);
+                /// EquipmentDef.GetType().GetProperty("bgIconTexture", (BindingFlags)(-1)).SetValue(EquipmentDef, Paths.Texture2D.texBossBGIcon);
                 On.RoR2.EquipmentSlot.PerformEquipmentAction += PerformEquipmentAction;
             }
 

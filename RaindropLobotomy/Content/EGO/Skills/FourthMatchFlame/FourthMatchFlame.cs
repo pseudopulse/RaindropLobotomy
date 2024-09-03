@@ -7,7 +7,7 @@ namespace RaindropLobotomy.EGO {
     public class FourthMatchFlame : EGOSkillBase
     {
         public override SkillDef SkillDef => Load<SkillDef>("sdFMF.asset");
-        public override SurvivorDef Survivor => Assets.SurvivorDef.Railgunner;
+        public override SurvivorDef Survivor => Paths.SurvivorDef.Railgunner;
 
         public override SkillSlot Slot => SkillSlot.Special;
         public override UnlockableDef Unlock => null;
@@ -66,7 +66,7 @@ namespace RaindropLobotomy.EGO {
             ContentAddition.AddEffect(TracerFMF);
 
             CancelFMF = Load<SkillDef>("sdFMF_Cancel.asset");
-            CancelFMF.icon = Assets.SkillDef.EngiCancelTargetingDummy.icon;
+            CancelFMF.icon = Paths.SkillDef.EngiCancelTargetingDummy.icon;
             ChargeFMF = Load<SkillDef>("sdFMF_Fire.asset");
 
             BeamFMF = Load<GameObject>("MatchFlameCharge.prefab");
@@ -153,7 +153,7 @@ namespace RaindropLobotomy.EGO {
         {
             base.OnEnter();
             skillLocator.primary.SetSkillOverride(base.gameObject, FourthMatchFlame.ChargeFMF, GenericSkill.SkillOverridePriority.Contextual);
-            skillLocator.secondary.SetSkillOverride(base.gameObject, Assets.SkillDef.CaptainCancelDummy, GenericSkill.SkillOverridePriority.Contextual);
+            skillLocator.secondary.SetSkillOverride(base.gameObject, Paths.SkillDef.CaptainCancelDummy, GenericSkill.SkillOverridePriority.Contextual);
             skillLocator.special.SetSkillOverride(base.gameObject, FourthMatchFlame.CancelFMF, GenericSkill.SkillOverridePriority.Contextual);
             outer.SetNextStateToMain();
         }
@@ -183,7 +183,7 @@ namespace RaindropLobotomy.EGO {
             attack.aimVector = aimRay.direction;
             attack.muzzleName = "MuzzleSniper";
             attack.procCoefficient = 1f;
-            attack.hitEffectPrefab = Assets.GameObject.ImpactWispEmber;
+            attack.hitEffectPrefab = Paths.GameObject.ImpactWispEmber;
             attack.damageType |= DamageType.IgniteOnHit;
             attack.owner = base.gameObject;
             attack.stopperMask = LayerIndex.noCollision.mask;
@@ -194,7 +194,7 @@ namespace RaindropLobotomy.EGO {
 
             AkSoundEngine.PostEvent(Events.Play_wisp_attack_fire, base.gameObject);
 
-            EffectManager.SimpleMuzzleFlash(Assets.GameObject.MuzzleflashFireMeatBall, base.gameObject, "MuzzleSniper", false);
+            EffectManager.SimpleMuzzleFlash(Paths.GameObject.MuzzleflashFireMeatBall, base.gameObject, "MuzzleSniper", false);
         }
 
         public override void FixedUpdate()
@@ -209,7 +209,7 @@ namespace RaindropLobotomy.EGO {
         {
             base.OnExit();
             skillLocator.primary.UnsetSkillOverride(base.gameObject, FourthMatchFlame.ChargeFMF, GenericSkill.SkillOverridePriority.Contextual);
-            skillLocator.secondary.UnsetSkillOverride(base.gameObject, Assets.SkillDef.CaptainCancelDummy, GenericSkill.SkillOverridePriority.Contextual);
+            skillLocator.secondary.UnsetSkillOverride(base.gameObject, Paths.SkillDef.CaptainCancelDummy, GenericSkill.SkillOverridePriority.Contextual);
             skillLocator.special.UnsetSkillOverride(base.gameObject, FourthMatchFlame.CancelFMF, GenericSkill.SkillOverridePriority.Contextual);
         }
     }
@@ -219,7 +219,7 @@ namespace RaindropLobotomy.EGO {
         {
             base.OnEnter();
             skillLocator.primary.UnsetSkillOverride(base.gameObject, FourthMatchFlame.ChargeFMF, GenericSkill.SkillOverridePriority.Contextual);
-            skillLocator.secondary.UnsetSkillOverride(base.gameObject, Assets.SkillDef.CaptainCancelDummy, GenericSkill.SkillOverridePriority.Contextual);
+            skillLocator.secondary.UnsetSkillOverride(base.gameObject, Paths.SkillDef.CaptainCancelDummy, GenericSkill.SkillOverridePriority.Contextual);
             skillLocator.special.UnsetSkillOverride(base.gameObject, FourthMatchFlame.CancelFMF, GenericSkill.SkillOverridePriority.Contextual);
 
             outer.SetNextStateToMain();

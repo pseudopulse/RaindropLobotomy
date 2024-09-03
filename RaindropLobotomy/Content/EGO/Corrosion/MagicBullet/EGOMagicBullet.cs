@@ -6,7 +6,7 @@ namespace RaindropLobotomy.EGO.Bandit {
         public override string EGODisplayName => "Magic Bullet";
         public override string Description => "This magical bullet can truly hit anyone, just like you say.";
 
-        public override SurvivorDef TargetSurvivorDef => Assets.SurvivorDef.Bandit2;
+        public override SurvivorDef TargetSurvivorDef => Paths.SurvivorDef.Bandit2;
 
         public override UnlockableDef RequiredUnlock => null;
 
@@ -53,20 +53,22 @@ namespace RaindropLobotomy.EGO.Bandit {
         {
             base.Modify();
 
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animBandit2;
-            Load<GameObject>("DisplayMagicBullet.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animBandit2Display;
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Assets.ItemDisplayRuleSet.idrsBandit2;
-            BodyPrefab.AddComponent<MagicBulletTargeter>();
-            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Assets.GameObject.VoidSurvivorCrosshair;
+            BodyPrefab.GetComponent<CameraTargetParams>().cameraParams = Paths.CharacterCameraParams.ccpStandard;
 
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Assets.GameObject.GenericFootstepDust;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animBandit2;
+            Load<GameObject>("DisplayMagicBullet.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animBandit2Display;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Paths.ItemDisplayRuleSet.idrsBandit2;
+            BodyPrefab.AddComponent<MagicBulletTargeter>();
+            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Paths.GameObject.VoidSurvivorCrosshair;
+
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Paths.GameObject.GenericFootstepDust;
 
             BulletPrefab = Load<GameObject>("MagicBulletProjectile.prefab");
             BulletPrefab.GetComponentInChildren<MeshRenderer>().sharedMaterials = new Material[] {
-                Assets.Material.matHelfirePuff,
-                Assets.Material.matLunarTeleporterWater,
-                Assets.Material.matMoonbatteryGlassDistortion,
-                Assets.Material.matHelfirePuff
+                Paths.Material.matHelfirePuff,
+                Paths.Material.matLunarTeleporterWater,
+                Paths.Material.matMoonbatteryGlassDistortion,
+                Paths.Material.matHelfirePuff
             };
             ContentAddition.AddProjectile(BulletPrefab);
 
@@ -74,27 +76,27 @@ namespace RaindropLobotomy.EGO.Bandit {
             PortalPrefab.AddComponent<MagicBulletPortal>();
 
             Material matMagicBulletPortal = Load<Material>("matMagicPortal.mat");
-            matMagicBulletPortal.SetTexture("_RemapTex", Assets.Texture2D.texRampMoonArenaWall);
-            matMagicBulletPortal.SetTexture("_Cloud1Tex", Assets.Texture2D.texCloudStroke1);
+            matMagicBulletPortal.SetTexture("_RemapTex", Paths.Texture2D.texRampMoonArenaWall);
+            matMagicBulletPortal.SetTexture("_Cloud1Tex", Paths.Texture2D.texCloudStroke1);
 
 
             matMagicBulletPortal2 = Load<Material>("matMagicPortal2.mat");
-            matMagicBulletPortal2.SetTexture("_MainTex", Assets.Texture2D.texAlphaGradient3Mask);
-            matMagicBulletPortal2.SetTexture("_RemapTex", Assets.Texture2D.texRampBanditAlt);
-            matMagicBulletPortal2.SetTexture("_Cloud1Tex", Assets.Texture2D.texCloudDirtyFire);
-            matMagicBulletPortal2.SetTexture("_Cloud2Tex", Assets.Texture2D.texCloudIce);
+            matMagicBulletPortal2.SetTexture("_MainTex", Paths.Texture2D.texAlphaGradient3Mask);
+            matMagicBulletPortal2.SetTexture("_RemapTex", Paths.Texture2D.texRampBanditAlt);
+            matMagicBulletPortal2.SetTexture("_Cloud1Tex", Paths.Texture2D.texCloudDirtyFire);
+            matMagicBulletPortal2.SetTexture("_Cloud2Tex", Paths.Texture2D.texCloudIce);
             matMagicBulletPortal2.globalIlluminationFlags = MaterialGlobalIlluminationFlags.RealtimeEmissive;
             matMagicBulletPortal2.SetShaderKeywords(new string[] { "USE_CLOUDS", "VERTEXALPHA", "_EMISSION" });
 
             matMagicBulletPortal1 = Load<Material>("matMagicPortal1.mat");
-            matMagicBulletPortal1.SetTexture("_RemapTex", Assets.Texture2D.texRampBombOrb);
-            matMagicBulletPortal1.SetTexture("_Cloud1Tex", Assets.Texture2D.texCloudCrackedIce);
-            matMagicBulletPortal1.SetTexture("_Cloud2Tex", Assets.Texture2D.texCloudOrganic2);
+            matMagicBulletPortal1.SetTexture("_RemapTex", Paths.Texture2D.texRampBombOrb);
+            matMagicBulletPortal1.SetTexture("_Cloud1Tex", Paths.Texture2D.texCloudCrackedIce);
+            matMagicBulletPortal1.SetTexture("_Cloud2Tex", Paths.Texture2D.texCloudOrganic2);
             matMagicBulletPortal1.globalIlluminationFlags = MaterialGlobalIlluminationFlags.RealtimeEmissive;
-            matMagicBulletPortal1.SetTexture("_MainTex", Assets.Texture2D.texCloudWaterRipples);
+            matMagicBulletPortal1.SetTexture("_MainTex", Paths.Texture2D.texCloudWaterRipples);
             matMagicBulletPortal1.SetShaderKeywords(new string[] { "USE_CLOUDS", "VERTEXALPHA", "_EMISSION" });
 
-            TracerPrefab = PrefabAPI.InstantiateClone(Assets.GameObject.VoidSurvivorBeamTracer, "FruitLoopsBullet");
+            TracerPrefab = PrefabAPI.InstantiateClone(Paths.GameObject.VoidSurvivorBeamTracer, "FruitLoopsBullet");
             TracerPrefab.GetComponent<LineRenderer>().widthMultiplier = 1f;
             TracerPrefab.GetComponent<LineRenderer>().startWidth = 1f;
             TracerPrefab.GetComponent<LineRenderer>().endWidth = 1f;
@@ -102,9 +104,9 @@ namespace RaindropLobotomy.EGO.Bandit {
             TracerPrefab.GetComponentInChildren<Light>().color = Color;
             ContentAddition.AddEffect(TracerPrefab);
 
-            MegaTracerPrefab = PrefabAPI.InstantiateClone(Assets.GameObject.TracerRailgunCryo, "FruitLoopsMegaBullet");
-            MegaTracerPrefab.FindParticle("BeamParticles, Rings").material = Assets.Material.matEliteLunarDonut;
-            MegaTracerPrefab.FindComponent<LineRenderer>("Beam, Linger").material = Assets.Material.matLunarWispMinigunTracer;
+            MegaTracerPrefab = PrefabAPI.InstantiateClone(Paths.GameObject.TracerRailgunCryo, "FruitLoopsMegaBullet");
+            MegaTracerPrefab.FindParticle("BeamParticles, Rings").material = Paths.Material.matEliteLunarDonut;
+            MegaTracerPrefab.FindComponent<LineRenderer>("Beam, Linger").material = Paths.Material.matLunarWispMinigunTracer;
             MegaTracerPrefab.FindComponent<LineRenderer>("Beam, Linger").startColor = new Color32(0, 65, 255, 255);
             MegaTracerPrefab.FindComponent<LineRenderer>("Beam, Linger").startColor = new Color32(23, 0, 255, 255);
             MegaTracerPrefab.FindComponent<ObjectScaleCurve>("mdlRailgunnerBeam").gameObject.SetActive(false);
@@ -112,9 +114,9 @@ namespace RaindropLobotomy.EGO.Bandit {
 
             FloodingBulletsPP = Load<GameObject>("MagicBulletPP.prefab");
 
-            TeleportEffect = PrefabAPI.InstantiateClone(Assets.GameObject.Bandit2SmokeBomb, "FruitLoopsSmokebomb");
-            TeleportEffect.transform.Find("Core").Find("Sparks").GetComponent<ParticleSystemRenderer>().material = Assets.Material.matHelfirePuff;
-            TeleportEffect.transform.Find("Core").Find("Smoke, Edge Circle").GetComponent<ParticleSystemRenderer>().material = Assets.Material.matHelfirePuff;
+            TeleportEffect = PrefabAPI.InstantiateClone(Paths.GameObject.Bandit2SmokeBomb, "FruitLoopsSmokebomb");
+            TeleportEffect.transform.Find("Core").Find("Sparks").GetComponent<ParticleSystemRenderer>().material = Paths.Material.matHelfirePuff;
+            TeleportEffect.transform.Find("Core").Find("Smoke, Edge Circle").GetComponent<ParticleSystemRenderer>().material = Paths.Material.matHelfirePuff;
             TeleportEffect.transform.Find("Core").Find("Dust, CenterSphere").gameObject.SetActive(false);
             TeleportEffect.transform.Find("Core").Find("Dust, CenterTube").gameObject.SetActive(false);
             var main = TeleportEffect.FindComponent<ParticleSystem>("Smoke, Edge Circle").main;
@@ -126,10 +128,10 @@ namespace RaindropLobotomy.EGO.Bandit {
 
             Despair = Load<SkillDef>("DespairBullet.asset");
 
-            On.RoR2.HealthComponent.TakeDamage += DespairMultiplier;
+            On.RoR2.HealthComponent.TakeDamageProcess += DespairMultiplier;
         }
 
-        private void DespairMultiplier(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void DespairMultiplier(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (self.body.teamComponent.teamIndex != TeamIndex.Player && damageInfo.HasModdedDamageType(DespairDamage)) {
                 damageInfo.damage *= 10f;
@@ -197,7 +199,7 @@ namespace RaindropLobotomy.EGO.Bandit {
         public bool shouldTrack = true;
         public override void Start()
         {
-            targetingIndicatorPrefab = Assets.GameObject.HuntressTrackingIndicator;
+            targetingIndicatorPrefab = Paths.GameObject.HuntressTrackingIndicator;
             maxSearchAngle = 25f;
             maxSearchDistance = 60f;
             targetType = TargetType.Enemy;
@@ -222,7 +224,7 @@ namespace RaindropLobotomy.EGO.Bandit {
         }
 
         public void FireBullet(BulletAttack attack) {
-            EffectManager.SimpleEffect(Assets.GameObject.OmniImpactVFXHuntress, this.transform.position, Quaternion.identity, true);
+            EffectManager.SimpleEffect(Paths.GameObject.OmniImpactVFXHuntress, this.transform.position, Quaternion.identity, true);
 
             foreach (MagicBulletPortal portal in outputPortals) {
                 attack.aimVector = portal.transform.forward;
@@ -232,7 +234,7 @@ namespace RaindropLobotomy.EGO.Bandit {
                 attack.tracerEffectPrefab = EGOMagicBullet.MegaTracerPrefab;
                 attack.Fire();
 
-                EffectManager.SimpleEffect(Assets.GameObject.OmniImpactVFXHuntress, portal.transform.position, Quaternion.identity, true);
+                EffectManager.SimpleEffect(Paths.GameObject.OmniImpactVFXHuntress, portal.transform.position, Quaternion.identity, true);
             }
         }
 

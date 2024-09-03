@@ -7,10 +7,7 @@ namespace RaindropLobotomy.EGO.Merc {
         public Vector3 forwardLock;
         public LineRenderer chargeRenderer;
         public bool hasHitTarget = false;
-        // TODO:
-        // - make this go less distance
-        // - add a line telegraph and a pause delay before firing
-        // - stun
+        
         public override void OnEnter()
         {
             base.OnEnter();
@@ -22,7 +19,7 @@ namespace RaindropLobotomy.EGO.Merc {
             attack.damage = base.damageStat * 7f;
             attack.pushAwayForce = 4000f;
             attack.attacker = base.gameObject;
-            attack.hitEffectPrefab = Assets.GameObject.OmniImpactVFXLoader;
+            attack.hitEffectPrefab = Paths.GameObject.OmniImpactVFXLoader;
             attack.teamIndex = base.GetTeam();
             attack.procCoefficient = 1f;
         }
@@ -67,7 +64,7 @@ namespace RaindropLobotomy.EGO.Merc {
                     if (temp) {
                         hasHitTarget = temp;
                         base.rigidbody.velocity = Vector3.zero;
-                        EffectManager.SpawnEffect(Assets.GameObject.HermitCrabBombExplosion, new EffectData {
+                        EffectManager.SpawnEffect(Paths.GameObject.HermitCrabBombExplosion, new EffectData {
                             origin = base.transform.position,
                             scale = 5f
                         }, false);

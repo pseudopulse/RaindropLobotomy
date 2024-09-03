@@ -41,7 +41,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
             attack.Fire();
 
-            EffectManager.SpawnEffect(Assets.GameObject.HermitCrabBombExplosion, new EffectData {
+            EffectManager.SpawnEffect(Paths.GameObject.HermitCrabBombExplosion, new EffectData {
                             origin = base.transform.position,
                             scale = 5f
                         }, false);

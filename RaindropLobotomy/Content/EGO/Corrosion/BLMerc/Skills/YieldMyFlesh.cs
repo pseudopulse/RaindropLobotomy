@@ -12,7 +12,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "Sword";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 1f;
 
@@ -30,7 +30,7 @@ namespace RaindropLobotomy.EGO.Merc {
             base.OnEnter();
 
             if (NetworkServer.active) {
-                On.RoR2.HealthComponent.TakeDamage += ReceiveDamage;
+                On.RoR2.HealthComponent.TakeDamageProcess += ReceiveDamage;
                 characterBody.AddBuff(Buffs.Unrelenting.Instance.Buff);
             }
 
@@ -39,9 +39,9 @@ namespace RaindropLobotomy.EGO.Merc {
             // Process();
         }
 
-        private void ReceiveDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, RoR2.HealthComponent self, RoR2.DamageInfo damageInfo)
+        private void ReceiveDamage(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, RoR2.HealthComponent self, RoR2.DamageInfo damageInfo)
         {
-            if (self == characterBody.healthComponent && !damageInfo.damageType.HasFlag(DamageType.FallDamage) && damageInfo.attacker) {
+            if (self == characterBody.healthComponent && !damageInfo.damageType.damageType.HasFlag(DamageType.FallDamage) && damageInfo.attacker) {
                 damageTaken = damageInfo.damage;
                 attacker = damageInfo.attacker.transform;
 
@@ -66,7 +66,7 @@ namespace RaindropLobotomy.EGO.Merc {
         {
             base.OnExit();
             if (NetworkServer.active) {
-                On.RoR2.HealthComponent.TakeDamage -= ReceiveDamage;
+                On.RoR2.HealthComponent.TakeDamageProcess -= ReceiveDamage;
             }
             characterBody.RemoveBuff(Buffs.Unrelenting.Instance.Buff);
         }
@@ -82,7 +82,7 @@ namespace RaindropLobotomy.EGO.Merc {
                 AkSoundEngine.PostEvent(Events.Play_merc_shift_slice, base.gameObject);
                 AkSoundEngine.PostEvent(Events.Play_merc_shift_slice, base.gameObject);
 
-                EffectManager.SpawnEffect(Assets.GameObject.MercExposeConsumeEffect, new EffectData {
+                EffectManager.SpawnEffect(Paths.GameObject.MercExposeConsumeEffect, new EffectData {
                     origin = base.transform.position,
                     scale = 3f
                 }, false);

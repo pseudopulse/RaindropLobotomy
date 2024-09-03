@@ -11,7 +11,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string Description => "We are not placing our stone here, then? Mm, then the tides drive us to resign.";
 
-        public override SurvivorDef TargetSurvivorDef => Assets.SurvivorDef.Merc;
+        public override SurvivorDef TargetSurvivorDef => Paths.SurvivorDef.Merc;
 
         public override UnlockableDef RequiredUnlock => null;
 
@@ -42,12 +42,14 @@ namespace RaindropLobotomy.EGO.Merc {
         public override void Modify()
         {
             base.Modify();
+
+            BodyPrefab.GetComponent<CameraTargetParams>().cameraParams = Paths.CharacterCameraParams.ccpStandardMelee;
             
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animMerc;
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Assets.ItemDisplayRuleSet.idrsMerc;
-            Load<GameObject>("BLMercDisplay.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animMercDisplay;
-            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Assets.GameObject.MercBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Assets.GameObject.GenericFootstepDust;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animMerc;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Paths.ItemDisplayRuleSet.idrsMerc;
+            Load<GameObject>("BLMercDisplay.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animMercDisplay;
+            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Paths.GameObject.MercBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<FootstepHandler>().footstepDustPrefab = Paths.GameObject.GenericFootstepDust;
 
             SlashEffect = Load<GameObject>("BLMercSlash.prefab");
             Upslash = Load<GameObject>("BLMercUpslash.prefab");
@@ -63,12 +65,12 @@ namespace RaindropLobotomy.EGO.Merc {
 
             On.RoR2.CharacterBody.UpdateAllTemporaryVisualEffects += BoneClaiming;
             On.RoR2.CharacterModel.UpdateOverlays += BoneClaiming2;
-            On.RoR2.HealthComponent.TakeDamage += PoiseCritBonus;
+            On.RoR2.HealthComponent.TakeDamageProcess += PoiseCritBonus;
 
             NetworkingAPI.RegisterMessageType<SyncTCTB>();
         }
 
-        private void PoiseCritBonus(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void PoiseCritBonus(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (damageInfo.crit && damageInfo.attacker && damageInfo.attacker.GetComponent<CharacterBody>() && damageInfo.HasModdedDamageType(PoiseDamageBonus)) {
                 CharacterBody characterBody = damageInfo.attacker.GetComponent<CharacterBody>();
@@ -170,7 +172,7 @@ namespace RaindropLobotomy.EGO.Merc {
                     body.SetBuffCount(Buffs.Poise.Instance.Buff.buffIndex, Mathf.Clamp(count + 1, 0, 20));
                 }
 
-                EffectManager.SimpleEffect(Assets.GameObject.LunarRerollEffect, body.corePosition, Quaternion.identity, false);
+                EffectManager.SimpleEffect(Paths.GameObject.LunarRerollEffect, body.corePosition, Quaternion.identity, false);
                 // AkSoundEngine.PostEvent(Events.Play_lunar_reroller_activate, body.gameObject);
             }
 

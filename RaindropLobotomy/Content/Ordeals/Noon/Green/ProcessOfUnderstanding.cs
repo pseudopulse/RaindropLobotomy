@@ -14,7 +14,7 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
             prefab = Load<GameObject>("GreenNoonBody.prefab");
             prefabMaster = Load<GameObject>("GreenNoonMaster.prefab");
 
-            prefab.GetComponent<CharacterBody>().preferredPodPrefab = Assets.GameObject.RoboCratePod;
+            prefab.GetComponent<CharacterBody>().preferredPodPrefab = Paths.GameObject.RoboCratePod;
 
             RegisterEnemy(prefab, prefabMaster);
 
@@ -29,7 +29,7 @@ namespace RaindropLobotomy.Ordeals.Noon.Green {
                 }
             };
 
-            On.RoR2.HealthComponent.TakeDamage += (orig, self, info) => {
+            On.RoR2.HealthComponent.TakeDamageProcess += (orig, self, info) => {
                 if (self.body.bodyIndex == noon && info.HasModdedDamageType(NoonInvulnFrontal)) {
                     info.rejected = true;
 

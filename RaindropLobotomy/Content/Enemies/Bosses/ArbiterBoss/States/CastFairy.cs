@@ -46,7 +46,7 @@ namespace RaindropLobotomy.Enemies.ArbiterBoss {
             swing.GetComponent<ScaleParticleSystemDuration>().newDuration = 3f;
             // Debug.Log(swing.transform.position);
 
-            /*swing = GameObject.Instantiate(Assets.GameObject.MercSwordFinisherSlash, muzzle.transform.position, muzzle.transform.rotation);
+            /*swing = GameObject.Instantiate(Paths.GameObject.MercSwordFinisherSlash, muzzle.transform.position, muzzle.transform.rotation);
             swing.GetComponent<ScaleParticleSystemDuration>().newDuration = swing.GetComponent<ScaleParticleSystemDuration>().initialDuration;*/
         }
 

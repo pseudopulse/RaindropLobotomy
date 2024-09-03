@@ -67,7 +67,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "WhirlwindAir";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 3f;
 
@@ -115,7 +115,7 @@ namespace RaindropLobotomy.EGO.Merc {
                 attack.procCoefficient = 3f;
                 attack.baseDamage *= bonusDamage;
 
-                EffectManager.SpawnEffect(Assets.GameObject.HermitCrabBombExplosion, new EffectData {
+                EffectManager.SpawnEffect(Paths.GameObject.HermitCrabBombExplosion, new EffectData {
                     origin = attack.position,
                     scale = attack.radius
                 }, true);
@@ -172,7 +172,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "WhirlwindAir";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 2f;
 
@@ -238,7 +238,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "WhirlwindGround";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 1.5f;
 
@@ -309,7 +309,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "Sword";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 1f;
 
@@ -388,7 +388,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "Sword";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 1f;
 

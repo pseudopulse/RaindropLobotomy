@@ -2,6 +2,8 @@ using System;
 
 namespace RaindropLobotomy.EGO.Merc {
     public class DeliverPrescript : BaseSkillState {
+        public float exitTimer = 0.2f;
+        public bool hasFired = false;
         public override void OnEnter()
         {
             base.OnEnter();
@@ -16,7 +18,16 @@ namespace RaindropLobotomy.EGO.Merc {
         {
             base.Update();
 
-            if (base.fixedAge <= 0.2f) {
+            if (hasFired) {
+                exitTimer -= Time.fixedDeltaTime;
+
+                if (exitTimer <= 0f) {
+                    outer.SetNextStateToMain();
+                    return;
+                }
+            }
+
+            if (base.fixedAge <= 0.2f || hasFired) {
                 return;
             }
 
@@ -56,10 +67,12 @@ namespace RaindropLobotomy.EGO.Merc {
 
             AkSoundEngine.PostEvent(Events.Play_lunar_reroller_activate, buffTarget.gameObject);
 
-            EffectManager.SpawnEffect(Assets.GameObject.ExplosionLunarSun, new EffectData {
+            EffectManager.SpawnEffect(Paths.GameObject.ExplosionLunarSun, new EffectData {
                 origin = buffTarget.corePosition,
                 scale = buffTarget.bestFitRadius * 2f
             }, false);
+
+            hasFired = true;
 
             outer.SetNextStateToMain();
         }

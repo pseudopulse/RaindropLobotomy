@@ -19,7 +19,7 @@ namespace RaindropLobotomy.Survivors.Argalia {
             attack.procChainMask = default;
             attack.teamIndex = GetTeam();
             attack.isCrit = base.RollCrit();
-            attack.hitEffectPrefab = Assets.GameObject.ImpactMercSwing;
+            attack.hitEffectPrefab = Paths.GameObject.ImpactMercSwing;
             attack.AddModdedDamageType(Argalia.ResonanceDamageType);
 
             AkSoundEngine.PostEvent(Events.Play_merc_sword_swing, base.gameObject);

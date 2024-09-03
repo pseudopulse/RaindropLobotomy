@@ -9,7 +9,7 @@ namespace RaindropLobotomy.Buffs {
         public override void PostCreation()
         {
             RecalculateStatsAPI.GetStatCoefficients += AddPersistanceBuffs;
-            On.RoR2.HealthComponent.TakeDamage += DamageNull;
+            On.RoR2.HealthComponent.TakeDamageProcess += DamageNull;
             On.RoR2.GlobalEventManager.OnHitEnemy += RallySweepers;
             On.RoR2.CharacterBody.UpdateAllTemporaryVisualEffects += WarCry;
         }
@@ -33,7 +33,7 @@ namespace RaindropLobotomy.Buffs {
             }
         }
 
-        private void DamageNull(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void DamageNull(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             int persistenceCount = self.body.GetBuffCount(Buff);
 

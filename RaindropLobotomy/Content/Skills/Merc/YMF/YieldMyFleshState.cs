@@ -10,13 +10,13 @@ namespace RaindropLobotomy.Skills.Merc {
 
         public override string HitboxName => "Sword";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 1f;
 
         public override float HitPauseDuration => 0.05f;
 
-        public override GameObject SwingEffectPrefab => Assets.GameObject.MercSwordSlash;
+        public override GameObject SwingEffectPrefab => Paths.GameObject.MercSwordSlash;
 
         public override string MuzzleString => "GroundLight1";
         private Transform attacker;
@@ -27,13 +27,13 @@ namespace RaindropLobotomy.Skills.Merc {
 
             base.OnEnter();
 
-            On.RoR2.HealthComponent.TakeDamage += ReceiveDamage;
+            On.RoR2.HealthComponent.TakeDamageProcess += ReceiveDamage;
             characterBody.AddBuff(Buffs.Unrelenting.Instance.Buff);
         }
 
-        private void ReceiveDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, RoR2.HealthComponent self, RoR2.DamageInfo damageInfo)
+        private void ReceiveDamage(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, RoR2.HealthComponent self, RoR2.DamageInfo damageInfo)
         {
-            if (self == characterBody.healthComponent && !damageInfo.damageType.HasFlag(DamageType.FallDamage) && damageInfo.attacker) {
+            if (self == characterBody.healthComponent && !damageInfo.damageType.damageType.HasFlag(DamageType.FallDamage) && damageInfo.attacker) {
                 damageInfo.damage *= 2f;
                 damageTaken = damageInfo.damage;
                 attacker = damageInfo.attacker.transform;
@@ -46,7 +46,7 @@ namespace RaindropLobotomy.Skills.Merc {
         public override void OnExit()
         {
             base.OnExit();
-            On.RoR2.HealthComponent.TakeDamage -= ReceiveDamage;
+            On.RoR2.HealthComponent.TakeDamageProcess -= ReceiveDamage;
             characterBody.RemoveBuff(Buffs.Unrelenting.Instance.Buff);
         }
 
@@ -66,7 +66,7 @@ namespace RaindropLobotomy.Skills.Merc {
                 AkSoundEngine.PostEvent(Events.Play_merc_shift_slice, base.gameObject);
                 AkSoundEngine.PostEvent(Events.Play_merc_shift_slice, base.gameObject);
 
-                EffectManager.SpawnEffect(Assets.GameObject.MercExposeConsumeEffect, new EffectData {
+                EffectManager.SpawnEffect(Paths.GameObject.MercExposeConsumeEffect, new EffectData {
                     origin = base.transform.position,
                     scale = 3f
                 }, true);

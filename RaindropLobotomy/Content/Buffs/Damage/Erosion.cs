@@ -11,11 +11,11 @@ namespace RaindropLobotomy.Buffs {
 
         public override void PostCreation()
         {
-            On.RoR2.HealthComponent.TakeDamage += OnTakeDamage;
+            On.RoR2.HealthComponent.TakeDamageProcess += OnTakeDamage;
             On.RoR2.CharacterBody.AddBuff_BuffIndex += OnAddErosion;
 
             ErosionEffect = new();
-            ErosionEffect.fireEffectPrefab = Assets.GameObject.BlightEffect;
+            ErosionEffect.fireEffectPrefab = Paths.GameObject.BlightEffect;
             ErosionEffect.overlayMaterial = Load<Material>("matErosion.mat");
         }
 
@@ -33,19 +33,24 @@ namespace RaindropLobotomy.Buffs {
                         controller = model.AddComponent<ErosionController>();
                     }
 
-                    controller.effectType = ErosionEffect;
+                    controller.effectType = BurnEffectController.blightEffect;
                     controller.body = self;
                     controller.target = model.gameObject;
                 }
             }
         }
 
-        private void OnTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void OnTakeDamage(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             orig(self, damageInfo);
 
             if (damageInfo.procCoefficient > 0 && damageInfo.attacker && NetworkServer.active) {
                 int count = self.body.GetBuffCount(Buff.buffIndex);
+
+                if (damageInfo.HasModdedDamageType(InflictErosion) && damageInfo.procCoefficient < 0.2f) {
+                    goto next;
+                }
+
                 if (count > 0) {
                     float damage = (0.2f * count) * damageInfo.attacker.GetComponent<CharacterBody>().damage;
                     self.body.SetBuffCount(Buff.buffIndex, count - 1);
@@ -58,7 +63,7 @@ namespace RaindropLobotomy.Buffs {
                     info.procCoefficient = 0;
                     info.damage = damage;
 
-                    EffectManager.SimpleEffect(Assets.GameObject.CrocoDiseaseImpactEffect, info.position, Quaternion.identity, true);
+                    EffectManager.SimpleEffect(Paths.GameObject.CrocoDiseaseImpactEffect, info.position, Quaternion.identity, true);
 
                     self.TakeDamage(info);
                 }
@@ -86,7 +91,7 @@ namespace RaindropLobotomy.Buffs {
             internal CharacterBody body;
 
             public void FixedUpdate() {
-                if (!body.HasBuff(Erosion.Instance.Buff)) {
+                if (!body || !body.healthComponent || !body.healthComponent.alive || !body.HasBuff(Erosion.Instance.Buff)) {
                     Destroy(this);
                 }
             }

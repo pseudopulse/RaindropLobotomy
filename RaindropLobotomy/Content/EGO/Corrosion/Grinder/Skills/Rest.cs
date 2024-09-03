@@ -99,7 +99,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
             
             AkSoundEngine.PostEvent(Events.Play_MULT_shift_end, base.gameObject);
 
-            EffectManager.SimpleEffect(Assets.GameObject.Bandit2SmokeBombMini, base.transform.position, Quaternion.identity, false);
+            EffectManager.SimpleEffect(Paths.GameObject.Bandit2SmokeBombMini, base.transform.position, Quaternion.identity, false);
         }
     }
 }

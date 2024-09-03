@@ -6,11 +6,11 @@ namespace RaindropLobotomy.EGO.Bandit {
         public override void OnEnter()
         {
             base.maxDistance = 40f;
-            base.arcVisualizerPrefab = Assets.GameObject.BasicThrowableVisualizer;
-            base.endpointVisualizerPrefab = Assets.GameObject.HuntressArrowRainIndicator;
+            base.arcVisualizerPrefab = Paths.GameObject.BasicThrowableVisualizer;
+            base.endpointVisualizerPrefab = Paths.GameObject.HuntressArrowRainIndicator;
             base.endpointVisualizerRadiusScale = 2f;
             base.baseMinimumDuration = 0.15f;
-            base.projectilePrefab = Assets.GameObject.Fireball; // the game expects this to be set
+            base.projectilePrefab = Paths.GameObject.Fireball; // the game expects this to be set
             AkSoundEngine.PostEvent(Events.Play_bandit2_shift_enter, base.gameObject);
             base.OnEnter();
         }

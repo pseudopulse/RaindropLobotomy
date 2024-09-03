@@ -9,7 +9,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "Sword";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.OmniImpactVFXSlashMerc;
+        public override GameObject HitEffectPrefab => Paths.GameObject.OmniImpactVFXSlashMerc;
 
         public override float ProcCoefficient => 1f;
 

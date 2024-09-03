@@ -7,10 +7,10 @@ namespace RaindropLobotomy.Buffs {
 
         public override void PostCreation()
         {
-            On.RoR2.HealthComponent.TakeDamage += TheOscarKeypageIsBalanced;
+            On.RoR2.HealthComponent.TakeDamageProcess += TheOscarKeypageIsBalanced;
         }
 
-        private void TheOscarKeypageIsBalanced(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void TheOscarKeypageIsBalanced(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (self.body.HasBuff(Buff)) {
                 damageInfo.damageType |= DamageType.NonLethal;

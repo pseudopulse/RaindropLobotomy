@@ -63,7 +63,7 @@ namespace RaindropLobotomy.Enemies {
 
             else {
                 Destroy(this.GetModelTransform().gameObject);
-                EffectManager.SpawnEffect(Assets.GameObject.BleedOnHitAndExplodeExplosion, new EffectData {
+                EffectManager.SpawnEffect(Paths.GameObject.BleedOnHitAndExplodeExplosion, new EffectData {
                     origin = base.characterBody.corePosition,
                     scale = base.characterBody.bestFitRadius,
                 }, false);

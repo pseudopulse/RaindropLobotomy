@@ -33,7 +33,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
             attack.damageType |= DamageType.Stun1s;
             attack.damageType |= DamageType.BleedOnHit;
             attack.teamIndex = base.GetTeam();
-            attack.hitEffectPrefab = Assets.GameObject.SpurtImpBlood;
+            attack.hitEffectPrefab = Paths.GameObject.SpurtImpBlood;
             attack.isCrit = base.RollCrit();
 
             UpdateBoxes();
@@ -53,7 +53,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
             FindModelChild("LimitTrail").gameObject.SetActive(true);
 
             handle = base.GetComponent<CameraTargetParams>().AddParamsOverride(new() {
-                cameraParamsData = Assets.CharacterCameraParams.ccpStandardTall.data,
+                cameraParamsData = Paths.CharacterCameraParams.ccpStandardTall.data,
             }, 1f);
 
             Grinder.DecreaseCharge(base.characterBody, 10);
@@ -241,7 +241,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
 
             TeleportHelper.TeleportBody(base.characterBody, pos);
 
-            EffectManager.SimpleEffect(Assets.GameObject.MercExposeConsumeEffect, pos, Quaternion.identity, true);
+            EffectManager.SimpleEffect(Paths.GameObject.MercExposeConsumeEffect, pos, Quaternion.identity, true);
         }
 
         public void PlayAnimation() {

@@ -9,7 +9,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "Uppercut";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 1f;
 
@@ -72,7 +72,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override string HitboxName => "WhirlwindAir";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.ImpactMercSwing;
+        public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 
         public override float ProcCoefficient => 1f;
 
@@ -133,7 +133,7 @@ namespace RaindropLobotomy.EGO.Merc {
                 attack.procCoefficient = 1f;
                 attack.AddModdedDamageType(Buffs.Poise.Instance.GivePoise);
 
-                EffectManager.SpawnEffect(Assets.GameObject.HermitCrabBombExplosion, new EffectData {
+                EffectManager.SpawnEffect(Paths.GameObject.HermitCrabBombExplosion, new EffectData {
                     origin = attack.position,
                     scale = attack.radius
                 }, true);

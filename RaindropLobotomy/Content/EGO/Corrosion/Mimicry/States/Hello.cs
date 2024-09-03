@@ -27,7 +27,7 @@ namespace RaindropLobotomy.EGO.Viend {
             // AkSoundEngine.PostEvent("Play_NT_shard", base.gameObject);
             AkSoundEngine.PostEvent(Events.Play_lunar_exploder_m1_fire, base.gameObject);
 
-            EffectManager.SimpleMuzzleFlash(Assets.GameObject.Muzzleflash1, base.gameObject, "MuzzleHandBeam", transmit: false);
+            EffectManager.SimpleMuzzleFlash(Paths.GameObject.Muzzleflash1, base.gameObject, "MuzzleHandBeam", transmit: false);
             
             if (base.isAuthority)
             {
@@ -48,7 +48,7 @@ namespace RaindropLobotomy.EGO.Viend {
                 bulletAttack.force = 800f;
                 bulletAttack.isCrit = Util.CheckRoll(critStat, base.characterBody.master);
                 bulletAttack.tracerEffectPrefab = EGOMimicry.TracerHello;
-                bulletAttack.hitEffectPrefab = Assets.GameObject.OmniImpactVFXHuntress;
+                bulletAttack.hitEffectPrefab = Paths.GameObject.OmniImpactVFXHuntress;
                 
                 bulletAttack.Fire();
             }

@@ -10,7 +10,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
 
         public override string HitboxName => "Slashes";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.SpurtImpBlood;
+        public override GameObject HitEffectPrefab => Paths.GameObject.SpurtImpBlood;
 
         public override float ProcCoefficient => 1f;
 

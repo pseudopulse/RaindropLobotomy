@@ -30,7 +30,7 @@ namespace RaindropLobotomy.EGO.Viend {
 
         public override string HitboxName => "Goodbye";
 
-        public override GameObject HitEffectPrefab => Assets.GameObject.SpurtImpBlood;
+        public override GameObject HitEffectPrefab => Paths.GameObject.SpurtImpBlood;
 
         public override float ProcCoefficient => 1f;
 

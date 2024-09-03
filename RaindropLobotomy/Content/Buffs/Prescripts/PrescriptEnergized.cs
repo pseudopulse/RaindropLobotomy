@@ -9,7 +9,7 @@ namespace RaindropLobotomy.Buffs {
         public override void PostCreation()
         {
             RecalculateStatsAPI.GetStatCoefficients += IncreaseStats;
-            On.RoR2.GenericSkill.SetBonusStockFromBody += SetBonusStock;
+            // On.RoR2.GenericSkill.SetBonusStockFromBody += SetBonusStock;
             On.RoR2.CharacterBody.AddTimedBuff_BuffDef_float += OnGrantPrescript;
         }
 
@@ -19,7 +19,11 @@ namespace RaindropLobotomy.Buffs {
 
             if (buffDef == Buff && self.skillLocator) {
                 foreach (GenericSkill slot in self.skillLocator.allSkills) {
-                    if (slot == self.skillLocator.special && self.bodyIndex == IndexMerc.IndexMercBody || self.bodyIndex == IndexMerc.IndexPaladinBody) {
+                    if (slot == self.skillLocator.special && (self.bodyIndex == IndexMerc.IndexMercBody || self.bodyIndex == IndexMerc.IndexPaladinBody)) {
+                        continue;
+                    }
+
+                    if (!slot.CanApplyAmmoPack()) {
                         continue;
                     }
 
@@ -40,7 +44,8 @@ namespace RaindropLobotomy.Buffs {
         private void IncreaseStats(CharacterBody sender, StatHookEventArgs args)
         {
             if (sender.HasBuff(Buff)) {
-                args.cooldownMultAdd -= 0.35f;
+                float mult = sender.bodyIndex == IndexMerc.IndexGiantFistBody ? 2f : 1f;
+                args.cooldownMultAdd -= 0.50f * mult;
             }
         }
     }

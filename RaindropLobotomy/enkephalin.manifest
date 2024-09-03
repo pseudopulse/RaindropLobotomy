@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3318661036
+CRC: 1059393849
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4b50f7f41dafa3c5054457d368481447
+    Hash: ca12d75b52b86e798b14f82d960598f2
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7bb4d6d754090626b9c31cd7b29000b2
@@ -498,6 +498,7 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/matDarkFlare.mat
 - Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/SweeperSlash.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/YanPaladinOrb.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/OmPower.png
 - Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/bdResentment.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/sdMimicry.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletPrimary.asset

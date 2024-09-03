@@ -17,6 +17,7 @@ using RaindropLobotomy.Survivors;
 using RaindropLobotomy.Skills;
 using RaindropLobotomy.EGO.Gifts;
 using Survariants;
+using System.Collections;
 
 [assembly: HG.Reflection.SearchableAttribute.OptIn]
 
@@ -104,16 +105,18 @@ namespace RaindropLobotomy {
                 ContentAddition.AddEntityState(x, out _);
             });
 
-            On.RoR2.RoR2Application.Start += (o, s) => {
-                o(s);
+            On.RoR2.RoR2Application.InitializeGameRoutine += LoadBanks;
 
+            IEnumerator LoadBanks(On.RoR2.RoR2Application.orig_InitializeGameRoutine orig, RoR2Application self) {
+                yield return orig(self);
                 string path = typeof(Main).Assembly.Location.Replace("RaindropLobotomy.dll", "");
                 AkSoundEngine.AddBasePath(path);
 
                 AkSoundEngine.LoadBank("InitRL", out _);
                 AkSoundEngine.LoadBank("RLBank", out _);
-            };
+            }
         }
+    
 
         public void Start() { // needs to happen in start to ensure we do this after any other mods we might softdep on have done theirs
             ScanTypes<CorrosionBase>(x => 
@@ -134,9 +137,9 @@ namespace RaindropLobotomy {
 
             foreach (Material mat in mats) {
                 mat.shader = mat.shader.name switch {
-                    "StubbedShader/deferred/hgstandard" => Assets.Shader.HGStandard,
-                    "StubbedShader/fx/hgcloudremap" => Assets.Shader.HGCloudRemap,
-                    "Hopoo Games/FX/Cloud Remap" => Assets.Shader.HGCloudRemap,
+                    "StubbedShader/deferred/hgstandard" => Paths.Shader.HGStandard,
+                    "StubbedShader/fx/hgcloudremap" => Paths.Shader.HGCloudRemap,
+                    "Hopoo Games/FX/Cloud Remap" => Paths.Shader.HGCloudRemap,
                     _ => mat.shader
                 };
             }

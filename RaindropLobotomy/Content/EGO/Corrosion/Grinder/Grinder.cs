@@ -8,7 +8,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
 
         public override string Description => "Contamination scan complete. Initiating cleaning protocol.";
 
-        public override SurvivorDef TargetSurvivorDef => Assets.SurvivorDef.Toolbot;
+        public override SurvivorDef TargetSurvivorDef => Paths.SurvivorDef.Toolbot;
 
         public override UnlockableDef RequiredUnlock => null;
 
@@ -40,11 +40,13 @@ namespace RaindropLobotomy.EGO.Toolbot {
         {
             base.Modify();
 
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Assets.ItemDisplayRuleSet.idrsToolbot;
-            Load<GameObject>("GrinderDisplay.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animToolbotDisplay;
-            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Assets.GameObject.MercBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
+            BodyPrefab.GetComponent<CameraTargetParams>().cameraParams = Paths.CharacterCameraParams.ccpToolbot;
 
-            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Assets.RuntimeAnimatorController.animToolbot;
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet = Paths.ItemDisplayRuleSet.idrsToolbot;
+            Load<GameObject>("GrinderDisplay.prefab").GetComponentInChildren<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animToolbotDisplay;
+            BodyPrefab.GetComponent<CharacterBody>()._defaultCrosshairPrefab = Paths.GameObject.MercBody.GetComponent<CharacterBody>().defaultCrosshairPrefab;
+
+            BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<Animator>().runtimeAnimatorController = Paths.RuntimeAnimatorController.animToolbot;
 
             CleanupSlash = Load<GameObject>("CleanupSlash.prefab");
             MultiSlash = Load<GameObject>("MultiSlashGrinder.prefab");

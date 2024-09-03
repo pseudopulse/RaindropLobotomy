@@ -6,17 +6,17 @@ namespace RaindropLobotomy.EGO.Merc {
         public override void OnEnter()
         {
             base.maxDistance = 120f;
-            base.arcVisualizerPrefab = Assets.GameObject.BasicThrowableVisualizer;
-            base.endpointVisualizerPrefab = Assets.GameObject.HuntressArrowRainIndicator;
+            base.arcVisualizerPrefab = Paths.GameObject.BasicThrowableVisualizer;
+            base.endpointVisualizerPrefab = Paths.GameObject.TreebotMortarAreaIndicator;
             base.endpointVisualizerRadiusScale = 15f;
             base.baseMinimumDuration = 0.15f;
             base.projectilePrefab = Load<GameObject>("CrashingSwordProjectile.prefab");
-            base.useGravity = false;
+            base.useGravity = true;
 
             base.OnEnter();
 
             if (paladinInstalled) {
-                base.PlayAnimation("Gesture, Underride", "ChargeSpell", "Spell.playbackRate", 0.4f);
+                base.PlayAnimation("Gesture, Override", "ChargeSpell", "Spell.playbackRate", 0.4f);
             }
         }
 
@@ -33,12 +33,22 @@ namespace RaindropLobotomy.EGO.Merc {
             outer.SetNextStateToMain();
         }
 
+        public override void UpdateTrajectoryInfo(out TrajectoryInfo dest)
+        {
+            base.UpdateTrajectoryInfo(out dest);
+
+            if (Physics.Raycast(dest.hitPoint + Vector3.up, Vector3.down, out RaycastHit info, 4000f, LayerIndex.world.mask)) {
+                dest.hitPoint = info.point;
+                dest.hitNormal = info.normal;
+            }
+        }
+
         public override void OnExit()
         {
             base.OnExit();
 
             if (paladinInstalled) {
-                base.PlayAnimation("Gesture, Underride", "BufferEmpty");
+                base.PlayAnimation("Gesture, Override", "CastSpell", "Spell.playbackRate", 0.5f);
             }
         }
 

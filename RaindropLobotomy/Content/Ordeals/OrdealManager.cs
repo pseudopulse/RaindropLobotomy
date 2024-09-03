@@ -15,6 +15,7 @@ using TMPro;
 using RoR2.EntityLogic;
 using R2API.Networking.Interfaces;
 using R2API.Networking;
+using System.Collections;
 
 namespace RaindropLobotomy.Ordeals
 {
@@ -73,15 +74,15 @@ namespace RaindropLobotomy.Ordeals
             ObjectivePanelController.collectObjectiveSources -= CollectSources;
         }
 
-        private static void PickOrdeal(On.RoR2.Stage.orig_Start orig, RoR2.Stage self)
+        private static IEnumerator PickOrdeal(On.RoR2.Stage.orig_Start orig, RoR2.Stage self)
         {
-            orig(self);
+            yield return orig(self);
             Debug.Log("setting up ordeal");
             SetupOrdeal(self);
         }
 
         private static void CreateOrdealTimerUI() {
-            ordealUI = PrefabAPI.InstantiateClone(Assets.GameObject.HudCountdownPanel, "Ordeal UI");
+            ordealUI = PrefabAPI.InstantiateClone(Paths.GameObject.HudCountdownPanel, "Ordeal UI");
             ChildLocator loc = ordealUI.AddComponent<ChildLocator>();
             LayoutElement element = ordealUI.AddComponent<LayoutElement>();
             element.ignoreLayout = true;
@@ -140,7 +141,7 @@ namespace RaindropLobotomy.Ordeals
         }
 
         private static void CreateOrdealPopupUI() { 
-            ordealPopupUI = PrefabAPI.InstantiateClone(Assets.GameObject.AchievementNotificationPanel, "OrdealPopupUI");
+            ordealPopupUI = PrefabAPI.InstantiateClone(Paths.GameObject.AchievementNotificationPanel, "OrdealPopupUI");
             ordealPopupUI.GetComponent<RectTransform>().position = new(0, 90, 0);
             ordealPopupUI.transform.Find("Backdrop").GetComponent<Image>().color = new Color32(95, 95, 95, 255);
             ordealPopupUI.transform.Find("Backdrop").GetComponent<RectTransform>().localScale = new(0.5f, 1f, 1f);
