@@ -13,6 +13,7 @@ Survivor Variants:
 - Blade Lineage Mercenary
 - Commando :: Solemn Lament
 - MULT :: Grinder MK. 5-2
+- False Son :: Justitia
 
 Items:
 - Clockwork Spring (Steam Machine ego gift)
@@ -37,6 +38,7 @@ Ordeals will appear after spending too long on the same stage. Can be configured
 ## Content Screenshots
 <details><summary>Survivor Previews</summary>
 
+![Justitia](https://i.postimg.cc/dtpdGSdP/06-21-17-screenshot.png)
 ![Grinder MK52](https://i.postimg.cc/sXLKt4Yh/12-41-32-screenshot.png)
 ![Solemn Lament](https://i.postimg.cc/sgVDPJS3/03-51-41-screenshot.png)
 ![Blade Lineage Mercenary](https://i.postimg.cc/hjpC10Hd/07-41-03-screenshot.png)
@@ -56,6 +58,10 @@ monsterskinman - playtesting, ideas
 project moon - making the amazing series where all of the visual designs, sounds, and sprites here come from
 
 ## Changelog
+# 1.5.0
+- survivor variant: justitia false son
+- fixed custom sfx not working (it broke in-between me working on the 1.4.4 fix and the dlc bugfix patch releasing)
+
 # 1.4.4
 - updated for SOTS
 

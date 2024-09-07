@@ -38,7 +38,7 @@ namespace RaindropLobotomy {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "BALLS";
         public const string PluginName = "RaindropLobotomy";
-        public const string PluginVersion = "1.4.3";
+        public const string PluginVersion = "1.5.0";
 
         public static Assembly assembly;
 
@@ -105,18 +105,23 @@ namespace RaindropLobotomy {
                 ContentAddition.AddEntityState(x, out _);
             });
 
-            On.RoR2.RoR2Application.InitializeGameRoutine += LoadBanks;
+            On.RoR2.RoR2Content.Init += OnWwiseInit;
 
-            IEnumerator LoadBanks(On.RoR2.RoR2Application.orig_InitializeGameRoutine orig, RoR2Application self) {
-                yield return orig(self);
-                string path = typeof(Main).Assembly.Location.Replace("RaindropLobotomy.dll", "");
-                AkSoundEngine.AddBasePath(path);
-
-                AkSoundEngine.LoadBank("InitRL", out _);
-                AkSoundEngine.LoadBank("RLBank", out _);
-            }
+            RLTemporaryEffects.ApplyHooks();
         }
-    
+
+        private void OnWwiseInit(On.RoR2.RoR2Content.orig_Init orig)
+        {
+            orig();
+            
+            Logger.LogError("RL: Loading Soundbanks");
+
+            string path = typeof(Main).Assembly.Location.Replace("RaindropLobotomy.dll", "");
+            AkSoundEngine.AddBasePath(path);
+
+            AkSoundEngine.LoadBank("InitRL", out _);
+            AkSoundEngine.LoadBank("RLBank", out _);
+        }
 
         public void Start() { // needs to happen in start to ensure we do this after any other mods we might softdep on have done theirs
             ScanTypes<CorrosionBase>(x => 

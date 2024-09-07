@@ -61,6 +61,9 @@ namespace RaindropLobotomy.EGO
             EGO.Color = Color;
             EGO.Description = Description;
 
+            Survivor.outroFlavorToken = TargetSurvivorDef.outroFlavorToken;
+            Survivor.mainEndingEscapeFailureFlavorToken = TargetSurvivorDef.mainEndingEscapeFailureFlavorToken;
+
             Survivor.hidden = true;
 
             SurvivorVariantCatalog.AddSurvivorVariant(EGO);

@@ -268,6 +268,18 @@ namespace RaindropLobotomy.Utils
 
             return controller;
         }
+
+        public static HurtBox[] RetrieveNearbyTargets(CharacterBody owner, float radius) {
+            SphereSearch search = new();
+            search.origin = owner.corePosition;
+            search.radius = radius;
+            search.mask = LayerIndex.entityPrecise.mask;
+            search.RefreshCandidates();
+            search.FilterCandidatesByHurtBoxTeam(TeamMask.GetUnprotectedTeams(owner.teamComponent.teamIndex));
+            search.FilterCandidatesByDistinctHurtBoxEntities();
+
+            return search.GetHurtBoxes();
+        }
     }
 
     public class Timer {

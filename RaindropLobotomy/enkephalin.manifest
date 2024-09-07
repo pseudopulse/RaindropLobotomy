@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1059393849
+CRC: 919860628
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ca12d75b52b86e798b14f82d960598f2
+    Hash: c66da9a78945f191b031b382bc384146
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 7bb4d6d754090626b9c31cd7b29000b2
+    Hash: 4d0693040c29751629d36b2403be9967
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -72,8 +72,6 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 488236779, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: 161585894, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1357070253, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -81,6 +79,8 @@ ClassTypes:
   Script: {fileID: 682687671, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 488236779, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1395413934, guid: da77c7bbf69f66ab2145560542327715, type: 3}
 - Class: 114
@@ -286,6 +286,7 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Goodbye.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaCloth.mat
 - Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/sdYMF.asset
 - Assets/RaindropLobotomy/Ordeals/Green/Noon/cscGreenNoon.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/cscMHZ.asset
@@ -306,6 +307,7 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/matErodedBlade.mat
 - Assets/RaindropLobotomy/Survivors/Sweeper/SweeperBody.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/matLockingBoltSparks.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/JustitiaDisplay.prefab
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/buffs/bdFairy.asset
 - Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaInnerOrb.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal2.mat
@@ -342,6 +344,7 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/sdGrinder.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/effects/matFragmentThrust.mat
 - Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/sdFMF_Fire.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/projectiles/JustitiaAirSlash.prefab
 - Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/EPDT_Clockwork.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/matFragment.mat
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/Scream.asset
@@ -355,21 +358,26 @@ Assets:
 - Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperUtility.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/haze/matBLHazeFlare.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/MultiSlashGrinder.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/skills/CeaselessJudgement.asset
 - Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperSpecial.asset
 - Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/sdTCTB.asset
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixSpawner.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletSpecial.asset
 - Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/TracerMatchFlame.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/sdJustitia.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/sdLament.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/mdl/SolemnLament.fbx
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/mdl/matMimicry.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/JustitiaSlash.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/effects/matMimicrySlash.mat
 - Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/matMatchTracerBeam.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/matYanadinSwirl.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBullet.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/JustitiaScream.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_DarkSlashBig.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/small/BLMercSlash.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/matSingingMachine.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/JustitiaBody.prefab
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicatorBeam.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Lament_SE.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/muzzleflash/matLamentPulseWhite.mat
@@ -383,9 +391,11 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_ut.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/matPrATK.mat
 - Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepM2.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/projectiles/JustitiaBeam.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/mdlFragment.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/overlay/matFragmentOverlay.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/flame/Fire.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/buffs/bdSin.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/buffs/bdLamentStackSeal.asset
 - Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/PickupClockworkSpring.prefab
 - Assets/RaindropLobotomy/Ordeals/UI/Noon.png
@@ -403,9 +413,11 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_DarkRadial_2.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/mdl/IndexMercCloak.fbx
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Open.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaBody.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/EternalRest.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/sf_Fragment_PRIMARY.asset
 - Assets/RaindropLobotomy/Survivors/Argalia/ArgaliaBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/matJustitiaSlash.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/PrescriptAttackEffect.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/skills/BL_ToClaimTheirBones.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/MHZMaster.prefab
@@ -432,6 +444,7 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/Ignition.png
 - Assets/RaindropLobotomy/Survivors/Argalia/effects/slashes/ReverbSlash_R.prefab
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/matJustitiaShoutLines.mat
 - Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/sdFMF_Cancel.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Buff/SingingMachineBuffWard_T1.prefab
 - Assets/RaindropLobotomy/Ordeals/UI/Dawn.png
@@ -459,6 +472,7 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/TexLamentWhite.png
 - Assets/RaindropLobotomy/Survivors/Sweeper/bdPersistence.asset
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/mdl/matBinah.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaBandage.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/LamentBody.prefab
 - Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaScythe.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/mdl/matLamentMando.mat
@@ -492,10 +506,12 @@ Assets:
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/sf_SM_Bewitch.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/SingingMachineMaster.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/sf_SM_Hinge.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaWeapon.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/MagicBulletBody.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/matDarkSlash.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/LockingBolt.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/matDarkFlare.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/projectiles/JustitiaBeamGhost.prefab
 - Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/SweeperSlash.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/YanPaladinOrb.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/OmPower.png
@@ -509,6 +525,7 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/muzzleflash/matLamentPulseBlack.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/GrinderSaw.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/matBewitchedIndicator.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/matJustitiaShriek.mat
 - Assets/RaindropLobotomy/Survivors/Sweeper/skills/Phase_Blink.png
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/upper/BLMercUpslash.prefab
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/sf_Fragment_SECONDARY.asset
@@ -553,6 +570,7 @@ Assets:
 - Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/texSingingMachine.png
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/portal/PortalEffect.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/LamentTracerBlack.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/skills/PiercingShriek.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/bdPrescriptEnergized.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/mdl/MimicryEGO.fbx
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/SilentAdvance.png
@@ -565,6 +583,7 @@ Assets:
 - Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/bdAccPast.asset
 - Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/Penetrate.asset
 - Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/PillarProjectile.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/buffs/bdFeatherGuard.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/bdErosion.asset
 - Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepM1.asset
 - Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/bdImitation.asset

@@ -18,6 +18,7 @@ namespace RaindropLobotomy.Buffs
     public abstract class BuffBase<T> : BuffBase where T : BuffBase<T>
     {
         public static T Instance { get; private set; }
+        public static BuffIndex BuffIndex => Instance.Buff.buffIndex;
 
         public BuffBase()
         {
