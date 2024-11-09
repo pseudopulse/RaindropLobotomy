@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 919860628
+CRC: 445513388
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c66da9a78945f191b031b382bc384146
+    Hash: 0128d8f7f2bf0e854cd126ff9e48f110
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4d0693040c29751629d36b2403be9967
+    Hash: bf9227d71b163b6f61b6fa7764924bac
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -46,17 +46,15 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 296141222, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 1080798252, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1480773730, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 170120512, guid: 3ff99aa2a19071810a63a4e9dbf06a54, type: 3}
 - Class: 114
   Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
 - Class: 114
   Script: {fileID: 306635731, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -64,63 +62,35 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 708136152, guid: e161fae64b898bc22624d03ed611378f, type: 3}
 - Class: 114
-  Script: {fileID: 678291247, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: 1143142494, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1790887305, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 678291247, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 161585894, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1357070253, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 682687671, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 296141222, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 488236779, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1395413934, guid: da77c7bbf69f66ab2145560542327715, type: 3}
+  Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 733712478, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
+- Class: 114
+  Script: {fileID: 1904172584, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
-  Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 1512185436, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1392865457, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 1790887305, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 2137989374, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 952828898, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 170120512, guid: 3ff99aa2a19071810a63a4e9dbf06a54, type: 3}
-- Class: 114
-  Script: {fileID: 1918207524, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1530905962, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1144835783, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 261648291, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1468520491, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1512185436, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 717380117, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 1357070253, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 525344718, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-- Class: 114
-  Script: {fileID: -1752031980, guid: b2ac317a67c468eb8fd6ed06da7572d4, type: 3}
-- Class: 114
-  Script: {fileID: -130519023, guid: b2ac317a67c468eb8fd6ed06da7572d4, type: 3}
-- Class: 114
-  Script: {fileID: -1662560420, guid: b2ac317a67c468eb8fd6ed06da7572d4, type: 3}
+  Script: {fileID: 1392865457, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -128,7 +98,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -46258121, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: -571719364, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: 2005159759, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -354346302, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1468520491, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -1358022786, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -146,7 +122,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -1077198318, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: 261648291, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -2096938146, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1530905962, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 161585894, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -380008858, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -162,8 +144,6 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -335047464, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1080798252, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: -104859921, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -960361785, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -172,9 +152,17 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 1512808244, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: 1144835783, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 733712478, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -1409057399, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -875252823, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1480773730, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -365436499, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -187,6 +175,8 @@ ClassTypes:
   Script: {fileID: -1549848242, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -359660931, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 682687671, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -1888550019, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -201,6 +191,8 @@ ClassTypes:
   Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -1864444436, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1918207524, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 802830678, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -222,6 +214,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 1839950351, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: 717380117, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -2053006600, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -233,6 +227,8 @@ ClassTypes:
   Script: {fileID: -1095921540, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -789927658, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 952828898, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -565067572, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -248,11 +244,19 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -1895344032, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1904172584, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: -1746479147, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 52559370, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1752031980, guid: b2ac317a67c468eb8fd6ed06da7572d4, type: 3}
+- Class: 114
+  Script: {fileID: -130519023, guid: b2ac317a67c468eb8fd6ed06da7572d4, type: 3}
+- Class: 114
+  Script: {fileID: -1662560420, guid: b2ac317a67c468eb8fd6ed06da7572d4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+- Class: 114
+  Script: {fileID: 1395413934, guid: da77c7bbf69f66ab2145560542327715, type: 3}
 - Class: 114
   Script: {fileID: -1568778350, guid: 050936fea8909af15a3fd3b64da1ff83, type: 3}
 - Class: 115
@@ -271,6 +275,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 199
   Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 - Class: 222
@@ -281,352 +287,432 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 328
   Script: {instanceID: 0}
-- Class: 329
-  Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers: []
+SerializeReferenceClassIdentifiers:
+- AssemblyName: GenericIK
+  ClassName: Generics.Dynamics.Core/Chain
+- AssemblyName: GenericIK
+  ClassName: Generics.Dynamics.Core/Joint
+- AssemblyName: HGUnityUtils
+  ClassName: HG.BlendableTypes.BlendableBool
+- AssemblyName: HGUnityUtils
+  ClassName: HG.BlendableTypes.BlendableFloat
+- AssemblyName: HGUnityUtils
+  ClassName: HG.BlendableTypes.BlendableVector3
+- AssemblyName: RoR2
+  ClassName: ChildLocator/NameTransformPair
+- AssemblyName: RoR2
+  ClassName: EntityStates.SerializableEntityStateType
+- AssemblyName: RoR2
+  ClassName: RoR2.BodyAnimatorSmoothingParameters/SmoothingParameters
+- AssemblyName: RoR2
+  ClassName: RoR2.CharacterCameraParamsData
+- AssemblyName: RoR2
+  ClassName: RoR2.CharacterEmoteDefinitions/EmoteDef
+- AssemblyName: RoR2
+  ClassName: RoR2.CharacterFlightParameters
+- AssemblyName: RoR2
+  ClassName: RoR2.CharacterGravityParameters
+- AssemblyName: RoR2
+  ClassName: RoR2.CharacterModel/LightInfo
+- AssemblyName: RoR2
+  ClassName: RoR2.CharacterModel/RendererInfo
+- AssemblyName: RoR2
+  ClassName: RoR2.CombatDirector/OnSpawnedServer
+- AssemblyName: RoR2
+  ClassName: RoR2.DirectorCardCategorySelection/Category
+- AssemblyName: RoR2
+  ClassName: RoR2.ExplicitPickupDropTable/PickupDefEntry
+- AssemblyName: RoR2
+  ClassName: RoR2.MageElement
+- AssemblyName: RoR2
+  ClassName: RoR2.RangeFloat
+- AssemblyName: RoR2
+  ClassName: RoR2.ScriptedCombatEncounter/SpawnInfo
+- AssemblyName: RoR2
+  ClassName: RoR2.SerializableLoadout
+- AssemblyName: RoR2
+  ClassName: RoR2.SerializablePickupIndex
+- AssemblyName: RoR2
+  ClassName: RoR2.SkillLocator/PassiveSkill
+- AssemblyName: RoR2
+  ClassName: RoR2.Skills.SkillFamily/Variant
+- AssemblyName: RoR2
+  ClassName: Wave
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: Wwise
+  ClassName: AK.Wwise.Event
+- AssemblyName: Wwise
+  ClassName: AkGameObjListenerList
+- AssemblyName: Wwise
+  ClassName: AkGameObjPositionOffsetData
+- AssemblyName: com.unity.multiplayer-hlapi.Runtime
+  ClassName: UnityEngine.Networking.NetworkHash128
+- AssemblyName: com.unity.multiplayer-hlapi.Runtime
+  ClassName: UnityEngine.Networking.NetworkSceneId
 Assets:
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Goodbye.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaCloth.mat
-- Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/sdYMF.asset
-- Assets/RaindropLobotomy/Ordeals/Green/Noon/cscGreenNoon.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/cscMHZ.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/IndexMercBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/PrescriptAttack.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/bdGrinderCharge.asset
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Thunderslam.png
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/plasma/matHelixPlasma.mat
-- Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/edClockworkSpring.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/mdl/mdlCENSORED.prefab
-- Assets/RaindropLobotomy/Ordeals/Green/Noon/mdl/matGreenNoon.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/haze/HazePrefab.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Tranquility.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/bdPoise.asset
-- Assets/RaindropLobotomy/Enemies/Bosses/Binah/BinahBody.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/mdl/matCENSORED.mat
-- Assets/RaindropLobotomy/Enemies/Bosses/Binah/BinahMaster.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/matErodedBlade.mat
-- Assets/RaindropLobotomy/Survivors/Sweeper/SweeperBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/matLockingBoltSparks.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/JustitiaDisplay.prefab
-- Assets/RaindropLobotomy/Enemies/Bosses/Binah/buffs/bdFairy.asset
-- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaInnerOrb.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal2.mat
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/counter/DigitMeshHolder.prefab
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicator.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/bdPrescriptAttack.asset
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/matMatchPuff.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/GrinderBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/bdPrescriptDefense.asset
-- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matGrandParentSunCore.mat
-- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgScytheShinyMetal.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/IndexSP.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/fist/GiantFistBody.prefab
-- Assets/RaindropLobotomy/DamageTypes/Pale/bdPale.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/Ignition.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal.mat
-- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/effects/LamentImpactBlack.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/SteamMachineMaster.prefab
-- Assets/RaindropLobotomy/Survivors/Sweeper/mdl/matSweeper.mat
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/cscSteamMachine.asset
-- Assets/RaindropLobotomy/Survivors/Sweeper/ai/SweeperAIMaster.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/Poise.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/bdPrescriptEvasion.asset
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Hungering_Gaze.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/PrescriptDefenseEffect.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/mdl/matMagicBullet.mat
-- Assets/RaindropLobotomy/Enemies/Bosses/Claw/mdl/matClaw.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/mdl/IndexMerc.fbx
-- Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/portal/ArbiterPillarShader.shader
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/sdIndexMerc.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/skills/NoLimit.asset
-- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaBody.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/MagicBulletPortal.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/sdGrinder.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/effects/matFragmentThrust.mat
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/sdFMF_Fire.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/projectiles/JustitiaAirSlash.prefab
-- Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/EPDT_Clockwork.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/matFragment.mat
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/Scream.asset
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/mdlFourthMatchFlame.prefab
-- Assets/RaindropLobotomy/Survivors/Sweeper/mdl/mdlSweeper.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/PrescriptEnergizeEffect.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/matBloodySwipe.mat
-- Assets/RaindropLobotomy/Enemies/Bosses/Claw/ClawBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/eyeflame/matEyeFlame.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/MimicryDisplay.prefab
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperUtility.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/haze/matBLHazeFlare.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/MultiSlashGrinder.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/skills/CeaselessJudgement.asset
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperSpecial.asset
-- Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/sdTCTB.asset
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixSpawner.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletSpecial.asset
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/TracerMatchFlame.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/sdJustitia.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/sdLament.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/mdl/SolemnLament.fbx
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/mdl/matMimicry.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/JustitiaSlash.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/effects/matMimicrySlash.mat
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/matMatchTracerBeam.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/matYanadinSwirl.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBullet.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/JustitiaScream.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_DarkSlashBig.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/small/BLMercSlash.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/matSingingMachine.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/JustitiaBody.prefab
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicatorBeam.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Lament_SE.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/muzzleflash/matLamentPulseWhite.mat
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Bewitch.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/guidance/GuidingHandProjectileWhite.prefab
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/LastHelix.png
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Buff/SM_MusicBuff.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/slash/MagicBulletSlash.prefab
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/matLamentWhite.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/matLockingBoltOrb.mat
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/FourthMatchFlame.fbx
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/matDarkSparks.mat
 - Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/matSweeperSlash.mat
-- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/MHZBody.prefab
-- Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/bdUnrelenting.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_ut.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/matPrATK.mat
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepM2.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/projectiles/JustitiaBeam.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/mdlFragment.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/overlay/matFragmentOverlay.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/flame/Fire.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/buffs/bdSin.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/buffs/bdLamentStackSeal.asset
-- Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/PickupClockworkSpring.prefab
-- Assets/RaindropLobotomy/Ordeals/UI/Noon.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/CleanupSlash.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/fist/GiantFistMaster.prefab
-- Assets/RaindropLobotomy/Enemies/Bosses/Claw/mdl/matClawMetal.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/matTracerLamentBlack.mat
-- Assets/RaindropLobotomy/Enemies/AbnormalityDirector.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/IndexUT.asset
-- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaCloud.mat
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperSecondary.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/CENSOREDMaster.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/slash/matMBSlash.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/mdl/matIndexMerc.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_DarkRadial_2.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/mdl/IndexMercCloak.fbx
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Open.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaBody.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/EternalRest.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/sf_Fragment_PRIMARY.asset
-- Assets/RaindropLobotomy/Survivors/Argalia/ArgaliaBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/matJustitiaSlash.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/PrescriptAttackEffect.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/skills/BL_ToClaimTheirBones.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/MHZMaster.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/matPrENR.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/matPrEVD.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBullet.png
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/SM_BewitchedBuff.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/BewitchedIndicator.prefab
-- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/matLamentBlack.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/small/matBLSwipe.mat
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/SteamMachineBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/mdl/matGrinderMk52.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/FloodingBullets.asset
-- Assets/RaindropLobotomy/Enemies/Bosses/Binah/skills/sd_Binah_FAIRY.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/matErosion.mat
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/matMatchFlame.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_pr.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal1.mat
-- Assets/RaindropLobotomy/Ordeals/UI/Midnight.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/guidance/GuidingHandProjectileBlack.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/sdFragmentsEGO.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/LockingBoltGhost.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/spear/BLMercThrust.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/Ignition.png
-- Assets/RaindropLobotomy/Survivors/Argalia/effects/slashes/ReverbSlash_R.prefab
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixMaster.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/matJustitiaShoutLines.mat
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/sdFMF_Cancel.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Buff/SingingMachineBuffWard_T1.prefab
-- Assets/RaindropLobotomy/Ordeals/UI/Dawn.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/buffs/bdLamentSeal.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/ErodedSlashBig.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/CrashingSword/CrashingSwordProjectile.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/muzzleflash/LamentMuzzleFlashBlack.prefab
-- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaOuterOrb.mat
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/FragmentMaster.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/SeventhBullet.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/matLockingBoltTrail.mat
-- Assets/RaindropLobotomy/Enemies/Bosses/Binah/vfx/matArbiterSlash.mat
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/mdlLastHelix.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/GrinderDisplay.prefab
-- Assets/RaindropLobotomy/Enemies/AbnoDCCS.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletUtil.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/effects/matFragmentThrust.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Noon/GreenNoonBody.prefab
 - Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/SilentAdvance.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/matPrENR.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/skills/BL_ToClaimTheirBones.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/matDarkFlare.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundLaserFlare.mat
+- Assets/RaindropLobotomy/Ordeals/UI/Dawn.png
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperPrimary.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/matBloodySwipe.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Open.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/JustitiaDisplay.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/BladeSlam.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/mdl/matGrinderMk52.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/MimicryDisplay.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/bullet/MagicBulletProjectile.prefab
+- Assets/RaindropLobotomy/Enemies/Bosses/Binah/skills/sd_Binah_FAIRY.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/mdl/matSweeper.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/YanadinDummy.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/Decay.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/matLockingBoltTrail.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/matRadialBloodySwipe.mat
 - Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Lament_SP.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/sdBLMerc.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/BladeSlam.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/LamentDisplay.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/effects/MHZStaticOverlay.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/bdWornShell.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Guidance.asset
-- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/TexLamentWhite.png
-- Assets/RaindropLobotomy/Survivors/Sweeper/bdPersistence.asset
-- Assets/RaindropLobotomy/Enemies/Bosses/Binah/mdl/matBinah.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaBandage.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/LamentBody.prefab
-- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaScythe.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/mdl/matLamentMando.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/effects/MistCloud.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/BewitchedIndicator.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/bdMagicBullet.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/YanadinDummy.prefab
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/sdFMF.asset
-- Assets/RaindropLobotomy/Enemies/Bosses/Binah/skills/sf_Binah_PR.asset
-- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/bdSealed.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/cscFragment.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Mimic.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/DespairBullet.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/skills/Clean.asset
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixArcs.mat
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixBody.prefab
-- Assets/RaindropLobotomy/Survivors/Argalia/sdArgalia.asset
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/HelixLaser.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/matTracerLamentWhiteOutline.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/bullet/MagicBulletProjectile.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/PrescriptEnergize.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Claw.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/effects/SpearThrust.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Close.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/mdl/DisplayMagicBullet.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletUtil.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/MHZLog.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Lament_U.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/haze/matBLHazeCloud.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/ErodedSlash.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/sf_SM_Bewitch.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/SingingMachineMaster.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/sf_SM_Hinge.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaWeapon.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/MagicBulletBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/matDarkSlash.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/LockingBolt.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/matDarkFlare.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/projectiles/JustitiaBeamGhost.prefab
-- Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/SweeperSlash.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/YanPaladinOrb.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/OmPower.png
-- Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/bdResentment.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/sdMimicry.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletPrimary.asset
-- Assets/RaindropLobotomy/Survivors/Sweeper/ai/SweeperAIBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/texIndexPaladin.png
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixPuff.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_WarpTrail.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/muzzleflash/matLamentPulseBlack.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/GrinderSaw.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/matBewitchedIndicator.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/matJustitiaShriek.mat
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Phase_Blink.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/upper/BLMercUpslash.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/sf_Fragment_SECONDARY.asset
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicatorCross.mat
-- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaCloak.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/MagicBulletPP.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/mdlSingingMachine.prefab
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/HelixLaserIndicator.prefab
-- Assets/RaindropLobotomy/Survivors/Sweeper/mdl/matSweeperTank.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/PrescriptDefense.asset
-- Assets/RaindropLobotomy/Ordeals/Green/Noon/GreenNoonMaster.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/FragmentsEGOBody.prefab
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/plasma/PlasmaTrailSegment.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletSecondary.asset
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundLaserFlare.mat
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/matFourthMatchFlame.mat
-- Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/SweeperSlashLeft.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/Decay.png
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Power_Mode.png
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/MatchFlameCharge.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/matPrDEF.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/down/BLSlashRadial.prefab
-- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/SolemnLament.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/effects/MHZDisplay.prefab
-- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/FourthMatchFlame.fbx
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepR.asset
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixLaser.mat
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/mdl/matSteamMachine.mat
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/cscHelix.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/IndexPR.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/flame/matDarkFlame.mat
-- Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/SweeperSlashRight.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/sdMagicBulletEGO.asset
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepShift.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/matYanadinOrb.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Hello.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/MimicryBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/LamentTracerWhite.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/matYanPaladin.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/FloodingBullets.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/Despair.png
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/texSingingMachine.png
-- Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/portal/PortalEffect.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/LamentTracerBlack.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/skills/PiercingShriek.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/bdPrescriptEnergized.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/mdl/MimicryEGO.fbx
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/SilentAdvance.png
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/cscSingingMachine.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_BladeShing.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/effects/matMHZFog.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/guidance/GenericGhost.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/PrescriptEvade.asset
-- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/effects/LamentImpactWhite.prefab
 - Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/bdAccPast.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/Penetrate.asset
-- Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/PillarProjectile.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/buffs/bdFeatherGuard.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/bdErosion.asset
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepM1.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/bdImitation.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/BLMercDisplay.prefab
-- Assets/RaindropLobotomy/Survivors/Argalia/buffs/Resonance/bdResonance.asset
-- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/SingingMachineBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/CrashingSword/CrashingSwordGhost.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_sp.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/matTracerLamentBlackInfill.mat
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/FragmentBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/mdl/texIndexMerc.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/WearShell.asset
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Laser_Glaive.png
-- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_se.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/IndexSC.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/PrescriptEvadeEffect.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/bdMHZFog.asset
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/matHelix.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/matDarkSparks.mat
-- Assets/RaindropLobotomy/Ordeals/Green/Noon/GreenNoonBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/hands/HandChargeBeam.prefab
-- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperPrimary.asset
-- Assets/RaindropLobotomy/EGO/Gifts/ITD_Gift.asset
-- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/sdSolemnLament.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/mdl/matFragmentsEGO.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/BLMercBody.prefab
-- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/matLamentWhite.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/muzzleflash/LamentMuzzleFlashWhite.prefab
-- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/effects/MHZStaticFog.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/bdDarkFlame.asset
-- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/texAlphaGradient2Mask.png
-- Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/CENSOREDBody.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Lament_P.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Lament.asset
-- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/TexLamentBlack.png
-- Assets/RaindropLobotomy/Survivors/Sweeper/ai/cscSweeper.asset
-- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/slash/MagicBulletSlash.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/mdl/matBLMerc.mat
-- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/matFragmentFlower.mat
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_DarkRadial.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/IndexMercDisplay.prefab
-- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/bdSealStack.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/buffs/bdSin.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/IndexSP.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/sdMimicry.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaCloth.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/mdl/matMimicry.mat
+- Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/bdResentment.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/LamentBody.prefab
+- Assets/RaindropLobotomy/Survivors/Argalia/ArgaliaBody.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/sf_SM_Bewitch.asset
+- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaBody.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBullet.png
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/ErodedSlash.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/spear/BLMercThrust.prefab
+- Assets/RaindropLobotomy/Enemies/Bosses/Binah/mdl/matBinah.mat
 - Assets/RaindropLobotomy/Survivors/Sweeper/sdSweeper.asset
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/matMatchPuff.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixSpawner.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_DarkRadial.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/texIndexPaladin.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/GrinderBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/PrescriptAttack.asset
+- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaCloud.mat
+- Assets/RaindropLobotomy/Enemies/Bosses/Claw/mdl/matClaw.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Noon/mdl/matGreenNoon.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/matYanadinSwirl.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/small/matBLSwipe.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/IndexPR.asset
+- Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/sdTCTB.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Phase_Blink.png
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/matMatchFlame.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/haze/matBLHazeFlare.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/SeventhBullet.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/LamentDisplay.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/sdJustitia.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/flame/Fire.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/MagicBulletPortal.prefab
+- Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/bdUnrelenting.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/PrescriptEnergize.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/skills/PiercingShriek.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/matJustitiaShoutLines.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/LastHelix.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/BLMercDisplay.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Close.asset
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/matMatchTracerBeam.mat
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Laser_Glaive.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_sp.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/sdBLMerc.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/mdl/matMagicBullet.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/matTracerLamentWhiteOutline.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_se.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/bdGrinderCharge.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/mdl/matSteamMachine.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/JustitiaSlash.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/effects/MHZStaticOverlay.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/IndexMercBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/matYanPaladin.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/upper/BLMercUpslash.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperSpecial.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/sdIndexMerc.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/matHelix.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/matPrEVD.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/effects/lamp beam/matLampBeamSpark.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/muzzleflash/matLamentPulseBlack.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/muzzleflash/LamentMuzzleFlashWhite.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperUtility.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/sdLamp.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/matTracerLamentBlack.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/MagicBulletBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/sdFragmentsEGO.asset
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/sdFMF.asset
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/sdFMF_Fire.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Lament_SE.asset
+- Assets/RaindropLobotomy/Enemies/AbnormalityDirector.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/CleanupSlash.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/effects/lamp beam/matLampBeam.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/bdPrescriptDefense.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/matFragment.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/slash/matMBSlash.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Buff/SingingMachineBuffWard_T1.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/matJustitiaShriek.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/mdl/mdlCENSORED.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/Scream.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/mdl/matSweeperTank.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/counter/DigitMeshHolder.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/plasma/PlasmaTrailSegment.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/JustitiaBody.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/BewitchedIndicator.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/SM_Bewitch.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/SingingMachineMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/GrinderDisplay.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/matErodedBlade.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/MimicryBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/bdImitation.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/bdDarkFlame.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/effects/MHZStaticFog.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/mdl/MimicryEGO.fbx
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixPuff.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletSpecial.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/mdl/matLamp.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/cscSteamMachine.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/mdl/matLampFlame.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/CrashingSword/CrashingSwordProjectile.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/mdl/texIndexMerc.png
 - Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/plasma/HelixPlasmaTrail.prefab
-- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/matLockingBoltOrb.mat
+- Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/PickupClockworkSpring.prefab
+- Assets/RaindropLobotomy/Survivors/Argalia/sdArgalia.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Noon/GreenNoonMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Guidance.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/LampBody.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Skills/sf_SM_Hinge.asset
+- Assets/RaindropLobotomy/Enemies/Bosses/Binah/buffs/bdFairy.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/matPrATK.mat
+- Assets/RaindropLobotomy/EGO/Gifts/ITD_Gift.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Tranquility.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/haze/matBLHazeCloud.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal2.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/skills/CeaselessJudgement.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/down/BLSlashRadial.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/bdPrescriptEvasion.asset
+- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaOuterOrb.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/matDarkSlash.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/WearShell.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/mdl/matCENSORED.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Mimic.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/MHZLog.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/projectiles/JustitiaBeamGhost.prefab
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/matFourthMatchFlame.mat
+- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matGrandParentSunCore.mat
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicatorCross.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBullet.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/cscSingingMachine.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/PrescriptAttackEffect.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Power_Mode.png
+- Assets/RaindropLobotomy/Enemies/Bosses/Binah/BinahMaster.prefab
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/TexLamentBlack.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/sdGrinder.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/OmPower.png
+- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaCloak.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/PrescriptEvade.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/FloodingBullets.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/hands/HandChargeBeam.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/guidance/GuidingHandProjectileBlack.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/bdPoise.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/matYanadinOrb.mat
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/TexLamentWhite.png
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixLaser.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/sf_Fragment_PRIMARY.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/effects/SpearThrust.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/ai/SweeperAIBody.prefab
+- Assets/RaindropLobotomy/Enemies/Bosses/Binah/skills/sf_Binah_PR.asset
+- Assets/RaindropLobotomy/Enemies/AbnoDCCS.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/MagicBulletPP.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/bdMagicBullet.asset
+- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgScytheShinyMetal.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/mdl/IndexMercCloak.fbx
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/matLockingBoltSparks.mat
+- Assets/RaindropLobotomy/Survivors/Argalia/effects/slashes/ReverbSlash_R.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletSecondary.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/cscMHZ.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/CENSOREDMaster.prefab
+- Assets/RaindropLobotomy/Ordeals/UI/Midnight.png
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/cscHelix.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/matPrDEF.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/alt_paladin/YanPaladinOrb.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/mdl/IndexMerc.fbx
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/HelixLaserIndicator.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/mdl/matLampLantern.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/sdLament.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/bdWornShell.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/bdPrescriptAttack.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/Ignition.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/mdl/matLamentMando.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/FragmentBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/mdl/matFragmentsEGO.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Buff/SM_MusicBuff.asset
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/MatchFlameCharge.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/matBewitchedIndicator.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/mdlFragment.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/mdl/SolemnLament.fbx
+- Assets/RaindropLobotomy/Survivors/Sweeper/bdPersistence.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/BLMercBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/effects/lamp beam/LampEnchantBeam.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/LampDisplay.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/projectiles/JustitiaBeam.prefab
+- Assets/RaindropLobotomy/DamageTypes/Pale/bdPale.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/mdl/DisplayMagicBullet.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/fist/GiantFistBody.prefab
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/mdl/mdlFourthMatchFlame.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/effects/dot light/LampArea.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/SteamMachineBody.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicatorBeam.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/muzzleflash/matLamentPulseWhite.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/eyeflame/matEyeFlame.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/PrescriptEnergizeEffect.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/Ignition.png
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/bdSealStack.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepR.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/texSingingMachine.png
+- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/MHZBody.prefab
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/bdSealed.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_WarpTrail.prefab
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/sdSolemnLament.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/bdErosion.asset
+- Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/portal/ArbiterPillarShader.shader
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/matTracerLamentBlackInfill.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaBody.mat
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepShift.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/FloodingBullets.png
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/matHelixArcs.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/LamentTracerBlack.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_ut.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/IndexUT.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/mdl/mdlSweeper.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/Poise.png
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/SolemnLament.prefab
+- Assets/RaindropLobotomy/Ordeals/UI/Noon.png
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Thunderslam.png
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/JustitiaScream.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/fist/GiantFistMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/buffs/bdFeatherGuard.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/LockingBoltGhost.prefab
+- Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/portal/PortalEffect.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/matFragmentFlower.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Lament_U.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/sdMagicBulletEGO.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/MagicBulletPrimary.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/mdlSingingMachine.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/PrescriptDefenseEffect.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/SweeperSlashRight.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/haze/HazePrefab.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/mdl/mdlLastHelix.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/guidance/GenericGhost.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/skills/NoLimit.asset
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/HelixLaser.prefab
+- Assets/RaindropLobotomy/Enemies/Bosses/Claw/ClawBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/ErodedSlashBig.prefab
+- Assets/RaindropLobotomy/Enemies/Bosses/Binah/BinahBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/bdPrescriptEnergized.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_DarkSlashBig.prefab
+- Assets/RaindropLobotomy/Enemies/Bosses/Binah/projectiles/pillar/PillarProjectile.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepM2.asset
+- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaInnerOrb.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/muzzleflash/LamentMuzzleFlashBlack.prefab
+- Assets/RaindropLobotomy/Enemies/Bosses/Binah/vfx/matArbiterSlash.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/BewitchedIndicator.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/effect/matErosion.mat
+- Assets/RaindropLobotomy/Survivors/Argalia/buffs/Resonance/bdResonance.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/mdl/matBLMerc.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/EternalRest.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaBandage.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_BladeShing.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SteamMachine/SteamMachineMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/SilentAdvance.png
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/plasma/matHelixPlasma.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/flame/matDarkFlame.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/Despair.png
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/MultiSlashGrinder.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/effects/slashes/GrinderSaw.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/SweeperSecondary.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/MHZMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/mdl/matIndexMerc.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/bones/BL_DarkRadial_2.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/Bewitched/SM_BewitchedBuff.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/prescripts/effects/PrescriptEvadeEffect.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Noon/cscGreenNoon.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Toolbot/Grinder/skills/Clean.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Hello.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/tracer/LamentTracerWhite.prefab
+- Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/edClockworkSpring.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Lament_P.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/ai/cscSweeper.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/bdMHZFog.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/sf_SweepM1.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/CrashingSword/CrashingSwordGhost.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Goodbye.asset
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/effects/TracerMatchFlame.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/sf_mimic_pr.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/skills/Lament.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Fragments/FragmentsEGOBody.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/IndexMercDisplay.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/SweeperBody.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/beam/texAlphaGradient2Mask.png
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/mdl/overlay/matFragmentOverlay.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/BL/effects/slashes/small/BLMercSlash.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/effects/portal/matMagicPortal1.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/effects/dot light/LampAreaGhost.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/projectile/LockingBolt/LockingBolt.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/effects/matMimicrySlash.mat
+- Assets/RaindropLobotomy/EGO/Skills/FourthMatchFlame/sdFMF_Cancel.asset
+- Assets/RaindropLobotomy/Survivors/Sweeper/ai/SweeperAIMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Arti/Lamp/effects/targeter/LampBeamIndicator.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Bandit/MagicBullet/skills/DespairBullet.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/Penetrate.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/IndexSC.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/buffs/bdLamentSeal.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/skills/Claw.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/buffs/bdLamentStackSeal.asset
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/mdl/matLamentBlack.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/mdl/matJustitiaWeapon.mat
+- Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/SweeperSlashLeft.prefab
+- Assets/RaindropLobotomy/EGO/Gifts/ClockworkSpring/EPDT_Clockwork.asset
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/effects/LamentImpactWhite.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/CENSORED/CENSOREDBody.prefab
+- Assets/RaindropLobotomy/Skills/Merc/YMFTCTB/sdYMF.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/projectiles/JustitiaAirSlash.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/LastHelixBody.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/skills/sf_Fragment_SECONDARY.asset
+- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/effects/matMHZFog.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/mdl/matSingingMachine.mat
+- Assets/RaindropLobotomy/Survivors/Argalia/mdl/matArgaliaScythe.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/MHZ/effects/MHZDisplay.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/skills/Hungering_Gaze.png
+- Assets/RaindropLobotomy/Enemies/Bosses/Claw/mdl/matClawMetal.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/FragmentMaster.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Viend/Mimicry/effects/MistCloud.prefab
+- Assets/RaindropLobotomy/EGO/Corrosions/Merc/Index/skills/Skills/PrescriptDefense.asset
+- Assets/RaindropLobotomy/EGO/Corrosions/Commando/Lament/effects/guidance/GuidingHandProjectileWhite.prefab
+- Assets/RaindropLobotomy/EGO/Skills/SolemnLament/effects/LamentImpactBlack.prefab
+- Assets/RaindropLobotomy/Ordeals/Green/Midnight/vfx/telegraph/matHelixGroundIndicator.mat
+- Assets/RaindropLobotomy/EGO/Corrosions/FalseSon/Justitia/effects/matJustitiaSlash.mat
+- Assets/RaindropLobotomy/Enemies/Abnormalities/SingingMachine/SingingMachineBody.prefab
+- Assets/RaindropLobotomy/Survivors/Sweeper/effects/slash/SweeperSlash.prefab
+- Assets/RaindropLobotomy/Enemies/Abnormalities/Fragment/cscFragment.asset
 Dependencies: []

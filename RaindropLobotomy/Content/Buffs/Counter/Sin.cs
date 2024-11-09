@@ -55,7 +55,7 @@ namespace RaindropLobotomy.Buffs {
 
                 if (info.enabled) {
                     float hp = GetExecuteFraction(bar.source);
-                    float max = bar.source.fullCombinedHealth;
+                    float max = bar.source != null ? bar.source.fullCombinedHealth : 0f;
 
                     info.normalizedXMin = 0f;
                     info.normalizedXMax = hp;
@@ -86,20 +86,18 @@ namespace RaindropLobotomy.Buffs {
         {
             orig(self, damageInfo);
 
-            if (damageInfo.HasModdedDamageType(SinReflectionType)) {
+            if (damageInfo.HasModdedDamageType(SinReflectionType) && !self.body.isPlayerControlled) {
                 int count = self.body.GetBuffCount(BuffIndex);
                 self.body.SetBuffCount(BuffIndex, count + 5);
             }
 
-            if (damageInfo.HasModdedDamageType(SinType)) {
+            if (damageInfo.HasModdedDamageType(SinType) && !self.body.isPlayerControlled) {
                 int count = self.body.GetBuffCount(BuffIndex);
                 self.body.SetBuffCount(BuffIndex, count + 1);
             }
 
             if (Executable(self) && damageInfo.procChainMask.HasProc(ProcType.PlasmaCore)) {
                 float hp = GetExecuteHealth(self);
-
-                Debug.Log(hp + " : " + self.combinedHealth);
 
                 if (self.combinedHealth < hp) {
                     self.Suicide(damageInfo.attacker);
@@ -115,10 +113,13 @@ namespace RaindropLobotomy.Buffs {
         }
 
         private static bool Executable(HealthComponent hc) {
+            if (!hc) return false;
             return hc.body.GetBuffCount(BuffIndex) > 0;
         }
 
         private static float GetExecuteHealth(HealthComponent hc) {
+            if (!hc) return float.MaxValue;
+
             int stacks = hc.body.GetBuffCount(BuffIndex);
             
             float percentagePer = baseHealthPerStack * (hc.body.isChampion ? championPenalty : 1f) / hc.body.baseMaxHealth;
@@ -129,6 +130,8 @@ namespace RaindropLobotomy.Buffs {
         }
 
         private static float GetExecuteFraction(HealthComponent hc) {
+            if (!hc) return 0f;
+
             int stacks = hc.body.GetBuffCount(BuffIndex);
             
             float percentagePer = baseHealthPerStack * (hc.body.isChampion ? championPenalty : 1f) / hc.body.baseMaxHealth;

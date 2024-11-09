@@ -38,7 +38,7 @@ namespace RaindropLobotomy.EGO.FalseSon {
                 IEnumerable<HurtBox> hurtBoxes = search.GetResults();
                 
                 foreach (HurtBox box in hurtBoxes) {
-                    if (box.healthComponent) {
+                    if (box.healthComponent && box.teamIndex != TeamIndex.Player) {
                         CharacterBody body = box.healthComponent.body;
                         int sin = body.GetBuffCount(Buffs.Sin.BuffIndex);
                         body.SetBuffCount(Buffs.Sin.BuffIndex, sin + 3);

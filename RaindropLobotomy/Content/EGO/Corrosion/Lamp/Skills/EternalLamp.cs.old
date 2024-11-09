@@ -1,0 +1,109 @@
+/*using System;
+
+namespace RaindropLobotomy.EGO.Mage {
+    public class EternalLamp : BaseSkillState {
+        public HurtBox target;
+        public GameObject beam;
+        public Transform start;
+        public Transform end;
+        public Transform muzzle;
+        //
+        public const float damageCoeffPerSecond = 3f;
+        public const float ticksPerSecond = 6f;
+        public Timer timer = new(1f / ticksPerSecond, expires: true, resetOnExpire: true);
+        public Animator animator;
+        public LampTargetTracker tracker;
+        public const float damageCoeff = damageCoeffPerSecond * (1f / ticksPerSecond);
+        public const string playbackRateName = "FireGauntlet.playbackRate";
+        public const string animName = "Cast1Left";
+        public const string layerName = "Gesture, Additive";
+        public Vector3 targetPosition;
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            beam = GameObject.Instantiate(EGOLamp.LampEnchantBeam);
+            start = beam.GetComponent<ChildLocator>().FindChild("Origin");
+            end = beam.GetComponent<ChildLocator>().FindChild("Target");
+
+            muzzle = FindModelChild("MuzzleLantern");
+
+            animator = GetModelAnimator();
+
+            end.position = base.transform.position;
+            
+            PlayAnimation(layerName, animName, playbackRateName, 0.4f);
+
+            tracker = GetComponent<LampTargetTracker>();
+        }
+        public override void Update()
+        {
+            base.Update();
+
+            start.position = muzzle.position;
+            end.position = Vector3.MoveTowards(end.position, targetPosition, 200 * Time.deltaTime);
+        }
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            base.StartAimMode(0.2f);
+
+            if (base.fixedAge >= 0.1f) {
+                animator.SetFloat(playbackRateName, 0f);
+            }
+
+            if (tracker.target && (target == null || tracker.target != target.transform)) {
+                target = tracker.target.GetComponent<HurtBox>();
+            }
+
+            if (target) {
+                targetPosition = target.transform.position;
+                if (NetworkServer.active && timer.Tick() && target.healthComponent) {
+                    DamageInfo info = new();
+                    info.damage = base.damageStat * damageCoeff * base.attackSpeedStat;
+                    info.attacker = base.gameObject;
+                    info.crit = base.RollCrit();
+                    info.position = end.position;
+                    info.procCoefficient = 1f;
+                    info.AddModdedDamageType(EGOLamp.LightDamage);
+
+                    target.healthComponent.TakeDamage(info);
+                    GlobalEventManager.instance.OnHitEnemy(info, target.healthComponent.body.gameObject);
+                    GlobalEventManager.instance.OnHitAll(info, target.healthComponent.body.gameObject);
+
+                    AkSoundEngine.PostEvent(Events.Play_mage_m1_impact, target.gameObject);
+                }
+            }
+            else {
+                Vector3? vec = MiscUtils.RaycastToDirection(base.inputBank.aimOrigin, 100f, base.inputBank.aimDirection, LayerIndex.world.mask);
+                if (vec.HasValue) {
+                    targetPosition = vec.Value;
+                }
+                else {
+                    targetPosition = GetAimRay().GetPoint(100f);
+                }
+            }
+
+            if (base.fixedAge >= 0.3f && !inputBank.skill1.down) {
+                outer.SetNextStateToMain();
+            }
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Skill;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+
+            if (beam) {
+                Destroy(beam);
+            }
+
+            animator.SetFloat(playbackRateName, 1f);
+        }
+    }
+}*/

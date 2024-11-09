@@ -72,6 +72,8 @@ namespace RaindropLobotomy.EGO.FalseSon {
             for (int i = 0; i < boxes.Length; i++) {
                 HurtBox box = boxes[i];
 
+                if (box.teamIndex == TeamIndex.Player) continue;
+
                 LightningStrikeOrb orb = new();
                 orb.target = box;
                 orb.damageValue = base.damageStat * damageCoeff;

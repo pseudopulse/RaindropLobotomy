@@ -91,7 +91,9 @@ namespace RaindropLobotomy {
             ForAllAssets<SkillFamily>(x => ContentAddition.AddSkillFamily(x));
             ForAllAssets<GameObject>(x => {
                 if (x.GetComponent<NetworkIdentity>()) {
-                    // Debug.Log("Adding Networked Object: " + x);
+                    
+                    if (x.name.Contains("LampBody")) return;
+
                     PrefabAPI.RegisterNetworkPrefab(x);
                     ContentAddition.AddNetworkedObject(x);
                 }

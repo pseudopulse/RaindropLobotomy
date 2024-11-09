@@ -8,6 +8,7 @@ cp -r RaindropLobotomy/bin/Debug/netstandard2.1/  ~/.config/r2modmanPlus-local/R
 rm ~/.config/r2modmanPlus-local/RiskOfRain2/profiles/RaindropLobotomy/BepInEx/plugins/RaindropLobotomy/PaladinMod.dll
 rm ~/.config/r2modmanPlus-local/RiskOfRain2/profiles/RaindropLobotomy/BepInEx/plugins/RaindropLobotomy/Decalicious.dll
 rm ~/.config/r2modmanPlus-local/RiskOfRain2/profiles/RaindropLobotomy/BepInEx/plugins/RaindropLobotomy/Survariants.dll
+rm ~/.config/r2modmanPlus-local/RiskOfRain2/profiles/RaindropLobotomy/BepInEx/plugins/RaindropLobotomy/Unity.Postprocessing.Runtime.dll
 
 rm -rf RLBuild
 mkdir RLBuild

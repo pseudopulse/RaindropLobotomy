@@ -13,7 +13,7 @@ namespace RaindropLobotomy.Utils
         {
             if (Physics.Raycast(new Ray(position, direction), out RaycastHit raycastHit, maxDistance, layer, QueryTriggerInteraction.Ignore))
             {
-                return raycastHit.point;
+                return raycastHit.point + (raycastHit.normal * 1f);
             }
             return null;
         }

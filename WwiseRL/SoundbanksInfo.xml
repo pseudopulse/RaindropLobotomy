@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="694894649" Type="User" Language="English(US)" Hash="{051BE572-9A9D-91D1-682E-E728748F0932}">
+		<SoundBank Id="694894649" Type="User" Language="English(US)" Hash="{3918883C-50B5-E249-371D-D83AD35E68BB}">
 			<ShortName>RLBank</ShortName>
 			<Path>English(US)/RLBank.bnk</Path>
 			<Media>
@@ -133,5 +133,5 @@
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{B3352948-A6A5-6C3F-BFF7-F19DC2085F6C}</FileHash>
+	<FileHash>{D345C2DF-CB48-94E8-5543-CD7B364A6880}</FileHash>
 </SoundBanksInfo>

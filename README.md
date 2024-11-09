@@ -48,6 +48,10 @@ Ordeals will appear after spending too long on the same stage. Can be configured
 
 </details>
 
+## Contact/Feedback
+Join our Discord server! Whether you want to make suggestions, report bugs, or simply find a group of people to chill with, we welcome you to join us.
+https://cutt.ly/ballscord
+
 ## Credits
 pseudopulse - programming, models, animations
 
@@ -58,6 +62,21 @@ monsterskinman - playtesting, ideas
 project moon - making the amazing series where all of the visual designs, sounds, and sprites here come from
 
 ## Changelog
+# 1.5.3
+- fixed the unfinished & disabled lamp variant causing a conflict with ss2's wayfarer
+
+# 1.5.2
+- fixed sin nre spam (for real this time)
+- fixed justitia not being targeted by enemies unless attacking
+
+# 1.5.1
+- fixed Solemn Lament's primary being obnoxiously loud
+- fixed being able to inflict Sin on yourself using chaos
+- fixed nullref spam caused by Sin in certain situations
+- ordeals now only have a 33% chance to appear
+- Helix of the End health cut massively
+- Process of Understanding health reduced
+
 # 1.5.0
 - survivor variant: justitia false son
 - fixed custom sfx not working (it broke in-between me working on the 1.4.4 fix and the dlc bugfix patch releasing)

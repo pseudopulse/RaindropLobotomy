@@ -260,6 +260,7 @@ namespace RaindropLobotomy.Ordeals
         }
 
         private static OrdealBase GetNextOrdealType(SceneDef scene) {
+            if (!Util.CheckRoll(33f)) return null;
             if (scene.sceneType != SceneType.Stage) return null;
             if (scene.cachedName == "moon" || scene.cachedName == "moon2") return null;
 
