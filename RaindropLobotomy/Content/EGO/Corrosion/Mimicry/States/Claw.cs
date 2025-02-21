@@ -38,6 +38,7 @@ namespace RaindropLobotomy.EGO.Viend {
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType = DamageTypeCombo.GenericSecondary;
             overlapAttack.AddModdedDamageType(EGOMimicry.ClawLifestealType);
         }
 

@@ -40,7 +40,7 @@ namespace RaindropLobotomy.EGO
 
         }
 
-        public void Create() {
+        public virtual void Create() {
             CreateLanguage();
             ContentAddition.AddSkillDef(SkillDef);
 

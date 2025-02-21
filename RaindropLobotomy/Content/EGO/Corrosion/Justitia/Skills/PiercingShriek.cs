@@ -49,6 +49,7 @@ namespace RaindropLobotomy.EGO.FalseSon {
                         damage.position = box.transform.position;
                         damage.damage = base.damageStat * damageCoeff;
                         damage.procCoefficient = 1;
+                        damage.damageType = DamageTypeCombo.GenericSecondary;
                         
                         box.healthComponent.TakeDamage(damage);
                         GlobalEventManager.instance.OnHitAll(damage, body.gameObject);

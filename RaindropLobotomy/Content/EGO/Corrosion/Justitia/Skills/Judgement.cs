@@ -35,7 +35,7 @@ namespace RaindropLobotomy.EGO.FalseSon {
 
         public override void PlayAnimation()
         {
-            AkSoundEngine.PostEvent(Events.Play_falseson_skill1_swing, base.gameObject);
+            AkSoundEngine.PostEvent(_step % 2 == 0 ? "Play_justitia_slash2" : "Play_justitia_slash1", base.gameObject);
             string animationStateName = (_step % 2 == 0 ? "SwingClubRight" : "SwingClubLeft");
             float num = Mathf.Max(duration, 0.2f);
             PlayCrossfade("Gesture, Additive", animationStateName, "SwingClub.playbackRate", num, 0.1f);

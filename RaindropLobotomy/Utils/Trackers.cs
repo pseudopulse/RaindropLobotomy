@@ -14,7 +14,7 @@ namespace RaindropLobotomy.Utils {
         public Indicator indicator;
         public GameObject targetingIndicatorPrefab;
         private float stopwatch = 0f;
-        public float searchDelay = 0.4f;
+        public float searchDelay = 0.1f;
         public float maxSearchAngle = 40f;
         public float maxSearchDistance = 60f;
         ///<summary>used to determine if this tracker should search and display an indicator</summary>
@@ -98,6 +98,7 @@ namespace RaindropLobotomy.Utils {
             }
 
             search.teamMaskFilter = mask;
+            search.sortMode = BullseyeSearch.SortMode.Angle;
             search.RefreshCandidates();
             search.FilterOutGameObject(base.gameObject);
             IEnumerable<HurtBox> boxes = search.GetResults();

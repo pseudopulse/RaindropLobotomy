@@ -44,6 +44,7 @@ namespace RaindropLobotomy.EGO.FalseSon {
 
             AirSlashProjectile = Load<GameObject>("JustitiaAirSlash.prefab");
             AirSlashProjectile.GetComponent<ProjectileOverlapAttack>().impactEffect = Paths.GameObject.OmniImpactVFXSlashMerc;
+            AirSlashProjectile.GetComponent<ProjectileDamage>().damageType = DamageTypeCombo.GenericPrimary;
             ContentAddition.AddProjectile(AirSlashProjectile);
 
             AirSlashSinProjectile = PrefabAPI.InstantiateClone(AirSlashProjectile, "JustitiaSinAirSlash.prefab");

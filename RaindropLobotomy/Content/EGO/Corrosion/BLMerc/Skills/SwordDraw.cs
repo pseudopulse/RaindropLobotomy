@@ -44,6 +44,8 @@ namespace RaindropLobotomy.EGO.Merc {
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
 
+            overlapAttack.damageType = DamageTypeCombo.GenericPrimary;
+
             if (overlapAttack.isCrit) {
                 overlapAttack.damageType |= DamageType.BleedOnHit;
             }

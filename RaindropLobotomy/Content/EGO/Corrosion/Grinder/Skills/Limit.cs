@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace RaindropLobotomy.EGO.Toolbot {
     public class Limit : BaseSkillState {
-        public float DamageCoefficient = 8f;
+        public float DamageCoefficient = 5f;
         public int DashCount = 3;
         public string MuzzleName = "MuzzleCleanup";
         public string MechanimFreeze = "Split.winded";
@@ -30,6 +30,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
             attack.damage = base.damageStat * DamageCoefficient;
             attack.attacker = base.gameObject;
             attack.hitBoxGroup = FindHitBoxGroup(HitBoxName);
+            attack.damageType = DamageTypeCombo.GenericSpecial;
             attack.damageType |= DamageType.Stun1s;
             attack.damageType |= DamageType.BleedOnHit;
             attack.teamIndex = base.GetTeam();

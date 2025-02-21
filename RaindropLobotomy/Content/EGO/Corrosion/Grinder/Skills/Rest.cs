@@ -49,7 +49,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
             stopwatches[1] += Time.fixedDeltaTime;
 
             if (stopwatches[0] >= 0.33f) {
-                base.healthComponent.Heal(base.healthComponent.health * ((regenPerSecond / 3) * 0.01f), default);
+                base.healthComponent.Heal(base.healthComponent.fullCombinedHealth * ((regenPerSecond / 3) * 0.01f), default);
                 stopwatches[0] = 0f;
             }
 

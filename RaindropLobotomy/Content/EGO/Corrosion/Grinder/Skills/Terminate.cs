@@ -36,7 +36,9 @@ namespace RaindropLobotomy.EGO.Toolbot {
         }
 
         public void UpdateDamageType() {
-            bool res = Util.CheckRoll(5f * base.characterBody.GetBuffCount(Grinder.Charge));
+            bool res = Util.CheckRoll(2.5f * base.characterBody.GetBuffCount(Grinder.Charge));
+
+            attack.damageType = DamageTypeCombo.GenericPrimary;
 
             if (!res) {
                 attack.damageType &= ~DamageType.BleedOnHit;

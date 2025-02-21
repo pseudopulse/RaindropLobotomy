@@ -32,6 +32,7 @@ namespace RaindropLobotomy.EGO.Merc {
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType = DamageTypeCombo.GenericUtility;
             overlapAttack.forceVector = Vector3.up * 3000f;
         }
 
@@ -131,6 +132,7 @@ namespace RaindropLobotomy.EGO.Merc {
                 attack.position = base.transform.position;
                 attack.teamIndex = base.GetTeam();
                 attack.procCoefficient = 1f;
+                attack.damageType = DamageTypeCombo.GenericUtility;
                 attack.AddModdedDamageType(Buffs.Poise.Instance.GivePoise);
 
                 EffectManager.SpawnEffect(Paths.GameObject.HermitCrabBombExplosion, new EffectData {

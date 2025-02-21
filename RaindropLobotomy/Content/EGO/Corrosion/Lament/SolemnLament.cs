@@ -61,7 +61,9 @@ namespace RaindropLobotomy.EGO.Commando {
             LamentTracerWhite = Load<GameObject>("LamentTracerWhite.prefab");
 
             GuidingHandWhite = Load<GameObject>("GuidingHandProjectileWhite.prefab");
+            GuidingHandWhite.GetComponent<ProjectileDamage>().damageType = DamageTypeCombo.GenericSecondary;
             GuidingHandBlack = Load<GameObject>("GuidingHandProjectileBlack.prefab");
+            GuidingHandBlack.GetComponent<ProjectileDamage>().damageType = DamageTypeCombo.GenericSecondary;
 
             GuidingHandBlack.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>().Add(Seal);
             GuidingHandWhite.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>().Add(Seal);

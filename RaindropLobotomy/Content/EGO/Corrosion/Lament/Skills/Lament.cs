@@ -81,6 +81,7 @@ namespace RaindropLobotomy.EGO.Commando {
                 bulletAttack.radius = 0.1f;
                 bulletAttack.smartCollision = true;
                 bulletAttack.falloffModel = BulletAttack.FalloffModel.None;
+                bulletAttack.damageType = DamageTypeCombo.GenericPrimary;
                 bulletAttack.AddModdedDamageType(SolemnLament.StackingLament);
                 bulletAttack.Fire();
             }

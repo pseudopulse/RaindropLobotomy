@@ -37,6 +37,7 @@ namespace RaindropLobotomy.Survivors.Sweeper {
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType = DamageTypeCombo.GenericPrimary;
             overlapAttack.AddModdedDamageType(Sweeper.BigLifesteal);
         }
 

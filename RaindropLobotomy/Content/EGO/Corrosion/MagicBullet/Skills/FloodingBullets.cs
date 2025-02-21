@@ -32,7 +32,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             StartAimMode(0.1f);
 
             base.characterBody.StartCoroutine(ProcessBullets());
-            base.characterBody.AddBuff(RoR2Content.Buffs.ElephantArmorBoost);
+            base.characterBody.AddBuff(RoR2Content.Buffs.Intangible);
             // pp = GameObject.Instantiate(EGOMagicBullet.FloodingBulletsPP);
         }
 
@@ -149,7 +149,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             for (int i = 0; i < toDestroy.Count; i++) {
                 GameObject.Destroy(toDestroy[i]);
             }
-            base.characterBody.RemoveBuff(RoR2Content.Buffs.ElephantArmorBoost);
+            base.characterBody.RemoveBuff(RoR2Content.Buffs.Intangible);
         }
 
         public bool IsAllowedToContinue() {
@@ -175,6 +175,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             attack.procCoefficient = 1f;
             attack.radius = 1f;
             attack.smartCollision = true;
+            attack.damageType = DamageTypeCombo.GenericSpecial;
             attack.maxDistance = distance;
 
             return attack;

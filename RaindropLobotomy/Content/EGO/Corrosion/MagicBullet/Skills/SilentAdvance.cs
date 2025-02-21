@@ -32,6 +32,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             attack.attackerFiltering = AttackerFiltering.NeverHitSelf;
             attack.baseDamage = base.damageStat * 3f;
             attack.crit = base.RollCrit();
+            attack.damageType = DamageTypeCombo.GenericSpecial;
             attack.AddModdedDamageType(DarkFlame.Instance.DarkFlameDamageType);
             attack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             attack.radius = 5f;

@@ -37,7 +37,7 @@ namespace RaindropLobotomy.EGO.Merc {
         private static Dictionary<CharacterBody, bool> YieldingMap = new();
         //
         public static SkillDef ToClaimTheirBones;
-        public static DamageAPI.ModdedDamageType PoiseDamageBonus = new();
+        public static DamageAPI.ModdedDamageType PoiseDamageBonus = DamageAPI.ReserveDamageType();
 
         public override void Modify()
         {

@@ -59,6 +59,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType = DamageTypeCombo.GenericSecondary;
             overlapAttack.damageType |= DamageType.BleedOnHit;
         }
 

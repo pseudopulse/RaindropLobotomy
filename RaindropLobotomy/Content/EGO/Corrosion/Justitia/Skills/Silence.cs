@@ -21,7 +21,7 @@ namespace RaindropLobotomy.EGO.FalseSon {
 
             PlayAnimation("FullBody, Override", "StepBrothersPrep", "StepBrothersPrep.playbackRate", prepDuration);
 
-            AkSoundEngine.PostEvent(Events.Play_falseson_skill3_dash, base.gameObject);
+            AkSoundEngine.PostEvent("Play_justitia_parry", base.gameObject);
 
             if (NetworkServer.active) {
                 base.characterBody.AddTimedBuff(FeatherGuard.BuffIndex, buffDuration);

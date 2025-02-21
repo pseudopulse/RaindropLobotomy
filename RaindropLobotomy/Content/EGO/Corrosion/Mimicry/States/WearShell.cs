@@ -35,6 +35,7 @@ namespace RaindropLobotomy.EGO.Viend {
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType = DamageTypeCombo.GenericSpecial;
             overlapAttack.AddModdedDamageType(EGOMimicry.WearShellType);
             overlapAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
             overlapAttack.teamIndex = TeamIndex.Neutral;

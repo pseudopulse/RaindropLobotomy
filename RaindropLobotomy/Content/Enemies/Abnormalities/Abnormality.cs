@@ -28,8 +28,8 @@ namespace RaindropLobotomy.Enemies {
             AbnoDCCS = Load<DirectorCardCategorySelection>("AbnoDCCS.asset");
             AbnoDirector = Load<GameObject>("AbnormalityDirector.prefab");
 
-            On.RoR2.CombatDirector.Awake += OnDirectorStart;
-            On.RoR2.CombatDirector.Spawn += PerStage;
+            // On.RoR2.CombatDirector.Awake += OnDirectorStart;
+            // On.RoR2.CombatDirector.Spawn += PerStage;
         }
 
         private static bool PerStage(On.RoR2.CombatDirector.orig_Spawn orig, CombatDirector self, SpawnCard spawnCard, EliteDef eliteDef, Transform spawnTarget, DirectorCore.MonsterSpawnDistance spawnDistance, bool preventOverhead, float valueMultiplier, DirectorPlacementRule.PlacementMode placementMode)
@@ -73,7 +73,7 @@ namespace RaindropLobotomy.Enemies {
                     break;
             }
             
-            abno.SpawnCard.directorCreditCost = CreditMap[(int)abno.ThreatLevel];
+            abno.SpawnCard.directorCreditCost = CreditMap[(int)abno.ThreatLevel] * 2;
         }
 
         private static void HandleAbno_Aleph(Abnormality abno) {
@@ -99,7 +99,11 @@ namespace RaindropLobotomy.Enemies {
             card.spawnDistance = DirectorCore.MonsterSpawnDistance.Standard;
             card.spawnCard = abno.SpawnCard;
 
-            AbnoDCCS.AddCard(index, card);
+            DirectorAPI.Helpers.AddNewMonsterToStagesWhere(new DirectorCardHolder() {
+                Card = card,
+                MonsterCategory = MonsterCategory.Minibosses,
+                MonsterCategorySelectionWeight = 1
+            }, false, x => x.stage != DirectorAPI.Stage.Commencement);
         }
     }
 }

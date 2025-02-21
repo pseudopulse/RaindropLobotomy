@@ -36,6 +36,7 @@ namespace RaindropLobotomy.EGO.Bandit {
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType = DamageTypeCombo.GenericSecondary;
             overlapAttack.AddModdedDamageType(DarkFlame.Instance.DarkFlameDamageType);
         }
 

@@ -49,6 +49,7 @@ namespace RaindropLobotomy.EGO.Viend {
                 bulletAttack.isCrit = Util.CheckRoll(critStat, base.characterBody.master);
                 bulletAttack.tracerEffectPrefab = EGOMimicry.TracerHello;
                 bulletAttack.hitEffectPrefab = Paths.GameObject.OmniImpactVFXHuntress;
+                bulletAttack.damageType = DamageTypeCombo.GenericSpecial;
                 
                 bulletAttack.Fire();
             }

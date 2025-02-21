@@ -14,11 +14,15 @@ namespace RaindropLobotomy.EGO.Mage {
             duration /= base.attackSpeedStat;
 
             StartAimMode(0.2f);
+
+            AkSoundEngine.PostEvent(Events.Play_mage_m1_shoot, base.gameObject);
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            StartAimMode(0.2f);
 
             if (base.fixedAge >= duration) {
                 outer.SetNextStateToMain();

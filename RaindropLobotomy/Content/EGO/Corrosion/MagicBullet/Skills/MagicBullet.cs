@@ -103,6 +103,7 @@ namespace RaindropLobotomy.EGO.Bandit {
                 attack.radius = 0.5f;
                 attack.smartCollision = true;
                 attack.maxDistance = distance;
+                attack.damageType = DamageTypeCombo.GenericSpecial;
 
                 if (shouldConsumeAmmo) {
                     EGOMagicBullet.GiveAmmo(characterBody);

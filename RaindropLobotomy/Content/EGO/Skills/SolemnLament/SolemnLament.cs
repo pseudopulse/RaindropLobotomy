@@ -43,6 +43,11 @@ namespace RaindropLobotomy.EGO {
             }
         }
 
+        public override void Create()
+        {
+            return;
+        }
+
         public override void CreateLanguage()
         {
             lament = Load<GameObject>("SolemnLament.prefab");

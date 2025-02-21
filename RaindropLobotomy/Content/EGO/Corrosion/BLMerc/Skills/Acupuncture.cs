@@ -37,6 +37,8 @@ namespace RaindropLobotomy.EGO.Merc {
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
+
+            overlapAttack.damageType = DamageTypeCombo.GenericSecondary;
             
             if (overlapAttack.isCrit) {
                 overlapAttack.AddModdedDamageType(BLMerc.PoiseDamageBonus);

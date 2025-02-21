@@ -136,6 +136,7 @@ namespace RaindropLobotomy.EGO.Merc {
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType = DamageTypeCombo.GenericSpecial;
             overlapAttack.damageType |= DamageType.CrippleOnHit;
         }
 
@@ -222,6 +223,7 @@ namespace RaindropLobotomy.EGO.Merc {
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
             overlapAttack.forceVector = Vector3.up * 3000f;
+            overlapAttack.damageType = DamageTypeCombo.GenericSpecial;
             overlapAttack.damageType |= DamageType.CrippleOnHit;
         }
 
@@ -286,6 +288,7 @@ namespace RaindropLobotomy.EGO.Merc {
             attack.damage = base.damageStat * 3f * bonusDamage;
             attack.attacker = base.gameObject;
             attack.hitBoxGroup = hitBoxGroup;
+            attack.damageType = DamageTypeCombo.GenericSpecial;
             attack.damageType |= DamageType.Stun1s;
             attack.damageType |= DamageType.BleedOnHit;
             attack.teamIndex = base.GetTeam();

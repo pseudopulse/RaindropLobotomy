@@ -28,6 +28,8 @@ namespace RaindropLobotomy.EGO.Mage {
             
             EffectManager.SimpleEffect(Paths.GameObject.ExplosionSolarFlare, info.position, Quaternion.identity, true);
 
+            AkSoundEngine.PostEvent(Events.Play_mage_shift_wall_explode, base.gameObject);
+
             ProjectileManager.instance.FireProjectile(info);
             outer.SetNextStateToMain();
         }

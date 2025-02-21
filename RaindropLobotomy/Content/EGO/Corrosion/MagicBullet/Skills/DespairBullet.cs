@@ -111,6 +111,7 @@ namespace RaindropLobotomy.EGO.Bandit {
             attack.radius = 2f;
             attack.smartCollision = true;
             attack.maxDistance = distance;
+            attack.damageType = DamageTypeCombo.GenericSpecial;
             attack.damageType |= DamageType.NonLethal;
             attack.AddModdedDamageType(EGOMagicBullet.DespairDamage);
 

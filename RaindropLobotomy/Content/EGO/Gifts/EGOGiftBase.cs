@@ -37,6 +37,7 @@ namespace RaindropLobotomy.EGO.Gifts {
             if (EquipmentDef) {
                 ContentAddition.AddEquipmentDef(EquipmentDef);
                 EquipmentDef.isBoss = true;
+                EquipmentDef.canDrop = false;
                 /// EquipmentDef.GetType().GetProperty("bgIconTexture", (BindingFlags)(-1)).SetValue(EquipmentDef, Paths.Texture2D.texBossBGIcon);
                 On.RoR2.EquipmentSlot.PerformEquipmentAction += PerformEquipmentAction;
             }

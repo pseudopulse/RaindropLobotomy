@@ -111,7 +111,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
         }
 
         public static void UpdateCharge(CharacterBody body, int count) {
-            count = Mathf.Clamp(count, 0, 10);
+            count = Mathf.Clamp(count, 0, 20);
             body.SetBuffCount(Charge.buffIndex, count);
         }
 
@@ -125,7 +125,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
             "RL_EGO_GRINDER_PASSIVE_DESC".Add("Increase the damage of <style=cDeath>Bleed</style> by <style=cIsDamage>5%</style> when re-inflicting the same target.");
 
             "RL_EGO_GRINDER_PRIMARY_NAME".Add("Exterminate");
-            "RL_EGO_GRINDER_PRIMARY_DESC".Add("Repeatedly shred targets for <style=cIsDamage>550% damage per second</style>. Has a <style=cIsDamage>5%</style> chance to <style=cDeath>bleed</style> per <style=cIsUtility>Charge</style>.");
+            "RL_EGO_GRINDER_PRIMARY_DESC".Add("Repeatedly shred targets for <style=cIsDamage>550% damage per second</style>. Has a <style=cIsDamage>2.5%</style> chance to <style=cDeath>bleed</style> per <style=cIsUtility>Charge</style>.");
 
             "RL_EGO_GRINDER_SECONDARY_NAME".Add("Initiate Cleaning");
             "RL_EGO_GRINDER_SECONDARY_DESC".Add("Slash repeatedly, dealing <style=cIsDamage>4x250% damage</style> and <style=cDeath>bleeding</style>. <style=cIsUtility>Consume 3 Charge.</style>");
@@ -134,7 +134,7 @@ namespace RaindropLobotomy.EGO.Toolbot {
             "RL_EGO_GRINDER_UTILITY_DESC".Add("Become temporarily <style=cDeath>dormant</style>, restoring <style=cIsUtility>2 Charge</style> per second and accelerating skill recharge speed.");
 
             "RL_EGO_GRINDER_SPECIAL_NAME".Add("Disable Limiter");
-            "RL_EGO_GRINDER_SPECIAL_DESC".Add("Consume <style=cIsUtility>10 Charge</style>, and rapidly tear through targets for <style=cIsDamage>3x800%</style> damage, <style=cDeath>bleeding</style> on hit.");
+            "RL_EGO_GRINDER_SPECIAL_DESC".Add("Consume <style=cIsUtility>20 Charge</style>, and rapidly tear through targets for <style=cIsDamage>3x600%</style> damage, <style=cDeath>bleeding</style> on hit.");
         }
     }
 }

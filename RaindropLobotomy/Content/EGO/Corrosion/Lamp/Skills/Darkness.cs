@@ -9,7 +9,7 @@ namespace RaindropLobotomy.EGO.Mage {
 
             PlayAnimation("Gesture, Additive", "ChargeNovaBomb", "ChargeNovaBomb.playbackRate", 2f);
 
-            GameObject.Instantiate(EGOLamp.DarknessController);
+            EGOLamp.DC.TriggerDarkness();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

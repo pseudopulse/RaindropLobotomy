@@ -57,6 +57,7 @@ namespace RaindropLobotomy.EGO.Commando {
             attack.crit = base.RollCrit();
             attack.falloffModel = BlastAttack.FalloffModel.Linear;
             attack.procCoefficient = 1;
+            attack.damageType = DamageTypeCombo.GenericUtility;
             attack.AddModdedDamageType(SolemnLament.Seal);
             
             if (base.isAuthority) attack.Fire();

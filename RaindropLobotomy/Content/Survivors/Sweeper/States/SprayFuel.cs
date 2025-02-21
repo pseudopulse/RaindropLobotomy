@@ -41,6 +41,7 @@ namespace RaindropLobotomy.Survivors.Sweeper {
                     info.projectilePrefab = Sweeper.AcidGlob;
                     info.crit = crit;
                     info.owner = base.gameObject;
+                    info.damageTypeOverride = DamageTypeCombo.GenericUtility | DamageType.IgniteOnHit;
                     
                     ProjectileManager.instance.FireProjectile(info);
                 }

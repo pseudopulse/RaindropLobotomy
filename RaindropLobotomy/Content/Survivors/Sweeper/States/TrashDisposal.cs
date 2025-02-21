@@ -65,7 +65,7 @@ namespace RaindropLobotomy.Survivors.Sweeper {
                 attack.smartCollision = true;
                 attack.damage = 1.4f * damageStat;
                 attack.falloffModel = BulletAttack.FalloffModel.None;
-                attack.damageType |= DamageType.IgniteOnHit;
+                attack.damageType = DamageTypeCombo.GenericSecondary | DamageType.IgniteOnHit;
                 attack.origin = base.transform.position;
                 attack.aimVector = Vector3.Reflect((pos - characterBody.corePosition).normalized, Vector3.up);
                 EffectManager.SimpleEffect(Sweeper.AcidSprayEffect, pos, Quaternion.LookRotation(characterDirection.forward, attack.aimVector), false);

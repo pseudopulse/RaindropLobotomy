@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using RoR2.CharacterAI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
@@ -20,7 +21,7 @@ namespace RaindropLobotomy.EGO.Mage {
 
         public override SurvivorDef Survivor => Load<SurvivorDef>("sdLamp.asset");
 
-        public override GameObject BodyPrefab => Load<GameObject>("LampBody.prefab");
+        public override GameObject BodyPrefab => Load<GameObject>("EGOLampBody.prefab");
 
         public override GameObject MasterPrefab => null;
         //
@@ -28,23 +29,23 @@ namespace RaindropLobotomy.EGO.Mage {
         public static GameObject LampSeekerBolt;
         public static GameObject DarknessController;
         public static GameObject LampAreaProjectile;
+        public static GameObject LampAreaPassive;
         public static DamageAPI.ModdedDamageType LightDamage = DamageAPI.ReserveDamageType();
         public static DamageAPI.ModdedDamageType Enchanting = DamageAPI.ReserveDamageType();
         public static PostProcessProfile ppDarkness;
+        public static BuffDef bdDarknessImmune;
+        public static GameObject IlluminationEffect;
+        public static SkillDef sdEverlastingDark;
+        public static SkillDef sdDazzle;
         public static RampFog fog;
-        //
-        // TODO:
-        // - implement m2
-        // - implement enchantment
-        // - make LampAreaProjectile distract enemies in the darkness
-        // - implement darkness on hit blocking
+        public static Mage.DarknessController DC => Mage.DarknessController.instance;
 
         public override void Create()
         {
             base.Create();
 
             PostProcessProfile ppProfile = ScriptableObject.CreateInstance<PostProcessProfile>();
-            UnityEngine.Object.DontDestroyOnLoad(ppProfile);
+           //  UnityEngine.Object.DontDestroyOnLoad(ppProfile);
             ppProfile.name = "LampDarkness";
             fog = ppProfile.AddSettings<RampFog>();
             fog.SetAllOverridesTo(true);
@@ -80,30 +81,215 @@ namespace RaindropLobotomy.EGO.Mage {
             DarknessController = PrefabAPI.InstantiateClone(new("Darkness"), "DarknessController");
             DarknessController.AddComponent<DarknessController>();
             DarknessController.layer = LayerIndex.postProcess.intVal;
+            
+            GameObject guh = GameObject.Instantiate(DarknessController);
+            GameObject.DontDestroyOnLoad(guh);
 
             BodyPrefab.GetComponent<ModelLocator>()._modelTransform.GetComponent<ChildLocator>().FindChild("MuzzleLantern").AddComponent<BoostIntensityDuringDarkness>();
 
             LampAreaProjectile = Load<GameObject>("LampArea.prefab");
             LampAreaProjectile.FindComponent<MeshRenderer>("AreaIndicator").sharedMaterial = Paths.Material.matTeamAreaIndicatorIntersectionPlayer;
             LampAreaProjectile.FindComponent<Light>("Light").AddComponent<BoostIntensityDuringDarkness>();
+            LampAreaProjectile.AddComponent<ForceEnchantedToTargetObject>();
+            LampAreaProjectile.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>().Add(LightDamage);
             ContentAddition.AddProjectile(LampAreaProjectile);
+
+            LampAreaPassive = Load<GameObject>("LampAreaPassive.prefab");
+            LampAreaPassive.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>().Add(LightDamage);
+            LampAreaPassive.FindComponent<Light>("Light").AddComponent<BoostIntensityDuringDarkness>();
+            ContentAddition.AddProjectile(LampAreaPassive);
 
             On.RoR2.HealthComponent.TakeDamageProcess += HandleDarkness;
 
             LampSeekerBolt = PrefabAPI.InstantiateClone(Paths.GameObject.ChildTrackingSparkBall, "LampSeekerBolt");
-            GameObject LampSeekerGhost = PrefabAPI.InstantiateClone(Paths.GameObject.ChildTrackingSparkBallGhost, "LampSeekerBoltGhost");
+            GameObject LampSeekerGhost = PrefabAPI.InstantiateClone(Paths.GameObject.MinorConstructProjectileGhost, "LampSeekerBoltGhost");
             LampSeekerBolt.GetComponent<ProjectileController>().ghostPrefab = LampSeekerGhost;
 
-            LampSeekerBolt.GetComponent<ProjectileSteerTowardTarget>().rotationSpeed = 240;
-            LampSeekerBolt.GetComponent<ProjectileSimple>().desiredForwardSpeed = 90;
+            LampSeekerBolt.GetComponent<ProjectileSteerTowardTarget>().rotationSpeed = 360;
+            LampSeekerBolt.RemoveComponent<ProjectileSphereTargetFinder>();
+            LampSeekerBolt.RemoveComponent<ProjectileDirectionalTargetFinder>();
+            LampSeekerBolt.GetComponent<ProjectileSimple>().desiredForwardSpeed = 40;
+            LampSeekerBolt.GetComponent<ProjectileDamage>().damageType = DamageTypeCombo.GenericPrimary;
+            LampSeekerBolt.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>().Add(Enchanting);
+            LampSeekerBolt.GetComponent<DamageAPI.ModdedDamageTypeHolderComponent>().Add(LightDamage);
             var explo = LampSeekerBolt.GetComponent<ProjectileImpactExplosion>();
             explo.impactEffect = Paths.GameObject.ChildTrackingSparkBallShootExplosion;
             explo.explosionEffect = Paths.GameObject.BoostedSearFireballProjectileExplosionVFX;
             explo.blastRadius = 2;
+            explo.falloffModel = BlastAttack.FalloffModel.None;
 
-            LampSeekerGhost.FindComponent<TrailRenderer>("Trail").gameObject.SetActive(false);
+            SceneManager.activeSceneChanged += OnSceneChange;
+
+            // LampSeekerGhost.FindComponent<TrailRenderer>("Trail").gameObject.SetActive(false);
 
             ContentAddition.AddProjectile(LampSeekerBolt);
+
+            ContentAddition.AddBody(LampAreaProjectile);
+
+            sdDazzle = Load<SkillDef>("sdDazzle.asset");
+            sdEverlastingDark = Load<SkillDef>("sdPermaDark.asset");
+
+            On.RoR2.Skills.SkillDef.IsReady += DisallowWhenNoTarget;
+            On.RoR2.CharacterBody.Start += OnStart;
+            On.RoR2.GlobalEventManager.ProcessHitEnemy += OnHitEnemy;
+            On.RoR2.GlobalEventManager.OnHitAllProcess += OnHitAll;
+            On.RoR2.HealthComponent.TakeDamage += TakeDamage;
+            On.RoR2.GlobalEventManager.OnCharacterDeath += OnDeath;
+
+            bdDarknessImmune = Load<BuffDef>("bdDarknessImmune.asset");
+            ContentAddition.AddBuffDef(bdDarknessImmune);
+
+            IlluminationEffect = Load<GameObject>("LampTargetLight.prefab");
+            IlluminationEffect.AddComponent<BoostIntensityDuringDarkness>();
+
+            BodyPrefab.AddComponent<CastLight>();
+        }
+
+        private void OnSceneChange(Scene arg0, Scene arg1)
+        {
+            DC.End();
+        }
+
+        private void OnDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
+        {
+            orig(self, damageReport);
+
+            DC.Refresh();
+        }
+
+        private void TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        {
+            if (IsDarknessActive && !self.body.HasBuff(bdDarknessImmune)) {
+                damageInfo.procCoefficient = 0;
+            }
+
+            orig(self, damageInfo);
+        }
+
+        private void OnHitAll(On.RoR2.GlobalEventManager.orig_OnHitAllProcess orig, GlobalEventManager self, DamageInfo damageInfo, GameObject hitObject)
+        {
+            if (IsDarknessActive && hitObject) {
+                CharacterBody body = hitObject.GetComponent<CharacterBody>();
+
+                if (!body || !body.HasBuff(bdDarknessImmune)) {
+                    damageInfo.procCoefficient = 0;
+                }
+            }
+
+            orig(self, damageInfo, hitObject);
+        }
+
+        private void OnHitEnemy(On.RoR2.GlobalEventManager.orig_ProcessHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject hitObject)
+        {
+            if (IsDarknessActive && hitObject) {
+                CharacterBody body = hitObject.GetComponent<CharacterBody>();
+
+                if (!body || !body.HasBuff(bdDarknessImmune)) {
+                    damageInfo.procCoefficient = 0;
+                }
+            }
+
+            orig(self, damageInfo, hitObject);
+        }
+
+        private void OnStart(On.RoR2.CharacterBody.orig_Start orig, CharacterBody self)
+        {
+            orig(self);
+
+            if (self.HasSkillEquipped(sdEverlastingDark)) {
+                DC.AddPermanentProvider(self);
+            }
+        }
+
+        private bool DisallowWhenNoTarget(On.RoR2.Skills.SkillDef.orig_IsReady orig, SkillDef self, GenericSkill skillSlot)
+        {
+            if (self == sdDazzle) {
+                if (!skillSlot.GetComponent<LampTargetTracker>().target) {
+                    return false;
+                }
+            }
+
+            return orig(self, skillSlot);
+        }
+
+        public class CastLight : MonoBehaviour {
+            public Transform lightInstance;
+            public CharacterBody body;
+            public InputBankTest bank;
+
+            public void Start() {
+                body = GetComponent<CharacterBody>();
+                bank = GetComponent<InputBankTest>();
+
+                lightInstance = GameObject.Instantiate(EGOLamp.IlluminationEffect).transform;
+            }
+
+            public void Update() {
+                lightInstance.gameObject.SetActive(IsDarknessActive);
+
+                if (!IsDarknessActive) return;
+
+                if (!bank) {
+                    lightInstance.gameObject.SetActive(false);
+                    return;
+                }
+
+                Vector3 pos = bank.GetAimRay().GetPoint(400);
+
+                if (Util.CharacterRaycast(body.gameObject, bank.GetAimRay(), out RaycastHit info, 600f, LayerIndex.CommonMasks.bullet, QueryTriggerInteraction.Ignore)) {
+                    pos = info.point + (info.normal * 0.5f);
+                }
+
+                lightInstance.transform.position = pos;
+            }
+        }
+
+        public class ForceEnchantedToTargetObject : MonoBehaviour {
+            public float stopwatch = 0f;
+            public float delay = 0.5f;
+            public void FixedUpdate() {
+                if (!NetworkServer.active) {
+                    return;
+                }
+
+                stopwatch += Time.fixedDeltaTime;
+
+                if (stopwatch >= delay)
+                {
+                    stopwatch = 0f;
+                    if (NetworkServer.active)
+                    {
+                        List<HurtBox> buffer = new();
+                        SphereSearch search = new()
+                        {
+                            radius = 50f,
+                            origin = base.transform.position,
+                            mask = LayerIndex.entityPrecise.mask
+                        };
+                        
+                        search.RefreshCandidates();
+                        search.FilterCandidatesByHurtBoxTeam(TeamMask.AllExcept(TeamIndex.Player));
+                        search.FilterCandidatesByDistinctHurtBoxEntities();
+                        search.OrderCandidatesByDistance();
+                        search.GetHurtBoxes(buffer);
+                        search.ClearCandidates();
+
+                        foreach (HurtBox box in buffer)
+                        {
+                            if (box.healthComponent && box.healthComponent.body.HasBuff(Buffs.Enchanted.BuffIndex) && box.healthComponent.body.master)
+                            {
+                                foreach (BaseAI ai in box.healthComponent.body.master.aiComponents)
+                                {
+                                    ai.enemyAttention = 0f;
+                                    ai.currentEnemy.Reset();
+                                    ai.currentEnemy.gameObject = base.gameObject;
+                                    ai.currentEnemy.Update();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void HandleDarkness(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
@@ -127,21 +313,32 @@ namespace RaindropLobotomy.EGO.Mage {
             "RL_EGO_LAMP_PASSIVE_DESC".Add("Looking at an enemy nullifies the negative effects of <style=cDeath>Darkness</style>.");
 
             "RL_EGO_LAMP_PRIMARY_NAME".Add("Eternally-Lit Lamp");
-            "RL_EGO_LAMP_PRIMARY_DESC".Add("Focus a beam that for <style=cIsDamage>300% damage per second</style> that <style=cIsUtility>enchants</style> targets.");
+            "RL_EGO_LAMP_PRIMARY_DESC".Add("Fire a <style=cIsUtility>seeking bolt</style> for <style=cIsDamage>240% damage</style> that <style=cIsDamage>enchants</style> targets.");
 
             "RL_EGO_LAMP_SECONDARY_NAME".Add("Dazzle");
-            "RL_EGO_LAMP_SECONDARY_DESC".Add("<style=cIsDamage>Stunning.</style> Flash a blinding light for <style=cIsDamage>400% damage</style>. If the target is <style=cIsUtility>enchanted</style>, deal <style=cIsDamage>2000% damage</style> and <style=cDeath>break the enchantment.</style>");
+            "RL_EGO_LAMP_SECONDARY_DESC".Add("<style=cIsDamage>Stunning.</style> Flash a blinding light for <style=cIsDamage>400% damage</style>. If the target is <style=cIsUtility>enchanted</style>, deal <style=cIsDamage>4000% damage</style> and <style=cDeath>break the enchantment.</style>");
 
             "RL_EGO_LAMP_UTILITY_NAME".Add("Illuminate");
-            "RL_EGO_LAMP_UTILITY_DESC".Add("Place a bright flame that burns targets for <style=cIsDamage>200% damage per second</style>. <style=cIsUtility>Distracts</style> targets in the <style=cDeath>darkness</style>.");
+            "RL_EGO_LAMP_UTILITY_DESC".Add("Place a bright flame that burns targets for <style=cIsDamage>200% damage per second</style>. <style=cIsUtility>Distracts</style> targets who are <style=cIsDamage>enchanted</style>.");
 
             "RL_EGO_LAMP_SPECIAL_NAME".Add("Spreading Darkness");
             "RL_EGO_LAMP_SPECIAL_DESC".Add("For the next <style=cIsUtility>15 seconds</style>, inflict <style=cDeath>Darkness</style> on <style=cDeath>ALL</style> characters. <style=cDeath>On-Hit</style> effects will fail to trigger in the dark, and enemies are more susceptible to <style=cIsUtility>light</style>.");
+
+            "RL_EGO_LAMP_SPECIAL_ALT_NAME".Add("Everlasting Darkness");
+            "RL_EGO_LAMP_SPECIAL_ALT_DESC".Add("<style=cDeath>Passively bring permanent Darkness.</style> Gain a temporary <style=cIsUtility>flame ring</style> that burns enemies for <style=cIsDamage>300% damage per second</style>.");
+
+            "KEYWORD_ENCHANTED".Add(
+                "<style=cKeywordName>Enchanting</style>Targets are <style=cIsUtility>enchanted</style> upon receiving <style=cIsDamage>6 stacks</style>. Requirement is <style=cDeath>doubled</style> against bosses."
+            );
+
+            "KEYWORD_DARKNESS".Add(
+                "<style=cKeywordName>Darkness</style>Increases light damage by <style=cIsDamage>1.5x</style> and <style=cDeath>prevents on-hit effects for all characters</style>."
+            );
         }
     }
 
     public class BoostIntensityDuringDarkness : MonoBehaviour {
-        public float intensityMultiplier = 100f;
+        public float intensityMultiplier = 70f;
         public float rangeMultiplier = 2f;
         private Light light;
         private bool lastDarknessState = false;
@@ -191,7 +388,7 @@ namespace RaindropLobotomy.EGO.Mage {
 
     public class DarknessController : MonoBehaviour {
         public PostProcessVolume vol;
-        public const float windUpDuration = 2f;
+        public const float windUpDuration = 1f;
         public const float totalDuration = 15f - windUpDuration;
         private float[] stopwatch = new float[3];
         public static bool DarknessActive = false;
@@ -199,55 +396,112 @@ namespace RaindropLobotomy.EGO.Mage {
         public Color32 ambience2;
         public Color32 ambience3;
         public Color32 ambience4;
+        public bool permanent = false;
+        public static List<CharacterBody> bodies = new();
+        public static DarknessController instance;
         public void Start() {
+            instance = this;
+
             vol = base.gameObject.AddComponent<PostProcessVolume>();
             vol.isGlobal = true;
             vol.weight = 0f;
             vol.priority = float.MaxValue - 1;
-            vol.sharedProfile = EGOLamp.ppDarkness;
             vol.profile = EGOLamp.ppDarkness;
 
-            DarknessActive = true;
+            DarknessActive = false;
 
-            ambience1 = RenderSettings.ambientSkyColor;
-            ambience2 = RenderSettings.ambientEquatorColor;
-            ambience3 = RenderSettings.ambientGroundColor;
-            ambience4 = RenderSettings.ambientLight;
+            GameObject.DontDestroyOnLoad(this.gameObject);
+
+            End();
+        }
+
+        public void End() {
+            if (DarknessActive) {
+                RenderSettings.ambientSkyColor = ambience1;
+                RenderSettings.ambientEquatorColor = ambience2;
+                RenderSettings.ambientGroundColor = ambience3;
+                RenderSettings.ambientLight = ambience4;
+
+                DarknessActive = false;
+            }
+            else {
+                ambience1 = RenderSettings.ambientSkyColor;
+                ambience2 = RenderSettings.ambientEquatorColor;
+                ambience3 = RenderSettings.ambientGroundColor;
+                ambience4 = RenderSettings.ambientLight;
+            }
+            
+            this.enabled = false;
+            vol.weight = 0;
+            
+            Refresh();
+        }
+
+        public void AddPermanentProvider(CharacterBody prov) {
+            bodies.Add(prov);
+            permanent = true;
+            if (!DarknessActive) {
+                TriggerDarkness();
+            }
+            this.enabled = true;
+        }
+
+        public void Refresh() {
+            bodies.RemoveAll(x => x == null || !x.healthComponent || !x.healthComponent.alive);
+            permanent = bodies.Count > 0;
+        }
+
+        public IEnumerator CallEndAfterDelay() {
+            yield return new WaitForSeconds(0.025f);
+            End();
+        }
+
+        public void TriggerDarkness() {
+            this.enabled = true;
+            
+
+            stopwatch = new float[] { 0f, 0f, 0f };
+
+            DarknessActive = true;
         }
 
         public void Update() {
             stopwatch[0] += Time.deltaTime;
 
             if (stopwatch[0] <= windUpDuration) {
-                vol.weight = Mathf.Clamp01(stopwatch[0] * 0.5f);
+                vol.weight = Mathf.Clamp01(stopwatch[0]);
 
-                RenderSettings.ambientSkyColor = Color.Lerp(ambience1, Color.black, stopwatch[0] * 0.5f);
-                RenderSettings.ambientEquatorColor = Color.Lerp(ambience2, Color.black, stopwatch[0] * 0.5f);
+                RenderSettings.ambientSkyColor = Color.Lerp(ambience1, Color.black, stopwatch[0]);
+                RenderSettings.ambientEquatorColor = Color.Lerp(ambience2, Color.black, stopwatch[0]);
                 RenderSettings.ambientGroundColor = Color.Lerp(ambience3, Color.black, stopwatch[0]);
-                RenderSettings.ambientLight = Color.Lerp(ambience4, Color.black, stopwatch[0] * 0.5f);
+                RenderSettings.ambientLight = Color.Lerp(ambience4, Color.black, stopwatch[0]);
             }
 
             if (stopwatch[0] >= windUpDuration) {
                 stopwatch[1] += Time.deltaTime;
 
-                if (stopwatch[1] >= totalDuration) {
+                DarknessActive = true;
+
+                if (stopwatch[1] >= totalDuration && !permanent) {
                     stopwatch[2] += Time.deltaTime;
 
-                    RenderSettings.ambientSkyColor = Color.Lerp(ambience1, Color.black, 1f - stopwatch[2] * 0.5f);
-                    RenderSettings.ambientEquatorColor = Color.Lerp(ambience2, Color.black, 1f - stopwatch[2] * 0.5f);
+                    RenderSettings.ambientSkyColor = Color.Lerp(ambience1, Color.black, 1f - stopwatch[2]);
+                    RenderSettings.ambientEquatorColor = Color.Lerp(ambience2, Color.black, 1f - stopwatch[2]);
                     RenderSettings.ambientGroundColor = Color.Lerp(ambience3, Color.black, 1f - stopwatch[2]);
-                    RenderSettings.ambientLight = Color.Lerp(ambience4, Color.black, 1f - stopwatch[2] * 0.5f);
+                    RenderSettings.ambientLight = Color.Lerp(ambience4, Color.black, 1f - stopwatch[2]);
 
-                    vol.weight = Mathf.Clamp01(1f - (stopwatch[2] * 0.5f));
+                    vol.weight = Mathf.Clamp01(1f - (stopwatch[2]));
 
                     if (stopwatch[2] >= windUpDuration) {
-                        Destroy(this.gameObject);
+                        vol.weight = 0f;
+                        
+                        End();
                     }
                 }
             }
         }
 
-        public void OnDestroy() {
+        public void OnDisable() {
             DarknessActive = false;
         }
     }
