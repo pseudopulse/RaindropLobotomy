@@ -102,7 +102,6 @@ namespace RaindropLobotomy.Enemies {
             DirectorAPI.Helpers.AddNewMonsterToStagesWhere(new DirectorCardHolder() {
                 Card = card,
                 MonsterCategory = MonsterCategory.Minibosses,
-                MonsterCategorySelectionWeight = 1
             }, false, x => x.stage != DirectorAPI.Stage.Commencement);
         }
     }

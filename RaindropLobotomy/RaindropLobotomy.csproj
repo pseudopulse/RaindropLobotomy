@@ -22,12 +22,12 @@
 	<PackageReference Include="RiskOfRain2.GameLibs" Version="1.3.6-r.0" />
 	<PackageReference Include="MMHOOK.RoR2" Version="*-*" NoWarn="NU1701" />
       <PackageReference Include="R2API.ContentManagement" Version="1.0.1" />
-      <PackageReference Include="R2API.Core" Version="5.0.6" />
+      <PackageReference Include="R2API.Core" Version="*" />
       <PackageReference Include="R2API.Language" Version="1.0.0" />
       <PackageReference Include="R2API.Dot" Version="1.0.0" />
       <PackageReference Include="R2API.Prefab" Version="1.0.1" />
       <PackageReference Include="R2API.RecalculateStats" Version="1.0.0" />
-      <PackageReference Include="R2API.Director" Version="1.0.0"/>
+      <PackageReference Include="R2API.Director" Version="*"/>
       <PackageReference Include="R2API.DamageType" Version="1.0.4"/>
       <PackageReference Include="R2API.Networking" Version="1.0.0"/>
     </ItemGroup>

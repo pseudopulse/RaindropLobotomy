@@ -1,3 +1,6 @@
+# 1.6.4
+- fixed the mod not fucking loading lmao
+
 # 1.6.3
 - fixed bl merc's poise throwing an error every time damage is dealt and crashing fps
 - FINALLY FIXED THE FUCKING ICONS BEING INCONSISTENT WITH VANILLA YIPEEE (NO MORE LEFT TURN SWEEPER)
