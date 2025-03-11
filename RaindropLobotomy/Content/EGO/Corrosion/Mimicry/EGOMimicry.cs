@@ -449,6 +449,7 @@ namespace RaindropLobotomy.EGO.Viend {
 
                     mimicSlot.skillDef.baseRechargeInterval = newCD;
                     mimicSlot.RecalculateFinalRechargeInterval();
+                    mimicSlot.Reset();
                 }
 
                 CharacterBody body2 = GetComponent<CharacterBody>();

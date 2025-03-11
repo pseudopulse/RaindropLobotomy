@@ -136,7 +136,7 @@ namespace RaindropLobotomy.Buffs {
             
             float percentagePer = baseHealthPerStack * (hc.body.isChampion ? championPenalty : 1f) / hc.body.baseMaxHealth;
 
-            return stacks * percentagePer;
+            return Mathf.Clamp01(stacks * percentagePer);
         }
     }
 }

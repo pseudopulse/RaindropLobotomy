@@ -1,3 +1,10 @@
+# 1.7.0
+- added Four-Hundred Roses as a miniboss tier enemy
+- fixed To Claim Their Bones not hitting enemies with the initial slashes
+- the execute indicator for Sin can no longer go past the enemy healthbar
+- mimicry is no longer able to carry over an unspent stock when copying certain skills, resulting in more stocks than they're meant to have
+- fixed Draw of the Sword not playing a sound effect if you werent moving when using it
+
 # 1.6.4
 - fixed the mod not fucking loading lmao
 

@@ -247,7 +247,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
     public class ToClaimTheirBones_1 : BaseSkillState
     {
-        public string HitboxName = "SwordLarge";
+        public string HitboxName = "WhirlwindGround";
         public GameObject SwingEffectPrefab => BLMerc.DarkSlash;
         public string MuzzleString => "GroundLight1";
         public string MechanimHitboxParameter => "Sword.active";
@@ -262,6 +262,7 @@ namespace RaindropLobotomy.EGO.Merc {
         private string rizz;
         private bool alreadySpawned;
         private GameObject swingEffectInstance;
+        private bool hasAttacked = false;
 
         public ToClaimTheirBones_1(float bonusDamage, Transform attacker) {
             this.bonusDamage = bonusDamage;
@@ -382,18 +383,21 @@ namespace RaindropLobotomy.EGO.Merc {
                 lastTargetPosition = attacker.transform.position;
             }
 
-            if (animator.GetFloat("Sword.active") >= 0.5f) {
+            if (animator.GetFloat("Sword.active") >= 0.2f && !hasAttacked) {
                 BeginMeleeAttackEffect(rizz);
-                if (base.isAuthority) attack.Fire();
+                hasAttacked = true;
             }
 
             if (!base.isAuthority) return;
+
+            attack.Fire();
 
             base.characterMotor.velocity = Vector3.zero;
             base.characterDirection.forward = (lastTargetPosition - base.transform.position).normalized;
         }
 
         public void RandomTeleport() {
+            hasAttacked = false;
             Vector3 pos = lastTargetPosition + (Random.onUnitSphere * 4f);
             pos += Vector3.up * 2f;
 
@@ -409,7 +413,9 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public void PlayAnimation(string state, float duration)
         {
+            attack.ResetIgnoredHealthComponents();
             alreadySpawned = false;
+            AkSoundEngine.PostEvent(Events.Play_merc_sword_swing, base.gameObject);
             string animationStateName = state;
             bool @bool = animator.GetBool("isMoving");
             bool bool2 = animator.GetBool("isGrounded");
@@ -420,10 +426,6 @@ namespace RaindropLobotomy.EGO.Merc {
             }
             PlayCrossfade("Gesture, Additive", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
             PlayCrossfade("Gesture, Override", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
-
-            AkSoundEngine.PostEvent(Events.Play_merc_sword_swing, base.gameObject);
-
-            attack.ResetIgnoredHealthComponents();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

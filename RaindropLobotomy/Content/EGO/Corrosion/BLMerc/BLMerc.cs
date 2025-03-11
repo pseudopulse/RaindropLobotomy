@@ -138,7 +138,7 @@ namespace RaindropLobotomy.EGO.Merc {
                 """
             );
 
-            "RL_KEYWORD_TCTB".Add(
+            "RL_KEYWORD_TCTBV".Add(
                 """
                 <style=cKeywordName>To Claim Their Bones</style> Consume all <style=cIsUtility>Poise</style> and convert it into up to <style=cIsDamage>+200%</style> damage for this skill.
 

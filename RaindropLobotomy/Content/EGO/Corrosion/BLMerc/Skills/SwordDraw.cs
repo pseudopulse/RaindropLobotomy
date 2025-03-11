@@ -54,6 +54,7 @@ namespace RaindropLobotomy.EGO.Merc {
         public override void PlayAnimation()
         {
             string animationStateName = animation;
+            AkSoundEngine.PostEvent(Events.Play_merc_sword_swing, base.gameObject);
             bool @bool = animator.GetBool("isMoving");
             bool bool2 = animator.GetBool("isGrounded");
             if (!@bool && bool2)
@@ -63,8 +64,6 @@ namespace RaindropLobotomy.EGO.Merc {
             }
             PlayCrossfade("Gesture, Additive", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
             PlayCrossfade("Gesture, Override", animationStateName, "GroundLight.playbackRate", duration, 0.05f);
-
-            AkSoundEngine.PostEvent(Events.Play_merc_sword_swing, base.gameObject);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

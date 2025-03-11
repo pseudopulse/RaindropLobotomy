@@ -8,7 +8,7 @@ namespace RaindropLobotomy.EGO.Merc {
 
         public override float DamageCoefficient => 4f;
 
-        public override string HitboxName => "WhirlwindGround";
+        public override string HitboxName => "SwordLarge";
 
         public override GameObject HitEffectPrefab => Paths.GameObject.ImpactMercSwing;
 

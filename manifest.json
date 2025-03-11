@@ -1,8 +1,8 @@
 {
 	"name": "RaindropLobotomy",
-	"version_number": "1.6.4",
+	"version_number": "1.7.0",
 	"website_url": "https://github.com/pseudopulse/RaindropLobotomy/",
-	"description": "Adds content from Lobotomy Corporation. Currently adds 1 survivor, 7 enemies, 7 survivor variants, and 1 skill.",
+	"description": "Adds content from Lobotomy Corporation (and its sequels). Currently adds 1 survivor, 8 enemies, 7 survivor variants, and 1 skill.",
 	"dependencies": [
 		"bbepis-BepInExPack-5.4.9",
 		"RiskofThunder-HookGenPatcher-1.2.1",
